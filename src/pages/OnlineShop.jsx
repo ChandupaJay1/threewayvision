@@ -126,34 +126,7 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0b1329' }}>
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
-      <header className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-20 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('economy')}>
-              <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-3 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-                ආපසු
-              </button>
-            </div>
-          </div>
-          <div className="w-full sm:w-80 relative">
-            <input type="text" placeholder="සොයන්න... / Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors" />
-            <div className="absolute right-3 top-2.5 text-slate-400 pointer-events-none">
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-          <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors">{d.regBtn}</button>
-        </div>
-      </header>
-
-      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full" style={{ paddingTop: '120px' }}>
         <section className="hero-bg rounded-3xl p-6 sm:p-10 border border-white/10 mb-12 relative overflow-hidden shadow-2xl" style={{
           backgroundImage: 'linear-gradient(to right, rgba(15, 23, 42, 0.95) 40%, rgba(15, 23, 42, 0.6) 100%), url(https://images.unsplash.com/photo-1590005354167-6da97870c913?q=80&w=1200&auto=format&fit=crop)',
           backgroundSize: 'cover',
