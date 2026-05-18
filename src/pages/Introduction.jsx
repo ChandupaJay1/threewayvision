@@ -33,6 +33,14 @@ const translations = {
     f1: 'සියලුම ග්‍රාම සේවා වසම්වල මානව, භෞතික සහ ව්‍යවසායකත්ව විභවතා හඳුනාගැනීම',
     f2: 'ABCD රාමුව අනුව ආර්ථික, ආගමික, දේශපාලනික හා තාක්ෂණික ගැටලු විශ්ලේෂණය',
     f3: 'දේශීය ව්‍යවසායකයින්ගේ දායකත්වයෙන් යුත් ක්‍රමීය කළමනාකරණ සැලසුම්',
+    section5Title: '5. තුන්කල් දැක්ම තුළින් උදාවන ගෝලීය යහපත (Global Common Good)',
+    section5Desc: '"තුන්කල් දැක්ම" යනු හුදෙක් එක් රටක දේශපාලනවලට පමණක් සීමාවූ ප්‍රතිපත්තියක් නොව, මනාව සඟවූ ක්‍රියාකාරීත්වයෙන් යුත්, භූමික ස්ථායිකවාදී කළමනාකරණ මාදිලියකි. මෙම උදාර දැක්ම තුළින් ගෝලීය ප්‍රතිලාභ මෙන්න:',
+    s5l1: 'අනෙකුත් රාජ්‍යන්ගෙන් සෘජුවම අවලම්භය ප්‍රතික්ෂේප කිරීම: බලපන්නාකරණය හෝ සිධක් මත නොව, මනාව සඟවූ භාවයෙන් ව්‍යවසායකයන්ගේ නිරිතයේ ප්‍රතිචාරය ඇතිවීමෙන් සෘජුවම පෞද්ගලික හෝ රජයේ ප්‍රග්‍රහනයක් නැතුව තමන්ගේ සංවර්ධනය කිරීමට රජයේ සවිකිරීම් මිදී ලංකාවට වතාව ලබා දීමයි.',
+    s5l2: 'සැබෑ "ධර්මද්වීපයේ" අර්ථය ලෝකයට හෙළිකිරීම: ඉතිහාසයට පමණක් සීමාවූ නොව, සියලු ආගමවලටම සමාන ලක්ෂයක් ලෙස ධර්මය තුළින් දක්වන ලෝකයේ ක්‍රියාකාරීත්වය, අන්තර්ජාතික මට්ටමින් ලෝකයට නිරූපණය කිරීමෙන් ප්‍රධාන ලෝකයේ රටවලට වඩාත් ස්ථාවර භාවයෙන් ඔවුන්ගේ ක්‍රියාකාරීත්වය පිළිබඳ අවබෝධය ලබා දීමයි.',
+    s5l3: 'ගෝලීය මාර්ගස්ථ සහ සදාචාරාත්මක ස්ථාවරත්වය: බිම් මට්ටමේ සිට ක්‍රියාවට නංවන මානසික සුවපත සහ ආචාරශීලීත්වය, අන්තර්ජාතික මට්ටමේ රටවල් අතර සම්බන්ධතාවය අධිකරණය වශයෙන් සෞම්‍යවාදීව නොවන හෝ යුධ පිරිත් සහිත හෝ පරිපූර්ණ සන්තුෂ්ටියක් සාධනය වන දෝෂයක් නැතුව ක්‍රියාකාරීව ක්‍රියාත්මක කිරීම.',
+    section6Title: 'නිගමනය',
+    section6Desc: 'අවසාන වශයෙන්, "තුන්කල් දැක්ම" ජාතික සැලැස්ම ක්‍රියාවට නැංවීම හරහා ශ්‍රී ලංකාව නව යුගයක් සංවර්ධනයේ අරමුණට ලඟා විය හැකි බව අපට පැහැදිලිය. මෙම අභ්‍යස දෘෂ්ටිකය තුළින් රටට ප්‍රධානවම වන්නේ භූමික සංවර්ධනය කිරීමෙන් පමණක් නොව, විශාල ලෝකයේ රටවලට ද ආධුනිකව සැලසුම් කළ හැකි ශ්‍රී ලංකාව.',
+    aQuote: '"තුන් කල් දැක්ම" යනු ප්‍රායෝගිකව ක්‍රියාත්මක කළ හැකි, දෘෂ්ටිකව පිළිගත හැකි පරිපූර්ණ දෘෂ්ටියකි. අපගේ ඉතිහාසයෙන් ප්‍රගතියක් මත එය විස්තර කිරීමට අරමුණු කෙරෙයි.',
     back: '← ආපසු'
   },
   en: {
@@ -65,6 +73,14 @@ const translations = {
     f1: 'Comprehensive Audit of Human, Resource & Enterprise Potential at Grassroots Grid',
     f2: 'ABCD Logic Processing of Fiscal, Cultural, Systemic & Technological Inefficiencies',
     f3: 'Data-Driven Strategic Management Plan with Local Entrepreneurial Integration',
+    section5Title: '5. Global Common Good Emerging from Three Way Vision',
+    section5Desc: '"Thun Kal Dækma" is not a policy limited to a single country, but a deeply strategic non-violent management model. The global benefits of this generous vision are:',
+    s5l1: 'Rejecting direct borrowing from other states: Instead of pressure or sanctions, through the authentic implementation by entrepreneurs, Sri Lanka will be able to develop without direct private or state grants, freeing itself from foreign dependencies.',
+    s5l2: 'Revealing the true meaning of "Dhammadweepa" to the world: Not limited to history alone, but as a common ideal for all religions, the operational model demonstrated by Dharma will be projected globally to give major world countries a more stable understanding of their operational model.',
+    s5l3: 'Global moral and ethical stability: From grassroots implementation, mental well-being and moral conduct will be operationalized as a global standard without creating any war-prone or anxiety-inducing scenarios in international relations.',
+    section6Title: 'Conclusion',
+    section6Desc: 'Finally, it is clear to us that Sri Lanka can reach the goal of a new era of development through the implementation of the "Thun Kal Dækma" national plan. What this practical vision primarily offers Sri Lanka is not only local development, but a Sri Lanka that can plan modernly for large world countries as well.',
+    aQuote: '"Thun Kal Dækma" is a complete vision that can be practically implemented and philosophically accepted. It aims to describe our history based on progress.',
     back: '← Back'
   },
   ta: {
@@ -97,6 +113,14 @@ const translations = {
     f1: 'அடிமட்ட தரவுகளில் மனித, வள மற்றும் தொழில்முனைவோர் திறன்களின் முழுமையான கணக்கெடுப்பு',
     f2: 'ABCD தர்க்க முறையின் மூலம் பொருளாதார, கலாசார, கட்டமைப்பு மற்றும் தொழில்நுட்ப சிக்கல்கள் பகுப்பாய்வு',
     f3: 'உள்நாட்டு தொழில்முனைவோர் ஒருங்கிணைப்புடன் தரவு ஆதாரத்தில் மேலாண்மை திட்டம்',
+    section5Title: '5. முக்காலத் தரிசனத்திலிருந்து எழும் உலகளாவிய பொது நலன் (Global Common Good)',
+    section5Desc: '"துன் கல் தேக்மா" என்பது ஒரு நாட்டின் தேசியக் கொள்கைகளுக்கு மட்டும் மட்டுப்படுத்தப்பட்ட ஒரு கொள்கை அல்ல, ஆனால் ஆழமாக முன்னெடுக்கப்பட்ட அல்லாத, மாநிலத்தை மாற்றும் அல்லாத, நீண்ட கால நிலையான மேலாண்மை மாதிரியாகும். இந்த generous பார்வையின் உலகளாவிய நன்மைகள்:',
+    s5l1: 'மற்ற நாடுகளிடமிருந்து நேரடி கடன் எடுப்பதை மறுப்பது: அழுத்தம் அல்லது தடைகளின் மூலமாக அல்ல, மாநிலத்தை மாற்றும் மாதிரியில் தொழில்முனைவோரின் உண்மையான செயல்பாட்டின் மூலம், இலங்கை நேரடி தனியார் அல்லது அரசு உதவிகள் இல்லாமலே வளர்ச்சி பெறலாம், மற்ற நாடுகளின் சார்புகளை விட்டு விடுவிக்கிறது.',
+    s5l2: '"தர்மதீபம்" என்பதன் உண்மையான அர்த்தத்தை உலகிற்கு வெளிப்படுத்துதல்: வரலாற்றுக்கு மட்டும் மட்டுப்படுத்தப்படாமல், அனைத்து மதங்களுக்கும் பொதுவான ஒரு இலக்கணமாக தர்மத்தால் காட்டப்படும் செயல்பாட்டு மாதிரியானது சர்வதேச அளவில் உலகிற்கு முன்னெடுக்கப்பட்டு, பெரிய உலக நாடுகளுக்கு தங்கள் செயல்பாட்டு மாதிரியைப் பற்றி மேலும் நிலையான புரிதலை வழங்குகிறது.',
+    s5l3: 'உலகளாவிய நீதி மற்றும் ஒழுக்க நிலைத்தன்மை: அடிமட்டத்திலிருந்து செயல்படுத்தப்படும் மன நலன் மற்றும் ஒழுக்க நடத்தைகள், சர்வதேச உறவுகளில் எந்த ஒரு யுத்தத்திற்கு ஏற்புடைய அல்லது கவலை உணர்வு உண்டாக்கும் நிகழ்வுகள் இல்லாமல், உலகளாவிய தரநிலையாக செயல்படுத்தப்படும்.',
+    section6Title: 'முடிவுரை',
+    section6Desc: 'இறுதியாக, "துன் கல் தேக்மா" தேசிய திட்டத்தை செயல்படுத்துவதன் மூலம், இலங்கை ஒரு புதிய யுகத்தின் வளர்ச்சியின் இலக்கை அடைய முடியும் என்பது எங்களுக்கு தெளிவாகத் தெரிகிறது. இந்த நடைமுறை பார்வையானது இலங்கைக்கு முதன்மையாக வழங்குவது உள்ளூர் வளர்ச்சி மட்டுமல்ல, பெரிய உலக நாடுகளுக்கும் நவீனமாகத் திட்டமிடக்கூடிய இலங்கையாகும்.',
+    aQuote: '"துன் கல் தேக்மா" என்பது நடைமுறையில் செயல்படுத்தக்கூடிய மற்றும் தத்துவ ரீதியில் ஏற்றுக்கொள்ளக்கூடிய ஒரு முழு பார்வையாகும். எங்கள் வரலாற்றை முன்னேற்றத்தின் அடிப்படையில் விவரிக்க இது நோக்கம் கொண்டுள்ளது.',
     back: '← முதன்மைப் பலகத்திற்குத் திரும்பு'
   }
 }
@@ -248,6 +272,47 @@ function Introduction({ lang, setLang, setCurrentPage }) {
                 <div className="bg-white/[0.05] border border-white/[0.12] px-6 py-3 rounded-full text-center font-medium max-w-[90%] text-sm md:text-base text-slate-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)]">
                   {t.f3}
                 </div>
+              </div>
+            </section>
+
+            <section className="p-8 md:p-10 rounded-[2rem] backdrop-blur-md bg-white/[0.06] border border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+              <h2 className="text-amber-400 text-2xl md:text-3xl mb-6 border-b border-white/[0.12] pb-3 font-semibold">
+                {t.section5Title}
+              </h2>
+              
+              <p className="mb-6 text-base md:text-lg text-justify opacity-90 text-slate-300">
+                {t.section5Desc}
+              </p>
+
+              <div className="space-y-3">
+                <div className="pl-6 mb-3 relative text-base md:text-lg text-slate-300">
+                  <span className="absolute left-0 text-amber-400 text-sm">◆</span>
+                  <span>{t.s5l1}</span>
+                </div>
+                <div className="pl-6 mb-3 relative text-base md:text-lg text-slate-300">
+                  <span className="absolute left-0 text-amber-400 text-sm">◆</span>
+                  <span>{t.s5l2}</span>
+                </div>
+                <div className="pl-6 mb-3 relative text-base md:text-lg text-slate-300">
+                  <span className="absolute left-0 text-amber-400 text-sm">◆</span>
+                  <span>{t.s5l3}</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="p-8 md:p-10 rounded-[2.5rem] backdrop-blur-md bg-white/[0.06] border-2 border-dashed border-amber-500/30">
+              <h2 className="text-amber-400 text-2xl md:text-3xl mb-6 font-semibold">
+                {t.section6Title}
+              </h2>
+              
+              <p className="mb-6 text-base md:text-lg text-justify opacity-90 text-slate-300">
+                {t.section6Desc}
+              </p>
+
+              <div className="bg-amber-50/10 border-l-4 border-amber-500 p-4 rounded-r-xl mt-6">
+                <p className="text-sm md:text-lg italic text-amber-300 leading-relaxed">
+                  {t.aQuote}
+                </p>
               </div>
             </section>
 
