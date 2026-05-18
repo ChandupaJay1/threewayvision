@@ -126,7 +126,7 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0b1329' }}>
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
-      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full" style={{ paddingTop: '120px' }}>
+      <main className="flex-1 max-w-7xl mx-auto px-4 py-8 w-full" style={{ paddingTop: '90px' }}>
         <div className="flex flex-col lg:flex-row justify-between items-center gap-4 mb-8">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('economy')}>

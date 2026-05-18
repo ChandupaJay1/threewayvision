@@ -45,7 +45,7 @@ function BusinessPlan({ lang, setCurrentPage, setLang }) {
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
       <header style={{ 
         background: 'linear-gradient(rgba(10, 26, 11, 0.9), rgba(20, 54, 22, 0.95)), url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3) no-repeat center center/cover',
-        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059', position: 'relative', marginTop: '100px'
+        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059', position: 'relative', marginTop: '70px'
       }}>
         <button 
           onClick={() => setCurrentPage('economy')} 

@@ -16,7 +16,7 @@ function Navbar({ lang, setLang, setCurrentPage }) {
   }
 
   return (
-    <nav className="fixed w-full z-50 glass-nav flex items-center">
+    <nav className="fixed w-full z-50 glass-nav flex items-center" style={{ top: 0 }}>
       <div className="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
         <div className="flex flex-col cursor-pointer" onClick={() => setCurrentPage('main')}>
           <span className="text-xl md:text-2xl font-bold text-gradient">{translations[lang].brand}</span>
