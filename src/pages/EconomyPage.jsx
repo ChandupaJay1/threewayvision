@@ -297,7 +297,7 @@ const coreModalData = {
 
 const API_KEY = "AIzaSyAc8U3xeho_EjtpoYgl4rp7KjJJSzU2mtE"
 
-function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick, setJobopportunitiesClick }) {
+function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick, setJobopportunitiesClick, setBenefitAnalysisClick, setRootCauseClick }) {
   const t = translations[lang]
   const [showModal, setShowModal] = useState(false)
   const [showABCD, setShowABCD] = useState(false)
@@ -436,12 +436,12 @@ function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplan
                   <h4 className="font-bold text-red-400 text-sm md:text-base">{t.aTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.aDesc}</p>
                 </div>
-                <div onClick={() => window.location.href = '/root_cause.html'} className="abcd-card p-6 rounded-2xl text-center border-orange-500/30 hover:border-orange-500/60 cursor-pointer">
+                <div onClick={() => setRootCauseClick && setRootCauseClick()} className="abcd-card p-6 rounded-2xl text-center border-orange-500/30 hover:border-orange-500/60 cursor-pointer">
                   <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(249,115,22,0.5)]">B</div>
                   <h4 className="font-bold text-orange-400 text-sm md:text-base">{t.bTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.bDesc}</p>
                 </div>
-                <div onClick={() => window.location.href = '/benefit_analysis.html'} className="abcd-card p-6 rounded-2xl text-center border-green-500/30 hover:border-green-500/60 cursor-pointer">
+                <div onClick={() => setBenefitAnalysisClick && setBenefitAnalysisClick()} className="abcd-card p-6 rounded-2xl text-center border-green-500/30 hover:border-green-500/60 cursor-pointer">
                   <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(22,163,74,0.5)]">C</div>
                   <h4 className="font-bold text-green-400 text-sm md:text-base">{t.cTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.cDesc}</p>
