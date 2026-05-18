@@ -297,7 +297,7 @@ const coreModalData = {
 
 const API_KEY = "AIzaSyAc8U3xeho_EjtpoYgl4rp7KjJJSzU2mtE"
 
-function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick, setJobopportunitiesClick, setBenefitAnalysisClick, setRootCauseClick }) {
+function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick, setJobopportunitiesClick, setBenefitAnalysisClick, setRootCauseClick, setEconomicPlanningClick, setEconomicProblemAnalysisClick }) {
   const t = translations[lang]
   const [showModal, setShowModal] = useState(false)
   const [showABCD, setShowABCD] = useState(false)
@@ -431,7 +431,7 @@ function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplan
             <div className="mb-12 p-6 rounded-[2.5rem] bg-slate-900/40 border border-blue-500/20">
               <h3 className="text-center text-xl font-bold mb-6 text-blue-400">{t.abcdTitle}</h3>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                <div onClick={() => openAnalysis('A')} className="abcd-card p-6 rounded-2xl text-center border-red-500/30 hover:border-red-500/60 cursor-pointer">
+                <div onClick={() => setEconomicProblemAnalysisClick && setEconomicProblemAnalysisClick()} className="abcd-card p-6 rounded-2xl text-center border-red-500/30 hover:border-red-500/60 cursor-pointer">
                   <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(220,38,38,0.5)]">A</div>
                   <h4 className="font-bold text-red-400 text-sm md:text-base">{t.aTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.aDesc}</p>
@@ -446,7 +446,7 @@ function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplan
                   <h4 className="font-bold text-green-400 text-sm md:text-base">{t.cTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.cDesc}</p>
                 </div>
-                <div onClick={() => openAnalysis('D')} className="abcd-card p-6 rounded-2xl text-center border-blue-500/30 hover:border-blue-500/60 cursor-pointer">
+                <div onClick={() => setEconomicPlanningClick && setEconomicPlanningClick()} className="abcd-card p-6 rounded-2xl text-center border-blue-500/30 hover:border-blue-500/60 cursor-pointer">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(37,99,235,0.5)]">D</div>
                   <h4 className="font-bold text-blue-400 text-sm md:text-base">{t.dTitle}</h4>
                   <p className="text-[10px] text-gray-400 mt-1">{t.dDesc}</p>
