@@ -1,7 +1,7 @@
 const translations = {
   si: {
     badge: 'National Master Plan 2026',
-    heroTitle: 'ජාතික අර්බුදයට අවසන් විසඳුම',
+    heroTitle: 'ජාතික අර්බුදයට නිවැරදි විසඳුම',
     heroDesc: 'අතීතය, වර්තමානය සහ අනාගතය නිවැරදිව කියවා ගනිමින් ශ්‍රී ලංකාව ගොඩනගන ප්‍රායෝගික දාර්ශනික මාර්ග සිතියම.',
     introBtn: 'හැඳින්වීම',
     economy: 'ආර්ථික දැක්ම',
@@ -15,7 +15,7 @@ const translations = {
   },
   ta: {
     badge: 'தேசிய முதன்மை திட்டம் 2026',
-    heroTitle: 'தேசிய நெருக்கடிக்கு இறுதி தீர்வு',
+    heroTitle: 'தேசிய நெருக்கடிக்கு சரியான தீர்வு',
     heroDesc: 'கடந்த காலம், நிகழ்காலம் மற்றும் எதிர்காலத்தை சரியாக வாசிப்பதன் மூலம் இலங்கையை கட்டியெழுப்பும் நடைமுறை தத்துவ வரைபடம்.',
     introBtn: 'அறிமுகம்',
     economy: 'பொருளாதார பார்வை',
@@ -29,7 +29,7 @@ const translations = {
   },
   en: {
     badge: 'National Master Plan 2026',
-    heroTitle: 'Final Solution to National Crisis',
+    heroTitle: 'The Right Solution to National Crisis',
     heroDesc: 'A practical philosophical roadmap for building Sri Lanka by correctly interpreting the past, present, and future.',
     introBtn: 'Introduction',
     economy: 'Economic Vision',
