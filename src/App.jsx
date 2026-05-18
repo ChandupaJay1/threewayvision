@@ -9,6 +9,7 @@ import RootCause from './pages/RootCause'
 import MasterPlan from './pages/MasterPlan'
 import EconomicPlanning from './pages/EconomicPlanning'
 import EconomicProblemAnalysis from './pages/EconomicProblemAnalysis'
+import Introduction from './pages/Introduction'
 import Footer from './components/Footer'
 
 function App() {
@@ -31,11 +32,13 @@ function App() {
         <EconomicPlanning lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
       ) : currentPage === 'economicproblemanalysis' ? (
         <EconomicProblemAnalysis lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
+      ) : currentPage === 'introduction' ? (
+        <Introduction lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
       ) : (
         <div className="universe-bg min-h-screen">
           <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
           {currentPage === 'main' && (
-            <MainPage lang={lang} setCurrentPage={setCurrentPage} />
+            <MainPage lang={lang} setCurrentPage={setCurrentPage} setIntroductionClick={() => setCurrentPage('introduction')} />
           )}
           {currentPage === 'economy' && (
             <EconomyPage lang={lang} setCurrentPage={setCurrentPage} setOnlineshopClick={() => setCurrentPage('onlineshop')} setBusinessplanClick={() => setCurrentPage('businessplan')} setJobopportunitiesClick={() => setCurrentPage('masterplan')} setBenefitAnalysisClick={() => setCurrentPage('benefitanalysis')} setRootCauseClick={() => setCurrentPage('rootcause')} setEconomicPlanningClick={() => setCurrentPage('economicplanning')} setEconomicProblemAnalysisClick={() => setCurrentPage('economicproblemanalysis')} />

@@ -3,6 +3,7 @@ const translations = {
     badge: 'National Master Plan 2026',
     heroTitle: 'ජාතික අර්බුදයට අවසන් විසඳුම',
     heroDesc: 'අතීතය, වර්තමානය සහ අනාගතය නිවැරදිව කියවා ගනිමින් ශ්‍රී ලංකාව ගොඩනගන ප්‍රායෝගික දාර්ශනික මාර්ග සිතියම.',
+    introBtn: 'හැඳින්වීම',
     economy: 'ආර්ථික දැක්ම',
     economyDesc: 'ජාතික සම්පත් සහ දත්ත මත පදනම් වූ නව ආර්ථික යාන්ත්‍රණය.',
     religion: 'ආගමික දැක්ම',
@@ -16,6 +17,7 @@ const translations = {
     badge: 'தேசிய முதன்மை திட்டம் 2026',
     heroTitle: 'தேசிய நெருக்கடிக்கு இறுதி தீர்வு',
     heroDesc: 'கடந்த காலம், நிகழ்காலம் மற்றும் எதிர்காலத்தை சரியாக வாசிப்பதன் மூலம் இலங்கையை கட்டியெழுப்பும் நடைமுறை தத்துவ வரைபடம்.',
+    introBtn: 'அறிமுகம்',
     economy: 'பொருளாதார பார்வை',
     economyDesc: 'தேசிய வளங்கள் மற்றும் தரவுகளின் அடிப்படையில் புதிய பொருளாதார பொறிமுறை.',
     religion: 'மதப் பார்வை',
@@ -29,6 +31,7 @@ const translations = {
     badge: 'National Master Plan 2026',
     heroTitle: 'Final Solution to National Crisis',
     heroDesc: 'A practical philosophical roadmap for building Sri Lanka by correctly interpreting the past, present, and future.',
+    introBtn: 'Introduction',
     economy: 'Economic Vision',
     economyDesc: 'New economic mechanism based on national resources and data.',
     religion: 'Religious Vision',
@@ -40,7 +43,7 @@ const translations = {
   }
 }
 
-function MainPage({ lang, setCurrentPage }) {
+function MainPage({ lang, setCurrentPage, setIntroductionClick }) {
   const t = translations[lang]
 
   return (
@@ -54,6 +57,12 @@ function MainPage({ lang, setCurrentPage }) {
           <span className="text-gradient">{lang === 'si' ? 'තුන් කල් දැක්ම' : lang === 'ta' ? 'துன் கல் தெக்ம' : 'Three Way Vision'}</span>
         </h1>
         <p className="text-gray-400 max-w-3xl mx-auto text-lg md:text-xl mb-16 leading-relaxed">{t.heroDesc}</p>
+
+        <div className="mb-16">
+          <button onClick={() => setIntroductionClick && setIntroductionClick()} className="px-10 py-4 bg-gradient-to-r from-amber-500 to-yellow-600 rounded-full text-white font-bold text-lg hover:from-amber-400 hover:to-yellow-500 transition-all shadow-[0_0_30px_rgba(245,158,11,0.4)]">
+            {t.introBtn}
+          </button>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div onClick={() => setCurrentPage('economy')} className="p-10 glass-card rounded-[2.5rem] border-blue-500/20 bg-blue-500/5">
