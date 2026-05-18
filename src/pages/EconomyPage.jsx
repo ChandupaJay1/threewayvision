@@ -89,7 +89,7 @@ const translations = {
 
 const API_KEY = "AIzaSyAc8U3xeho_EjtpoYgl4rp7KjJJSzU2mtE"
 
-function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick }) {
+function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplanClick, setJobopportunitiesClick }) {
   const t = translations[lang]
   const [showModal, setShowModal] = useState(false)
   const [chatStep, setChatStep] = useState(0)
@@ -198,7 +198,7 @@ function EconomyPage({ lang, setCurrentPage, setOnlineshopClick, setBusinessplan
                 <p className="text-[10px] text-green-300 uppercase">{t.sub3Desc}</p>
               </div>
             </div>
-            <div className="sub-card" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=600)' }}>
+            <div onClick={() => setJobopportunitiesClick && setJobopportunitiesClick()} className="sub-card cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=600)' }}>
               <div className="relative z-10">
                 <h4 className="text-white font-bold">{t.sub4Title}</h4>
                 <p className="text-[10px] text-orange-300 uppercase">{t.sub4Desc}</p>

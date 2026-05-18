@@ -23,7 +23,7 @@ function App() {
             <MainPage lang={lang} setCurrentPage={setCurrentPage} />
           )}
           {currentPage === 'economy' && (
-            <EconomyPage lang={lang} setCurrentPage={setCurrentPage} setOnlineshopClick={() => setCurrentPage('onlineshop')} setBusinessplanClick={() => setCurrentPage('businessplan')} />
+            <EconomyPage lang={lang} setCurrentPage={setCurrentPage} setOnlineshopClick={() => setCurrentPage('onlineshop')} setBusinessplanClick={() => setCurrentPage('businessplan')} setJobopportunitiesClick={() => setCurrentPage('businessplan')} />
           )}
           <Footer />
         </div>
