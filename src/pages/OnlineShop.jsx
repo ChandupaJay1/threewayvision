@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const uiDictionary = {
   si: {
@@ -123,7 +125,8 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0b1329' }}>
-      <header className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+      <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
+      <header className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3 w-full lg:w-auto justify-between">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('economy')}>
@@ -293,9 +296,7 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
         </div>
       )}
 
-      <footer className="border-t border-white/10 bg-slate-950 py-6 text-center text-xs text-slate-500 mt-auto">
-        <p>{d.footer}</p>
-      </footer>
+      <Footer />
     </div>
   )
 }

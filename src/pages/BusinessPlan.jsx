@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const projectData = [
   {id: "01", name: "ග්‍රාමීය ලීවැඩ සහ පීඩනික පීලි කර්මාන්තය", desc: "දේශීය දැවයෙන් සැහැල්ලු ගෘහ භාණ්ඩ, පැළ රඳවන සහ කෘෂි ප්‍රවාහන පෙට්ටි නිපදවීම. කෘෂි අස්වනු ප්‍රවාහනයේදී සිදුවන හානිය අවම කරන විශේෂිත සැහැල්ලු ලී පෙට්ටි."},
@@ -40,9 +42,10 @@ function BusinessPlan({ lang, setCurrentPage, setLang }) {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F5F7F5' }}>
+      <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
       <header style={{ 
         background: 'linear-gradient(rgba(10, 26, 11, 0.9), rgba(20, 54, 22, 0.95)), url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3) no-repeat center center/cover',
-        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059', position: 'relative'
+        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059', position: 'relative', marginTop: '80px'
       }}>
         <button 
           onClick={() => setCurrentPage('economy')} 
@@ -291,12 +294,7 @@ function BusinessPlan({ lang, setCurrentPage, setLang }) {
         </div>
       )}
 
-      <footer style={{ 
-        background: '#143616', color: '#FFFFFF', textAlign: 'center', padding: '30px', 
-        fontSize: '0.95rem', borderTop: '4px solid #C5A059'
-      }}>
-        &copy; 2026 තුන් කල් දැක්ම (Three-Way Vision) ජාතික සංවර්ධන මාස්ටර් ප්ලෑන්. සියලුම හිමිකම් ඇවිරිණි.
-      </footer>
+      <Footer />
     </div>
   )
 }
