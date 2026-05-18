@@ -128,7 +128,7 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
       <header className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-3 w-full lg:w-auto justify-between">
+          <div className="flex items-center gap-3">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('economy')}>
               <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-3 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,16 +136,6 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
                 </svg>
                 ආපසු
               </button>
-            </div>
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('main')}>
-              <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-600/30">තුන්</div>
-              <div>
-                <h1 className="text-xl font-bold tracking-wide text-white flex items-center gap-2">
-                  <span>{d.navTitle}</span>
-                  <span className="text-xs text-blue-400 font-normal bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">{d.navBadge}</span>
-                </h1>
-                <p className="text-xs text-slate-400">{d.navSub}</p>
-              </div>
             </div>
           </div>
           <div className="w-full sm:w-80 relative">
@@ -159,14 +149,7 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
               </svg>
             </div>
           </div>
-          <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end">
-            <div className="flex bg-slate-800 p-1 rounded-xl border border-white/10">
-              <button onClick={() => setLang('si')} className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'si' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}>සිංහල</button>
-              <button onClick={() => setLang('ta')} className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'ta' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}>தமிழ்</button>
-              <button onClick={() => setLang('en')} className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${lang === 'en' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'}`}>English</button>
-            </div>
-            <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors">{d.regBtn}</button>
-          </div>
+          <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors">{d.regBtn}</button>
         </div>
       </header>
 
