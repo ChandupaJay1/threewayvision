@@ -42,8 +42,21 @@ function BusinessPlan({ lang, setCurrentPage, setLang }) {
     <div className="min-h-screen" style={{ backgroundColor: '#F5F7F5' }}>
       <header style={{ 
         background: 'linear-gradient(rgba(10, 26, 11, 0.9), rgba(20, 54, 22, 0.95)), url(https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3) no-repeat center center/cover',
-        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059'
+        color: '#FFFFFF', textAlign: 'center', padding: '120px 20px 80px 20px', borderBottom: '6px solid #C5A059', position: 'relative'
       }}>
+        <button 
+          onClick={() => setCurrentPage('economy')} 
+          style={{
+            position: 'absolute', top: '30px', left: '20px', background: 'rgba(255,255,255,0.1)', color: '#FFFFFF', 
+            padding: '10px 20px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.3)', 
+            fontSize: '0.95rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)' }}
+          onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
+        >
+          <i className="fa-solid fa-arrow-left"></i> ආපසු
+        </button>
         <h1 style={{ fontFamily: 'Abhaya Libre, serif', fontSize: '3.5rem', marginBottom: '15px', textShadow: '2px 2px 4px rgba(0,0,0,0.4)' }}>
           තුන් කල් දැක්ම (Three-Way Vision)
         </h1>

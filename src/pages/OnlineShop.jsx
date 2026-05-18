@@ -125,14 +125,24 @@ function OnlineShop({ lang, setCurrentPage, setLang }) {
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0b1329' }}>
       <header className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('main')}>
-            <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-600/30">තුන්</div>
-            <div>
-              <h1 className="text-xl font-bold tracking-wide text-white flex items-center gap-2">
-                <span>{d.navTitle}</span>
-                <span className="text-xs text-blue-400 font-normal bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">{d.navBadge}</span>
-              </h1>
-              <p className="text-xs text-slate-400">{d.navSub}</p>
+          <div className="flex items-center gap-3 w-full lg:w-auto justify-between">
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('economy')}>
+              <button className="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-3 py-2 rounded-xl text-sm font-semibold transition-colors flex items-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                ආපසු
+              </button>
+            </div>
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentPage('main')}>
+              <div className="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-600/30">තුන්</div>
+              <div>
+                <h1 className="text-xl font-bold tracking-wide text-white flex items-center gap-2">
+                  <span>{d.navTitle}</span>
+                  <span className="text-xs text-blue-400 font-normal bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">{d.navBadge}</span>
+                </h1>
+                <p className="text-xs text-slate-400">{d.navSub}</p>
+              </div>
             </div>
           </div>
           <div className="w-full sm:w-80 relative">
