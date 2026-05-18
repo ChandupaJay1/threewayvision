@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>දේශීය වෙළඳපොළ | තුන් කල් දැක්ම (Three-Way Vision)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', sans-serif; background-color: #0b1329; color: #f8fafc; }
+        .hero-bg { 
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.95) 40%, rgba(15, 23, 42, 0.6) 100%), url('https://images.unsplash.com/photo-1590005354167-6da97870c913?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row justify-between items-center gap-4">
+            
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-blue-600/30">තුන්</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide text-white flex items-center gap-2">
+                        <span id="navTitle">තුන් කල් දැක්ම</span> 
+                        <span class="text-xs text-blue-400 font-normal bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20" id="navBadge">ව්‍යාපාරික අංශය</span>
+                    </h1>
+                    <p class="text-xs text-slate-400" id="navSub">දේශීය අන්තර්ජාල වෙළඳපොළ යාන්ත්‍රණය</p>
+                </div>
+            </div>
+            
+            <div class="w-full sm:w-80 relative">
+                <input type="text" id="productSearch" onkeyup="searchProducts()" placeholder="සොයන්න... / Search..." class="w-full bg-slate-800 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors">
+                <div class="absolute right-3 top-2.5 text-slate-400 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end">
+                <div class="flex bg-slate-800 p-1 rounded-xl border border-white/10">
+                    <button onclick="changeLanguage('si')" id="lang-si" class="px-3 py-1 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white">සිංහල</button>
+                    <button onclick="changeLanguage('ta')" id="lang-ta" class="px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">தமிழ்</button>
+                    <button onclick="changeLanguage('en')" id="lang-en" class="px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">English</button>
+                </div>
+                <button class="bg-slate-800 border border-white/10 hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors" id="regBtn">+ නව ලියාපදිංචිය</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl mx-auto px-4 py-8 w-full">
+        
+        <section class="hero-bg rounded-3xl p-6 sm:p-10 border border-white/10 mb-12 relative overflow-hidden shadow-2xl">
+            <div class="max-w-3xl relative z-10 bg-slate-950/60 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/5">
+                <span class="bg-blue-500/20 border border-blue-500/40 text-blue-300 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider" id="heroBadge">Empirical Local Market Ecosystem</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white mt-4 mb-4 leading-tight" id="heroTitle">ග්‍රාමීය නිෂ්පාදකයා සහ පාරිභෝගිකයා සෘජුව බද්ධ කරන ජාලය</h2>
+                <p class="text-slate-200 text-sm sm:text-base leading-relaxed" id="heroDesc">අත් මැදියන්ගෙන් තොරව සෑම ග්‍රාම සේවා වසමකම පවතින සැබෑ නිෂ්පාදන ධාරිතාවය සහ සේවාවන් තථ්‍ය කාලීනව (Real-Time) සමස්ත ජාතිය සමඟ සහසම්බන්ධ කරන විද්‍යාත්මක වෙළඳපොළ ආකෘතිය.</p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            <aside class="space-y-6">
+                <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-5">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4" id="asideCatTitle">ප්‍රධාන අංශ (Core Categories)</h3>
+                    <ul class="space-y-2 text-sm text-slate-300" id="categoryList">
+                        </ul>
+                </div>
+
+                <div class="bg-slate-900/50 border border-white/5 rounded-2xl p-5 space-y-4">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400" id="asideDistTitle">ප්‍රාදේශීය පෙරහන (District Filter)</h3>
+                    <div>
+                        <label class="text-xs text-slate-400 block mb-1" id="labelDist">දිස්ත්‍රික්කය තෝරන්න</label>
+                        <select id="districtSelect" onchange="updateDivisions()" class="w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                            </select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400 block mb-1" id="labelDiv">ප්‍රාදේශීය ලේකම් කොට්ඨාසය</label>
+                        <select id="divisionSelect" onchange="filterByLocation()" class="w-full bg-slate-800 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500" disabled>
+                            <option value="">Choose Division...</option>
+                        </select>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="lg:col-span-3 space-y-8">
+                <div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <span>📦</span> <span id="currentCategoryTitle">සියලුම දේශීය නිෂ්පාදන සහ සේවා</span>
+                        </h3>
+                        <span id="productCountBadge" class="text-xs bg-blue-600/30 text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-full font-semibold">0 Products Active</span>
+                    </div>
+                    
+                    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                        </div>
+                    
+                    <div id="noResults" class="hidden text-center py-12 text-slate-400 bg-slate-900/20 rounded-2xl border border-white/5 border-dashed">
+                        🔍 No matching items found. Please try another selection.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="infoModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-white/10 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-base font-bold text-white">Direct Trade System</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            </div>
+            <div id="modalContent" class="p-6 text-sm text-slate-300 max-h-60 overflow-y-auto custom-scrollbar">
+                </div>
+            <div class="p-4 bg-slate-950/50 border-t border-white/5 flex justify-end gap-2">
+                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold px-4 py-2 rounded-xl" id="modalCloseBtn">Close</button>
+                <button onclick="confirmPurchase()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-xl" id="modalConfirmBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-white/10 bg-slate-950 py-6 text-center text-xs text-slate-500 mt-auto">
+        <p id="footerText">© 2026 තුන් කල් දැක්ම (Three-Way Vision) ජාතික මූලෝපායික ප්‍රතිසංස්කරණ පද්ධතිය. සියලුම හිමිකම් ඇවිරිණි.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'si';
+        let selectedCategory = "";
+
+        const uiDictionary = {
+            si: {
+                navTitle: "තුන් කල් දැක්ම", navBadge: "ව්‍යාපාරික අංශය", navSub: "දේශීය අන්තර්ජාල වෙළඳපොළ යාන්ත්‍රණය",
+                regBtn: "+ නව ලියාපදිංචිය", heroBadge: "Empirical Local Market Ecosystem",
+                heroTitle: "ග්‍රාමීය නිෂ්පාදකයා සහ පාරිභෝගිකයා සෘජුව බද්ධ කරන ජාලය",
+                heroDesc: "අත් මැදියන්ගෙන් තොරව සෑම ග්‍රාම සේවා වසමකම පවතින සැබෑ නිෂ්පාදන ධාරිතාවය සහ සේවාවන් تථ්‍ය කාලීනව (Real-Time) සමස්ත ජාතිය සමඟ සහසම්බන්ධ කරන විද්‍යාත්මක වෙළඳපොළ ආකෘතිය.",
+                asideCatTitle: "ප්‍රධාන අංශ", asideDistTitle: "ප්‍රාදේශීය පෙරහන", labelDist: "දිස්ත්‍රික්කය තෝරන්න",
+                labelDiv: "ප්‍රාදේශීය ලේකම් කොට්ඨාසය", allCat: "📦 සියලුම අංශ එක්වර", activeTrade: "සක්‍රීය වෙළඳාම",
+                buyBtn: "මිලදී ගන්න / විමසන්න", modalHeading: "සෘජු ව්‍යවසායක සන්නිවේදනය", modalSub: "අත් මැදියන්ගෙන් තොර පද්ධතිය හරහා මෙම ග්‍රාමීය නිෂ්පාදකයා සමඟ සෘජුව ගනුදෙනු කිරීමට සම්බන්ධතාවයක් මෙයින් ස්ථාපිත කෙරේ.",
+                allDist: "සියලුම දිස්ත්‍රික්ක (25)", allDiv: "සියලුම ප්‍රාදේශීය ලේකම් කොට්ඨාස", chooseDiv: "දිස්ත්‍රික්කයක් තෝරන්න...",
+                footer: "© 2026 තුන් කල් දැක්ම (Three-Way Vision) ජාතික මූලෝපායික ප්‍රතිසංස්කරණ පද්ධතිය. සියලුම හිමිකම් ඇවිරිණි.",
+                success: "තුන් කල් දැක්ම සෘජු වෙළඳපොළ ජාලය හරහා ඔබේ පණිවිඩය ව්‍යවසායකයා වෙත සාර්ථකව යොමු කෙරුණා!",
+                allTitle: "සියලුම දේශීය නිෂ්පාදන සහ සේවා", badgeCount: "භාණ්ඩ [COUNT]ක් පවතී"
+            },
+            ta: {
+                navTitle: "துன் கல் தக்ம", navBadge: "வணிகப் பிரிவு", navSub: "உள்ளூர் இணைய சந்தை பொறிமுறை",
+                regBtn: "+ புதிய பதிவு", heroBadge: "Empirical Local Market Ecosystem",
+                heroTitle: "கிராமப்புற உற்பத்தியாளரையும் நுகர்வோரையும் நேரடியாக இணைக்கும் நெட்வொர்க்",
+                heroDesc: "இடைத்தரகர்கள் இல்லாமல், ஒவ்வொரு கிராம உத்தியோகத்தர் பிரிவிலும் உள்ள உண்மையான உற்பத்தித் திறன் மற்றும் சேவைகளை நிகழ்நேரத்தில் முழு தேசத்துடனும் இணைக்கும் அறிவியல் சந்தை மாதிரி.",
+                asideCatTitle: "முக்கிய பிரிவுகள்", asideDistTitle: "பிராந்திய வடிகட்டி", labelDist: "மாவட்டத்தைத் தேர்ந்தெடுக்கவும்",
+                labelDiv: "பிரதேச செயலகப் பிரிவு", allCat: "📦 அனைத்து பிரிவுகளும்", activeTrade: "செயலில் உள்ள வர்த்தகம்",
+                buyBtn: "வாங்க / விசாரிக்க", modalHeading: "நேரடி உற்பத்தியாளர் தொடர்பு", modalSub: "இடைத்தரகர்கள் இல்லாத அமைப்பின் மூலம் இந்த கிராமப்புற உற்பத்தியாளருடன் நேரடியாக வணிகம் செய்வதற்கான தொடர்பு இதன் மூலம் நிறுவப்பட்டுள்ளது.",
+                allDist: "அனைத்து மாவட்டங்களும் (25)", allDiv: "அனைத்து பிரதேச செயலகங்களும்", chooseDiv: "மாவட்டத்தைத் தேர்ந்தெடுக்கவும்...",
+                footer: "© 2026 துன் கல் தக்ம (Three-Way Vision) தேசிய மூலோபாய சீர்திருத்த அமைப்பு. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+                success: "நேரடி சந்தை நெட்வொர்க் மூலம் உங்கள் செய்தி உற்பத்தியாளருக்கு வெற்றிகரமாக அனுப்பப்பட்டது!",
+                allTitle: "அனைத்து உள்ளூர் தயாரிப்புகள் மற்றும் சேவைகள்", badgeCount: "[COUNT] தயாரிப்புகள் உள்ளன"
+            },
+            en: {
+                navTitle: "Three-Way Vision", navBadge: "Business Sector", navSub: "Empirical Local Market Ecosystem",
+                regBtn: "+ New Registration", heroBadge: "Empirical Local Market Ecosystem",
+                heroTitle: "Direct Network Connecting Village Producers & Consumers",
+                heroDesc: "A scientific marketplace model directly integrating the real production capacity and services of every Grama Niladhari division nationwide in real-time without middlemen.",
+                asideCatTitle: "Core Categories", asideDistTitle: "Regional Filter", labelDist: "Select District",
+                labelDiv: "Divisional Secretariat", allCat: "📦 All Sectors", activeTrade: "Active Trade",
+                buyBtn: "Buy / Inquire", modalHeading: "Direct Producer Communication", modalSub: "This establishes a direct secure link with the rural entrepreneur through a strictly disintermediated framework.",
+                allDist: "All Districts (25)", allDiv: "All Divisions", chooseDiv: "Choose District...",
+                footer: "© 2026 Three-Way Vision National Strategic Reform System. All Rights Reserved.",
+                success: "Your transaction request has been securely routed to the rural producer via Three-Way Vision Network!",
+                allTitle: "All Local Products & Services", badgeCount: "[COUNT] Products Available"
+            }
+        };
+
+        // Complete 25 Districts Map With Administrative Layer
+        const locationData = {
+            "anuradhapura": ["නුවරගම් පළාත් මධ්‍යම", "තඹුත්තේගම", "මිහින්තලේ", "කැබිතිගොල්ලෑව"],
+            "colombo": ["තිඹිරිගස්යාය", "කඩුවෙල", "මහරගම", "රත්මලාන"],
+            "gampaha": ["කැළණිය", "කඩවත්ත", "මීගමුව", "ජා-ඇල"],
+            "kandy": ["මහනුවර කඩවත් සතර", "හාරිස්පත්තුව", "උඩුනුවර", "කුණ්ඩසාලේ"],
+            "galle": ["ගාල්ල කඩවත් සතර", "අම්බලන්ගොඩ", "හික්කඩුව", "ඇල්පිටිය"],
+            "kurunegala": ["කුරුණෑගල නගරය", "කුලියාපිටිය", "පන්නල", "වාරියපොළ"],
+            "matara": ["මාතර නගරය", "වැලිගම", "දික්වැල්ල", "හක්මන"],
+            "hambantota": ["තංගල්ල", "අම්බලන්තොට", "තිස්සමහාරාමය"],
+            "jaffna": ["යාපනය නගරය", "චාවකච්චේරි", "පේදුරුතුඩුව"],
+            "kalutara": ["මතුගම", "පානදුර", "හොරණ"],
+            "matale": ["මාතලේ නගරය", "දඹුල්ල", "සිගිරිය"],
+            "nuwaraeliya": ["නුවරඑළිය නගරය", "වලපනේ", "හැටන්"],
+            "badulla": ["බදුල්ල නගරය", "බණ්ඩාරවෙල", "මහියංගනය"],
+            "monaragala": ["මොනරාගල නගරය", "වැල්ලවාය", "කතරගම"],
+            "kegalle": ["කෑගල්ල නගරය", "මාවනැල්ල", "වරකාපොළ"],
+            "ratnapura": ["රත්නපුර නගරය", "පැල්මඩුල්ල", "බලන්ගොඩ"],
+            "trincomalee": ["ත්‍රිකුණාමලය නගරය", "කන්තලේ"],
+            "batticaloa": ["මඩකලපුව නගරය", "වාලච්චේනයි"],
+            "ampara": ["අම්පාර නගරය", "කල්මුණේ"],
+            "puttalam": ["පුත්තලම නගරය", "හලාවත", "මාරවිල"],
+            "mannar": ["මන්නාරම නගරය"],
+            "vavuniya": ["වවුනියාව නගරය"],
+            "mullaaitivu": ["මුලතිව් නගරය"],
+            "kilinochchi": ["කිලිනොච්චිය නගරය"],
+            "polonnaruwa": ["තමන්කඩුව", "හිඟුරක්ගොඩ"]
+        };
+
+        const districtDisplayNames = {
+            si: { "anuradhapura": "අනුරාධපුරය", "colombo": "කොළඹ", "gampaha": "ගම්පහ", "kandy": "මහනුවර", "galle": "ගාල්ල", "kurunegala": "කුරුණෑගල", "matara": "මාතර", "hambantota": "හම්බන්තොට", "jaffna": "යාපනය", "kalutara": "කළුතර", "matale": "මාතලේ", "nuwaraeliya": "නුවරඑළිය", "badulla": "බදුල්ල", "monaragala": "මොනරාගල", "kegalle": "කෑගල්ල", "ratnapura": "රත්නපුර", "trincomalee": "ත්‍රිකුණාමලය", "batticaloa": "මඩකලපුව", "ampara": "අම්පාර", "puttalam": "පුත්තලම", "mannar": "මන්නාරම", "vavuniya": "වවුනියාව", "mullaaitivu": "මුලතිව්", "kilinochchi": "කිලිනොච්චිය", "polonnaruwa": "පොළොන්නරුව" },
+            ta: { "anuradhapura": "அனுராதபுரம்", "colombo": "கொழும்பு", "gampaha": "கம்பஹா", "kandy": "கண்டி", "galle": "காலி", "kurunegala": "குருநாகல்", "matara": "மாத்தறை", "hambantota": "ஹம்பாந்தோட்டை", "jaffna": "யாழ்ப்பாணம்", "kalutara": "களுத்துறை", "matale": "மாத்தளை", "nuwaraeliya": "நுவரெலியா", "badulla": "பதுளை", "monaragala": "மொனராகலை", "kegalle": "கேகாலை", "ratnapura": "இரத்தினபுரி", "trincomalee": "திருகோணமலை", "batticaloa": "மட்டக்களப்பு", "ampara": "அம்பாறை", "puttalam": "புத்தளம்", "mannar": "மன்னார்", "vavuniya": "வவுனியா", "mullaaitivu": "முல்லைத்தீவு", "kilinochchi": "கிளிநொச்சி", "polonnaruwa": "பொலன்னறுவை" },
+            en: { "anuradhapura": "Anuradhapura", "colombo": "Colombo", "gampaha": "Gampaha", "kandy": "Kandy", "galle": "Galle", "kurunegala": "Kurunegala", "matara": "Matara", "hambantota": "Hambantota", "jaffna": "Jaffna", "kalutara": "Kalutara", "matale": "Matale", "nuwaraeliya": "Nuwara Eliya", "badulla": "Badulla", "monaragala": "Monaragala", "kegalle": "Kegalle", "ratnapura": "Ratnapura", "trincomalee": "Trincomalee", "batticaloa": "Batticaloa", "ampara": "Ampara", "puttalam": "Puttalam", "mannar": "Mannar", "vavuniya": "Vavuniya", "mullaaitivu": "Mullaitivu", "kilinochchi": "Kilinochchi", "polonnaruwa": "Polonnaruwa" }
+        };
+
+        // Full 7 Core Master Plan Categories Included Correctly
+        const masterPlanCategories = {
+            "production": { si: "🌾 1. නිෂ්පාදන ක්ෂේත්‍රය", ta: "🌾 1. உற்பத்தித் துறை", en: "🌾 1. Manufacturing & Production" },
+            "service": { si: "🛠️ 2. සේවා ක්ෂේත්‍රය", ta: "🛠️ 2. சேவைத் துறை", en: "🛠️ 2. Service & Maintenance" },
+            "food": { si: "🌾 3. අත්‍යවශ්‍ය ආහාර ක්ෂේත්‍රය", ta: "🌾 3. அத்தியாவசிய உணவு", en: "🌾 3. Essential Food Production" },
+            "handicrafts": { si: "🪵 4. අත්කම් නිර්මාණ", ta: "🪵 4. கைவினைப்பொருட்கள்", en: "🪵 4. Handicrafts & Souvenirs" },
+            "hospitality": { si: "🏡 5. හෝටල් හා කබානා", ta: "🏡 5. விடுதிகள் மற்றும் கபானா", en: "🏡 5. Hospitality & Cabanas" },
+            "transport": { si: "🚛 6. ප්‍රවාහන සේවාව", ta: "🚛 6. போக்குவரத்து சேவை", en: "🚛 6. Transportation & Logistics" },
+            "interior": { si: "🎨 7. අභ්‍යන්තර සැලසුම්කරණය", ta: "🎨 7. உள்துறை வடிவமைப்பு", en: "🎨 7. Interior & Wall Art" }
+        };
+
+        // Master Plan Items with Natural Eco Cabin branding details
+        const productsCatalog = [
+            { id: "66", category: "hospitality", name: { si: "පරිසර හිතකාමී මොඩියුලර් කබානා ඉදිකිරීම", ta: "சுற்றுச்சூழல் நட்பு மொடிலார் கபானா", en: "Eco-Friendly Luxury Modular Cabana" }, desc: { si: "ස්වාභාවික දැව, උණ බම්බු සහ මැටි උපයෝගී කරගනිමින් නිවාඩු කුටි සැලසුම් කිරීම.", ta: "இயற்கை மரம் மற்றும் மூங்கில் கொண்டு வடிவமைக்கப்பட்ட விடுதிகள்.", en: "Premium structural design using natural bamboo, log timber, and organic aesthetics." }, price: { si: "ගිවිසුම්ගත මිල ගණන්", ta: "ஒப்பந்த விலை", en: "Contract Pricing" }, image: "https://images.unsplash.com/photo-1590005354167-6da97870c913?q=80&w=1200&auto=format&fit=crop", district: "matale", division: "සිගිරිය", brand: "Natural Eco Cabin" },
+            { id: "14", category: "production", name: { si: "Rustic දේශීය ලී ඇඳ නිර්මාණය", ta: "ரஸ்டிக் இயற்கை மர படுக்கை", en: "Handcrafted Rustic Log Timber Platform Bed" }, desc: { si: "දේශීය දැව කඳන්වල ස්වාභාවික රළු නිමාව ආරක්ෂා කර නිපදවූ ඇඳන්.", ta: "இயற்கை மரக்கட்டைகளால் செய்யப்பட்ட வலுவான படுக்கை வடிவமைப்பு.", en: "Solid raw log frame emphasizing authentic wood grains." }, price: { si: "රු. 45,000.00", ta: "ரூ. 45,000.00", en: "LKR 45,000.00" }, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=500&auto=format&fit=crop", district: "anuradhapura", division: "නුවරගම් පළාත් මධ්‍යම", brand: "Natural Eco Cabin" },
+            { id: "94", category: "interior", name: { si: "ස්වාභාවික දැවමය අභ්‍යන්තර ආවරණ කොටස් (Partition)", ta: "இயற்கை மர உட்புற பகிர்வு", en: "Organic Room Divider Partition" }, desc: { si: "කාමර හෝ ආලින්ද වෙන් කිරීම සඳහා සකස් කළ කලාත්මක ලී ආකෘතිය.", ta: "அறை பகிர்வுக்கான கலைநயமிக்க இயற்கை மர வடிவமைப்பு.", en: "Artistic branch lattice divider perfectly tailored for premium interiors." }, price: { si: "රු. 18,500.00", ta: "ரூ. 18,500.00", en: "LKR 18,500.00" }, image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=500&auto=format&fit=crop", district: "colombo", division: "තිඹිරිගස්යාය", brand: "Natural Eco Cabin" },
+            { id: "01", category: "production", name: { si: "ග්‍රාමීය උස් ලී ස්ටූල් සහ මේස කට්ටලය", ta: "உயரமான மர நாற்காலிகள் மற்றும் மேஜை", en: "Rustic Raw Log High Stools Set" }, desc: { si: "ගෙවතු, ආලින්ද හෝ කැෆේ සඳහා ගැලපෙන ස්වාභාවික රෆ්-කට් නිමාව.", ta: "உள் முற்றம் அல்லது கஃபேக்களுக்கு ஏற்ற இயற்கை மர நாற்காலி தொகுப்பு.", en: "Eco-aesthetic round pillar logs turned into functional bar seating layouts." }, price: { si: "රු. 28,000.00", ta: "ரூ. 28,000.00", en: "LKR 28,000.00" }, image: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=500&auto=format&fit=crop", district: "gampaha", division: "කැළණිය", brand: "Natural Eco Cabin" },
+            { id: "21", category: "service", name: { si: "සූර්ය බල ශක්ති (Solar) සහ ඉන්වර්ටර් නඩත්තුව", ta: "சூரிய சக்தி மற்றும் இன்வெர்ட்டர் பராமரிப்பு", en: "Solar Energy & Inverter Maintenance" }, desc: { si: "සූර්ය පැනල පිරිසිදු කිරීම සහ හදිසි බැටරි අලුත්වැඩියාව.", ta: "சூரிய பேனல்களை சுத்தம் செய்தல் மற்றும் அவசர பேட்டரி பழுதுபார்ப்பு.", en: "Professional cleaning and backup configuration for solar arrays." }, price: { si: "රු. 3,500.00 සිට", ta: "ரூ. 3,500.00", en: "LKR 3,500.00 Up" }, image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=500&auto=format&fit=crop", district: "colombo", division: "මහරගම", brand: "තුන් කල් දැක්ම" },
+            { id: "36", category: "food", name: { si: "පාරම්පරික සහල් මෝල සහ ඇසුරුම්කරණය", ta: "பாரம்பரிய அரிசி ஆலை மற்றும் பேக்கேஜிங்", en: "Traditional Rice & Organic Grain Packs" }, desc: { si: "සුවඳැල්, කළු හීනටි, කුරුක්කන් වැනි දේශීය ධාන්‍ය වර්ග කොටා ඇසුරුම් කිරීම.", ta: "உள்ளூர் பாரம்பரிய அரிசி வகைகள் சுத்தமான முறையில் பேக் செய்யப்படுகிறது.", en: "Authentic local traditional healthy rice varieties milled cleanly." }, price: { si: "රු. 240.00 / කි.ග්‍රෑ", ta: "ரூ. 240.00", en: "LKR 240.00 / kg" }, image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?q=80&w=500&auto=format&fit=crop", district: "anuradhapura", division: "තඹුත්තේගම", brand: "තුන් කල් දැක්ම" },
+            { id: "52", category: "handicrafts", name: { si: "පන් පැදුරු සහ කාර්මික පන් විවීම", ta: "பாய் மற்றும் கைவினைப் பாய் நெசவு", en: "Traditional Reed Weaving & Mats" }, desc: { si: "පන් සහ වැටකේ කොළ උපයෝගී කරගනිමින් බෑග්, තොප්පි, පැදුරු නිපදවීම.", ta: "கைவினைப் பாய்கள் மற்றும் தொப்பிகள் நெசவு செய்தல்.", en: "Artisan woven handcraft bags, mats and interior layout properties." }, price: { si: "රු. 1,500.00 සිට", ta: "ரூ. 1,500.00", en: "LKR 1,500.00 Up" }, image: "https://images.unsplash.com/photo-1606744824163-985d376605aa?q=80&w=500&auto=format&fit=crop", district: "galle", division: "හික්කඩුව", brand: "තුන් කල් දැක්ම" },
+            { id: "81", category: "transport", name: { si: "ග්‍රාමීය එළවළු සහ පළතුරු ශීතකරණ ප්‍රවාහනය", ta: "கிராமப்புற காய்கறி குளிர்சாதன போக்குவரத்து", en: "Refrigerated Village Cold-Chain Transport" }, desc: { si: "ගොවීන්ගේ නිෂ්පාදන නරක් නොවී නගරයේ වෙළඳපොළ වෙත ආරක්ෂිතව ප්‍රවාහනය.", ta: "விவசாய விளைபொருட்களை பாதுகாப்பாக சந்தைக்கு கொண்டு சேர்த்தல்.", en: "Secure cold chain transit saving fresh agri-crops from damage." }, price: { si: "කි.මී එකකට රු. 150.00", ta: "கிமீ ரூ. 150.00", en: "LKR 150.00 / km" }, image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=500&auto=format&fit=crop", district: "nuwaraeliya", division: "හැட்டන්", brand: "තුන් කල් දැක්ම" }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            changeLanguage('si');
+        });
+
+        function changeLanguage(langCode) {
+            currentLang = langCode;
+            ['si', 'ta', 'en'].forEach(l => {
+                document.getElementById(`lang-${l}`).className = l === langCode ? 
+                    "px-3 py-1 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white" : 
+                    "px-3 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
+            });
+            translateUI();
+            initializeCategories();
+            initializeDistricts();
+            renderProducts();
+        }
+
+        function translateUI() {
+            const d = uiDictionary[currentLang];
+            document.getElementById("navTitle").innerText = d.navTitle;
+            document.getElementById("navBadge").innerText = d.navBadge;
+            document.getElementById("navSub").innerText = d.navSub;
+            document.getElementById("regBtn").innerText = d.regBtn;
+            document.getElementById("heroBadge").innerText = d.heroBadge;
+            document.getElementById("heroTitle").innerText = d.heroTitle;
+            document.getElementById("heroDesc").innerText = d.heroDesc;
+            document.getElementById("asideCatTitle").innerText = d.asideCatTitle;
+            document.getElementById("asideDistTitle").innerText = d.asideDistTitle;
+            document.getElementById("labelDist").innerText = d.labelDist;
+            document.getElementById("labelDiv").innerText = d.labelDiv;
+            document.getElementById("footerText").innerText = d.footer;
+        }
+
+        function initializeCategories() {
+            const categoryList = document.getElementById("categoryList");
+            const d = uiDictionary[currentLang];
+            
+            categoryList.innerHTML = `
+                <li>
+                    <button onclick="selectCategory('')" class="w-full flex justify-between items-center p-2.5 rounded-lg ${selectedCategory === '' ? 'bg-blue-600/20 border border-blue-500/30' : 'hover:bg-white/5'} text-left transition-all">
+                        <span>${d.allCat}</span> 
+                        <span class="text-xs bg-blue-600 text-white px-2 py-0.5 rounded-md">${productsCatalog.length}</span>
+                    </button>
+                </li>
+            `;
+
+            for (const [key, names] of Object.entries(masterPlanCategories)) {
+                const count = productsCatalog.filter(p => p.category === key).length;
+                categoryList.innerHTML += `
+                    <li>
+                        <button onclick="selectCategory('${key}')" class="w-full flex justify-between items-center p-2.5 rounded-lg ${selectedCategory === key ? 'bg-blue-600/20 border border-blue-500/30' : 'hover:bg-white/5'} text-left transition-all">
+                            <span>${names[currentLang]}</span> 
+                            <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-md">${count}</span>
+                        </button>
+                    </li>
+                `;
+            }
+        }
+
+        function initializeDistricts() {
+            const districtSelect = document.getElementById("districtSelect");
+            const d = uiDictionary[currentLang];
+            districtSelect.innerHTML = `<option value="">${d.allDist}</option>`;
+            
+            for (const [key, value] of Object.entries(districtDisplayNames[currentLang])) {
+                let option = document.createElement("option");
+                option.value = key;
+                option.text = value;
+                districtSelect.add(option);
+            }
+        }
+
+        function updateDivisions() {
+            const districtSelect = document.getElementById('districtSelect');
+            const divisionSelect = document.getElementById('divisionSelect');
+            const d = uiDictionary[currentLang];
+            const selectedDistrict = districtSelect.value;
+
+            divisionSelect.innerHTML = '';
+
+            if (!selectedDistrict) {
+                divisionSelect.innerHTML = `<option value="">${d.chooseDiv}</option>`;
+                divisionSelect.disabled = true;
+                renderProducts();
+                return;
+            }
+
+            divisionSelect.disabled = false;
+            let initialOption = document.createElement('option');
+            initialOption.text = d.allDiv;
+            initialOption.value = "";
+            divisionSelect.add(initialOption);
+
+            locationData[selectedDistrict].forEach(div => {
+                let option = document.createElement('option');
+                option.text = div;
+                option.value = div;
+                divisionSelect.add(option);
+            });
+            renderProducts();
+        }
+
+        function selectCategory(catKey) {
+            selectedCategory = catKey;
+            initializeCategories();
+            document.getElementById("currentCategoryTitle").innerText = catKey ? masterPlanCategories[catKey][currentLang] : uiDictionary[currentLang].allTitle;
+            renderProducts();
+        }
+
+        function filterByLocation() { renderProducts(); }
+        function searchProducts() { renderProducts(); }
+
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const noResults = document.getElementById("noResults");
+            const searchInput = document.getElementById("productSearch").value.toLowerCase();
+            const selectedDistrict = document.getElementById("districtSelect").value;
+            const selectedDivision = document.getElementById("divisionSelect").value;
+            const d = uiDictionary[currentLang];
+
+            grid.innerHTML = "";
+            let matchedCount = 0;
+
+            productsCatalog.forEach(item => {
+                const matchesCategory = !selectedCategory || item.category === selectedCategory;
+                const matchesSearch = item.name[currentLang].toLowerCase().includes(searchInput) || item.desc[currentLang].toLowerCase().includes(searchInput);
+                const matchesDistrict = !selectedDistrict || item.district === selectedDistrict;
+                const matchesDivision = !selectedDivision || item.division === selectedDivision;
+
+                if (matchesCategory && matchesSearch && matchesDistrict && matchesDivision) {
+                    matchedCount++;
+                    grid.innerHTML += `
+                        <div class="product-card bg-slate-900/40 border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all group flex flex-col justify-between">
+                            <div class="h-48 w-full overflow-hidden bg-slate-800 relative">
+                                <img src="${item.image}" alt="Portfolio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-2 left-2 bg-blue-600 font-bold text-white px-2 py-0.5 rounded text-xs">ID: ${item.id}</span>
+                                <span class="absolute bottom-2 right-2 bg-slate-950/80 border border-white/10 text-emerald-400 font-bold px-2 py-0.5 rounded text-[10px] tracking-wide font-mono uppercase">${item.brand}</span>
+                            </div>
+                            <div class="p-5 flex-1">
+                                <div class="flex justify-between items-start gap-2 mb-2">
+                                    <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md font-semibold uppercase">${d.activeTrade}</span>
+                                    <span class="text-xs text-slate-400">${districtDisplayNames[currentLang][item.district]} | ${item.division}</span>
+                                </div>
+                                <h4 class="font-bold text-white group-hover:text-blue-400 transition-colors text-base mb-1">${item.name[currentLang]}</h4>
+                                <p class="text-xs text-slate-400 line-clamp-2">${item.desc[currentLang]}</p>
+                            </div>
+                            <div class="px-5 py-4 border-t border-white/5 bg-slate-950/40 flex justify-between items-center">
+                                <span class="font-bold text-blue-400 text-sm">${item.price[currentLang]}</span>
+                                <button onclick="openContactModal('${item.name[currentLang]}', '${districtDisplayNames[currentLang][item.district]} - ${item.division}')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors">${d.buyBtn}</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            document.getElementById("productCountBadge").innerText = d.badgeCount.replace("[COUNT]", matchedCount);
+            if (matchedCount === 0) noResults.classList.remove("hidden"); else noResults.classList.add("hidden");
+        }
+
+        function openContactModal(itemName, region) {
+            const d = uiDictionary[currentLang];
+            document.getElementById('modalTitle').innerText = d.modalHeading;
+            document.getElementById('modalContent').innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-white font-bold bg-white/5 p-2 rounded-lg border border-white/5">${itemName}</p>
+                    <p class="text-xs text-slate-400">Region: <span class="text-blue-400">${region}</span></p>
+                    <hr class="border-white/10 my-2">
+                    <p class="text-xs text-slate-300">${d.modalSub}</p>
+                    <textarea class="w-full bg-slate-800 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-blue-500" rows="3" placeholder="Message..."></textarea>
+                </div>
+            `;
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function closeModal() { document.getElementById('infoModal').classList.add('hidden'); }
+        function confirmPurchase() { alert(uiDictionary[currentLang].success); closeModal(); }
+    </script>
+</body>
+</html>

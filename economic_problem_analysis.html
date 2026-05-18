@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A - ආර්ථික ගැටලු විශ්ලේෂණය තුන් කල් දැක්ම</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@450;700&family=Inter:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', 'Noto Sans Tamil', sans-serif; background-color: #0f050b; color: #f8fafc; overflow-x: hidden; }
+        .matrix-bg {
+            background-image: linear-gradient(rgba(15, 5, 11, 0.96), rgba(2, 6, 23, 0.99)), 
+                              url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=1920');
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        /* Matrix Card Layout */
+        .matrix-card { background: rgba(30, 20, 30, 0.45); border: 1px solid rgba(239, 68, 68, 0.15); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.7); }
+        .text-gradient-red { background: linear-gradient(to right, #f87171, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .matrix-badge { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); }
+        .lang-en, .lang-ta { display: none; }
+    </style>
+</head>
+<body class="matrix-bg min-h-screen pb-20">
+
+    <nav class="max-w-7xl mx-auto px-6 pt-8 flex justify-between items-center border-b border-rose-950/40 pb-4">
+        <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.5)]"></div>
+            <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">Thun Kal Dækma | Systemic Root Analysis</span>
+        </div>
+        <div class="relative inline-block text-left">
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-950 border border-red-500/40 text-red-400 font-bold text-sm rounded-xl px-4 py-2.5 outline-none cursor-pointer hover:bg-red-500/10 transition-all shadow-[0_0_15px_rgba(239,68,68,0.1)]">
+                <option value="si" selected>සිංහල (Sinhala)</option>
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+            </select>
+        </div>
+    </nav>
+
+    <header class="pt-12 pb-10 text-center max-w-6xl mx-auto px-6">
+        <div class="py-12 my-4 bg-slate-950/50 border-y-2 border-red-500/20 backdrop-blur-md">
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-red tracking-wide leading-[1.6] px-4 lang-si">
+                A - ආර්ථික ගැටලු විශ්ලේෂණය තුන් කල් දැක්ම
+            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-red tracking-wide leading-[1.6] px-4 lang-en">
+                A - Economic Problem Analysis | Three-Way Vision
+            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-red tracking-wide leading-[1.6] px-4 lang-ta">
+                A - பொருளாதாரப் பிரச்சினைகள் பகுப்பாய்வு | முக்கால பார்வை
+            </h1>
+        </div>
+
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-si">
+            දේශීය ව්‍යවසායකයා ධෛර්යමත් කරනු වෙනුවට, යාන්ත්‍රික නීති මඟින් ඔහුව විනාශ කරන වත්මන් මූල්‍ය පද්ධතියේ සහ බිම් මට්ටමේ සම්පත් අවම කළමනාකරණයේ පවතින බරපතලම දෝෂ පිළිබඳ විද්‍යාත්මක විග්‍රහය.
+        </p>
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-en">
+            A scientific diagnostic report illuminating how current mechanical financial systems and top-down structures actively paralyze domestic entrepreneurs instead of leveraging regional human capital.
+        </p>
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-ta">
+            உள்ளூர் தொழில்முனைவோரை ஊக்குவிப்பதற்கு பதிலாக, தற்போதைய நிதி அமைப்பில் உள்ள இயந்திரத்தனமான சட்டங்கள் மற்றும் அடிமட்ட வள நிர்வாகக் குறைபாடுகள் மூலம் அவர்களை முடக்கும் கடுமையான தவறுகள் பற்றிய பகுப்பாய்வு.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 mt-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-4 space-y-6">
+                <div class="matrix-card p-8 rounded-[2rem] relative overflow-hidden backdrop-blur-md border-t-4 border-red-500">
+                    <span class="matrix-badge text-red-400 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">The Core Flaw</span>
+                    
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-si">යාන්ත්‍රික පීඩනය</h3>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-en">Mechanical Incarceration</h3>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-ta">இயந்திரத்தனமான அழுத்தம்</h3>
+                    
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed lang-si">
+                        වත්මන් ආර්ථික රාමුව සකස් වී ඇත්තේ වැටුණු මිනිසා නැඟිටුවීමට නොව, ඔහුව කොන් කර මූල්‍ය ප්‍රවාහයෙන් සදහටම පලවා හැරීමටයි. "තුන් කල් දැක්ම" මුලින්ම මෙම මූලික දෝෂය හඳුනා ගනී.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed lang-en">
+                        The existing architecture is designed to permanently exile a fallen citizen rather than safely rehabilitating their enterprise and practical expertise.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-400 leading-relaxed lang-ta">
+                        தற்போதைய பொருளாதார கட்டமைப்பு வீழ்ந்த மனிதனை மீட்டெடுப்பதற்காக அல்ல, மாறாக அவனை ஒதுக்கி நிதி ஓட்டத்திலிருந்து நிரந்தரமாக விரட்டியடிப்பதற்காகவே வடிவமைக்கப்பட்டுள்ளது.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 space-y-6">
+                
+                <div class="matrix-card p-8 md:p-10 rounded-[2.5rem] backdrop-blur-md">
+                    
+                    <div class="space-y-8">
+                        
+                        <div class="p-6 bg-slate-950/60 rounded-2xl border border-white/5 hover:border-red-500/30 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <h4 class="text-lg font-bold text-white lang-si">01. CRIB සහ අපරටේ නීතියේ විනාශකාරී බලපෑම</h4>
+                                <h4 class="text-lg font-bold text-white lang-en">01. Destructive Toll of CRIB & Parate Laws</h4>
+                                <h4 class="text-lg font-bold text-white lang-ta">01. CRIB மற்றும் பாரடே சட்டத்தின் அழிவுகரமான தாக்கம்</h4>
+                            </div>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-si">
+                                කිසියම් ව්‍යාපාරිකයෙකු අර්බුදයකට ලක් වූ විට, බැංකු පද්ධතිය CRIB අසාදු ලේඛනගත කිරීම් සහ "පරාටේ" ප්‍රතිපාදන හරහා ඔහුගේ වත්කම් අත්පත් කරගනී. මෙමඟින් සිදුවන්නේ ව්‍යවසායකයා බියෙන් සහ සැකයෙන් පිරුණු, ආත්මවිශ්වාසයක් නොමැති තත්ත්වයට පත්වී මුළුමනින්ම අකර්මන්‍ය වීමයි.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-en">
+                                When an enterprise faces a liquidity shock, banking networks respond with aggressive blacklisting and Parate asset seizures. This induces perpetual panic and doubt, liquidating raw entrepreneurial confidence.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-ta">
+                                ஒரு தொழிலதிபர் நெருக்கடியை எதிர்கொள்ளும் போது, வங்கி அமைப்பு CRIB கறுப்புப் பட்டியல் மற்றும் "பாரடே" விதிகள் மூலம் அவரது சொத்துக்களைக் கைப்பற்றுகிறது. இது தொழில்முனைவோரை பயம், சந்தேகம் மற்றும் தன்னம்பிக்கையற்ற நிலைக்கு தள்ளி, அவரை முற்றிலும் முடக்குகிறது.
+                            </p>
+                        </div>
+
+                        <div class="p-6 bg-slate-950/60 rounded-2xl border border-white/5 hover:border-red-500/30 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <h4 class="text-lg font-bold text-white lang-si">02. බිම් මට්ටමේ සම්පත් සහ මානව කුසලතා හඳුනා නොගැනීම</h4>
+                                <h4 class="text-lg font-bold text-white lang-en">02. Blindness to Micro-Level Assets & Talent</h4>
+                                <h4 class="text-lg font-bold text-white lang-ta">02. அடிமட்ட வளங்கள் மற்றும் மனித திறமைகளை கண்டறியாமை</h4>
+                            </div>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-si">
+                                වත්මන් සැලසුම්වල සෑම ග්‍රාම සේවා වසමකම පවතින භෞතික සම්පත්, මානව දක්ෂතා, දුර්වලතා හෝ අභියෝග නිසි ලෙස සිතියම්ගත කර නැත. මේ නිසා ග්‍රාමීය මට්ටමින් නව ව්‍යවසායකයින් බිහිවීමට ඇති මාවත් ඇහිරී පවතී.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-en">
+                                There is zero systemic mapping of physical resources, regional weaknesses, or latent human talent inside individual Grama Niladhari divisions, choking natural local industrial incubation channels.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-ta">
+                                தற்போதைய திட்டங்களில், ஒவ்வொரு கிராம நிலதாரி பிரிவிலும் உள்ள பௌதீக வளங்கள், மனித திறமைகள், பலவீனங்கள் அல்லது சவால்கள் முறையாக வரைபடமாக்கப்படவில்லை. இதனால் கிராமிய அளவில் புதிய தொழில்முனைவோர் உருவாவதற்கான பாதைகள் அடைக்கப்பட்டுள்ளன.
+                            </p>
+                        </div>
+
+                        <div class="p-6 bg-slate-950/60 rounded-2xl border border-white/5 hover:border-red-500/30 transition-all">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                                <h4 class="text-lg font-bold text-white lang-si">03. බටහිර යාන්ත්‍රික මූල්‍ය ක්‍රමවේදයන්ගේ අසාර්ථකත්වය</h4>
+                                <h4 class="text-lg font-bold text-white lang-en">03. The Collapse of Cold Mechanical Capital Models</h4>
+                                <h4 class="text-lg font-bold text-white lang-ta">03. மேற்கத்திய இயந்திரத்தனமான நிதி முறைகளின் தோல்வி</h4>
+                            </div>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-si">
+                                මිනිසුන් කොන් කිරීම සහ මූල්‍යමය වශයෙන් සිරගත කිරීම මත පදනම් වූ බටහිර යාන්ත්‍රික ණය ක්‍රමවේදයන් දේශීය ආර්ථිකයට නොගැලපෙන බවත්, ඒවා සමස්ත රටම දැඩි ආර්ථික අගාධයකට ඇද දමන බවත් පැහැදිලිය.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-en">
+                                Importing rigid debt protocols optimized for mass financial exclusion over-leverages fragile developing ecosystems, turning productive infrastructure into stagnant bad debt.
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed lang-ta">
+                                மனிதர்களை ஒதுக்கி வைப்பதிலும், நிதி ரீதியாக சிறைவைப்பதிலும் அடிப்படையாகக் கொண்ட மேற்கத்திய இயந்திரத்தனமான கடன் முறைகள் உள்ளூர் பொருளாதாரத்திற்குப் பொருந்தாது என்பதும், அவை ஒட்டுமொத்த நாட்டையும் கடுமையான பொருளாதாரப் பள்ளத்திற்குள் தள்ளுகின்றன என்பதும் தெளிவாகிறது.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-12 p-8 rounded-[2.5rem] bg-gradient-to-r from-red-950/20 to-slate-950/40 border border-red-500/25 text-center backdrop-blur-sm">
+            <p class="text-sm md:text-lg italic text-red-300 leading-relaxed lang-si">
+                "රෝග විනිශ්චය වැරදි නම් කිසිදු ප්‍රතිකාරයකින් පලක් නැත. අපගේ ආර්ථිකයේ සැබෑ රෝගය පවතින්නේ පුරවැසියා තුළ නොව, ඔහුව මිරිකා විනාශ කරන යාන්ත්‍රික පද්ධතිය තුළයි."
+            </p>
+            <p class="text-sm md:text-lg italic text-red-300 leading-relaxed lang-en">
+                "If the diagnosis is flawed, the cure is impossible. The structural failure of our economy is not a failure of individual citizen capability, but of a punitive system designed to crush them."
+            </p>
+            <p class="text-sm md:text-lg italic text-red-300 leading-relaxed lang-ta">
+                "நோய் கண்டறிதல் தவறாக இருந்தால் எந்த சிகிச்சையும் பலனளிக்காது. நமது பொருளாதாரத்தின் உண்மையான நோய் குடிமகனிடம் இல்லை, மாறாக அவனை நசுக்கி அழிக்கும் இயந்திர அமைப்பிலேயே உள்ளது."
+            </p>
+        </div>
+
+        <div class="text-center pt-10 flex flex-wrap justify-center gap-4">
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-si">
+                ← ආපසු මාස්ටර් වෙබ් අඩවියට
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-en">
+                ← Back to Master Panel
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-ta">
+                ← முதன்மைப் பலகத்திற்குத் திரும்பு
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        function changeLanguage(lang) {
+            const siElements = document.querySelectorAll('.lang-si');
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+
+            // Hide everything first
+            siElements.forEach(el => el.style.display = 'none');
+            enElements.forEach(el => el.style.display = 'none');
+            taElements.forEach(el => el.style.display = 'none');
+
+            // Show selected language
+            if (lang === 'si') {
+                siElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'en') {
+                enElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'ta') {
+                taElements.forEach(el => el.style.display = 'block');
+            }
+        }
+    </script>
+
+</body>
+</html>

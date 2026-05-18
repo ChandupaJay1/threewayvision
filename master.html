@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>තුන් කල් දැක්ම | THREE WAY VISION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        .universe-bg {
+            background-image: linear-gradient(rgba(2, 6, 23, 0.88), rgba(2, 6, 23, 0.96)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920');
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        .glass-nav { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(30, 41, 59, 0.3); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { transform: translateY(-8px); border-color: rgba(96, 165, 250, 0.5); background: rgba(45, 55, 75, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .sub-card { background-size: cover; background-position: center; position: relative; overflow: hidden; border-radius: 1.5rem; height: 160px; display: flex; align-items: flex-end; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        .sub-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent); }
+        
+        /* Font Clipping Prevention - Proper Heights */
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; padding-top: 4px; padding-bottom: 4px; }
+        .text-gradient-red { background: linear-gradient(to right, #f87171, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; padding-top: 4px; padding-bottom: 4px; }
+        .text-gradient-orange { background: linear-gradient(to right, #f97316, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; padding-top: 4px; padding-bottom: 4px; }
+        .text-gradient-green { background: linear-gradient(to right, #10b981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; padding-top: 4px; padding-bottom: 4px; }
+        .text-gradient-blue { background: linear-gradient(to right, #38bdf8, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.5; padding-top: 4px; padding-bottom: 4px; }
+        
+        #ai-chat-box::-webkit-scrollbar { width: 4px; }
+        #ai-chat-box::-webkit-scrollbar-thumb { background: rgba(96, 165, 250, 0.3); border-radius: 10px; }
+
+        .abcd-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; }
+        .abcd-card:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(96, 165, 250, 0.2); }
+        .analysis-popup-card { background: rgba(10, 15, 30, 0.97); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.15); }
+        .lang-btn-sub { background: rgba(255, 255, 255, 0.08); color: #cbd5e1; padding: 0.4rem 1.2rem; border-radius: 15px; font-size: 0.85rem; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+        .lang-btn-sub.active { background: #d35400; color: white; font-weight: bold; box-shadow: 0 0 12px rgba(211,84,0,0.4); }
+
+        .modal-inner-view { font-family: 'Noto Sans Sinhala', 'Inter', 'Noto Sans Tamil', sans-serif; }
+        .report-card { background: rgba(30, 41, 59, 0.25); backdrop-filter: blur(15px); border: 1px solid rgba(249, 115, 22, 0.15); }
+        .step-border { border-left: 3px solid rgba(16, 185, 129, 0.4); }
+    </style>
+</head>
+<body class="universe-bg min-h-screen">
+
+    <nav class="fixed w-full z-50 glass-nav h-16 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-xl font-bold text-gradient">තුන් කල් දැක්ම</span>
+                <span class="text-[10px] text-blue-400 tracking-[0.2em] font-semibold uppercase">THREE WAY VISION</span>
+            </div>
+            <div class="flex items-center space-x-6 text-gray-400">
+                <a href="https://wa.me/94772640842" target="_blank" class="hover:text-blue-400 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.558 0 11.897-5.335 11.9-11.894a11.83 11.83 0 00-3.486-8.413z"></path></svg></a>
+                <a href="http://www.youtube.com/@Three-wayvision" target="_blank" class="hover:text-red-500 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93$.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg></a>
+                <a href="https://www.facebook.com/profile.php?id=61554161292822" target="_blank" class="hover:text-blue-600 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight py-2 text-white">ආර්ථික දැක්ම පද්ධතිය</h1>
+        <p class="text-blue-400 font-bold tracking-[0.4em] uppercase text-xs md:text-sm">Strategic Master Plan for Sri Lanka</p>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-6 mb-12">
+        <div class="glass-card p-6 md:p-8 rounded-[2.5rem] border-sky-500/20 bg-gradient-to-b from-slate-900/60 to-slate-950/80 text-center backdrop-blur-md relative overflow-hidden">
+            <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"></div>
+            
+            <p class="text-sky-300 font-bold text-base md:text-xl tracking-wide mb-4 italic leading-relaxed">
+                "ඒකේන භෝගේ භුඤ්ජෙය්‍ය, ද්වීහි කම්මං පයෝජයේ,<br>
+                චතුත්ථංච නිධාපෙය්‍ය, ආපදාසු භවිස්සති"
+            </p>
+            
+            <div class="h-px bg-gradient-to-r from-transparent via-sky-500/30 to-transparent my-3 max-w-md mx-auto"></div>
+            
+            <p class="text-xs md:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                තමන් උපයන ධනයෙන් <span class="text-emerald-400 font-semibold">එක් කොටසක්</span> තමාගේ පරිභෝජනය සඳහාද, <span class="text-sky-400 font-semibold">කොටස් දෙකක්</span> කර්මාන්ත හා ව්‍යාපාරික දියුණුව සඳහා (නැවත ආයෝජනයට) ද යොදවා, <span class="text-amber-400 font-semibold">හතරවන කොටස</span> අනාගතයේදී පැමිණිය හැකි හදිසි ආපදාවන්ගෙන් ආරක්ෂා වීම පිණිස තැන්පත් කර තැබිය යුතුය.
+            </p>
+            
+            <p class="text-[10px] text-sky-500/70 font-bold tracking-widest uppercase mt-4 font-mono">
+                — බුදුන් වහන්සේ (සිගාලෝවාද සූත්‍රය) —
+            </p>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 mb-20">
+        <div class="mb-10 text-center">
+            <button onclick="toggleABCD()" class="mx-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] active:scale-95 flex items-center justify-center gap-2">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                <span id="main-action-btn-text">ආර්ථික දැක්ම මෙතැනින් බලන්න</span>
+            </button>
+        </div>
+
+        <div id="abcd-matrix-container" class="hidden mb-12 p-6 rounded-[2.5rem] bg-slate-900/40 border border-blue-500/20">
+            <h3 class="text-center text-xl font-bold mb-6 text-blue-400">තුන් කල් ආර්ථික මූලධර්ම පද්ධතිය</h3>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div onclick="openAnalysisModal('A')" class="abcd-card p-6 rounded-2xl text-center border-red-500/30 hover:border-red-500/60">
+                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(220,38,38,0.5)]">A</div>
+                    <h4 class="font-bold text-red-400 text-sm md:text-base">ප්‍රශ්නය</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">The Problem Analysis</p>
+                </div>
+                <div onclick="openAnalysisModal('B')" class="abcd-card p-6 rounded-2xl text-center border-orange-500/30 hover:border-orange-500/60">
+                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(249,115,22,0.5)]">B</div>
+                    <h4 class="font-bold text-orange-400 text-sm md:text-base">හේතුව</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">The Root Causes</p>
+                </div>
+                <div onclick="openAnalysisModal('C')" class="abcd-card p-6 rounded-2xl text-center border-green-500/30 hover:border-green-500/60">
+                    <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(22,163,74,0.5)]">C</div>
+                    <h4 class="font-bold text-green-400 text-sm md:text-base">යහපත</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">Benefits of Resolution</p>
+                </div>
+                <div onclick="openAnalysisModal('D')" class="abcd-card p-6 rounded-2xl text-center border-blue-500/30 hover:border-blue-500/60">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 shadow-[0_0_10px_rgba(37,99,235,0.5)]">D</div>
+                    <h4 class="font-bold text-blue-400 text-sm md:text-base">සැලසුම</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">The Action Plan</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="sub-card" style="background-image: url('https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&q=80&w=600');">
+                <div class="relative z-10">
+                    <h4 class="text-white font-bold">Online Shopping</h4>
+                    <p class="text-[10px] text-blue-300 uppercase tracking-tighter">ජාතික ඩිජිටල් වෙළඳපොළ</p>
+                </div>
+            </div>
+            <div class="sub-card" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600');">
+                <div class="relative z-10">
+                    <h4 class="text-white font-bold">ව්‍යාපාර සැලසුම්</h4>
+                    <p class="text-[10px] text-purple-300 uppercase tracking-tighter">උපායමාර්ගික සැලසුම්කරණය</p>
+                </div>
+            </div>
+            <div class="sub-card" style="background-image: url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=600');">
+                <div class="relative z-10">
+                    <h4 class="text-white font-bold">ආයෝජන අවස්ථා</h4>
+                    <p class="text-[10px] text-green-300 uppercase tracking-tighter">ආරක්ෂිත ජාතික ආයෝජන</p>
+                </div>
+            </div>
+            <div class="sub-card" style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=600');">
+                <div class="relative z-10">
+                    <h4 class="text-white font-bold">රැකියා අවස්ථා</h4>
+                    <p class="text-[10px] text-orange-300 uppercase tracking-tighter">කුසලතා පදනම් කරගත් වෘත්තීන්</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="analysis-popup-modal" class="fixed inset-0 z-50 hidden bg-black/85 flex items-center justify-center p-4 md:p-6 transition-all duration-300">
+        <div class="analysis-popup-card w-full max-w-5xl rounded-[2.5rem] max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
+            
+            <div class="p-6 border-b border-white/10 flex flex-wrap justify-between items-center gap-4 sticky top-0 bg-slate-950 z-20">
+                <div class="text-left">
+                    <h2 class="text-base md:text-lg font-bold text-gradient">තුන් කල් දැක්ම (Three-Way Vision)</h2>
+                    <p id="modal-subheading-tag" class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Systemic Analysis Core</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="modal-si-btn" class="lang-btn-sub" onclick="setModalLanguage('si')">සිංහල</button>
+                    <button id="modal-en-btn" class="lang-btn-sub" onclick="setModalLanguage('en')">English</button>
+                    <button id="modal-ta-btn" class="lang-btn-sub" onclick="setModalLanguage('ta')">தமிழ்</button>
+                    <button onclick="closeAnalysisModal()" class="ml-4 bg-white/10 hover:bg-red-600/40 p-2 rounded-full transition-colors text-white text-sm font-bold w-8 h-8 flex items-center justify-center">✕</button>
+                </div>
+            </div>
+
+            <div id="modal-dynamic-body-content" class="p-6 md:p-10 text-left modal-inner-view"></div>
+
+        </div>
+    </div>
+
+    <section class="max-w-4xl mx-auto px-6 mb-20 flex justify-center">
+        <div class="glass-card p-8 rounded-[2rem] w-full max-w-md text-center">
+            <h3 class="text-xl font-bold mb-3 text-green-400 py-1">අපේ ව්‍යාපෘති</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">සහන පියස, ගෑස් නල පද්ධතිය සහ ඒකාබද්ධ සංචාරක ව්‍යාපෘති ඇතුළු ප්‍රායෝගික ජාතික විසඳුම්.</p>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 mb-24">
+        <div class="glass-card rounded-[3rem] overflow-hidden shadow-2xl">
+            <div class="bg-blue-600/10 p-6 border-b border-white/5 text-center">
+                <h2 class="text-xl font-bold text-blue-300 py-1">තුන් කල් AI අනුශාසක</h2>
+                <p class="text-[10px] text-blue-400/60 tracking-widest uppercase mt-1">Intelligent Framework Advisor</p>
+            </div>
+            <div id="ai-chat-box" class="h-[400px] overflow-y-auto p-8 space-y-6 bg-slate-900/20">
+                <div class="flex justify-start">
+                    <div class="bg-slate-800/80 p-5 rounded-2xl rounded-tl-none border border-white/5 max-w-[80%]">
+                        <p class="text-blue-100 text-sm">තෙරුවන් සරණයි මහේෂ්! ඔබගේ "තුන් කල් දැක්ම" දර්ශනය පිළිබඳව ඕනෑම කරුණක් විමසන්න. මම සහාය වීමට සූදානම්.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-5 bg-slate-900/60 border-t border-white/5 flex gap-4">
+                <input id="user-input" type="text" placeholder="ඔබේ ප්‍රශ්නය මෙතැන ලියන්න..." 
+                    class="flex-1 bg-slate-800/50 border border-slate-700 p-4 rounded-2xl focus:outline-none focus:border-blue-500 text-white text-sm">
+                <button onclick="handleAI()" id="send-btn" class="bg-blue-600 hover:bg-blue-700 px-10 rounded-2xl font-bold transition-all shadow-lg active:scale-95">විමසන්න</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-gray-500 text-[10px] tracking-widest uppercase italic">Created by Mahesh - Anuradhapura | © 2026 Thun Kal Dækma</p>
+    </footer>
+
+    <script>
+        let currentActiveSection = "A";
+        let currentModalLang = "si";
+        let chatStep = 0;
+        let originalQuestion = "";
+
+        function toggleABCD() {
+            document.getElementById('abcd-matrix-container').classList.toggle('hidden');
+        }
+
+        const coreModalData = {
+            A: {
+                tag: "A - Systemic Problem Analysis | Layer-A",
+                si: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-red-500/20 pb-4">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-red py-1">A - ආර්ථික ගැටලු විශ්ලේෂණය තුන් කල් දැක්ම</h1>
+                            <p class="text-slate-400 text-sm mt-2">දේශීය ව්‍යවසායකයා ධෛර්යමත් කරනු වෙනුවට, යාන්ත්‍රික නීති මඟින් ඔහුව විනාශ කරන වත්මන් මූල්‍ය පද්ධතියේ සහ බිම් මට්ටමේ සම්පත් අවම කළමනාකරණයේ පවතින බරපතලම දෝෂ පිළිබඳ විද්‍යාත්මක විග්‍රහය.</p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            <div class="lg:col-span-4 bg-red-950/20 border border-red-500/20 p-6 rounded-2xl">
+                                <span class="bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">The Core Flaw</span>
+                                <h3 class="text-lg font-bold text-white mt-4 mb-2">යාන්ත්‍රික පීඩනය</h3>
+                                <p class="text-xs md:text-sm text-slate-400 leading-relaxed">වත්මන් ආර්ථික රාමුව සකස් වී ඇත්තේ වැටුණු මිනිසා නැඟිටුවීමට නොව, ඔහුව කොන් කර මූල්‍ය ප්‍රවාහයෙන් සදහටම පලවා හැරීමටයි. "තුන් කල් දැක්ම" මුලින්ම මෙම මූලික දෝෂය හඳුනා ගනී.</p>
+                            </div>
+                            <div class="lg:col-span-8 space-y-4">
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 hover:border-red-500/30 transition-all">
+                                    <h4 class="text-sm font-bold text-white mb-2">01. CRIB සහ අපරටේ නීතියේ විනාශකාරී බලපෑම</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">කිසියම් ව්‍යාපාරිකයෙකු අර්බුදයකට ලක් වූ විට, බැංකු පද්ධතිය CRIB අසාදු ලේඛනගත කිරීම් සහ "අපරටේ" ප්‍රතිපාදන හරහා ඔහුගේ වත්කම් අත්පත් කරගනී. මෙමඟින් සිදුවන්නේ ව්‍යවසායකයා බියෙන් සහ සැකයෙන් පිරුණු, ආත්මවිශ්වාසයක් නොමැති තත්ත්වයට පත්වී මුළුමනින්ම අකර්මන්‍ය වීමයි.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 hover:border-red-500/30 transition-all">
+                                    <h4 class="text-sm font-bold text-white mb-2">02. බිම් මට්ටමේ සම්පත් සහ මානව කුසලතා හඳුනා නොගැනීම</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">වත්මන් සැලසුම්වල සෑම ග්‍රාම සේවා වසමකම පවතින භෞතික සම්පත්, මානව දක්ෂතා, දුර්වලතා හෝ අභියෝග නිසි ලෙස සිතියම්ගත කර නැත. මේ නිසා ග්‍රාමීය මට්ටමින් නව ව්‍යවසායකයින් බිහිවීමට ඇති මාවත් ඇහිරී පවතී.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 hover:border-red-500/30 transition-all">
+                                    <h4 class="text-sm font-bold text-white mb-2">03. බටහිර යාන්ත්‍රික මූල්‍ය ක්‍රමවේදයන්ගේ අසාර්ථකත්වය</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">මිනිසුන් කොන් කිරීම සහ මූල්‍යමය වශයෙන් සිරගත කිරීම මත පදන වූ බටහිර යාන්ත්‍රික ණය ක්‍රමවේදයන් දේශීය ආර්ථිකයට නොගැලපෙන බවත්, ඒවා සමස්ත රටම දැඩි ආර්ථික අගාධයකට ඇද දමන බවත් පැහැදිලිය.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 rounded-xl bg-gradient-to-r from-red-950/20 to-slate-950/40 border border-red-500/25 text-center backdrop-blur-sm mt-4">
+                            <p class="text-xs md:text-sm italic text-red-300">"රෝග විනිශ්චය වැරදි නම් කිසිදු ප්‍රතිකාරයකින් පලක් නැත. අපගේ ආර්ථිකයේ සැබෑ රෝගය පවතින්නේ පුරවැසියා තුළ නොව, ඔහුව මිරිකා විනාශ කරන යාන්ත්‍රික පද්ධතිය තුළයි."</p>
+                        </div>
+                    </div>
+                `,
+                en: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-red-500/20 pb-4">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-red py-1">A - Economic Problem Analysis | Three-Way Vision</h1>
+                            <p class="text-slate-400 text-sm mt-2">A scientific diagnostic report illuminating how current mechanical financial systems and top-down structures actively paralyze domestic entrepreneurs instead of leveraging regional human capital.</p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            <div class="lg:col-span-4 bg-red-950/20 border border-red-500/20 p-6 rounded-2xl">
+                                <span class="bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">The Core Flaw</span>
+                                <h3 class="text-lg font-bold text-white mt-4 mb-2">Mechanical Incarceration</h3>
+                                <p class="text-xs md:text-sm text-slate-400 leading-relaxed">The existing architecture is designed to permanently exile a fallen citizen rather than safely rehabilitating their enterprise and practical expertise.</p>
+                            </div>
+                            <div class="lg:col-span-8 space-y-4">
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">01. Destructive Toll of CRIB & Parate Laws</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">When an enterprise faces a liquidity shock, banking networks respond with aggressive blacklisting and Parate asset seizures. This induces perpetual panic and doubt, liquidating raw entrepreneurial confidence.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">02. Blindness to Micro-Level Assets & Talent</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">There is zero systemic mapping of physical resources, regional weaknesses, or latent human talent inside individual Grama Niladhari divisions, choking natural local industrial incubation channels.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">03. The Collapse of Cold Mechanical Capital Models</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">Importing rigid debt protocols optimized for mass financial exclusion over-leverages fragile developing ecosystems, turning productive infrastructure into stagnant bad debt.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 rounded-xl bg-gradient-to-r from-red-950/20 to-slate-950/40 border border-red-500/25 text-center backdrop-blur-sm mt-4">
+                            <p class="text-xs md:text-sm italic text-red-300">"If the diagnosis is flawed, the cure is impossible. The structural failure of our economy is not a failure of individual citizen capability, but of a punitive system designed to crush them."</p>
+                        </div>
+                    </div>
+                `,
+                ta: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-red-500/20 pb-4">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-red py-1">A - பொருளாதாரப் பிரச்சினைகள் பகுப்பாய்வு | முக்கால பார்வை</h1>
+                            <p class="text-slate-400 text-sm mt-2">உள்ளூர் தொழில்முனைவோரை ஊக்குவிப்பதற்கு பதிலாக, தற்போதைய நிதி அமைப்பில் உள்ள இயந்திரத்தனமான சட்டங்கள் மற்றும் அடிமட்ட வள நிர்வாகக் குறைபாடுகள் மூலம் அவர்களை முදக்கும் கடுமையான தவறுகள் பற்றிய பகுப்பாய்வு.</p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            <div class="lg:col-span-4 bg-red-950/20 border border-red-500/20 p-6 rounded-2xl">
+                                <span class="bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">The Core Flaw</span>
+                                <h3 class="text-lg font-bold text-white mt-4 mb-2">இயந்திரத்தனமான அழுத்தம்</h3>
+                                <p class="text-xs md:text-sm text-slate-400 leading-relaxed">தற்போதைய பொருளாதார கட்டமைப்பு வீழ்ந்த மனிதனை மீட்டெடுப்பதற்காக அல்ல, மாறாக அவனை ஒதுக்கி நிதி ஓட்டத்திலிருந்து நிரந்தரமாக விரட்டியடிப்பதற்காகவே வடிவமைக்கப்பட்டுள்ளது.</p>
+                            </div>
+                            <div class="lg:col-span-8 space-y-4">
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">01. CRIB மற்றும் பாரடே சட்டத்தின் அழிவுகரமான தாக்கம்</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">ஒரு தொழிலதிபர் நெருக்கடியை எதிர்கொள்ளும் போது, வங்கி அமைப்பு CRIB கறுப்புப் பட்டியல் மற்றும் "பாரடே" விதிகள் மூலம் அவரது சொத்துக்களைக் கைப்பற்றுகிறது. இது தொழில்முனைவோரை பயம், சந்தேகம் மற்றும் தன்னம்பிக்கையற்ற நிலைக்கு தள்ளி, அவரை முற்றிலும் முடக்குகிறது.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">02. அடிමட்ட வளங்கள் மற்றும் மனித திறமைகளை கண்டறியாமை</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">தற்போதைய திட்டங்களில், ஒவ்வொரு கிராம நிலதாரி பிரிவிலும் உள்ள பௌதீக வளங்கள், மனித திறமைகள், பலவீனங்கள் அல்லது சவால்கள் முறையாக வரைபடமாக்கப்படவில்லை. இதனால் கிராமிய அளவில் புதிய தொழில்முனைவோர் உருவாவதற்கான பாதைகள் அடைக்கப்பட்டுள்ளன.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5">
+                                    <h4 class="text-sm font-bold text-white mb-2">03. மேற்கத்திய இயந்திரத்தனமான நிதி முறைகளின் தோல்வி</h4>
+                                    <p class="text-xs text-slate-300 leading-relaxed">மனிதர்களை ஒதுக்கி வைப்பதிலும், நிதி ரீதியாக சிறைவைப்பதிலும் அடிப்படையாகக் கொண்ட மேற்கத்திய இயந்திரத்தனமான கடன் முறைகள் உள்ளூர் பொருளாதாரத்திற்குப் பொருந்தாது என்பதும், அவை ஒட்டுமொத்த நாட்டையும் கடுமையான பொருளாதாரப் பள்ளத்திற்குள் தள்ளுகின்றன என்பதும் தெளிவாகிறது.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5 rounded-xl bg-gradient-to-r from-red-950/20 to-slate-950/40 border border-red-500/25 text-center backdrop-blur-sm mt-4">
+                            <p class="text-xs md:text-sm italic text-red-300">"நோய் கண்டறிதல் தவறாக இருந்தால் எந்த சிகிச்சையும் பலனளிக்காது. நமது பொருளாதாரத்தின் உண்மையான நோய் குடிமகனிடம் இல்லை, மாறாக அவனை நசுக்கி அழிக்கும் இயந்திர அமைப்பிலேயே உள்ளது."</p>
+                        </div>
+                    </div>
+                `
+            },
+            B: {
+                tag: "B - Root Cause Diagnostics | Layer-B",
+                si: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-orange-500/20 pb-4 text-center">
+                            <div class="inline-block w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center text-xl font-bold text-orange-500 border border-orange-500/40 mb-3 shadow-[0_0_15px_rgba(249,115,22,0.3)]">B</div>
+                            <h1 class="text-2xl md:text-4xl font-bold text-gradient-orange py-1">B මූල හේතු විශ්ලේෂණය</h1>
+                            <p class="text-gray-400 text-xs uppercase tracking-widest mt-1">Root Cause Diagnostics & Management Vulnerabilities</p>
+                            <p class="text-[11px] text-orange-400/70 mt-1 font-mono">ලේඛන අංකය: TKD-ECO-REP-B2026</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-orange-950/10 border-l-4 border-orange-500 text-xs md:text-sm text-orange-200 italic leading-relaxed">
+                            "රාජ්‍යයක්, ව්‍යාපාරයක් හෝ පුරවැසියෙක් ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එහි මූලිකම හේතුව බාහිර සාධක පමණක් නොව; අතීතය, වර්තමානය සහ අනාගතය නිවැරදිව ගළපන 'තුන් කල් දැක්මකින්' යුතු කළමනාකරණයක් සහ සම්පත් හඳුනාගැනීමේ ප්‍රායෝගික ක්‍රමවේදයක් නොමැතිකමයි."
+                        </div>
+                        <div class="space-y-4">
+                            <div class="report-card p-5 rounded-2xl bg-orange-500/5 border border-orange-500/20">
+                                <h3 class="text-base font-bold text-orange-400 mb-2">01. තුන් කල් දැක්මකින් යුතු කළමනාකරණය නොමැතිකම</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed mb-3">ආර්ථික අරාජිකත්වය හටගන්නා ආකාරය පද්ධතිමය මට්ටම් 3ක් ඔස්සේ ක්‍රියාත්මක වේ:</p>
+                                <div class="space-y-2 text-[11px] text-gray-400">
+                                    <div class="bg-slate-900/60 p-3 rounded-lg border border-orange-500/20"><strong class="text-white">● රාජ්‍ය මට්ටම (The State):</strong> රාජ්‍යයක් වශයෙන් සමස්ත රටම ආර්ථික අරාජිකත්වයට පත්වීමට මුල්ම සහ ප්‍රධානතම මූල හේතුව වන්නේ රට පාලනය කිරීම සඳහා නිසි 'තුන් කල් දැක්මකින්' යුතු උපායමාර්ගික කළමනාකරණයක් නොමැති කමයි.</div>
+                                    <div class="bg-slate-900/60 p-3 rounded-lg border border-orange-500/20"><strong class="text-white">● ව්‍යාපාරික මට්ටම (The Business):</strong> ව්‍යාපාරයක් බිඳවැටී අරාජිකත්වයට පත්වන්නේ නම්, එම ව්‍යාපාරය මෙහෙයවීම තුළ දිගුකාලීන අවදානම් සහ අවස්ථා කළමනාකරණය කළ හැකි තුන් කල් දැකීමකින් යුතු ස්ථාවර කළමනාකරණ සැලැස්මක් නොමැති කමයි.</div>
+                                    <div class="bg-slate-900/60 p-3 rounded-lg border border-orange-500/20"><strong class="text-white">● පුරවැසි මට්ටම (The Citizen):</strong> පුද්ගලයෙකු හෝ පුරවැසියෙකු ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එය ඔහු සතු මූල්‍ය පරිහරණය, තීරණ ගැනීම සහ පුද්ගලික ජීවන ව්‍යුහය තුළ පවතින කළමනාකරණයේ දුර්වලකම විදහා පාන්නකි.</div>
+                                </div>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">02. මානව සහ භෞතික සම්පත් හඳුනාගැනීමේ ක්‍රමවේදයක් නොමැතිකම</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">භෞතික සම්පත් සහ මානව හැකියා දක්ෂතා නිවැරදිව හඳුනා ගැනීමට හෝ ඒවා ඵලදායී ලෙස කළමනාකරණය කර ගැනීමට හැකි ප්‍රායෝගික තාක්ෂණික හෝ ව්‍යුහාත්මක ක්‍රමවේදයක් රට තුළ ක්‍රියාත්මක නොවීමයි.</p>
+                                <p class="text-[11px] text-orange-300/80 mt-1 italic">**විශ්ලේෂණය:** කුසලතා පිරි මානව සම්පත කොන් කරන සහ භෞතික සම්පත් අපතේ හරින පද්ධතියක් පවතින තාක් ආර්ථිකය ස්වයංක්‍රීයවම අඩාල වේ.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">03. නම්‍යශීලී නොවන යාන්ත්‍රික නීති (Rigid & Automated Logics)</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">වත්මන් මූල්‍ය ව්‍යුහය තුළ ණය පැහැර හැරීමකට තුඩු දුන් බාහිර සාධක වෙන්කර හඳුනා ගැනීමේ කිසිදු තාක්ෂණික ක්‍රමවේදයක් නොමැත. පද්ධතිය විසින් චේතනාන්විතව ණය මඟහරින්නන් (Willful Defaulters) සහ රටේ පොදු උද්ධමනය, වසංගත හෝ රජයේ ක්ෂණික ප්‍රතිපත්තිමය වෙනස්කම් නිසා අසරණ වූ අවංක ව්‍යවසායකයින් (Involuntary Defaulters) යන දෙකොටසම එකම මට්ටමක ලා සලකා Blacklist කරනු ලබයි.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">04. දඬුවම් කේන්ද්‍රීය පාලන දර්ශනය (Punitive-Centric Approach)</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">වත්මන් බැංකු පද්ධති සකස් වී ඇත්තේ පුනරුත්ථාපනය හෝ නැවත නැඟිටුවීම අරමුණු කරගෙන නොව, දඬුවම සහ කොන් කිරීම තුළින් විනය හැදිය හැකිය යන මිථ්‍යා දර්ශනය මතයි. ණය අතපසු වූ සැණින් Parate Execution (දේපළ පවරා ගැනීම්) සහ අධිකරණ ක්‍රියාමාර්ග මඟින් සිදු කරන්නේ, වසර ගණනාවක ව්‍යාපාරික අත්දැකීම් ඇති වටිනා පුරවැසියෙකුව ආර්ථික ක්‍රියාවලියෙන් සම්පූර්ණයෙන්ම අතුගා දැමීමයි.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">05. අවිධිමත් සහ කළු ආර්ථිකයේ උගුල් (The Shadow Economy Trap)</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">නීත්‍යානුකූල මූල්‍ය ප්‍රවාහයන් වසා දමන විට, පුරවැසියාට තමන්ගේ ජීවිතය රැකගැනීම සඳහා අධික පොලී අයකරන අවිධිමත් මූල්‍ය වෙළඳපොළවල් (පොලී මුදලාලිලා සහ ක්ෂුද්‍ර මූල්‍ය උගුල්) වෙත යාමට සිදුවේ. මෙය රටේ ජාතික දළ දේශීය නිෂ්පාදිතයට (GDP) දායක නොවන, විශාල කළු ආර්ථිකයක් රට තුළ නිර්මාණය වීමට හේතුවක් වෙයි.</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                en: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-orange-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-orange py-1">B: Root Cause Diagnostics</h1>
+                            <p class="text-gray-400 text-xs uppercase tracking-widest mt-1">Root Cause Diagnostics & Management Vulnerabilities</p>
+                            <p class="text-[11px] text-orange-400/70 mt-1 font-mono">Document ID: TKD-ECO-REP-B2026</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-orange-950/10 border-l-4 border-orange-500 text-xs md:text-sm text-orange-200 italic leading-relaxed">
+                            "If a state, enterprise, or individual faces economic collapse, the primary root cause is not merely external shocks; it is the absolute deficit of Three-Way Vision Management that reconciles past, present, and future variables."
+                        </div>
+                        <div class="space-y-4">
+                            <div class="report-card p-5 rounded-2xl bg-orange-500/5">
+                                <h3 class="text-base font-bold text-orange-400 mb-2">01. Lack of Three-Way Vision Management</h3>
+                                <p class="text-xs text-gray-300 leading-relaxed mb-3">Socio-economic destabilization operates across three baseline layers, each explicitly revealing severe management deficits and lack of foresight:</p>
+                                <div class="space-y-1 text-xs text-slate-400">
+                                    <p><strong class="text-white">● The State Layer:</strong> The collapse of national macro-stability is the direct output of administrative layers operating completely decoupled from long-term strategic master planning.</p>
+                                    <p><strong class="text-white">● The Business Layer:</strong> Corporate failures occur when management parameters lack resilient risk insulation, adaptive forecasting, and sound operational workflows.</p>
+                                    <p><strong class="text-white">● The Citizen Layer:</strong> Individual economic distress reflects an acute lack of institutional tools to foster disciplined micro-asset management and personal financial literacy.</p>
+                                </div>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">02. Deficit in Mapping Human and Physical Potential</h3>
+                                <p class="text-xs text-slate-400">A core bottleneck for growth is the total absence of a practical state framework to identify, map, and transparently deploy physical resources and unique human talents dynamically.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">03. Rigid & Automated Logics</h3>
+                                <p class="text-xs text-slate-400">Modern banking protocols fail to differentiate a Willful Defaulter from an Involuntary Defaulter (ruined by inflation or sudden state policy shifts). Both are treated as toxic assets and blacklisted universally.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">04. Punitive-Centric Approach</h3>
+                                <p class="text-xs text-slate-400">Administrative mechanisms falsely assume discipline is forged through severe penalties and isolation. Hostile actions like Parate Execution completely erase experienced human capital from the economy.</p>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">05. The Shadow Economy Trap</h3>
+                                <p class="text-xs text-slate-400">When official digital pipelines are frozen, citizens are driven into predatory microfinance or unregulated underground networks, artificially expanding the dark economy.</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                ta: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-orange-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-orange py-1">B: மூல காரணிகள் கண்டறிதல்</h1>
+                            <p class="text-gray-400 text-xs uppercase tracking-widest">Root Cause Diagnostics & Management Vulnerabilities</p>
+                        </div>
+                        <div class="p-4 bg-orange-950/10 border-l-4 border-orange-500 text-sm italic text-orange-200">
+                            "ஒரு நாடு, ஒரு வணிகம் அல்லது ஒரு குடிமகன் பொருளாதார வீழ்ச்சியைச் சந்தித்தால், அதன் மூலக் காரணம் வெறும் வெளிப்புறக் காரணிகள் மட்டுமல்ல; அது முக்கால மேலாண்மை தொலைநோக்கு பார்வையின் பற்றாக்குறையாகும்."
+                        </div>
+                        <div class="space-y-4">
+                            <div class="report-card p-5 rounded-2xl bg-orange-500/5">
+                                <h3 class="text-base font-bold text-orange-400 mb-2">01. முக்கால மேலாண்மை தொலைநோக்கு பார்வை இல்லாமை</h3>
+                                <div class="space-y-1 text-xs text-slate-400">
+                                    <p><strong class="text-white">● அரசாங்க மட்டம் (The State):</strong> ஒரு நாடு பொருளாதார ரீதியாக வீழ்ச்சியடைவதற்கு முக்கிய காரணம் அரசிடம் முக்கால தொலைநோக்குடன் கூடிய உத்திசார் மேலாண்மை இல்லாததே ஆகும்.</p>
+                                    <p><strong class="text-white">● வணிக மட்டம் (The Business):</strong> ஒரு வணிகம் தோல்வியடைவது, நீண்ட கால இடர் மேலாண்மை மற்றும் முக்கால திட்டமிடல் இல்லாத மேலாண்மை பலவீனத்தை காட்டுகிறது.</p>
+                                    <p><strong class="text-white">● குடிமகன் மட்டம் (The Citizen):</strong> ஒரு குடிமகன் நிதி நெருக்கடிக்குள்ளாவது, அவரது தனிப்பட்ட நிதி கையாளுதல் மற்றும் மேலாண்மை பலவீனத்தின் வெளிப்பாடாகும்.</p>
+                                </div>
+                            </div>
+                            <div class="report-card p-5 rounded-2xl">
+                                <h3 class="text-base font-bold text-white mb-2">02. மனித மற்றும் பௌதிக வளங்களை கண்டறியும் கட்டமைப்பு இல்லாமை</h3>
+                                <p class="text-xs text-slate-400">நாட்டின் பௌதிக வளங்களையும் மனித ஆற்றல்களையும் சரியாக அடையாளம் கண்டு, அவற்றை திறம்பட நிர்வகிப்பதற்கான நடைமுறை தொழில்நுட்ப கட்டமைப்பு இல்லாததே பொருளாதார முடக்கத்திற்கு காரணமாகும்.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            C: {
+                tag: "C - Cumulative Benefits | Layer-C",
+                si: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-emerald-500/20 pb-4 text-center">
+                            <span class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-widest">Thun Kal Dækma | Layer-C Report</span>
+                            <h1 class="text-2xl md:text-4xl font-bold text-gradient-green mt-3 py-1">C - යහපත විශ්ලේෂණය තුන් කල් දැක්ම</h1>
+                            <p class="text-gray-400 text-sm mt-2">පද්ධතිමය දෝෂ මඟහැරී නිවැරදි ජාතික සැලැස්ම ක්‍රියාවට නැංවුණේ නම්, උපදින නව පුරවැසියාගේ සිට සමස්ත රාජ්‍ය පාලනය සහ ගෝලීය ආර්ථිකය දක්වා ඇතිවන සමුච්චිත ප්‍රතිලාභ පිළිබඳ පුළුල් විග්‍රහය.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-6 bg-slate-900/60 rounded-[2rem] border border-white/5 pl-6 step-border">
+                                <h3 class="text-lg font-bold text-white mb-2">01. උදාවන පුරවැසියාගේ මූල්‍ය නිදහස සහ මානසික ස්ථාවරත්වය</h3>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-2"><strong>● මානසික සහ සාමාජීය පුනරුත්ථාපනය:</strong> CRIB සහ "පරාටේ" නීතිය වැනි යාන්ත්‍රික පීඩනයන්ගෙන් මිදෙන පුරවැසියා, පද්ධතිය තමන්ව විනාශ නොකර නැවත නඟාසිටුවීමට ක්‍රියා කරන බව වටහා ගනී. මෙමඟින් බියෙන් සහ සැකයෙන් තොර, නිර්මාණශීලී, ඉහළ ආත්මවිශ්වාසයකින් යුත් ව්‍යවසායක මනසක් රට තුළ බිහිවේ.</p>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed"><strong>● "පරිණත ව්‍යවසායක පරපුරක්" රැකගැනීම:</strong> කිසියම් ව්‍යාපාරික උත්සාහයක් අසාර්ථක වූ පුරවැසියා යනු ප්‍රායෝගික අත්දැකීම් බහුල වටිනා මානව සම්පතකි. ඔහුව කොන් කර මූල්‍ය ප්‍රවාහයෙන් ඉවත් කරනවා වෙනුවට, බීජ ප්‍රාග්ධනය (Seed Capital) සහ නිවැරදි මඟපෙන්වීම ලබාදීමෙන් රටට අතිශය පරිණත ව්‍යවසායක ශ්‍රම බලකායක් ස්වයංක්‍රීයවම දායක කරගත හැක.</p>
+                            </div>
+                            <div class="p-6 bg-slate-900/60 rounded-[2rem] border border-white/5 pl-6 step-border">
+                                <h3 class="text-lg font-bold text-white mb-2">02. රාජ්‍ය පාලන මට්ටම: විනිවිදභාවය සහ දළ දේශීය නිෂ්පාදිතයේ (GDP) पिම්ම</h3>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-2"><strong>● "කළු සල්ලි" ජාලයන් සුදු කිරීම සහ නිල මූල්‍ය ප්‍රවාහයට සම්බන්ධ කිරීම (White-Mapping):</strong> බැංකු පද්ධතිය මඟින් ස්මාර්ට් සහන කාලසීමාවන් (Layer-B Loops) ලබාදෙන විට, පුරවැසියා අධික පොලී පීඩනය නිසා භූගත මූල්‍ය ජාවාරම්කරුවන් වෙත යන්නේ නැත. මින් පෙර අවිධිමත් ආර්ථිකයේ සැඟවී තිබූ බිලියන ගණනක "කළු සල්ලි", නීත්‍යානුකූල ව්‍යවසාය ඩිජිටල්කරණය හරහා සෘජුවම රාජ්‍ය මූල්‍ය ප්‍රවාහයට අවශෝෂණය කරගැනේ.</p>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed"><strong>● නිෂ්පාදන ආර්ථිකය ස්ථාවර වීම සහ බදු පදනම (Tax Base) පුළුල් වීම:</strong> "දඬුවම් මත පදනම් වූ ආර්ථිකය" වෙනුවට "පරිවර්තනීය යුක්තිය" ක්‍රියාත්මක වීම නිසා, සුළු හා මධ්‍ය පරිමාණ කර්මාන්තශාලා (SMEs) වසා දැමීම මුළුමනින්ම නතර වේ. බදු අනුපාත වැඩි නොකරම රාජ්‍යයට ලැබෙන සමස්ත බදු ආදායම් පදනම පුළුල් වේ.</p>
+                            </div>
+                            <div class="p-6 bg-slate-900/60 rounded-[2rem] border border-white/5 pl-6 step-border">
+                                <h3 class="text-lg font-bold text-white mb-2">03. ගෝලීය මට්ටම: ශ්‍රී ලංකාව සදාචාරාත්මක ආර්ථික ප්‍රඥා කේන්ද්‍රස්ථානයක් වීම</h3>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed mb-2"><strong>● ගෝලීය සදාචාරාත්මක ආයෝජන සහ ස්වෛරී අරමුදල් ආකර්ෂණය:</strong> ලෝකය පුරා සිටින මානුෂීය සහ සදාචාරාත්මක ආයෝජකයින්ට සාම්ප්‍රදායික ණය උගුල් වෙනුවට, රටේ සැබෑ මානව වත්කම් සුරක්ෂිත කරන "ජාතික පුරවැසි පුනරුත්ථාපන අරමුදල" සමඟ සෘජුවම ආයෝජනය කිරීමට අවස්ථාව ලැබෙයි.</p>
+                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed"><strong>● හෙළ ප්‍රෞඪ ඉතිහාසයේ ආර්ථික ප්‍රඥාව සහ නව ලෝක ආර්ථික දර්ශනය:</strong> කොන් කිරීම සහ මිනිසුන් සිරගත කිරීම මත පදනම් වූ බටහිර යාන්ත්‍රික මූල්‍ය ක්‍රමවේද අසාර්ථක වෙමින් පවතින යුගයක, "මිනිසා රැකගෙන ආර්ථිකය ගොඩනැඟීමේ" හෙළ ප්‍රෞඪ ඉතිහාසයේ ආර්ථික ප්‍රඥාව නූතන AI තාක්ෂණය සමඟ මුසු කර ලෝකයටම දිය හැකි එකම ආදර්ශමත් විසඳුම "තුන් කල් දැක්ම" යි.</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                en: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-emerald-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-green py-1">C - Benefit Analysis | Three-Way Vision</h1>
+                            <p class="text-gray-400 text-sm mt-2">A comprehensive analysis of the cumulative economic and social benefits, from the emerging citizen to state governance and the global economy, if the systemic flaws were resolved in a timely manner.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 pl-6 step-border">
+                                <h4 class="font-bold text-white mb-2">01. Financial Freedom & Psychological Stability of the Citizen</h4>
+                                <p class="text-xs text-slate-300 mt-1"><strong>Psychological and Social Rehabilitation:</strong> By escaping mechanical pressures like CRIB and the "Parate" law, the citizen realizes the system works to rehabilitate rather than destroy them. This gives birth to a fearless, doubt-free, creative, and highly self-confident entrepreneurial mind within the country.</p>
+                            </div>
+                            <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 pl-6 step-border">
+                                <h4 class="font-bold text-white mb-2">02. State Level: Fiscal Transparency and Exponential GDP Growth</h4>
+                                <p class="text-xs text-slate-300 mt-1"><strong>Eradicating Black Markets via White-Mapping:</strong> When the banking core offers smart adjustment loops (Layer-B), citizens bypass predatory underground money lenders. Billions previously trapped in the informal shadow economy are transparently re-routed into the official banking system through digital white-mapping.</p>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                ta: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-emerald-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-green py-1">C - நன்மைகள் பகுப்பாய்வு | முக்கால பார்வை</h1>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-5 bg-slate-900/60 rounded-xl border border-white/5 pl-6 step-border">
+                                <h4 class="font-bold text-white mb-2">01. குடிமகனின் நிதி சுதந்திரம் மற்றும் மன நிலைத்தன்மை</h4>
+                                <p class="text-xs text-slate-300">CRIB மற்றும் "பாரடே" சட்டம் போன்ற இயந்திரத்தனமான அழுத்தங்களிலிருந்து தப்பிப்பதன் மூலம், கணினி தங்களை அழிப்பதற்குப் பதிலாக மறுவாழ்வு அளிக்க வேலை செய்கிறது என்பதை குடிமகன் உணர்கிறார்.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            D: {
+                tag: "D - Strategic Action Pathway | Layer-D",
+                si: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-sky-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-4xl font-bold text-gradient-blue py-1">D - ආර්ථික සැලසුම්කරණය තුන් කල් දැක්ම</h1>
+                            <p class="text-slate-400 text-sm mt-2">ග්‍රාම නිලධාරී වසම් මට්ටමින් භෞතික හා මානව ප්‍රාග්ධනය සිතියම්ගත කර, දේශීය ව්‍යවසායකත්වය සක්‍රීය කිරීම තුළින් ජාතික ආර්ථිකය ස්වයංපෝෂිත කරන සහ දළ දේශීය නිෂ්පාදිතය (GDP) ඉහළ නංවන උපායමාර්ගික සැලැස්ම.</p>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            <div class="lg:col-span-4 bg-slate-900/60 p-6 rounded-[2rem] border border-sky-500/20">
+                                <h3 class="text-lg font-bold text-sky-400 mb-2">ග්‍රාමීය මට්ටමේ විමධ්‍යගතකරණය</h3>
+                                <p class="text-xs text-slate-300 leading-relaxed">"තුන් කල් දැක්ම" මාස්ටර් සැලැස්ම යනු ඉහළ සිට පහළට පනවන නීති මාලාවක් නොවේ. එය ශ්‍රී ලංකාවේ සෑම ග්‍රාම සේවා වසමකම පවතින සැබෑ ශක්‍යතාව හඳුනාගෙන ක්‍රියාත්මක වන බිම් මට්ටමේ සැලසුමකි.</p>
+                                <h4 class="text-sm font-bold text-white mt-4">ප්‍රධාන ඉලක්කය:</h4>
+                                <p class="text-xs text-slate-400 mt-1">රැකියා ප්‍රවර්ධනය, දේශීය කර්මාන්ත ද්‍රවශීලතාවය ආරක්ෂා කිරීම සහ ජාතික දළ දේශීය නිෂ්පාදිතයට (GDP) සෑම ගමකම දායකත්වය සෘජුවම ලබාගැනීම.</p>
+                            </div>
+                            <div class="lg:col-span-8 space-y-4">
+                                <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                                    <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">01. Identification Phase</span>
+                                    <h4 class="text-base font-bold text-white mb-2">භෞතික සහ මානව දක්ෂතා හඳුනාගැනීම</h4>
+                                    <p class="text-xs text-slate-400">සෑම ග්‍රාම සේවා වසමකම සිටින ශ්‍රම බලකායේ සැබෑ කුසලතා, වෘත්තීය හැකියාවන් සහ පවතින දේශීය ස්වභාවික සම්පත් පරිපූර්ණ ඩිජිටල් විග්‍රහයකට ලක් කෙරේ.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                                    <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">02. Internal Audit</span>
+                                    <h4 class="text-base font-bold text-white mb-2">שלක්තීන්, දුර්වලතා, අවස්ථා සහ අභියෝග (SWOT)</h4>
+                                    <p class="text-xs text-slate-400">එම වසමට අදාළ කර්මාන්ත වල පවතින දුර්වලතා සහ අභියෝග (උදා: ප්‍රාග්ධන හිඟය, වෙළඳපොළ බිඳවැටීම) හඳුනාගෙන, ඒවා ජාතික මට්ටමේ Layer-B යාන්ත්‍රණය සමඟ බද්ධ කර විසඳුම් සපයයි.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                                    <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">03. Solution & Pathway</span>
+                                    <h4 class="text-base font-bold text-white mb-2">අවශ්‍ය මාවත සොයාගැනීම (Strategic Pathway)</h4>
+                                    <p class="text-xs text-slate-400">සාම්ප්‍රදායික පොදු සැලසුම් වෙනුවට, ඒ ඒ ග්‍රාමීය අංශයන්ට ගැලපෙන නිවැරදිම සහ ලාභදායීම ආර්ථික මාවත (Custom Industry Pathway) තාක්ෂණික මඟපෙන්වීම් ඔස්සේ විවර කර දේ.</p>
+                                </div>
+                                <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                                    <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">04. Economic Yield</span>
+                                    <h4 class="text-base font-bold text-white mb-2">ග්‍රාමීය ව්‍යවසායකත්වය සහ GDP උද්දීපනය</h4>
+                                    <p class="text-xs text-slate-400">මෙලෙස ගම් මට්ටමින් නව ව්‍යවසායකයින් දහස් ගණනක් බිහිවීමෙන් ස්වයංක්‍රීයවම දේශීය රැකියා ප්‍රවර්ධනය වන අතර, එය සමස්ත දළ දේශීය නිෂ්පාදිතය ශීඝ්‍රයෙන් ඉහළ නැංවීමට මඟ පාදයි.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                en: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-sky-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-blue py-1">D - Economic Planning | Three-Way Vision</h1>
+                            <p class="text-slate-400 text-sm mt-2">A strategic framework mapping physical and human capital at the Grama Niladhari division level, empowering rural entrepreneurship to stabilize the national economy.</p>
+                        </div>
+                        <div class="p-5 bg-slate-900/40 rounded-xl border border-white/5">
+                            <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">01. Identification Phase</span>
+                            <h4 class="text-sm font-bold text-white mt-1">Talent & Physical Asset Discovery</h4>
+                            <p class="text-xs text-slate-400 mt-1">The real hidden skills of the workforce, professional expertise, and available local natural resources within every division are subjected to an advanced digital auditing system.</p>
+                        </div>
+                    </div>
+                `,
+                ta: `
+                    <div class="space-y-6 animate-in fade-in duration-200">
+                        <div class="border-b border-sky-500/20 pb-4 text-center">
+                            <h1 class="text-2xl md:text-3xl font-bold text-gradient-blue py-1">D - பொருளாதார திட்டமிடல் | முக்கால பார்வை</h1>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openAnalysisModal(section) {
+            currentActiveSection = section;
+            document.getElementById('analysis-popup-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setModalLanguage(currentModalLang);
+        }
+
+        function closeAnalysisModal() {
+            document.getElementById('analysis-popup-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function setModalLanguage(lang) {
+            currentModalLang = lang;
+            document.querySelectorAll('.lang-btn-sub').forEach(btn => btn.classList.remove('active'));
+            if(lang === 'si') document.getElementById('modal-si-btn').classList.add('active');
+            if(lang === 'en') document.getElementById('modal-en-btn').classList.add('active');
+            if(lang === 'ta') document.getElementById('modal-ta-btn').classList.add('active');
+
+            const sectionData = coreModalData[currentActiveSection];
+            document.getElementById('modal-subheading-tag').innerText = sectionData.tag;
+            document.getElementById('modal-dynamic-body-content').innerHTML = sectionData[lang] || sectionData['si'];
+        }
+
+        async function appendMessage(role, text) {
+            const box = document.getElementById('ai-chat-box');
+            const isAI = role === 'ai';
+            box.innerHTML += `<div class="flex ${isAI ? 'justify-start' : 'justify-end'} animate-in fade-in duration-300">
+                <div class="${isAI ? 'bg-slate-800/90 border-blue-500/20' : 'bg-blue-600/40 border-blue-400/20'} p-5 rounded-2xl ${isAI ? 'rounded-tl-none' : 'rounded-tr-none'} border max-w-[85%]">
+                    <p class="text-sm leading-relaxed ${isAI ? 'text-blue-50' : 'text-white'} whitespace-pre-line">${text}</p>
+                </div></div>`;
+            box.scrollTop = box.scrollHeight;
+        }
+
+        async function handleAI() {
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if(!text) return;
+            appendMessage('user', text);
+            input.value = "";
+            document.getElementById('send-btn').innerText = "...";
+            
+            setTimeout(() => {
+                if(chatStep === 0) {
+                    originalQuestion = text;
+                    appendMessage('ai', "ඔබගේ ප්‍රශ්නය 'තුන් කල් දැක්ම' විශ්ලේෂණයට ලක් කරන ලදී. මෙයට හේතුව පද්ධතියේ යාන්ත්‍රික නීතිද නැතහොත් බිම් මට්ටමේ කළමනාකරණ දුර්වලතාවයක්ද?");
+                    chatStep = 1;
+                } else {
+                    appendMessage('ai', "ස්තූතියි! ඔබගේ නිරීක්ෂණය 'තුන් කල් දැක්ම' පරාමිතීන් සමඟ ගළපා ජාතික සැලැස්මට එක් කරගන්නා ලදී.");
+                    chatStep = 0;
+                }
+                document.getElementById('send-btn').innerText = "විමසන්න";
+            }, 800);
+        }
+    </script>
+</body>
+</html>

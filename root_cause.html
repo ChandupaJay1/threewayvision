@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B මූල හේතු විශ්ලේෂණය | තුන් කල් දැක්ම</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', sans-serif; background-color: #020617; color: #f8fafc; }
+        .universe-bg {
+            background-image: linear-gradient(rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.97)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920');
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        .report-card { background: rgba(30, 41, 59, 0.25); backdrop-filter: blur(15px); border: 1px solid rgba(249, 115, 22, 0.2); }
+        .text-gradient-orange { background: linear-gradient(to right, #f97316, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .lang-btn-sub { background: rgba(255, 255, 255, 0.1); color: white; padding: 0.4rem 1.2rem; border-radius: 15px; font-size: 0.85rem; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+        .lang-btn-sub.active { background: #d35400; font-weight: bold; }
+    </style>
+</head>
+<body class="universe-bg min-h-screen py-12 px-4 md:px-8">
+
+    <div class="max-w-4xl mx-auto">
+        
+        <div class="flex flex-wrap justify-between items-center gap-4 mb-8 border-b border-white/5 pb-4">
+            <div>
+                <a href="index.html" id="back-btn-text" class="text-sm text-gray-400 hover:text-orange-400 transition-colors flex items-center gap-2">
+                    ← ප්‍රධාන පද්ධතියට ආපසු යන්න
+                </a>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="lang-btn-sub active" onclick="switchReportLang('si', this)">සිංහල</button>
+                <button class="lang-btn-sub" onclick="switchReportLang('en', this)">English</button>
+                <button class="lang-btn-sub" onclick="switchReportLang('ta', this)">தமிழ்</button>
+            </div>
+        </div>
+
+        <header class="text-center mb-12 border-b border-orange-500/20 pb-10">
+            <div class="inline-block w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center text-3xl font-bold text-orange-500 border border-orange-500/40 mb-6 shadow-[0_0_20px_rgba(249,115,22,0.3)]">B</div>
+            <h1 id="rep-main-title" class="text-3xl md:text-5xl font-bold mb-4 py-4 leading-relaxed text-gradient-orange">B මූල හේතු විශ්ලේෂණය</h1>
+            <p id="rep-sub-title" class="text-gray-400 text-xs md:text-sm uppercase tracking-widest pt-1">Root Cause Diagnostics & Management Vulnerabilities</p>
+            <p id="rep-doc-num" class="text-[11px] text-orange-400/70 mt-3 font-mono">ලේඛන අංකය: TKD-ECO-REP-B2026</p>
+        </header>
+
+        <div class="p-6 rounded-2xl bg-orange-950/10 border-l-4 border-orange-500 mb-10">
+            <p id="rep-executive-quote" class="text-sm md:text-base text-orange-200 italic leading-relaxed">
+                "රාජ්‍යයක්, ව්‍යාපාරයක් හෝ පුරවැසියෙක් ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එහි මූලිකම හේතුව බාහිර සාධක පමණක් නොව; අතීතය, වර්තමානය සහ අනාගතය නිවැරදිව ගළපන 'තුන් කල් දැක්මකින්' යුතු කළමනාකරණයක් සහ සම්පත් හඳුනාගැනීමේ ප්‍රායෝගික ක්‍රමවේදයක් නොමැතිකමයි."
+            </p>
+        </div>
+
+        <div class="space-y-8">
+            
+            <div class="report-card p-6 md:p-8 rounded-3xl border-orange-500/40 bg-orange-500/5">
+                <div class="flex items-start gap-4">
+                    <span class="text-orange-500 font-bold text-xl mt-1">01.</span>
+                    <div>
+                        <h3 id="c1-title" class="text-xl font-bold text-orange-400 mb-3">තුන් කල් දැක්මකින් යුතු කළමනාකරණය නොමැතිකම (Lack of Three-Way Vision Management)</h3>
+                        <p id="c1-desc" class="text-sm text-gray-300 leading-relaxed mb-4">
+                            ආර්ථික අරාජිකත්වය හටගන්නා ආකාරය පද්ධතිමය මට්ටම් 3ක් ඔස්සේ ක්‍රියාත්මක වේ. මෙම සෑම මට්ටමකදීම දකින්නට ලැබෙන්නේ නිසි කළමනාකරණයේ සහ දුරදක්නා දැක්මේ පවතින දුර්වලතාවයයි:
+                        </p>
+                        <div class="space-y-3 text-xs text-gray-400">
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-orange-500/20">
+                                <strong id="c1-l1-t" class="text-white block mb-1">● රාජ්‍ය මට්ටම (The State):</strong>
+                                <span id="c1-l1-d">රාජ්‍යයක් වශයෙන් සමස්ත රටම ආර්ථික අරාජිකත්වයට පත්වීමට මුල්ම සහ ප්‍රධානතම මූල හේතුව වන්නේ රට පාලනය කිරීම සඳහා නිසි 'තුන් කල් දැක්මකින්' යුතු උපායමාර්ගික කළමනාකරණයක් නොමැති කමයි.</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-orange-500/20">
+                                <strong id="c1-l2-t" class="text-white block mb-1">● ව්‍යාපාරික මට්ටම (The Business):</strong>
+                                <span id="c1-l2-d">ව්‍යාපාරයක් බිඳවැටී අරාජිකත්වයට පත්වන්නේ නම්, එම ව්‍යාපාරය මෙහෙයවීම තුළ දිගුකාලීන අවදානම් සහ අවස්ථා කළමනාකරණය කළ හැකි තුන් කල් දැකීමකින් යුතු ස්ථාවර කළමනාකරණ සැලැස්මක් නොමැති කමයි.</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-4 rounded-xl border border-orange-500/20">
+                                <strong id="c1-l3-t" class="text-white block mb-1">● පුරවැසි මට්ටම (The Citizen):</strong>
+                                <span id="c1-l3-d">පුද්ගලයෙකු හෝ පුරවැසියෙකු ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එය ඔහු සතු මූල්‍ය පරිහරණය, තීරණ ගැනීම සහ පුද්ගලික ජීවන ව්‍යුහය තුළ පවතින කළමනාකරණයේ දුර්වලකම විදහා පාන්නකි.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card p-6 md:p-8 rounded-3xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-orange-500 font-bold text-xl mt-1">02.</span>
+                    <div>
+                        <h3 id="c2-title" class="text-xl font-bold text-white mb-3">මානව සහ භෞතික සම්පත් හඳුනාගැනීමේ ක්‍රමවේදයක් නොමැතිකම</h3>
+                        <p id="c2-desc" class="text-sm text-gray-400 leading-relaxed">
+                            රටක ආර්ථිකය අඩාල වීමට බලපාන ප්‍රධානතම උත්තේජකයක් වන්නේ පද්ධතිය තුළ පවතින භෞතික සම්පත් (Natural & Physical Resources) සහ මානව හැකියා දක්ෂතා (Human Potential & Talents) නිවැරදිව හඳුනා ගැනීමට හෝ ඒවා ඵලදායී ලෙස කළමනාකරණය කර ගැනීමට හැකි ප්‍රායෝගික තාක්ෂණික හෝ ව්‍යුහාත්මක ක්‍රමවේදයක් රට තුළ ක්‍රියාත්මක නොවීමයි.
+                        </p>
+                        <p id="c2-analysis" class="text-xs text-orange-300/80 mt-2 italic">**විශ්ලේෂණය:** කුසලතා පිරි මානව සම්පත කොන් කරන සහ භෞතික සම්පත් අපතේ හරින පද්ධතියක් පවතින තාක් ආර්ථිකය ස්වයංක්‍රීයවම අඩාල වේ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card p-6 md:p-8 rounded-3xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-orange-500 font-bold text-xl mt-1">03.</span>
+                    <div>
+                        <h3 id="c3-title" class="text-xl font-bold text-white mb-3">නම්‍යශීලී නොවන යාන්ත්‍රික නීති (Rigid & Automated Logics)</h3>
+                        <p id="c3-desc" class="text-sm text-gray-400 leading-relaxed">
+                            වත්මන් මූල්‍ය ව්‍යුහය තුළ ණය පැහැර හැරීමකට තුඩු දුන් බාහිර සාධක වෙන්කර හඳුනා ගැනීමේ කිසිදු තාක්ෂණික ක්‍රමවේදයක් නොමැත. පද්ධතිය විසින් චේතනාන්විතව ණය මඟහරින්නන් (Willful Defaulters) සහ රටේ පොදු උද්ධමනය, වසංගත හෝ රජයේ ක්ෂණික ප්‍රතිපත්තිමය වෙනස්කම් නිසා අසරණ වූ අවංක ව්‍යවසායකයින් (Involuntary Defaulters) යන දෙකොටසම එකම මට්ටමක ලා සලකා Blacklist කරනු ලබයි.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card p-6 md:p-8 rounded-3xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-orange-500 font-bold text-xl mt-1">04.</span>
+                    <div>
+                        <h3 id="c4-title" class="text-xl font-bold text-white mb-3">දඬුවම් කේන්ද්‍රීය පාලන දර්ශනය (Punitive-Centric Approach)</h3>
+                        <p id="c4-desc" class="text-sm text-gray-400 leading-relaxed">
+                            වත්මන් බැංකු පද්ධති සකස් වී ඇත්තේ පුනරුත්ථාපනය හෝ නැවත නැඟිටුවීම අරමුණු කරගෙන නොව, දඬුවම සහ කොන් කිරීම තුළින් විනය හැදිය හැකිය යන මිථ්‍යා දර්ශනය මතයි. ණය අතපසු වූ සැණින් Parate Execution (දේපළ පවරා ගැනීම්) සහ අධිකරණ ක්‍රියාමාර්ග මඟින් සිදු කරන්නේ, වසර ගණනාවක ව්‍යාපාරික අත්දැකීම් ඇති වටිනා පුරවැසියෙකුව ආර්ථික ක්‍රියාවලියෙන් සම්පූර්ණයෙන්ම අතුගා දැමීමයි.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card p-6 md:p-8 rounded-3xl">
+                <div class="flex items-start gap-4">
+                    <span class="text-orange-500 font-bold text-xl mt-1">05.</span>
+                    <div>
+                        <h3 id="c5-title" class="text-xl font-bold text-white mb-3">අවිධිමත් සහ කළු ආර්ථිකයේ උගුල් (The Shadow Economy Trap)</h3>
+                        <p id="c5-desc" class="text-sm text-gray-400 leading-relaxed">
+                            නීත්‍යානුකූල මූල්‍ය ප්‍රවාහයන් වසා දමන විට, පුරවැසියාට තමන්ගේ ජීවිතය රැකගැනීම සඳහා අධික පොලී අයකරන අවිධිමත් මූල්‍ය වෙළඳපොළවල් (පොලී මුදලාලිලා සහ ක්ෂුද්‍ර මූල්‍ය උගුල්) වෙත යාමට සිදුවේ. මෙය රටේ ජාතික දළ දේශීය නිෂ්පාදිතයට (GDP) දායක නොවන, විශාල කළු ආර්ථිකයක් රට තුළ නිර්මාණය වීමට හේතුවක් වෙයි.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="mt-16 pt-8 border-t border-white/5 text-center">
+            <p id="rep-footer-1" class="text-gray-500 text-[10px] tracking-widest uppercase italic">තුන් කල් දැක්ම - II වන පරිච්ඡේදය | අනුරාධපුර ප්‍රඥාව නූතන ඩිජිටල්කරණයට</p>
+            <p class="text-gray-600 text-[10px] mt-1">© 2026 Thun Kal Dækma. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const reportTranslations = {
+            si: {
+                backBtn: "← ප්‍රධාන පද්ධතියට ආපසු යන්න",
+                title: "B මූල හේතු විශ්ලේෂණය",
+                subTitle: "Root Cause Diagnostics & Management Vulnerabilities",
+                docNum: "ලේඛන අංකය: TKD-ECO-REP-B2026",
+                execQuote: `"රාජ්‍යයක්, ව්‍යාපාරයක් හෝ පුරවැසියෙක් ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එහි මූලිකම හේතුව බාහිර සාධක පමණක් නොව; අතීතය, වර්තමානය සහ අනාගතය නිවැරදිව ගළපන 'තුන් කල් දැක්මකින්' යුතු කළමනාකරණයක් සහ සම්පත් හඳුනාගැනීමේ ප්‍රායෝගික ක්‍රමවේදයක් නොමැතිකමයි."`,
+                c1T: "තුන් කල් දැක්මකින් යුතු කළමනාකරණය නොමැතිකම (Lack of Three-Way Vision Management)",
+                c1D: "ආර්ථික අරාජිකත්වය හටගන්නා ආකාරය පද්ධතිමය මට්ටම් 3ක් ඔස්සේ ක්‍රියාත්මක වේ. මෙම සෑම මට්ටමකදීම දකින්නට ලැබෙන්නේ නිසි කළමනාකරණයේ සහ දුරදක්නා දැක්මේ පවතින දුර්වලතාවයයි:",
+                c1L1T: "● රාජ්‍ය මට්ටම (The State):",
+                c1L1D: "රාජ්‍යයක් වශයෙන් සමස්ත රටම ආර්ථික අරාජිකත්වයට පත්වීමට මුල්ම සහ ප්‍රධානතම මූල හේතුව වන්නේ රට පාලනය කිරීම සඳහා නිසි 'තුන් කල් දැක්මකින්' යුතු උපායමාර්ගික කළමනාකරණයක් නොමැති කමයි.",
+                c1L2T: "● ව්‍යාපාරික මට්ටම (The Business):",
+                c1L2D: "ව්‍යාපාරයක් බිඳවැටී අරාජිකත්වයට පත්වන්නේ නම්, එම ව්‍යාපාරය මෙහෙයවීම තුළ දිගුකාලීන අවදානම් සහ අවස්ථා කළමනාකරණය කළ හැකි තුන් කල් දැකීමකින් යුතු ස්ථාවර කළමනාකරණ සැලැස්මක් නොමැති කමයි.",
+                c1L3T: "● පුරවැසි මට්ටම (The Citizen):",
+                c1L3D: "පුද්ගලයෙකු හෝ පුරවැසියෙකු ආර්ථික අරාජිකත්වයට පත්වන්නේ නම්, එය ඔහු සතු මූල්‍ය පරිහරණය, තීරණ ගැනීම සහ පුද්ගලික ජීවන ව්‍යුහය තුළ පවතින කළමනාකරණයේ දුර්වලකම විදහා පාන්නකි.",
+                c2T: "මානව සහ භෞතික සම්පත් හඳුනාගැනීමේ ක්‍රමවේදයක් නොමැතිකම",
+                c2D: "රටක ආර්ථිකය අඩාල වීමට බලපාන ප්‍රධානතම උත්තේජකයක් වන්නේ පද්ධතිය තුළ පවතින භෞතික සම්පත් (Natural & Physical Resources) සහ මානව හැකියා දක්ෂතා (Human Potential & Talents) නිවැරදිව හඳුනා ගැනීමට හෝ ඒවා ඵලදායී ලෙස කළමනාකරණය කර ගැනීමට හැකි ප්‍රායෝගික තාක්ෂණික හෝ ව්‍යුහාත්මක ක්‍රමවේදයක් රට තුළ ක්‍රියාත්මක නොවීමයි.",
+                c2A: "**විශ්ලේෂණය:** කුසලතා පිරි මානව සම්පත කොන් කරන සහ භෞතික සම්පත් අපතේ හරින පද්ධතියක් පවතින තාක් ආර්ථිකය ස්වයංක්‍රීයවම අඩාල වේ.",
+                c3T: "නම්‍යශීලී නොවන යාන්ත්‍රික නීති (Rigid & Automated Logics)",
+                c3D: "වත්මන් මූල්‍ය ව්‍යුහය තුළ ණය පැහැර හැරීමකට තුඩු දුන් බාහිර සාධක වෙන්කර හඳුනා ගැනීමේ කිසිදු තාක්ෂණික ක්‍රමවේදයක් නොමැත. පද්ධතිය විසින් චේතනාන්විතව ණය මඟහරින්නන් (Willful Defaulters) සහ රටේ පොදු උද්ධමනය, වසංගත හෝ රජයේ ක්ෂණික ප්‍රතිපත්තිමය වෙනස්කම් නිසා අසරණ වූ අවංක ව්‍යවසායකයින් (Involuntary Defaulters) යන දෙකොටසම එකම මට්ටමක ලා සලකා Blacklist කරනු ලබයි.",
+                c4T: "දඬුවම් කේන්ද්‍රීය පාලන දර්ශනය (Punitive-Centric Approach)",
+                c4D: "වත්මන් බැංකු පද්ධති සකස් වී ඇත්තේ පුනරුත්ථාපනය හෝ නැවත නැඟිටුවීම අරමුණු කරගෙන නොව, දඬුවම සහ කොන් කිරීම තුළින් විනය හැදිය හැකිය යන මිථ්‍යා දර්ශනය මතයි. ණය අතපසු වූ සැණින් Parate Execution (දේපළ පවරා ගැනීම්) සහ අධිකරණ ක්‍රියාමාර්ග මඟින් සිදු කරන්නේ, වසර ගණනාවක ව්‍යාපාරික අත්දැකීම් ඇති වටිනා පුරවැසියෙකුව ආර්ථික ක්‍රියාවලියෙන් සම්පූර්ණයෙන්ම අතුගා දැමීමයි.",
+                c5T: "අවිධිමත් සහ කළු ආර්ථිකයේ උගුල් (The Shadow Economy Trap)",
+                c5D: "නීත්‍යානුකූල මූල්‍ය穩ප්‍රවාහයන් වසා දමන විට, පුරවැසියාට තමන්ගේ ජීවිතය රැකගැනීම සඳහා අධික පොලී අයකරන අවිධිමත් මූල්‍ය වෙළඳපොළවල් (පොලී මුදලාලිලා සහ ක්ෂුද්‍ර මූල්‍ය උගුල්) වෙත යාමට සිදුවේ. මෙය රටේ ජාතික දළ දේශීය නිෂ්පාදිතයට (GDP) දායක නොවන, විශාල කළු ආර්ථිකයක් රට තුළ නිර්මාණය වීමට හේතුවක් වෙයි.",
+                f1: "තුන් කල් දැක්ම - II වන පරිච්ඡේදය | අනුරාධපුර ප්‍රඥාව නූතන ඩිජිටල්කරණයට"
+            },
+            en: {
+                backBtn: "← Return to Main Framework",
+                title: "B: Root Cause Diagnostics",
+                subTitle: "Root Cause Diagnostics & Management Vulnerabilities",
+                docNum: "Document ID: TKD-ECO-REP-B2026",
+                execQuote: `"If a state, enterprise, or individual faces economic collapse, the primary root cause is not merely external shocks; it is the absolute deficit of Three-Way Vision Management that reconciles past, present, and future variables."`,
+                c1T: "Lack of Three-Way Vision Management",
+                c1D: "Socio-economic destabilization operates across three baseline layers, each explicitly revealing severe management deficits and lack of foresight:",
+                c1L1T: "● The State Layer:",
+                c1L1D: "The collapse of national macro-stability is the direct output of administrative layers operating completely decoupled from long-term strategic master planning.",
+                c1L2T: "● The Business Layer:",
+                c1L2D: "Corporate failures occur when management parameters lack resilient risk insulation, adaptive forecasting, and sound operational workflows.",
+                c1L3T: "● The Citizen Layer:",
+                c1L3D: "Individual economic distress reflects an acute lack of institutional tools to foster disciplined micro-asset management and personal financial literacy.",
+                c2T: "Deficit in Mapping Human and Physical Potential",
+                c2D: "A core bottleneck for growth is the total absence of a practical state framework to identify, map, and transparently deploy physical resources and unique human talents dynamically.",
+                c2A: "**Diagnostic:** Systems that exclude skilled human potential while mismanaging physical assets produce structural stagnation automatically.",
+                c3T: "Rigid & Automated Logics",
+                c3D: "Modern banking protocols fail to differentiate a Willful Defaulter from an Involuntary Defaulter (ruined by inflation or sudden state policy shifts). Both are treated as toxic assets and blacklisted universally.",
+                c4T: "Punitive-Centric Approach",
+                c4D: "Administrative mechanisms falsely assume discipline is forged through severe penalties and isolation. Hostile actions like Parate Execution completely erase experienced human capital from the economy.",
+                c5T: "The Shadow Economy Trap",
+                c5D: "When official digital pipelines are frozen, citizens are driven into predatory microfinance or unregulated underground networks, artificially expanding the dark economy.",
+                f1: "Thun Kal Dækma - Chapter II | Ancient Anuradhapura Wisdom for Modern Digital Systems"
+            },
+            ta: {
+                backBtn: "← முதன்மை கட்டமைப்பிற்குத் திரும்பு",
+                title: "B: மூல காரணிகள் கண்டறிதல்",
+                subTitle: "Root Cause Diagnostics & Management Vulnerabilities",
+                docNum: "ஆவண எண்: TKD-ECO-REP-B2026",
+                execQuote: `"ஒரு நாடு, ஒரு வணிகம் அல்லது ஒரு குடிமகன் பொருளாதார வீழ்ச்சியைச் சந்தித்தால், அதன் மூலக் காரணம் வெறும் வெளிப்புறக் காரணிகள் மட்டுமல்ல; அது முக்கால மேலாண்மை தொலைநோக்கு பார்வையின் பற்றாக்குறையாகும்."`,
+                c1T: "முக்கால மேலாண்மை தொலைநோக்கு பார்வை இல்லாமை",
+                c1D: "பொருளாதார ஸ்திரமின்மை மூன்று நிலைகளில் இயங்குகிறது. ஒவ்வொரு நிலையிலும் மேலாண்மை குறைபாடுகளே வெளிப்படுகின்றன:",
+                c1L1T: "● அரசாங்க மட்டம் (The State):",
+                c1L1D: "ஒரு நாடு பொருளாதார ரீதியாக வீழ்ச்சியடைவதற்கு முக்கிய காரணம் அரசிடம் முக்கால தொலைநோக்குடன் கூடிய உத்திசார் மேலாண்மை இல்லாததே ஆகும்.",
+                c1L2T: "● வணிக மட்டம் (The Business):",
+                c1L2D: "ஒரு வணிகம் தோல்வியடைவது, நீண்ட கால இடர் மேலாண்மை மற்றும் முக்கால திட்டமிடல் இல்லாத மேலாண்மை பலவீனத்தை காட்டுகிறது.",
+                c1L3T: "● குடிமகன் மட்டம் (The Citizen):",
+                c1L3D: "ஒரு குடிமகன் நிதி நெருக்கடிக்குள்ளாவது, அவரது தனிப்பட்ட நிதி கையாளுதல் மற்றும் மேலாண்மை பலவீனத்தின் வெளிப்பாடாகும்.",
+                c2T: "மனித மற்றும் பௌதிக வளங்களை கண்டறியும் கட்டமைப்பு இல்லாமை",
+                c2D: "நாட்டின் பௌதிக வளங்களையும் மனித ஆற்றல்களையும் சரியாக அடையாளம் கண்டு, அவற்றை திறம்பட நிர்வகிப்பதற்கான நடைமுறை தொழில்நுட்ப கட்டமைப்பு இல்லாததே பொருளாதார முடக்கத்திற்கு காரணமாகும்.",
+                c2A: "**பகுப்பாய்வு:** திறமையான மனித வளங்களை புறக்கணித்து பௌதிக வளங்களை வீணடிக்கும் போது பொருளாதாரம் தானாகவே வீழ்ச்சியடையும்.",
+                c3T: "நெகிழ்வுத்தன்மையற்ற இயந்திர விதிகள் (Rigid & Automated Logics)",
+                c3D: "வங்கி முறையினால் திட்டமிட்டு கடன் செலுத்தாதவர்களையும் (Willful Defaulters), பணவீக்கத்தால் பாதிக்கப்பட்டவர்களையும் (Involuntary Defaulters) வேறுபடுத்திப் பார்க்க முடியாமல் கறுப்புப் பட்டியலில் சேர்க்கிறது.",
+                c4T: "தண்டனை மையப்பகுதி கட்டுப்பாடு (Punitive-Centric Approach)",
+                c4D: "தண்டனை மற்றும் புறக்கணிப்பு மூலம் ஒழுக்கத்தை உருவாக்கலாம் என்ற தவறான கொள்கையினால், சொத்துக்களைப் பறிமுதல் செய்து (Parate Execution) அனுபவம் வாய்ந்த மனித வளங்கள் அழிக்கப்படுகின்றன.",
+                c5T: "கருப்பு பண வர்த்தகம் முடக்கம் (The Shadow Economy Trap)",
+                c5D: "சட்டபூர்வ நிதிப் புழக்கங்கள் முடக்கப்படும் போது, குடிமக்கள் கந்துவட்டிக்காரர்களிடம் சிக்கி, முறைசாரா கருப்புப் பொருளாதாரத்தை உருவாக்குகிறார்கள்.",
+                f1: "துன் கல் தேக்மா - அத்தியாயம் II | நவீன டிஜிட்டல் அமைப்புகளுக்கான அனுராதபுர ஞானம்"
+            }
+        };
+
+        function switchReportLang(lang, btn) {
+            document.querySelectorAll('.lang-btn-sub').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const data = reportTranslations[lang];
+            
+            document.getElementById('back-btn-text').innerText = data.backBtn;
+            document.getElementById('rep-main-title').innerText = data.title;
+            document.getElementById('rep-sub-title').innerText = data.subTitle;
+            document.getElementById('rep-doc-num').innerText = data.docNum;
+            document.getElementById('rep-executive-quote').innerText = data.execQuote;
+            
+            document.getElementById('c1-title').innerText = data.c1T;
+            document.getElementById('c1-desc').innerText = data.c1D;
+            document.getElementById('c1-l1-t').innerText = data.c1L1T;
+            document.getElementById('c1-l1-d').innerText = data.c1L1D;
+            document.getElementById('c1-l2-t').innerText = data.c1L2T;
+            document.getElementById('c1-l2-d').innerText = data.c1L2D;
+            document.getElementById('c1-l3-t').innerText = data.c1L3T;
+            document.getElementById('c1-l3-d').innerText = data.c1L3D;
+
+            document.getElementById('c2-title').innerText = data.c2T;
+            document.getElementById('c2-desc').innerText = data.c2D;
+            document.getElementById('c2-analysis').innerHTML = data.c2A;
+
+            document.getElementById('c3-title').innerText = data.c3T;
+            document.getElementById('c3-desc').innerText = data.c3D;
+
+            document.getElementById('c4-title').innerText = data.c4T;
+            document.getElementById('c4-desc').innerText = data.c4D;
+
+            document.getElementById('c5-title').innerText = data.c5T;
+            document.getElementById('c5-desc').innerText = data.c5D;
+
+            document.getElementById('rep-footer-1').innerText = data.f1;
+        }
+    </script>
+</body>
+</html>

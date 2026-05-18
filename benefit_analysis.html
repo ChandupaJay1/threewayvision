@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C - යහපත විශ්ලේෂණය තුන් කල් දැක්ම</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@450;700&family=Inter:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', 'Noto Sans Tamil', sans-serif; background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+        .universe-bg {
+            background-image: linear-gradient(rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.98)), 
+                              url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920');
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        .glass-card { background: rgba(30, 41, 59, 0.35); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .text-gradient-green { background: linear-gradient(to right, #10b981, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step-border { border-left: 3px solid rgba(16, 185, 129, 0.4); }
+        
+        /* Language Display Toggles */
+        .lang-en, .lang-ta { display: none; }
+    </style>
+</head>
+<body class="universe-bg min-h-screen pb-20">
+
+    <nav class="max-w-6xl mx-auto px-6 pt-8 flex justify-end">
+        <div class="relative inline-block text-left">
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-emerald-500/40 text-emerald-400 font-bold text-sm rounded-xl px-4 py-2.5 outline-none cursor-pointer hover:bg-emerald-500/10 transition-all shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                <option value="si" selected>සිංහල (Sinhala)</option>
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+            </select>
+        </div>
+    </nav>
+
+    <header class="pt-12 pb-12 text-center max-w-5xl mx-auto px-6">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8 text-xs font-bold text-emerald-400 uppercase tracking-widest">
+            Thun Kal Dækma | Layer-C Report
+        </div>
+        
+        <div class="border-t-2 border-b-2 border-emerald-500/30 py-12 my-6 bg-emerald-950/10 backdrop-blur-md overflow-hidden">
+            <h1 class="text-4xl md:text-6xl font-bold text-gradient-green tracking-wide leading-[1.5] px-4 lang-si">
+                C - යහපත විශ්ලේෂණය තුන් කල් දැක්ම
+            </h1>
+            <h1 class="text-4xl md:text-6xl font-bold text-gradient-green tracking-wide leading-[1.5] px-4 lang-en">
+                C - Benefit Analysis | Three-Way Vision
+            </h1>
+            <h1 class="text-4xl md:text-6xl font-bold text-gradient-green tracking-wide leading-[1.5] px-4 lang-ta">
+                C - நன்மைகள் பகுப்பாய்வு | முக்கால பார்வை
+            </h1>
+        </div>
+
+        <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed pt-4 lang-si">
+            පද්ධතිමය දෝෂ මඟහැරී නිවැරදි ජාතික සැලැස්ම ක්‍රියාවට නැංවුණේ නම්, උපදින නව පුරවැසියාගේ සිට සමස්ත රාජ්‍ය පාලනය සහ ගෝලීය ආර්ථිකය දක්වා ඇතිවන සමුච්චිත ප්‍රතිලාභ පිළිබඳ පුළුල් විග්‍රහය.
+        </p>
+        <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed pt-4 lang-en">
+            A comprehensive analysis of the cumulative economic and social benefits, from the emerging citizen to state governance and the global economy, if the systemic flaws were resolved in a timely manner.
+        </p>
+        <p class="text-gray-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed pt-4 lang-ta">
+            முறையான குறைபாடுகள் சரியான நேரத்தில் தீர்க்கப்பட்டால், வளர்ந்து வரும் குடிமகன் முதல் மாநில நிர்வாகம் மற்றும் உலகளாவிய பொருளாதாரம் வரை ஏற்படும் ஒட்டுமொத்த பொருளாதார மற்றும் சமூக நன்மைகள் பற்றிய விரிவான பகுப்பாய்வு.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 space-y-16">
+
+        <section class="glass-card p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-3xl"></div>
+            
+            <div class="flex items-center gap-5 mb-8">
+                <div class="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-[0_0_20px_rgba(5,150,105,0.4)]">01</div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-si">උදාවන පුරවැසියාගේ මූල්‍ය නිදහස සහ මානසික ස්ථාවරත්වය</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-en">Financial Freedom & Psychological Stability of the Citizen</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-ta">குடிமகனின் நிதி சுதந்திரம் மற்றும் மன நிலைத்தன்மை</h2>
+                    <p class="text-sm text-emerald-400 font-semibold mt-1">The Micro Level Impact: Individual Empowerment</p>
+                </div>
+            </div>
+
+            <div class="space-y-8 pl-2 md:pl-16 step-border">
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                        <span class="lang-si">මානසික සහ සාමාජීය පුනරුත්ථාපනය</span>
+                        <span class="lang-en">Psychological and Social Rehabilitation</span>
+                        <span class="lang-ta">உளவியல் மற்றும் சமூக மறுவாழ்வு</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        CRIB සහ "පරාටේ" නීතිය වැනි යාන්ත්‍රික පීඩනයන්ගෙන් මිදෙන පුරවැසියා, පද්ධතිය තමන්ව විනාශ නොකර නැවත නඟාසිටුවීමට ක්‍රියා කරන බව වටහා ගනී. මෙමඟින් බියෙන් සහ සැකයෙන් තොර, නිර්මාණශීලී, ඉහළ ආත්මවිශ්වාසයකින් යුත් ව්‍යවසායක මනසක් රට තුළ බිහිවේ.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        By escaping mechanical pressures like CRIB and the "Parate" law, the citizen realizes the system works to rehabilitate rather than destroy them. This gives birth to a fearless, doubt-free, creative, and highly self-confident entrepreneurial mind within the country.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        CRIB மற்றும் "பாரடே" சட்டம் போன்ற இயந்திரத்தனமான அழுத்தங்களிலிருந்து தப்பிப்பதன் மூலம், கணினி தங்களை அழிப்பதற்குப் பதிலாக மறுவாழ்வு அளிக்க வேலை செய்கிறது என்பதை குடிமகன் உணர்கிறார். இது நாட்டிற்குள் அச்சமற்ற, சந்தேகமில்லாத, ஆக்கப்பூர்வமான மற்றும் அதிக தன்னம்பிக்கை கொண்ட தொழில் முனைவோர் மனதை உருவாக்குகிறது.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                        <span class="lang-si">"පරිණත ව්‍යවසායක පරපුරක්" රැකගැනීම</span>
+                        <span class="lang-en">Retaining an "Experienced Entrepreneurial Generation"</span>
+                        <span class="lang-ta">"அனுபவம் வாய்ந்த தொழில்முனைவோர் தலைமுறையை" தக்கவைத்தல்</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        කිසියම් ව්‍යාපාරික උත්සාහයක් අසාර්ථක වූ පුරවැසියා යනු ප්‍රායෝගික අත්දැකීම් බහුල වටිනා මානව සම්පතකි. ඔහුව කොන් කර මූල්‍ය ප්‍රවාහයෙන් ඉවත් කරනවා වෙනුවට, බීජ ප්‍රාග්ධනය (Seed Capital) සහ නිවැරදි මඟපෙන්වීම ලබාදීමෙන් රටට අතිශය පරිණත ව්‍යවසායක ශ්‍රම බලකායක් ස්වයංක්‍රීයවම දායක කරගත හැක.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        A citizen who faces a business setback is a valuable asset with practical experience. Instead of exiling them from the financial system, providing seed capital and strategic guidance integrates a highly seasoned workforce back into the economy.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        வணிகப் பின்னடைவை எதிர்கொள்ளும் ஒரு குடிமகன் நடைமுறை அனுபவமுள்ள ஒரு மதிப்புமிக்க சொத்து. அவர்களை நிதி அமைப்பிலிருந்து ஒதுக்கி வைப்பதற்குப் பதிலாக, விதை மூலதனம் மற்றும் மூலோபாய வழிகாட்டுதலை வழங்குவது மிகவும் அனுபவமுள்ள பணியாளர்களை மீண்டும் பொருளாதாரத்தில் ஒருங்கிணைக்கிறது.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-3xl"></div>
+
+            <div class="flex items-center gap-5 mb-8">
+                <div class="w-14 h-14 bg-teal-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-[0_0_20px_rgba(13,148,136,0.4)]">02</div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-si">රාජ්‍ය පාලන මට්ටම: විනිවිදභාවය සහ දළ දේශීය නිෂ්පාදිතයේ (GDP) පිම්ම</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-en">State Level: Fiscal Transparency and Exponential GDP Growth</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-ta">மாநில நிலை: நிதி வெளிப்படைத்தன்மை மற்றும் அதிவேக GDP வளர்ச்சி</h2>
+                    <p class="text-sm text-teal-400 font-semibold mt-1">The Macro Level Impact: State & Governance</p>
+                </div>
+            </div>
+
+            <div class="space-y-8 pl-2 md:pl-16 step-border">
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
+                        <span class="lang-si">"කළු සල්ලි" ජාලයන් සුදු කිරීම සහ නිල මූල්‍ය ප්‍රවාහයට සම්බන්ධ කිරීම (White-Mapping)</span>
+                        <span class="lang-en">Eradicating Black Markets via White-Mapping</span>
+                        <span class="lang-ta">ஒயிட்-மேப்பிங் மூலம் கருப்பு சந்தைகளை ஒழித்தல்</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        බැංකු පද්ධතිය මඟින් ස්මාර්ට් සහන කාලසීමාවන් (Layer-B Loops) ලබාදෙන විට, පුරවැසියා අධික පොලී පීඩනය නිසා භූගත මූල්‍ය ජාවාරම්කරුවන් වෙත යන්නේ නැත. මින් පෙර අවිධිමත් ආර්ථිකයේ සැඟවී තිබූ බිලියන ගණනක "කළු සල්ලි", නීත්‍යානුකූල ව්‍යවසාය ඩිජිටල්කරණය හරහා සෘජුවම රාජ්‍ය මූල්‍ය ප්‍රවාහයට අවශෝෂණය කරගැනේ. මෙය රටේ ද්‍රවශීලතාවය ක්ෂණිකව ඉහළ නංවයි.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        When the banking core offers smart adjustment loops (Layer-B), citizens bypass predatory underground money lenders. Billions previously trapped in the informal shadow economy are transparently re-routed into the official banking system through digital white-mapping, instantly boosting formal market liquidity.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        வங்கி அமைப்பு ஸ்மார்ட் சரிசெய்தல் சுழல்களை (Layer-B) வழங்கும்போது, குடிமக்கள் நிலத்தடி கந்துவட்டிக்காரர்களைத் தவிர்க்கிறார்கள். முறையற்ற நிழல் பொருளாதாரத்தில் முன்னர் சிக்கியிருந்த பில்லியன் கணக்கான பணம், டிஜிட்டல் ஒயிட்-மேப்பிங் மூலம் உத்தியோகபூர்வ வங்கி அமைப்பிற்குள் வெளிப்படையாக மாற்றப்பட்டு, சந்தை பணப்புழக்கத்தை உடனடியாக உயர்த்துகிறது.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
+                        <span class="lang-si">නිෂ්පාදන ආර්ථිකය ස්ථාවර වීම සහ බදු පදනම (Tax Base) පුළුල් වීම</span>
+                        <span class="lang-en">Industrial Stabilization and Broadening of the Tax Base</span>
+                        <span class="lang-ta">தொழில்துறை ஸ்திரத்தன்மை மற்றும் வரி அடிப்படையை விரிவாக்குதல்</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        "දඬුවම් මත පදනම් වූ ආර්ථිකය" වෙනුවට "පරිවර්තනීය යුක්තිය" ක්‍රියාත්මක වීම නිසා, සුළු හා මධ්‍ය පරිමාණ කර්මාන්තශාලා (SMEs) වසා දැමීම මුළුමනින්ම නතර වේ. සෑම නිෂ්පාදන ඒකකයක්ම සක්‍රීයව පැවතීම නිසා ජාතික නිෂ්පාදිතය (GDP) ස්වභාවිකවම ඉහළ යන අතර, බදු අනුපාත වැඩි නොකරම රාජ්‍යයට ලැබෙන සමස්ත බදු ආදායම් පදනම පුළුල් වේ.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        By replacing punitive measures with Transformative Justice, the forced closure of small and medium enterprises (SMEs) is prevented. Continuous factory operations naturally accelerate GDP growth and expand the sovereign tax base organically, without raising individual tax rates.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        தண்டனை நடவடிக்கைகளுக்குப் பதிலாக உருமாற்ற நீதியை வழங்குவதன் மூலம், சிறு மற்றும் நடுத்தர தொழில்துறைகளின் (SMEs) கட்டாய மூடல்கள் தடுக்கப்படுகின்றன. தொடர்ச்சியான தொழிற்சாலை செயல்பாடுகள் இயற்கையாகவே GDP வளர்ச்சியை துரிதப்படுத்துகின்றன மற்றும் தனிநபர் வரி விகிதங்களை உயர்த்தாமல் வரி அடிப்படையை ஆர்கானிக் முறையில் விரிவுபடுத்துகின்றன.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-3xl"></div>
+
+            <div class="flex items-center gap-5 mb-8">
+                <div class="w-14 h-14 bg-green-600 rounded-2xl flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(22,163,74,0.4)]">03</div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-si">ගෝලීය මට්ටම: ශ්‍රී ලංකාව සදාචාරාත්මක ආර්ථික ප්‍රඥා කේන්ද්‍රස්ථානයක් වීම</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-en">Global Scale: Sri Lanka as an Ethical Economic Wisdom Hub</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white lang-ta">உலகளாவிய அளவு: இலங்கை ஒரு நெறிமுறை பொருளாதார ஞான மையமாக மாறுதல்</h2>
+                    <p class="text-sm text-green-400 font-semibold mt-1">The Global Horizon: Ethical Integration</p>
+                </div>
+            </div>
+
+            <div class="space-y-8 pl-2 md:pl-16 step-border">
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                        <span class="lang-si">ගෝලීය සදාචාරාත්මක ආයෝජන සහ ස්වෛරී අරමුදල් ආකර්ෂණය</span>
+                        <span class="lang-en">Attracting Ethical Global Investments & Sovereign Funds</span>
+                        <span class="lang-ta">நெறிமுறை உலகளாவிய முதலீடுகள் மற்றும் இறையாண்மை நிதிகளை ஈர்த்தல்</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        ලෝකය පුරා සිටින මානුෂීය සහ සදාචාරාත්මක ආයෝජකයින්ට සාම්ප්‍රදායික ණය උගුල් වෙනුවට, රටේ සැබෑ මානව වත්කම් සුරක්ෂිත කරන "ජාතික පුරවැසි පුනරුත්ථාපන අරමුදල" සමඟ සෘජුවම ආයෝජනය කිරීමට අවස්ථාව ලැබෙයි. මෙයින් රට ණය බරින් තොර ස්ථාවර විදේශ විනිමය ප්‍රවාහයකට හිමිකම් කියයි.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        Ethical global investors and humanitarian sovereign funds shift focus from debt traps to investing in Sri Lanka's "National Citizen Rehabilitation Fund." This anchors foreign direct investments (FDI) on human capital preservation rather than predatory compound high-interest cycles.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        நெறிமுறை உலகளாவிய முதலீட்டாளர்கள் கடன் பொறிகளிலிருந்து இலங்கையின் "தேசிய குடிமக்கள் மறுவாழ்வு நிதியில்" முதலீடு செய்வதில் கவனம் செலுத்துகிறார்கள். இது மனித மூலதனப் பாதுகாப்பில் அந்நிய நேரடி முதலீடுகளை (FDI) நங்கூரமிடுகிறது.
+                    </p>
+                </div>
+
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-white/5">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                        <span class="lang-si">හෙළ ප්‍රෞඪ ඉතිහාසයේ ආර්ථික ප්‍රඥාව සහ නව ලෝක ආර්ථික දර්ශනය</span>
+                        <span class="lang-en">The Historic Wisdom of Sri Lanka as a New Global Paradigm</span>
+                        <span class="lang-ta">இலங்கையின் வரலாற்றுச் சிறப்புமிக்க ஞானம் ஒரு புதிய உலகளாவிய முன்மாதிரியாகும்</span>
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-si">
+                        කොන් කිරීම සහ මිනිසුන් සිරගත කිරීම මත පදනම් වූ බටහිර යාන්ත්‍රික මූල්‍ය ක්‍රමවේද අසාර්ථක වෙමින් පවතින යුගයක, "මිනිසා රැකගෙන ආර්ථිකය ගොඩනැඟීමේ" හෙළ ප්‍රෞඪ ඉතිහාසයේ ආර්ථික ප්‍රඥාව නූතන AI තාක්ෂණය සමඟ මුසු කර ලෝකයටම දිය හැකි එකම ආදර්ශමත් විසඳුම "තුන් කල් දැක්ම" යි.
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-en">
+                        In an era where cold Western debt systems based on exclusion and incarceration are failing, the historic economic wisdom of Sri Lanka—"preserve the human to build the economy"—blended with modern AI technology, stands as the only exemplary solution for the world through "Three-Way Vision".
+                    </p>
+                    <p class="text-sm md:text-base text-gray-300 leading-relaxed lang-ta">
+                        ஒதுக்குதல் மற்றும் சிறைவாசம் ஆகியவற்றின் அடிப்படையிலான மேற்கத்திய கடன் அமைப்புகள் தோல்வியடைந்து வரும் ஒரு சகாப்தத்தில், இலங்கையின் வரலாற்றுப் பொருளாதார ஞானம் - "பொருளாதாரத்தை உருவாக்க மனிதனைப் பாதுகாத்தல்" - நவீன AI தொழில்நுட்பத்துடன் கலந்திருப்பது, "முக்கால பார்வை" மூலம் உலகிற்கு ஒரே முன்மாதிரியான தீர்வாக அமைகிறது.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="p-8 md:p-10 rounded-[2.5rem] bg-gradient-to-r from-emerald-950/20 to-teal-950/20 border-2 border-emerald-500/25 text-center">
+            <p class="text-sm md:text-lg italic text-emerald-300 leading-relaxed lang-si">
+                "නිවැරදි දැක්මක් යනු හුදෙක් ලේඛන පරීක්ෂාව නොවේ. වැටුණු පුරවැසියා ශක්තිමත් කිරීමෙන් රාජ්‍යයත්, රාජ්‍යයේ ස්ථාවරත්වය තුළින් මුළු මහත් ලෝකයත් සදාචාරාත්මකව ඒකාබද්ධ කරන එකම මාවත 'C - යහපත විශ්ලේෂණය තුන් කල් දැක්ම' යි."
+            </p>
+            <p class="text-sm md:text-lg italic text-emerald-300 leading-relaxed lang-en">
+                "True vision is not merely legal auditing. It is the restoration of the fallen citizen that stabilizes the State, and through that state stability, merges the global economy into an ethical union."
+            </p>
+            <p class="text-sm md:text-lg italic text-emerald-300 leading-relaxed lang-ta">
+                "உண்மையான பார்வை என்பது வெறும் சட்டபூர்வமான தணிக்கை அல்ல. வீழ்ந்த குடிமகனை மீட்டெடுப்பதுதான் அரசை ஸ்திரப்படுத்துகிறது, அந்த மாநில ஸ்திரத்தன்மையின் மூலம் உலகப் பொருளாதாரத்தை ஒரு நெறிமுறை ஒன்றியமாக இணைக்கிறது."
+            </p>
+        </div>
+
+        <div class="text-center pt-6">
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-gray-400 border border-white/10 transition-colors lang-si">
+                ← ආපසු මාස්ටර් වෙබ් අඩවියට
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-gray-400 border border-white/10 transition-colors lang-en">
+                ← Back to Master Panel
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-gray-400 border border-white/10 transition-colors lang-ta">
+                ← முதன்மைப் பலகத்திற்குத் திரும்பு
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        function changeLanguage(lang) {
+            const siElements = document.querySelectorAll('.lang-si');
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+
+            // Hide everything first
+            siElements.forEach(el => el.style.display = 'none');
+            enElements.forEach(el => el.style.display = 'none');
+            taElements.forEach(el => el.style.display = 'none');
+
+            // Show selected language
+            if (lang === 'si') {
+                siElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'en') {
+                enElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'ta') {
+                taElements.forEach(el => el.style.display = 'block');
+            }
+        }
+    </script>
+
+</body>
+</html>

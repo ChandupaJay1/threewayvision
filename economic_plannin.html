@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D - ආර්ථික සැලසුම්කරණය තුන් කල් දැක්ම</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@450;700&family=Inter:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans Sinhala', 'Inter', 'Noto Sans Tamil', sans-serif; background-color: #0b1329; color: #f8fafc; overflow-x: hidden; }
+        .dashboard-bg {
+            background-image: linear-gradient(rgba(11, 19, 41, 0.96), rgba(15, 23, 42, 0.98)), 
+                              url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1920');
+            background-attachment: fixed; background-size: cover; background-position: center;
+        }
+        /* Grid card style for a distinct layout */
+        .db-card { background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        .text-gradient-blue { background: linear-gradient(to right, #38bdf8, #0ea5e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .db-badge { background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.2); }
+        .lang-en, .lang-ta { display: none; }
+    </style>
+</head>
+<body class="dashboard-bg min-h-screen pb-20">
+
+    <nav class="max-w-7xl mx-auto px-6 pt-8 flex justify-between items-center border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.5)]"></div>
+            <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">Thun Kal Dækma | Macro Economic Core</span>
+        </div>
+        <div class="relative inline-block text-left">
+            <select id="langSelector" onchange="changeLanguage(this.value)" class="bg-slate-900 border border-sky-500/40 text-sky-400 font-bold text-sm rounded-xl px-4 py-2.5 outline-none cursor-pointer hover:bg-sky-500/10 transition-all shadow-[0_0_15px_rgba(56,189,248,0.1)]">
+                <option value="si" selected>සිංහල (Sinhala)</option>
+                <option value="en">English</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+            </select>
+        </div>
+    </nav>
+
+    <header class="pt-12 pb-10 text-center max-w-6xl mx-auto px-6">
+        <div class="py-10 my-4 bg-slate-900/40 border-y-2 border-sky-500/20 backdrop-blur-md">
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-blue tracking-wide leading-[1.6] px-4 lang-si">
+                D - ආර්ථික සැලසුම්කරණය තුන් කල් දැක්ම
+            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-blue tracking-wide leading-[1.6] px-4 lang-en">
+                D - Economic Planning | Three-Way Vision
+            </h1>
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient-blue tracking-wide leading-[1.6] px-4 lang-ta">
+                D - பொருளாதார திட்டமிடல் | முக்கால பார்வை
+            </h1>
+        </div>
+
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-si">
+            ග්‍රාම නිලධාරී වසම් මට්ටමින් භෞතික හා මානව ප්‍රාග්ධනය සිතියම්ගත කර, දේශීය ව්‍යවසායකත්වය සක්‍රීය කිරීම තුළින් ජාතික ආර්ථිකය ස්වයංපෝෂිත කරන සහ දළ දේශීය නිෂ්පාදිතය (GDP) ඉහළ නංවන උපායමාර්ගික සැලැස්ම.
+        </p>
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-en">
+            A strategic framework mapping physical and human capital at the Grama Niladhari division level, empowering rural entrepreneurship to stabilize the national economy and exponentially accelerate GDP.
+        </p>
+        <p class="text-slate-400 text-base md:text-lg max-w-4xl mx-auto leading-relaxed pt-4 lang-ta">
+            கிராம நிலதாரி பிரிவில் மனித மற்றும் பௌதீக வளங்களை வரைபடமாக்கி, உள்ளூர் தொழில்முனைவோரை ஊக்குவிப்பதன் மூலம் தேசிய பொருளாதாரத்தை மேம்படுத்தும் மற்றும் மொத்த உள்நாட்டு உற்பத்தியை (GDP) உயர்த்தும் மூலோபாய திட்டம்.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 mt-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <div class="db-card p-8 rounded-[2rem] relative overflow-hidden backdrop-blur-md">
+                    <span class="db-badge text-sky-400 text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider">Strategy 01</span>
+                    
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-si">ග්‍රාමීය මට්ටමේ විමධ්‍යගතකරණය</h3>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-en">Decentralization at Village Level</h3>
+                    <h3 class="text-xl font-bold text-white mt-4 mb-3 lang-ta">கிராமிய அளவிலான பரவலாக்கம்</h3>
+                    
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-si">
+                        "තුන් කල් දැක්ම" මාස්ටර් සැලැස්ම යනු ඉහළ සිට පහළට පනවන නීති මාලාවක් නොවේ. එය ශ්‍රී ලංකාවේ සෑම ග්‍රාම සේවා වසමකම පවතින සැබෑ ශක්‍යතාව හඳුනාගෙන ක්‍රියාත්මක වන බිම් මට්ටමේ සැලසුමකි.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-en">
+                        The "Three-Way Vision" Master Plan is not a top-down mandate. It is a bottom-up framework operating dynamically inside every single Grama Niladhari division in Sri Lanka.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-ta">
+                        "முக்கால பார்வை" மாஸ்டர் திட்டம் என்பது மேலிருந்து கீழ் விதிக்கப்படும் உத்தரவு அல்ல. இது இலங்கையின் ஒவ்வொரு கிராம நிலதாரி பிரிவிலும் உள்ள உண்மையான திறனை அங்கீகரிக்கும் அடிமட்ட திட்டமாகும்.
+                    </p>
+                </div>
+
+                <div class="db-card p-8 rounded-[2rem] backdrop-blur-md border-l-4 border-sky-500">
+                    <h4 class="text-lg font-bold text-sky-400 mb-2 lang-si">ප්‍රධාන ඉලක්කය</h4>
+                    <h4 class="text-lg font-bold text-sky-400 mb-2 lang-en">Primary Objective</h4>
+                    <h4 class="text-lg font-bold text-sky-400 mb-2 lang-ta">முதன்மை நோக்கம்</h4>
+                    
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-si">
+                        රැකියා ප්‍රවර්ධනය, දේශීය කර්මාන්ත ද්‍රවශීලතාවය ආරක්ෂා කිරීම සහ ජාතික දළ දේශීය නිෂ්පාදිතයට (GDP) සෑම ගමකම දායකත්වය සෘජුවම ලබාගැනීම.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-en">
+                        Job creation, protecting industrial liquidity, and capturing the organic contribution of every village into the national GDP.
+                    </p>
+                    <p class="text-sm md:text-base text-slate-300 leading-relaxed lang-ta">
+                        வேலை வாய்ப்புகளை மேம்படுத்துதல், உள்ளூர் தொழில்துறை பணப்புழக்கத்தை பாதுகாத்தல் மற்றும் தேசிய மொத்த உள்நாட்டு உற்பத்தியில் (GDP) ஒவ்வொரு கிராமத்தின் பங்களிப்பையும் நேரடியாகப் பெறுதல்.
+                    </p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 space-y-6">
+                
+                <div class="db-card p-8 md:p-10 rounded-[2.5rem] backdrop-blur-md">
+                    <div class="flex items-center gap-4 mb-6 border-b border-slate-800 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-600 flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(14,165,233,0.4)]">D</div>
+                        <div>
+                            <h2 class="text-xl md:text-2xl font-bold text-white lang-si">මානව හා භෞතික සම්පත් විග්‍රහය</h2>
+                            <h2 class="text-xl md:text-2xl font-bold text-white lang-en">Human & Physical Resource Mapping</h2>
+                            <h2 class="text-xl md:text-2xl font-bold text-white lang-ta">மனித மற்றும் பௌதீக வளங்கள் பகுப்பாய்வு</h2>
+                            <p class="text-xs text-sky-400 font-semibold uppercase tracking-wider mt-0.5">Grama Niladhari Division Audit</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        
+                        <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                            <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">01. Identification Phase</span>
+                            <h4 class="text-base font-bold text-white mb-2 lang-si">භෞතික සහ මානව දක්ෂතා හඳුනාගැනීම</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-en">Talent & Physical Asset Discovery</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-ta">பௌதீக மற்றும் மனித திறமைகளை கண்டறிதல்</h4>
+                            
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-si">
+                                සෑම ග්‍රාම සේවා වසමකම සිටින ශ්‍රම බලකායේ සැබෑ කුසලතා, වෘත්තීය හැකියාවන් සහ පවතින දේශීය ස්වභාවික සම්පත් පරිපූර්ණ ඩිජිටල් විග්‍රහයකට ලක් කෙරේ.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-en">
+                                The real hidden skills of the workforce, professional expertise, and available local natural resources within every division are subjected to an advanced digital auditing system.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-ta">
+                                ஒவ்வொரு கிராம நிலதாரி பிரிவிலும் உள்ள தொழிலாளர்களின் உண்மையான திறமைகள், தொழில்முறை திறன்கள் மற்றும் உள்ளூர் இயற்கை வளங்கள் விரிவான டிஜிட்டல் பகுப்பாய்விற்கு உட்படுத்தப்படுகின்றன.
+                            </p>
+                        </div>
+
+                        <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                            <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">02. Internal Audit</span>
+                            <h4 class="text-base font-bold text-white mb-2 lang-si">ශක්තීන්, දුර්වලතා, අවස්ථා සහ අභියෝග (SWOT)</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-en">Strengths, Weaknesses, Opportunities & Threats</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-ta">பலங்கள், பலவீனங்கள், வாய்ப்புகள் மற்றும் சவால்கள்</h4>
+                            
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-si">
+                                එම වසමට අදාළ කර්මාන්ත වල පවතින දුර්වලතා සහ අභියෝග (උදා: ප්‍රාග්ධන හිඟය, වෙළඳපොළ බිඳවැටීම) හඳුනාගෙන, ඒවා ජාතික මට්ටමේ Layer-B යාන්ත්‍රණය සමඟ බද්ධ කර විසඳුම් සපයයි.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-en">
+                                Local enterprise weaknesses and institutional challenges (e.g., credit gaps, market access) are audited and bridged by linking them with the national Layer-B adjustment loops.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-ta">
+                                அந்தப் பிரிவில் உள்ள தொழில்துறைகளின் பலவீனங்கள் மற்றும் சவால்கள் (எ.கா: மூலதனப் பற்றாக்குறை, சந்தை முடக்கம்) கண்டறியப்பட்டு, தேசிய அளவிலான Layer-B பொறிமுறையுடன் இணைக்கப்பட்டு தீர்வுகள் வழங்கப்படுகின்றன.
+                            </p>
+                        </div>
+
+                        <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                            <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">03. Solution & Pathway</span>
+                            <h4 class="text-base font-bold text-white mb-2 lang-si">අවශ්‍ය මාවත සොයාගැනීම (Strategic Pathway)</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-en">Discovering the Custom Growth Vector</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-ta">தேவையான பாதையை கண்டறிதல்</h4>
+                            
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-si">
+                                සාම්ප්‍රදායික පොදු සැලසුම් වෙනුවට, ඒ ඒ ග්‍රාමීය අංශයන්ට ගැලපෙන නිවැරදිම සහ ලාභදායීම ආර්ථික මාවත (Custom Industry Pathway) තාක්ෂණික මඟපෙන්වීම් ඔස්සේ විවර කර දේ.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-en">
+                                Instead of generic macro plans, the most viable, cost-effective, and custom industrial pathway is mathematically assigned to each village using micro-data.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-ta">
+                                பாரம்பரிய பொதுவான திட்டங்களுக்கு பதிலாக, அந்தந்த கிராமப்புற பிரிவுகளுக்கு ஏற்ற சரியான மற்றும் லாபகரமான பொருளாதார பாதை தொழில்நுட்ப வழிகாட்டல் மூலம் திறக்கப்படும்.
+                            </p>
+                        </div>
+
+                        <div class="p-5 bg-slate-900/50 rounded-2xl border border-white/5 hover:border-sky-500/30 transition-all">
+                            <span class="text-xs text-sky-400 font-bold uppercase tracking-widest block mb-1">04. Economic Yield</span>
+                            <h4 class="text-base font-bold text-white mb-2 lang-si">ග්‍රාමීය ව්‍යවසායකත්වය සහ GDP උද්දීපනය</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-en">Rural Entrepreneurship & Macro Economic Leap</h4>
+                            <h4 class="text-base font-bold text-white mb-2 lang-ta">கிராமிய தொழில்முனைவோர் மற்றும் GDP ஊக்குவிப்பு</h4>
+                            
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-si">
+                                මෙලෙස ගම් මට්ටමින් නව ව්‍යවසායකයින් දහස් ගණනක් බිහිවීමෙන් ස්වයංක්‍රීයවම දේශීය රැකියා ප්‍රවර්ධනය වන අතර, එය සමස්ත දළ දේශීය නිෂ්පාදිතය ශීඝ්‍රයෙන් ඉහළ නැංවීමට මඟ පාදයි.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-en">
+                                Generating thousands of local entrepreneurs triggers an organic chain reaction of regional job creation, rapidly scaling the country's sovereign GDP output.
+                            </p>
+                            <p class="text-xs md:text-sm text-slate-400 leading-relaxed lang-ta">
+                                இவ்வாறு கிராமிய அளவில் ஆயிரக்கணக்கான புதிய தொழில்முனைவோர்களை உருவாக்குவதன் மூலம் உள்ளூர் வேலைவாய்ப்புகள் தானாகவே மேம்படுத்தப்பட்டு, மொத்த உள்நாட்டு உற்பத்தி (GDP) வேகமாக அதிகரிக்க வழிவகுக்கும்.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-12 p-8 rounded-[2.5rem] bg-gradient-to-r from-sky-950/30 to-slate-900/40 border border-sky-500/25 text-center backdrop-blur-sm">
+            <p class="text-sm md:text-lg italic text-sky-300 leading-relaxed lang-si">
+                "සැබෑ ආර්ථික නිදහස යනු ඉහළින් ලැබෙන සහනාධාර නොවේ. සෑම ග්‍රාම සේවා වසමකම සැඟවුණු ප්‍රඥාව සහ සම්පත් නිවැරදිව කළමනාකරණය කර, ජාතික නිෂ්පාදනයට දායක කරවන 'D - ආර්ථික සැලසුම්කරණය තුන් කල් දැක්ම' යි."
+            </p>
+            <p class="text-sm md:text-lg italic text-sky-300 leading-relaxed lang-en">
+                "True economic sovereignty is not found in high-level subsidies. It is found in unlocking and managing the hidden assets of every village to serve the sovereign collective GDP output."
+            </p>
+            <p class="text-sm md:text-lg italic text-sky-300 leading-relaxed lang-ta">
+                "உண்மையான பொருளாதார சுதந்திரம் என்பது மேலிருந்து பெறப்படும் மானியங்கள் அல்ல. ஒவ்வொரு கிராம நிலதாரி பிரிவிலும் உள்ள மறைந்திருக்கும் ஞானத்தையும் வளங்களையும் சரியாக நிர்வகித்து, தேசிய உற்பத்திக்கு பங்களிக்கச் செய்வதே 'D - பொருளாதார திட்டமிடல் முக்கால பார்வை' ஆகும்."
+            </p>
+        </div>
+
+        <div class="text-center pt-10 flex flex-wrap justify-center gap-4">
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-si">
+                ← ආපසු මාස්ටර් වෙබ් අඩවියට
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-en">
+                ← Back to Master Panel
+            </button>
+            <button onclick="window.close()" class="px-8 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-sm font-semibold text-slate-400 border border-white/10 transition-colors lang-ta">
+                ← முதன்மைப் பலகத்திற்குத் திரும்பு
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        function changeLanguage(lang) {
+            const siElements = document.querySelectorAll('.lang-si');
+            const enElements = document.querySelectorAll('.lang-en');
+            const taElements = document.querySelectorAll('.lang-ta');
+
+            // Hide everything first
+            siElements.forEach(el => el.style.display = 'none');
+            enElements.forEach(el => el.style.display = 'none');
+            taElements.forEach(el => el.style.display = 'none');
+
+            // Show selected language
+            if (lang === 'si') {
+                siElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'en') {
+                enElements.forEach(el => el.style.display = 'block');
+            } else if (lang === 'ta') {
+                taElements.forEach(el => el.style.display = 'block');
+            }
+        }
+    </script>
+
+</body>
+</html>
