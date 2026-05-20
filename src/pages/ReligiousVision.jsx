@@ -38,7 +38,12 @@ const translations = {
     closeBtn: 'වසා දමන්න',
     techDisciplineTitle: 'තාක්ෂණය සහ විදර්ශනාත්මක විනය:',
     back: '← ආපසු',
-    comingSoon: 'විශේෂ නිවේදනය: විනයධර ධර්මධර භික්ෂූන් වහන්සේලාගේ එකතුවකින් ළඟදීම ධර්ම සංගායනාවක් කොට, ධර්මයත් විනයත් තාක්ෂණාරූඪ කිරීමෙන් අනතුරුව මෙම පිටුව සර්වසම්පූර්ණ කරනු ලැබේ.'
+    comingSoon: {
+      buddhist: '⚠️ විශේෂ නිවේදනය: විනයධර ධර්මධර භික්ෂූන් වහන්සේලාගේ එකතුවකින් ළඟදීම ධර්ම සංගායනාවක් කොට, ධර්මයත් විනයත් තාක්ෂණාරූඪ කිරීමෙන් අනතුරුව මෙම පිටුව සර්වසම්පූර්ණ කරනු ලැබේ.',
+      christian: '⛪ විශේෂ නිවේදනය: ආධ්යාත්මික දේවධර්මවේදීන්ගේ මඟපෙන්වීම යටතේ ක්රිස්තු ප්රේමයේ සහ සදාචාරයේ උතුම් හරයන් තාක්ෂණාරූඪ කිරීමෙන් අනතුරුව මෙම පිටුව සර්වසම්පූර්ණ කරනු ලැබේ.',
+      islamic: '🌙 විශේෂ නිවේදනය: ඉස්ලාමීය විද්වතුන්ගේ සහ ශාස්ත්රඥයින්ගේ මඟපෙන්වීම මත අල්-කුර්ආනයේ උසස් සමාජීය විනය රාමුව තාක්ෂණාරූඪ කිරීමෙන් අනතුරුව මෙම පිටුව සර්වසම්පූර්ණ කරනු ලැබේ.',
+      hindu: '🔱 විශේෂ නිවේදනය: හින්දු දාර්ශනිකයන් සහ ආධ්යාත්මික යෝගීවරුන්ගේ එකතුවෙන් විශ්වීය කර්ම නියමයන් සහ ආධ්යාත්මික විනය තාක්ෂණාරූඪ කිරීමෙන් අනතුරුව මෙම පිටුව සර්වසම්පූර්ණ කරනු ලැබේ.'
+    }
   },
   ta: {
     headerTitle: 'மத அமைப்பு',
@@ -73,7 +78,12 @@ const translations = {
     closeBtn: 'மூடு',
     techDisciplineTitle: 'தொழில்நுட்பம் மற்றும் மெய்யுணர்வு ஒழுக்கம்:',
     back: '← பின்கு',
-    comingSoon: 'விசேஷ நிவேதனம்: வினயதர தர்மதர பிக்ஷூ வதன்ஸ்களின் ஒன்றுவதினில் ளகாதீரம் தர்ம சங்காயனம் கொடு, தர்மமும் வினயமும் தாக்ஷணாரூடம் செய்வதன் அன்று இந்த பக்கம் சர்வஸம்பூர்ணம் செய்யப்படும்.'
+    comingSoon: {
+      buddhist: '⚠️ விசேஷ நிவேதனம்: வினயதர தர்மதர பிக்ஷூ வதன்ஸ்களின் ஒன்றுவதினில் ளகாதீரம் தர்ம சங்காயனம் கொடு, தர்மமும் வினயமும் தாக்ஷணாரூடம் செய்வதன் அன்று இந்த பக்கம் சர்வஸம்பூர்ணம் செய்யப்படும்.',
+      christian: '⛪ விசேஷ நிவேதனம்: ஆன்மீக இறையியலாளர்களின் வழிகாட்டுதலின் கீழ் கிறிஸ்துவின் அன்பு மற்றும் ஒழுக்கத்தின் உன்னத மதிப்புகள் தொழில்நுட்பமயமாக்கப்பட்ட பின்னர் இப்பக்கம் முழுமையாக்கப்படும்.',
+      islamic: '🌙 விசேஷ நிவேதனம்: இஸ்லாமிய அறிஞர்கள் மற்றும் கல்வியாளர்களின் வழிகாட்டுதலின் கீழ் குர்ஆனின் உயரிய சமூக ஒழுங்குமுறை தொழில்நுட்பமயமாக்கப்பட்ட பின்னர் இப்பக்கம் முழுமையாக்கப்படும்.',
+      hindu: '🔱 விசேஷ நிவேதனம்: இந்து தத்துவஞானிகள் மற்றும் ஆன்மீக யோகிகளின் ஒருங்கிணைப்பில் பிரபஞ்ச கர்ம விதிகளும் ஆன்மீக ஒழுக்கமும் தொழில்நுட்பமயமாக்கப்பட்ட பின்னர் இப்பக்கம் முழுமையாக்கப்படும்.'
+    }
   },
   en: {
     headerTitle: 'Religious System',
@@ -108,7 +118,12 @@ const translations = {
     closeBtn: 'Close',
     techDisciplineTitle: 'Technology and Philosophical Discipline:',
     back: '← Back',
-    comingSoon: 'Special Notice: This page will be fully completed soon after a Dharma Council with Vinaya-dhara and Dharma-dhara monks, digitizing both Dharma and Vinaya.'
+    comingSoon: {
+      buddhist: '⚠️ Special Notice: This page will be fully completed soon after a Dharma Council with Vinaya-dhara and Dharma-dhara monks, digitizing both Dharma and Vinaya.',
+      christian: '⛪ Special Notice: This page will be fully completed after digitizing the noble values of Christian love and morality under the guidance of spiritual theologians.',
+      islamic: '🌙 Special Notice: This page will be fully completed after digitizing the high social discipline framework of the Al-Quran under the guidance of Islamic scholars and academics.',
+      hindu: '🔱 Special Notice: This page will be fully completed after digitizing the universal karmic laws and spiritual discipline under the integration of Hindu philosophers and spiritual yogis.'
+    }
   }
 }
 
@@ -289,7 +304,7 @@ function ReligiousVision({ lang, setCurrentPage }) {
               
               <div className={`mt-6 bg-${colorClass}-500/10 border border-dashed border-${colorClass}-500/40 p-5 rounded-2xl text-justify`}>
                 <p className={`text-${colorClass}-300 font-bold text-center text-sm md:text-base`}>
-                  ⚠️ {t.comingSoon}
+                  {t.comingSoon[selectedReligion] || t.comingSoon}
                 </p>
               </div>
             </div>

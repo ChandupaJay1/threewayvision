@@ -136,6 +136,21 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
     }
   }, [activeProjectId, activeSlideIndex, lang, tableSearchQuery])
 
+  // Auto-wrap injected HTML tables for horizontal scroll safety on mobile
+  useEffect(() => {
+    const wrapperClass = 'table-responsive-wrapper'
+    const tables = document.querySelectorAll('.animate-fade table:not(.wrapped)')
+    tables.forEach((table) => {
+      if (table.parentElement.classList.contains(wrapperClass)) return
+      
+      const wrapper = document.createElement('div')
+      wrapper.className = `${wrapperClass} overflow-x-auto my-4 w-full rounded-xl border border-white/5 bg-slate-950/20`
+      table.parentNode.insertBefore(wrapper, table)
+      wrapper.appendChild(table)
+      table.classList.add('wrapped')
+    })
+  }, [activeProjectId, activeSlideIndex, lang, hubView])
+
   const filterRows = (query) => {
     const table = document.getElementById('contentDataTable')
     if (!table) return
@@ -446,15 +461,11 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
           }
         }
         .chart-wrapper {
-          min-height: 280px;
-          height: 100%;
+          height: 280px;
           background: rgba(255, 255, 255, 0.02);
-          border: 1px border rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.05);
           border-radius: 1.25rem;
           padding: 1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           position: relative;
         }
         .styled-list {
@@ -550,6 +561,22 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
           margin-right: 0.75rem;
           vertical-align: middle;
         }
+        /* Custom responsive fixes */
+        .scrollbar-none::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-none {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        #contentDataTable, .data-table {
+          min-width: 600px;
+        }
+        @media(min-width: 768px) {
+          #contentDataTable, .data-table {
+            min-width: auto;
+          }
+        }
       `}</style>
 
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
@@ -591,11 +618,11 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
           </header>
 
           <div className="flex flex-1 min-h-0 flex-col lg:flex-row overflow-hidden">
-            <aside className="lg:w-[340px] shrink-0 border-b lg:border-b-0 lg:border-r border-amber-500/15 bg-[#020c0a]/60 p-4 overflow-y-auto max-h-[40vh] lg:max-h-none">
-              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500 font-bold px-2 mb-3">
+            <aside className="lg:w-[340px] shrink-0 border-b lg:border-b-0 lg:border-r border-amber-500/15 bg-[#020c0a]/60 p-3 lg:p-4 overflow-x-auto lg:overflow-y-auto lg:max-h-none max-h-none scrollbar-none">
+              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500 font-bold px-2 mb-3 hidden lg:block">
                 {hubMeta.sidebarSectors}
               </p>
-              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+              <div className="flex lg:flex-col gap-2 min-w-max lg:min-w-0">
                 {sectorTabList.map((tab) => (
                   <button
                     key={tab.id}
@@ -687,7 +714,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
             aria-hidden={!drawerIssue}
           />
           <aside
-            className={`fixed top-0 right-0 z-[201] h-full w-full max-w-[520px] bg-gradient-to-b from-[#041412] to-[#020b0d] border-l border-amber-400 shadow-[-30px_0_60px_rgba(0,0,0,0.8)] p-8 flex flex-col transition-[right] duration-300 ${
+            className={`fixed top-0 z-[201] h-full w-full max-w-[520px] bg-gradient-to-b from-[#041412] to-[#020b0d] border-l border-amber-400 shadow-[-30px_0_60px_rgba(0,0,0,0.8)] p-5 sm:p-8 flex flex-col transition-[right] duration-300 ${
               drawerIssue ? 'right-0' : '-right-full'
             }`}
           >
@@ -754,56 +781,58 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
       <div className="flex-1 max-w-7xl mx-auto px-4 md:px-6 py-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* Left Side: Back button and Project Selector (Span 4) */}
-        <aside className="lg:col-span-4 flex flex-col gap-6">
-          <button
-            onClick={() => setCurrentPage('main')}
-            className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all font-semibold"
-          >
-            {staticLabels.backBtn}
-          </button>
+        <aside className="lg:col-span-4 flex flex-col gap-4 md:gap-6">
+          <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3">
+            <button
+              onClick={() => setCurrentPage('main')}
+              className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all font-semibold text-xs sm:text-sm"
+            >
+              {staticLabels.backBtn}
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setHubView('matrix')}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all font-semibold text-sm"
-          >
-            ← {hubMeta.viewMatrix}
-          </button>
+            <button
+              type="button"
+              onClick={() => setHubView('matrix')}
+              className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all font-semibold text-xs sm:text-sm"
+            >
+              ← {hubMeta.viewMatrix}
+            </button>
+          </div>
 
-          <div className="p-6 rounded-[2rem] bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl">
-            <h2 className="text-xl font-bold text-gradient mb-6 pb-3 border-b border-white/10 flex items-center justify-between">
+          <div className="p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl">
+            <h2 className="text-lg md:text-xl font-bold text-gradient mb-4 lg:mb-6 pb-2 lg:pb-3 border-b border-white/10 flex items-center justify-between">
               <span>{staticLabels.allProjects}</span>
-              <span className="text-xs px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 font-extrabold uppercase tracking-wider">
+              <span className="text-[10px] md:text-xs px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 font-extrabold uppercase tracking-wider">
                 Thun Kal
               </span>
             </h2>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-row lg:flex-col gap-3 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none">
               {projectsList.map((p, idx) => {
                 const isActive = p.id === activeProjectId
                 return (
                   <button
                     key={p.id}
                     onClick={() => setActiveProjectId(p.id)}
-                    className={`text-left p-4 rounded-2xl border transition-all duration-300 ${
+                    className={`text-left p-3.5 md:p-4 rounded-xl md:rounded-2xl border transition-all duration-300 shrink-0 min-w-[240px] lg:min-w-0 ${
                       isActive 
                         ? 'bg-amber-500/10 border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.15)]' 
                         : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'
                     }`}
                   >
                     <div className="flex items-center gap-3 mb-1">
-                      <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${
+                      <span className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center text-[10px] md:text-xs font-bold ${
                         isActive ? 'bg-amber-500 text-slate-950 shadow-[0_0_10px_rgba(245,158,11,0.4)]' : 'bg-slate-800 text-gray-400'
                       }`}>
                         0{idx + 1}
                       </span>
-                      <span className={`text-[10px] font-extrabold tracking-widest uppercase ${
+                      <span className={`text-[9px] md:text-[10px] font-extrabold tracking-widest uppercase ${
                         isActive ? 'text-amber-400' : 'text-gray-500'
                       }`}>
                         National Diagnostic
                       </span>
                     </div>
-                    <p className={`text-sm font-bold leading-snug mt-2 ${
+                    <p className={`text-xs md:text-sm font-bold leading-snug mt-2 ${
                       isActive ? 'text-white' : 'text-gray-400'
                     }`}>
                       {p.name[lang] || p.name['si']}
@@ -817,7 +846,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
 
         {/* Right Side: Active Project Slide Viewer (Span 8) */}
         <main className="lg:col-span-8 flex flex-col">
-          <div className="flex-1 rounded-[2.5rem] bg-slate-950/80 border border-white/10 overflow-hidden shadow-2xl flex flex-col relative"
+          <div className="flex-1 rounded-[1.5rem] md:rounded-[2.5rem] bg-slate-950/80 border border-white/10 overflow-hidden shadow-2xl flex flex-col relative"
             style={{
               backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.97)), url(${slideBg})`,
               backgroundSize: 'cover',
@@ -825,57 +854,57 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
             }}
           >
             {/* Header section inside card */}
-            <div className="p-6 md:p-8 border-b border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-900/60 backdrop-blur-md">
+            <div className="p-4 md:p-6 lg:p-8 border-b border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-900/60 backdrop-blur-md">
               <div className="flex flex-col">
-                <span className="text-[10px] text-amber-400 font-extrabold uppercase tracking-[0.2em] mb-1">
+                <span className="text-[9px] md:text-[10px] text-amber-400 font-extrabold uppercase tracking-[0.2em] mb-1">
                   {project.headerText[lang] ? 'Active Roadmap Slide Deck' : 'Three-Way Vision Diagnostic'}
                 </span>
-                <h3 className="text-base md:text-lg font-bold text-white leading-tight">
+                <h3 className="text-sm md:text-base lg:text-lg font-bold text-white leading-tight">
                   {project.headerText[lang] || project.headerText['si']}
                 </h3>
               </div>
-              <div className="inline-flex items-center gap-1.5 self-start sm:self-center px-4 py-1.5 rounded-full bg-slate-800/80 border border-white/10 text-xs font-bold text-gray-300">
+              <div className="inline-flex items-center gap-1.5 self-start sm:self-center px-3 py-1.5 md:px-4 md:py-1.5 rounded-full bg-slate-800/80 border border-white/10 text-[10px] md:text-xs font-bold text-gray-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
                 {project.pageLabel[lang]} {activeSlideIndex + 1} / {currentLangSlides.length}
               </div>
             </div>
 
             {/* Slide Body */}
-            <div className="flex-1 p-6 md:p-8 overflow-y-auto">
+            <div className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto">
               
               {/* Layout Type 1: Plain HTML slides (gatalu1 - gatalu3) */}
               {!project.layoutType || project.layoutType === 'legacy' ? (
                 <div className="animate-fade">
-                  <h2 className="text-xl md:text-2xl font-bold mb-6 text-white pb-3 border-b border-white/5 flex items-center" 
+                  <h2 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 lg:mb-6 text-white pb-3 border-b border-white/5 flex items-center" 
                     dangerouslySetInnerHTML={{ __html: slide.title }} 
                   />
-                  <div className="text-sm md:text-base text-gray-300 leading-relaxed"
+                  <div className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed overflow-x-hidden"
                     dangerouslySetInnerHTML={{ __html: slide.bodyHtml }} 
                   />
                 </div>
               ) : project.layoutType === 'analytics' ? (
                 /* Layout Type 3: Analytics slides with chart (gatalu6-style matrix + gatalu7) */
-                <div className="animate-fade space-y-6">
+                <div className="animate-fade space-y-4 md:space-y-6">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    <span className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xl md:text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
                       {slide.letter}
                     </span>
                   </div>
 
                   <div>
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white leading-snug">
+                    <h2 className="text-lg md:text-xl lg:text-2xl font-extrabold text-white leading-snug">
                       {slide.title}
                     </h2>
-                    <p className="text-gray-400 text-sm md:text-base mt-3 leading-relaxed">
+                    <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-2 md:mt-3 leading-relaxed">
                       {slide.content}
                     </p>
                   </div>
 
                   {slide.bullets && (
-                    <div className="p-6 rounded-2xl bg-slate-900/60 border border-white/5">
+                    <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-900/60 border border-white/5">
                       <ul className="styled-list my-0">
                         {slide.bullets.map((item, idx) => (
-                          <li key={idx} className="text-sm text-gray-300">{item}</li>
+                          <li key={idx} className="text-xs sm:text-sm text-gray-300">{item}</li>
                         ))}
                       </ul>
                     </div>
@@ -885,7 +914,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                     <div className="quote-box">
                       <div className="flex items-center gap-2 mb-2 not-italic">
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                        <span className="text-[10px] font-extrabold tracking-widest uppercase text-amber-400">
+                        <span className="text-[9px] md:text-[10px] font-extrabold tracking-widest uppercase text-amber-400">
                           {slide.buddhistTitle || staticLabels.buddhistTitle}
                         </span>
                       </div>
@@ -896,15 +925,15 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {slide.tableRows && (
                       <div className="space-y-4">
-                        <h4 className="text-sm font-bold text-amber-400">{slide.tableTitle}</h4>
+                        <h4 className="text-xs md:text-sm font-bold text-amber-400">{slide.tableTitle}</h4>
                         <input
                           type="text"
-                          className="table-filter"
+                          className="table-filter px-3 py-2 text-xs md:px-4 md:py-2.5 md:text-sm"
                           placeholder={project.searchPlaceholder?.[lang] || staticLabels.searchPlaceholder}
                           value={tableSearchQuery}
                           onChange={(e) => setTableSearchQuery(e.target.value)}
                         />
-                        <div className="overflow-x-auto">
+                        <div className="overflow-x-auto rounded-xl border border-white/5">
                           <table className="data-table">
                             <thead>
                               <tr>
@@ -939,7 +968,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                         <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">
                           {staticLabels.chartTitle}
                         </h4>
-                        <div className="chart-wrapper" style={{ minHeight: 260 }}>
+                        <div className="chart-wrapper" style={{ height: 280, position: 'relative' }}>
                           <canvas id="analyticsChartMatrix"></canvas>
                         </div>
                       </div>
@@ -948,35 +977,35 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                 </div>
               ) : (
                 /* Layout Type 2: Structured Slide Layout (gatalu4 - gatalu6) */
-                <div className="animate-fade space-y-6">
+                <div className="animate-fade space-y-4 md:space-y-6">
                   {/* Top Header Badge Row */}
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    <span className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xl md:text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
                       {slide.letter}
                     </span>
-                    <span className="px-4 py-1.5 rounded-xl bg-slate-800 border border-white/10 text-xs font-extrabold uppercase text-amber-400 tracking-wider">
+                    <span className="px-3 py-1.5 md:px-4 md:py-1.5 rounded-lg md:rounded-xl bg-slate-800 border border-white/10 text-[10px] md:text-xs font-extrabold uppercase text-amber-400 tracking-wider">
                       {slide.meta}
                     </span>
                   </div>
 
                   {/* Main Header */}
                   <div>
-                    <h2 className="text-xl md:text-2xl font-extrabold text-white leading-snug">
+                    <h2 className="text-lg md:text-xl lg:text-2xl font-extrabold text-white leading-snug">
                       {slide.title}
                     </h2>
-                    <p className="text-gray-400 text-sm md:text-base mt-3 leading-relaxed italic">
+                    <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-2 md:mt-3 leading-relaxed italic">
                       {slide.desc}
                     </p>
                   </div>
 
                   {/* Matrix List Grid */}
-                  <div className="p-6 rounded-2xl bg-slate-900/60 border border-white/5">
+                  <div className="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-900/60 border border-white/5">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">
                       {staticLabels.matrixTitle}
                     </h4>
                     <ul className="styled-list my-0">
                       {slide.matrix && slide.matrix.map((item, idx) => (
-                        <li key={idx} className="text-sm text-gray-300">
+                        <li key={idx} className="text-xs sm:text-sm text-gray-300">
                           {item}
                         </li>
                       ))}
@@ -988,7 +1017,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                     <div className="quote-box">
                       <div className="flex items-center gap-2 mb-2 not-italic">
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                        <span className="text-[10px] font-extrabold tracking-widest uppercase text-amber-400">
+                        <span className="text-[9px] md:text-[10px] font-extrabold tracking-widest uppercase text-amber-400">
                           {staticLabels.buddhistTitle}
                         </span>
                       </div>
@@ -1001,13 +1030,13 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                     <div className="space-y-4">
                       <input
                         type="text"
-                        className="table-filter"
+                        className="table-filter px-3 py-2 text-xs md:px-4 md:py-2.5 md:text-sm"
                         placeholder={staticLabels.searchPlaceholder}
                         value={tableSearchQuery}
                         onChange={(e) => setTableSearchQuery(e.target.value)}
                       />
 
-                      <div className="overflow-x-auto">
+                      <div className="overflow-x-auto rounded-xl border border-white/5">
                         <table className="data-table">
                           <thead>
                             <tr>
@@ -1041,21 +1070,21 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
             </div>
 
             {/* Slide Navigation footer controls */}
-            <div className="p-6 border-t border-white/10 flex items-center justify-between bg-slate-900/60 backdrop-blur-md">
+            <div className="p-4 md:p-6 border-t border-white/10 flex items-center justify-between bg-slate-900/60 backdrop-blur-md">
               <button
                 onClick={handlePrev}
-                className="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm font-bold hover:bg-white/10 text-gray-300 transition-all"
+                className="px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl bg-white/5 border border-white/10 text-xs md:text-sm font-bold hover:bg-white/10 text-gray-300 transition-all"
               >
                 {staticLabels.prevBtn}
               </button>
 
-              <div className="text-xs font-semibold text-gray-400 tracking-wider">
+              <div className="text-[10px] md:text-xs font-semibold text-gray-400 tracking-wider">
                 {project.pageLabel[lang] || project.pageLabel['si']} {activeSlideIndex + 1} / {currentLangSlides.length}
               </div>
 
               <button
                 onClick={handleNext}
-                className="px-5 py-2.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all"
+                className="px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl bg-amber-500 text-slate-950 font-bold text-xs md:text-sm hover:bg-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all"
               >
                 {staticLabels.nextBtn}
               </button>
