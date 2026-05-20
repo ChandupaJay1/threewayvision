@@ -217,6 +217,8 @@ function ReligiousVision({ lang, setCurrentPage }) {
   const renderReligionDetailPage = () => {
     const config = religionConfigs[selectedReligion]
     const colorClass = config.primaryColor
+    const religionTitleKey = `${selectedReligion}Title`
+    const religionSubtitleKey = `${selectedReligion}Subtitle`
     return (
       <main className="pt-28 pb-20 px-4 md:px-6 animate-fade">
         <style dangerouslySetInnerHTML={{ __html: `
@@ -278,8 +280,8 @@ function ReligiousVision({ lang, setCurrentPage }) {
           <div className="detail-card-bg" style={{ backgroundImage: `url(${config.backgroundImage})` }}>
             <div className={`relative z-10 glass-panel-${selectedReligion} rounded-[2.5rem] p-8 text-center`}>
               {renderReligionIcon(selectedReligion)}
-              <h1 className={`text-3xl md:text-4xl font-black text-${colorClass}-400 mb-2`}>{config.title}</h1>
-              <p className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">{config.subtitle}</p>
+              <h1 className={`text-3xl md:text-4xl font-black text-${colorClass}-400 mb-2`}>{t[religionTitleKey]}</h1>
+              <p className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">{t[religionSubtitleKey]}</p>
               
               <div className={`mt-6 bg-${colorClass}-500/10 border border-dashed border-${colorClass}-500/40 p-5 rounded-2xl text-justify`}>
                 <p className={`text-${colorClass}-300 font-bold text-center text-sm md:text-base`}>

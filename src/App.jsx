@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import MainPage from './pages/MainPage'
 import EconomyPage from './pages/EconomyPage'
 import ReligiousVision from './pages/ReligiousVision'
+import PoliticalVision from './pages/PoliticalVision'
 import OnlineShop from './pages/OnlineShop'
 import BusinessPlan from './pages/BusinessPlan'
 import BenefitAnalysis from './pages/BenefitAnalysis'
@@ -11,6 +12,7 @@ import MasterPlan from './pages/MasterPlan'
 import EconomicPlanning from './pages/EconomicPlanning'
 import EconomicProblemAnalysis from './pages/EconomicProblemAnalysis'
 import Introduction from './pages/Introduction'
+import PoloticsIntro from './pages/PoloticsIntro'
 import Footer from './components/Footer'
 
 function App() {
@@ -46,6 +48,12 @@ function App() {
           )}
           {currentPage === 'religion' && (
             <ReligiousVision lang={lang} setCurrentPage={setCurrentPage} />
+          )}
+          {currentPage === 'politics' && (
+            <PoliticalVision lang={lang} setCurrentPage={setCurrentPage} />
+          )}
+          {currentPage === 'polotics_intro' && (
+            <PoloticsIntro lang={lang} setCurrentPage={setCurrentPage} />
           )}
           <Footer />
         </div>
