@@ -1,23 +1,83 @@
 import { useState, useEffect, useRef } from 'react'
 import Navbar from '../components/Navbar'
-import { projectsList } from '../data/projectsData'
+import {
+  projectsList,
+  projectsHubMeta,
+  sectorTabs,
+  strategicMatrix,
+  issueProjectLinks,
+  getDrawerAbcd
+} from '../data/projectsData'
 import Chart from 'chart.js/auto'
 
+function resolveLinkedAbcd(issue, lang) {
+  const projectId = issueProjectLinks[String(issue.index)]
+  if (!projectId) return getDrawerAbcd(issue)
+
+  const proj = projectsList.find((p) => p.id === projectId)
+  const slides = proj?.slides?.[lang] || proj?.slides?.si
+  if (!slides?.length) return getDrawerAbcd(issue)
+
+  const slideA = slides.find((s) => s.letter === 'A') || slides[0]
+  const slideB = slides.find((s) => s.letter === 'B')
+  const slideC = slides.find((s) => s.letter === 'C')
+  const slideD = slides.find((s) => s.letter === 'D')
+
+  const joinMatrix = (s) => (s?.matrix ? s.matrix.join('\n\n') : s?.content || s?.desc || '')
+
+  if (proj.layoutType === 'structured' || proj.layoutType === 'analytics') {
+    return {
+      problem: slideA.title || issue.text,
+      causes: joinMatrix(slideB) || getDrawerAbcd(issue).causes,
+      benefits: joinMatrix(slideC) || getDrawerAbcd(issue).benefits,
+      solutions: joinMatrix(slideD) || getDrawerAbcd(issue).solutions
+    }
+  }
+
+  return getDrawerAbcd(issue)
+}
+
 function ProjectsHub({ lang, setLang, setCurrentPage }) {
+  const [hubView, setHubView] = useState('matrix')
+  const [activeSector, setActiveSector] = useState('eco')
+  const [drawerIssue, setDrawerIssue] = useState(null)
   const [activeProjectId, setActiveProjectId] = useState('gatalu1')
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [tableSearchQuery, setTableSearchQuery] = useState('')
+
+  const hubMeta = projectsHubMeta[lang] || projectsHubMeta.si
+  const matrixData = strategicMatrix[lang] || strategicMatrix.si
+  const activeSectorData = matrixData[activeSector]
+  const sectorTabList = sectorTabs[lang] || sectorTabs.si
 
   // Find the selected project and its translated labels
   const project = projectsList.find(p => p.id === activeProjectId) || projectsList[0]
   const currentLangSlides = project.slides[lang] || project.slides['si']
   const slide = currentLangSlides[activeSlideIndex] || currentLangSlides[0]
 
-  // Translate basic UI labels
+  const openSolutionDrawer = (issue, levelKey) => {
+    const linkedProject = issueProjectLinks[String(issue.index)]
+    setDrawerIssue({
+      issue,
+      levelKey,
+      linkedProject,
+      abcd: resolveLinkedAbcd(issue, lang)
+    })
+  }
+
+  const openLinkedReport = () => {
+    if (!drawerIssue?.linkedProject) return
+    setActiveProjectId(drawerIssue.linkedProject)
+    setActiveSlideIndex(0)
+    setDrawerIssue(null)
+    setHubView('reports')
+  }
+
+  // Translate basic UI labels (ABCD reports view)
   const staticLabels = {
     si: {
-      backBtn: '← ප්‍රධාන මෙනුවට',
-      allProjects: 'ජාතික ව්‍යාපෘති 7',
+      backBtn: hubMeta.backBtn,
+      allProjects: hubMeta.allProjects,
       prevBtn: '← පසුපසට',
       nextBtn: 'ඉදිරියට →',
       buddhistTitle: 'බුදු දහමේ ආර්ථික ප්‍රඥාව',
@@ -27,8 +87,8 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
       noResults: 'ගැලපෙන දත්ත නොමැත.'
     },
     en: {
-      backBtn: '← Back to Main',
-      allProjects: '7 National Projects',
+      backBtn: projectsHubMeta.en.backBtn,
+      allProjects: projectsHubMeta.en.allProjects,
       prevBtn: '← Prev',
       nextBtn: 'Next →',
       buddhistTitle: 'Economic Wisdom in Buddhism',
@@ -38,8 +98,8 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
       noResults: 'No matching records found.'
     },
     ta: {
-      backBtn: '← முதன்மைப் பலகை',
-      allProjects: '7 தேசிய திட்டங்கள்',
+      backBtn: projectsHubMeta.ta.backBtn,
+      allProjects: projectsHubMeta.ta.allProjects,
       prevBtn: '← முந்தைய',
       nextBtn: 'அடுத்த →',
       buddhistTitle: 'பௌத்த பொருளாதார ஞானம்',
@@ -100,6 +160,8 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
 
   // Handle Chart rendering
   useEffect(() => {
+    if (hubView !== 'reports') return undefined
+
     let activeCharts = []
 
     const initCharts = () => {
@@ -337,7 +399,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
       clearTimeout(timer)
       activeCharts.forEach(c => c.destroy())
     }
-  }, [activeProjectId, activeSlideIndex, lang])
+  }, [activeProjectId, activeSlideIndex, lang, hubView])
 
   // Slide Deck Navigation handlers
   const handlePrev = () => {
@@ -492,6 +554,203 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
 
       <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />
 
+      {hubView === 'matrix' ? (
+        <div
+          className="flex-1 flex flex-col overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #020d14 0%, #041916 50%, #08241b 100%)' }}
+        >
+          <header className="shrink-0 flex flex-wrap items-center justify-between gap-4 px-6 md:px-10 py-4 border-b border-white/[0.06] bg-[#02090d]/90 backdrop-blur-xl">
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="w-11 h-11 rounded-full border-2 border-amber-400 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.3)]">
+                <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+                  <path d="M10 50C10 50 28 25 50 25C72 25 90 50 90 50C90 50 72 75 50 75C28 75 10 50 10 50Z" stroke="#fbbf24" strokeWidth="8" />
+                  <circle cx="50" cy="50" r="14" fill="#fbbf24" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <h1 className="text-lg md:text-xl font-extrabold bg-gradient-to-r from-yellow-200 via-amber-400 to-yellow-600 bg-clip-text text-transparent">
+                  {hubMeta.pageTitle}
+                </h1>
+                <p className="text-xs md:text-sm text-emerald-300/90 font-medium mt-1 max-w-3xl leading-relaxed hidden sm:block">
+                  {hubMeta.pageSubtitle}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => setHubView('reports')}
+                className="px-4 py-2 rounded-full text-xs font-bold border border-amber-500/30 text-amber-300 hover:bg-amber-500/10"
+              >
+                {hubMeta.viewReports}
+              </button>
+              <span className="text-xs font-bold text-amber-400 border border-amber-500/20 px-4 py-2 rounded-full bg-amber-500/[0.03] hidden md:inline">
+                {hubMeta.systemTag}
+              </span>
+            </div>
+          </header>
+
+          <div className="flex flex-1 min-h-0 flex-col lg:flex-row overflow-hidden">
+            <aside className="lg:w-[340px] shrink-0 border-b lg:border-b-0 lg:border-r border-amber-500/15 bg-[#020c0a]/60 p-4 overflow-y-auto max-h-[40vh] lg:max-h-none">
+              <p className="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500 font-bold px-2 mb-3">
+                {hubMeta.sidebarSectors}
+              </p>
+              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+                {sectorTabList.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveSector(tab.id)}
+                    className={`text-left px-4 py-3 rounded-xl border transition-all min-w-[200px] lg:min-w-0 ${
+                      activeSector === tab.id
+                        ? 'bg-amber-500/10 border-amber-400 text-amber-300 shadow-[0_0_15px_rgba(250,204,21,0.08)]'
+                        : 'border-white/[0.04] text-slate-300 hover:border-amber-500/25 hover:bg-white/[0.02]'
+                    }`}
+                  >
+                    <span className="block font-semibold text-sm">{tab.label}</span>
+                    <span className="block text-[0.7rem] text-slate-500 mt-0.5">{tab.enTitle}</span>
+                  </button>
+                ))}
+              </div>
+            </aside>
+
+            <main className="flex-1 overflow-y-auto p-6 md:p-10 bg-[#02090d]/20">
+              {activeSectorData && (
+                <>
+                  <div className="mb-8 pb-5 border-b border-white/[0.08]">
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-white">{activeSectorData.name}</h2>
+                    <p className="text-sm text-emerald-300/80 mt-2">{activeSectorData.desc}</p>
+                  </div>
+
+                  {activeSectorData.levels.map((level) => {
+                    if (!level.issues?.length) return null
+                    const dotClass =
+                      level.key === 'citizen'
+                        ? 'bg-emerald-400 shadow-[0_0_8px_#34d399]'
+                        : level.key === 'state'
+                          ? 'bg-amber-400 shadow-[0_0_8px_#fbbf24]'
+                          : 'bg-red-400 shadow-[0_0_8px_#f87171]'
+                    const titleClass =
+                      level.key === 'citizen'
+                        ? 'text-emerald-400'
+                        : level.key === 'state'
+                          ? 'text-amber-400'
+                          : 'text-red-400'
+
+                    return (
+                      <div key={level.key} className="mb-9">
+                        <div className="flex items-center gap-2 mb-4 pb-2 border-b border-white/[0.04]">
+                          <span className={`w-2 h-2 rounded-full ${dotClass}`} />
+                          <span className={`text-sm font-bold uppercase tracking-wider ${titleClass}`}>
+                            {level.name}
+                          </span>
+                        </div>
+                        <div className="space-y-3">
+                          {level.issues.map((issue) => (
+                            <div
+                              key={issue.index}
+                              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-amber-500/15 bg-[#021e16]/70 hover:border-emerald-500/30 hover:translate-x-1 transition-all"
+                            >
+                              <div className="flex gap-4 items-start">
+                                <span className="text-xs font-bold text-white/30 bg-white/[0.03] border border-white/[0.05] px-2 py-1 rounded-md min-w-[52px] text-center">
+                                  #{String(issue.index).padStart(3, '0')}
+                                </span>
+                                <p className="text-sm md:text-base text-slate-200 leading-relaxed">{issue.text}</p>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => openSolutionDrawer(issue, level.key)}
+                                className="shrink-0 px-4 py-2 rounded-lg border border-amber-400 text-amber-400 text-xs font-bold hover:bg-gradient-to-r hover:from-yellow-200 hover:via-amber-400 hover:to-yellow-600 hover:text-[#02090d] hover:shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-all"
+                              >
+                                {hubMeta.solutionBtn}
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </>
+              )}
+            </main>
+          </div>
+
+          <footer className="shrink-0 text-center py-3 text-xs text-white/30 border-t border-white/[0.05] bg-[#020608]/90 tracking-wide">
+            {hubMeta.footer}
+          </footer>
+
+          <div
+            className={`fixed inset-0 z-[200] bg-[#02090d]/75 backdrop-blur-md transition-opacity ${
+              drawerIssue ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+            onClick={() => setDrawerIssue(null)}
+            aria-hidden={!drawerIssue}
+          />
+          <aside
+            className={`fixed top-0 right-0 z-[201] h-full w-full max-w-[520px] bg-gradient-to-b from-[#041412] to-[#020b0d] border-l border-amber-400 shadow-[-30px_0_60px_rgba(0,0,0,0.8)] p-8 flex flex-col transition-[right] duration-300 ${
+              drawerIssue ? 'right-0' : '-right-full'
+            }`}
+          >
+            {drawerIssue && (
+              <>
+                <div className="flex justify-between items-start border-b border-white/[0.08] pb-5">
+                  <div>
+                    <span className="text-xs font-bold text-amber-400 tracking-widest">
+                      ISSUE MATRIX #{String(drawerIssue.issue.index).padStart(3, '0')} [
+                      {drawerIssue.levelKey.toUpperCase()} LEVEL]
+                    </span>
+                    <h4 className="text-lg font-bold text-white mt-2 leading-snug">{drawerIssue.issue.text}</h4>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setDrawerIssue(null)}
+                    className="w-8 h-8 rounded-full bg-white/5 hover:bg-red-500/20 hover:text-red-400 flex items-center justify-center font-bold"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <div className="flex-1 overflow-y-auto mt-6 space-y-4 pr-2">
+                  {(['problem', 'causes', 'benefits', 'solutions']).map((key) => (
+                    <div
+                      key={key}
+                      className={`pl-4 py-4 rounded-r-xl border-l-[3px] ${
+                        key === 'solutions'
+                          ? 'border-emerald-400 bg-emerald-500/[0.02]'
+                          : 'border-amber-400 bg-white/[0.02]'
+                      }`}
+                    >
+                      <div
+                        className={`text-xs font-extrabold uppercase tracking-wider mb-2 ${
+                          key === 'solutions' ? 'text-emerald-400' : 'text-amber-400'
+                        }`}
+                      >
+                        {hubMeta.drawerLabels[key]}
+                      </div>
+                      <p className={`text-sm leading-relaxed ${key === 'solutions' ? 'text-emerald-300 font-medium' : 'text-slate-300'}`}>
+                        {drawerIssue.abcd[key]}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="pt-4 border-t border-white/[0.05] space-y-3">
+                  {drawerIssue.linkedProject && (
+                    <button
+                      type="button"
+                      onClick={openLinkedReport}
+                      className="w-full py-3 rounded-xl bg-amber-500 text-slate-950 font-bold text-sm hover:bg-amber-400"
+                    >
+                      {hubMeta.openReport}
+                    </button>
+                  )}
+                  <p className="text-center text-[0.7rem] text-white/30 tracking-widest">
+                    THREE-WAY VISION SYSTEM LOGIC ENGINE • © 2026
+                  </p>
+                </div>
+              </>
+            )}
+          </aside>
+        </div>
+      ) : (
       <div className="flex-1 max-w-7xl mx-auto px-4 md:px-6 py-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         {/* Left Side: Back button and Project Selector (Span 4) */}
@@ -501,6 +760,14 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
             className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-all font-semibold"
           >
             {staticLabels.backBtn}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setHubView('matrix')}
+            className="flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20 transition-all font-semibold text-sm"
+          >
+            ← {hubMeta.viewMatrix}
           </button>
 
           <div className="p-6 rounded-[2rem] bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl">
@@ -796,6 +1063,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
           </div>
         </main>
       </div>
+      )}
     </div>
   )
 }

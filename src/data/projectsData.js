@@ -1484,3 +1484,13 @@ export const projectsList = [
     }
   }
 ];
+
+export {
+  projectsHubMeta,
+  sectorTabs,
+  sectorOrder,
+  strategicMatrix,
+  strategicMatrixSi,
+  issueProjectLinks,
+  getDrawerAbcd
+} from './strategicMatrixData.js';
