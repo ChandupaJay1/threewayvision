@@ -76,8 +76,8 @@ function MainPage({ lang, setCurrentPage, setIntroductionClick }) {
             <p className="text-sm text-gray-400 leading-relaxed">{t.economyDesc}</p>
           </div>
 
-          <div className="p-10 glass-card rounded-[2.5rem]">
-            <div className="w-20 h-20 bg-purple-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8">
+          <div onClick={() => setCurrentPage('religion')} className="p-10 glass-card rounded-[2.5rem] border-purple-500/20 bg-purple-500/5">
+            <div className="w-20 h-20 bg-purple-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg">
               <svg className="w-10 h-10 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                   d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />

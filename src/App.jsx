@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import MainPage from './pages/MainPage'
 import EconomyPage from './pages/EconomyPage'
+import ReligiousVision from './pages/ReligiousVision'
 import OnlineShop from './pages/OnlineShop'
 import BusinessPlan from './pages/BusinessPlan'
 import BenefitAnalysis from './pages/BenefitAnalysis'
@@ -42,6 +43,9 @@ function App() {
           )}
           {currentPage === 'economy' && (
             <EconomyPage lang={lang} setCurrentPage={setCurrentPage} setOnlineshopClick={() => setCurrentPage('onlineshop')} setBusinessplanClick={() => setCurrentPage('businessplan')} setJobopportunitiesClick={() => setCurrentPage('masterplan')} setBenefitAnalysisClick={() => setCurrentPage('benefitanalysis')} setRootCauseClick={() => setCurrentPage('rootcause')} setEconomicPlanningClick={() => setCurrentPage('economicplanning')} setEconomicProblemAnalysisClick={() => setCurrentPage('economicproblemanalysis')} />
+          )}
+          {currentPage === 'religion' && (
+            <ReligiousVision lang={lang} setCurrentPage={setCurrentPage} />
           )}
           <Footer />
         </div>
