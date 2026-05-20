@@ -13,6 +13,7 @@ import EconomicPlanning from './pages/EconomicPlanning'
 import EconomicProblemAnalysis from './pages/EconomicProblemAnalysis'
 import Introduction from './pages/Introduction'
 import PoloticsIntro from './pages/PoloticsIntro'
+import ProjectsHub from './pages/ProjectsHub'
 import Footer from './components/Footer'
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
         <EconomicProblemAnalysis lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
       ) : currentPage === 'introduction' ? (
         <Introduction lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
+      ) : currentPage === 'projects' ? (
+        <ProjectsHub lang={lang} setCurrentPage={setCurrentPage} setLang={setLang} />
       ) : (
         <div className="universe-bg min-h-screen">
           <Navbar lang={lang} setLang={setLang} setCurrentPage={setCurrentPage} />

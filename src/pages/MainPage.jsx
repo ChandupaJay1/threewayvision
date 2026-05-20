@@ -98,7 +98,7 @@ function MainPage({ lang, setCurrentPage, setIntroductionClick }) {
             <p className="text-sm text-gray-400 leading-relaxed">{t.politicsDesc}</p>
           </div>
 
-          <div className="p-10 glass-card rounded-[2.5rem]">
+          <div onClick={() => setCurrentPage('projects')} className="p-10 glass-card rounded-[2.5rem] border-green-500/20 bg-green-500/5 cursor-pointer">
             <div className="w-20 h-20 bg-green-500/20 rounded-3xl flex items-center justify-center mx-auto mb-8">
               <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
