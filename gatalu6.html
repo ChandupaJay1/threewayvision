@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="window-title">තුන්කල් දැක්ම | මූල්‍ය සාක්ෂරතාවය සහ මානව-භෞතික හැකියාවන් සංවර්ධන පද්ධතිය</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-main: #022c22; /* Deep Emerald Green for Agricultural & Tech Vibe */
+            --card-bg: rgba(2, 43, 32, 0.96);
+            --accent-gold: #fbbf24; /* Premium Champagne Gold */
+            --text-light: #f8fafc;
+            --text-muted: #a7f3d0;
+            --border-color: rgba(251, 191, 36, 0.25);
+            --success-green: #34d399;
+            --danger-red: #f87171;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-rows: 70px 1fr 60px;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Top Navigation Header */
+        header {
+            background-color: rgba(2, 43, 32, 0.9);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-title {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-bar {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background-color: var(--accent-gold);
+            color: var(--bg-main);
+            border-color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* Main Body Content */
+        main {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+            padding: 25px;
+            overflow: hidden;
+        }
+
+        .left-panel {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .right-panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+
+        .meta-card {
+            background: rgba(251, 191, 36, 0.03);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .meta-title {
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .slide-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            overflow-y: auto;
+        }
+
+        .abcd-badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--bg-main);
+            font-weight: 900;
+            font-size: 1.6rem;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-title {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .slide-desc {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Matrix List Styles */
+        .matrix-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .matrix-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.5;
+        }
+
+        .matrix-item::before {
+            content: "◆";
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* Table & Typography Elements */
+        .table-title {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 12px 10px;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-gold);
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 12px 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: rgba(255,255,255,0.01);
+        }
+
+        /* Bottom Footer Action Bar */
+        footer {
+            background-color: #011c16;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 8px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-main);
+        }
+
+        .control-btn:disabled {
+            border-color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.2);
+            cursor: not-allowed;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(251, 191, 36, 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header>
+            <div class="brand-title">
+                <span>✦</span> THREE-WAY VISION | HUMAN CAPITAL & FINANCIAL LITERACY EMBEDDED SYSTEM
+            </div>
+            <div class="lang-bar">
+                <button id="lang-si" class="lang-btn active" onclick="switchLanguage('si')">සිංහල</button>
+                <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')">English</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="left-panel">
+                <div class="meta-card">
+                    <div class="meta-title" id="meta-tag">Master Matrix Pillar</div>
+                    <div class="meta-value" id="meta-display">FINANCIAL LITERACY & HUMAN CAPITAL DEVELOPMENT</div>
+                </div>
+
+                <div class="slide-container">
+                    <div>
+                        <div class="abcd-badge" id="slide-letter">A</div>
+                        <h2 class="slide-title" id="slide-main-title">-</h2>
+                        <p class="slide-desc" id="slide-main-desc">-</p>
+                    </div>
+                    <ul class="matrix-list" id="slide-matrix-box"></ul>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="table-title" id="section-buddhist-title">රාජ්‍ය පාලනය සහ වෙළඳාම පිළිබඳ බුද්ධ උපදේශිත හරය</div>
+                <div class="slide-desc" style="font-size:0.95rem; font-style:italic;" id="buddhist-desc">-</div>
+
+                <div class="table-title" style="margin-top: 25px;" id="section-data-title">පද්ධතිමය තොරතුරු විනිවිදභාවය වගුව</div>
+                <table class="data-table">
+                    <thead>
+                        <tr id="table-header-row">
+                            <th>පද්ධති දර්ශකය</th>
+                            <th>වත්මන් තත්ත්වය</th>
+                            <th>තුන්කල් ඉලක්කය</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body-rows"></tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-note" id="footer-note-text">THREE-WAY VISION © 2026 | PILLAR 7: FINANCIAL LITERACY MATRIX</div>
+            <div class="nav-controls">
+                <button id="btn-prev" class="control-btn" onclick="changeSlide(-1)">← BACK</button>
+                <button id="btn-next" class="control-btn" onclick="changeSlide(1)">NEXT →</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let activeSlideIndex = 0;
+        let selectedLang = 'si';
+
+        const datasetMatrix = {
+            si: [
+                {
+                    letter: "A",
+                    meta: "මූල්‍ය හා මානව ගැටලු විශ්ලේෂණය",
+                    title: "ගැටලුව: ග්‍රාමීය මට්ටමින් මූල්‍ය සාක්ෂරතාවය සහ ආදායම්-වියදම් කළමනාකරණ ක්‍රමවේදයක් නොමැති වීම",
+                    desc: "ග්‍රාමීය ජනතාව උපයන ආදායම නිවැරදිව අයවැයගත කිරීමට හෝ ආයෝජනය කිරීමට විද්‍යාත්මක ක්‍රමවේදයක් නොමැත. මූල්‍ය සාක්ෂරතාවය සහ තමන් සතු මානව හා භෞතික හැකියාවන් හඳුනා නොගැනීම නිසා ඔවුන් ක්ෂුද්‍ර මූල්‍ය ණය උගුල්වල සහ ආර්ථික ව්‍යාකූලතාවල සිරවී සිටිති.",
+                    matrix: [
+                        "පවුල් මට්ටමින් තමන්ගේ ආදායම් සහ වියදම් පද්ධතිගතව කළමනාකරණය කරගැනීමට ග්‍රාමීය මට්ටමින් කිසිදු ක්‍රමවේදයක් නොමැති වීම.",
+                        "තමන් සතු සැබෑ මානව හැකියාවන් (Human Skills) සහ ප්‍රාදේශීය භෞතික සම්පත් (Physical Assets) හඳුනාගෙන සංවර්ධනය කිරීමට පද්ධතියක් නොමැති වීම.",
+                        "අතාර්කික වියදම් රටාවන් සහ ක්ෂුද්‍ර මූල්‍ය සමාගම්වල අධික පොලී ණය උගුල්වලට ග්‍රාමීය ප්‍රජාව ගොදුරු වීම.",
+                        "ප්‍රාදේශීය මට්ටමේ දක්ෂතා සහ සම්පත්, ගෝලීය වෙළඳපොළ (Global Market) සමඟ බද්ධ කිරීමට පාලමක් නොමැතිකම."
+                    ],
+                    buddhist: "සිඟාලෝවාද සූත්‍රය: බුදු දහම පෙන්වා දෙන්නේ තමන් උපයන ධනය කොටස් හතරකට (භෝ‍ග විභජන ක්‍රමය) බෙදා, ඉන් එක් කොටසක් පරිභෝජනයටත්, කොටස් දෙකක් ව්‍යාපාර හා නිෂ්පාදන කටයුතුවලටත්, හතරවන කොටස හදිසි ආපදාවකදී ප්‍රයෝජනයට ගැනීමට ඉතිරි කළ යුතු බවයි. මෙම මූල්‍ය කළමනාකරණ හරය වර්තමාන ග්‍රාමීය ආර්ථිකයට අත්‍යවශ්‍ය වේ.",
+                    table: [
+                        ["ග්‍රාමීය මූල්‍ය සාක්ෂරතාවය", "5% ට වඩා අඩු (අසංවිධානාත්මක)", "100% ප්‍රායෝගික සාක්ෂරතාවය"],
+                        ["ආදායම්-වියදම් පාලනය", "සැලසුමකින් තොරව (ණය බරිත)", "ඩිජිටල් අයවැයකරණය සහ ස්වයං-පාලනය"],
+                        ["හැකියාවන් හඳුනාගැනීම", "හුදෙකලා වූ සහ භාවිතයට නොගත්", "දිස්ත්‍රික් මට්ටමින් සිතියම්ගත කළ දත්ත පද්ධතියක්"]
+                    ],
+                    th1: "පද්ධති දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
+                },
+                {
+                    letter: "B",
+                    meta: "මූල හේතු විශ්ලේෂණය",
+                    title: "මූල හේතු: සාම්ප්‍රදායික අධ්‍යාපන ක්‍රමයේ දුර්වලතාවය සහ උපදේශන යාන්ත්‍රණයක් නොමැතිකම",
+                    desc: "වත්මන් ආර්ථික පරිහානියට මූලික හේතුව වන්නේ පාසල් සහ විශ්වවිද්‍යාල පද්ධතිය තුළින් ප්‍රායෝගික මූල්‍ය කළමනාකරණය හෝ මානව කුසලතා ඔප්නැංවීමක් සිදු නොකිරීමයි. රාජ්‍ය මට්ටමින් ක්‍රියාත්මක වන උපදේශන සහ සැලසුම්කරණ සහායක පද්ධතියක් ග්‍රාමීය මට්ටමට ගලා නොයෑම මෙයට ප්‍රධාන හේතුවයි.",
+                    matrix: [
+                        "පාසල් සහ විශ්වවිද්‍යාල අධ්‍යාපනය තුළ ප්‍රායෝගික මූල්‍ය පාලනය හෝ ව්‍යවසායකත්ව ඥානය උගන්වනු නොලැබීම.",
+                        "මානව සහ භෞතික දුර්වලතා හඳුනාගෙන ඒවා මඟහරවා ගැනීමට ග්‍රාමීය මට්ටමින් ක්‍රියාත්මක වන රාජ්‍ය උපදේශන (Counseling) ජාලයක් නොමැති වීම.",
+                        "විශ්වවිද්‍යාල පර්යේෂණ සහ අධ්‍යයන කටයුතු ප්‍රායෝගික බිම් මට්ටමේ ආර්ථික ගැටලු විසඳීම සඳහා බද්ධ නොකිරීම.",
+                        "ග්‍රාමීය ප්‍රජාවට තමන්ගේ මූල්‍ය ප්‍රගතිය සහ හැකියාවන් ස්වයං-ඇගයීමකට ලක් කිරීමට තාක්ෂණික මෙවලම් නොමැතිකම."
+                    ],
+                    buddhist: "ව්‍යග්ඝපජ්ජ සූත්‍රය: ආර්ථික ස්ථාවරත්වය සඳහා 'සමජීවිකතා' (තමන්ගේ ආදායමට සරිලන සේ වියදම් පාලනය කිරීම) සහ 'උට්ඨාන සම්පදා' (උත්සාහයෙන් ධනය ඉපයීම) තිබිය යුතුය. අධ්‍යාපනය තුළින් මෙම ගුණාංග මිනිසා තුළ වර්ධනය නොකිරීම පද්ධතියේ බිඳවැටීමට මූලික හේතුවයි.",
+                    table: [
+                        ["අධ්‍යාපනික ප්‍රවේශය", "න්‍යායාත්මක (ප්‍රායෝගික නොවන)", "කුසලතා හා මූල්‍ය විද්‍යාව මත පදනම් වූ"],
+                        ["රාජ්‍ය උපදේශන සේවා", "නොමැත (නිලධාරීවාදී)", "සක්‍රීය ප්‍රාදේශීය උපදේශන සහ සැලසුම්කරණය"],
+                        ["විශ්වවිද්‍යාල දායකත්වය", "හුදෙකලා පර්යේෂණ පමණි", "ග්‍රාමීය ආර්ථික පරිවර්තන උපදේශකත්වය"]
+                    ],
+                    th1: "ප්‍රභව දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
+                },
+                {
+                    letter: "C",
+                    meta: "යහපත හා විභවතා විශ්ලේෂණය",
+                    title: "යහපත: ගෝලීය මට්ටමේ කුසලතා සංවර්ධනය, ස්වයං-කළමනාකරණය සහ යථාර්ථය අවබෝධය",
+                    desc: "ග්‍රාමීය මට්ටමින් මානව හා භෞතික විභවතාවයන් සහ දුර්වලතාවයන් නිවැරදිව හඳුනාගෙන උපදේශනය සහ සැලසුම්කරණය සිදුකිරීමෙන්, ග්‍රාමීය පුරවැසියාට ගෝලීය මට්ටමට (Global Level) ඔසවා තැබූ ආර්ථික සන්නද්ධතාවයක් සහ මූල්‍ය ස්වාධීනත්වයක් ළඟා කරගත හැකිය.",
+                    matrix: [
+                        "ග්‍රාමීය මට්ටමේ සිටම මානව හැකියාවන් සහ දක්ෂතා හඳුනාගෙන ඒවා උපරිම කාර්යක්ෂමතාවයෙන් වර්ධනය කිරීම.",
+                        "මානව හා භෞතික දුර්වලතා කල්තියා හඳුනාගෙන, විද්‍යාත්මක සැලසුම්කරණය තුළින් එම දුර්වලතා මඟහැරවීම.",
+                        "පවුල් ඒකක සතු ආදායම් සහ වියදම් රටාවන් නිවැරදිව පාලනය වීම නිසා ණය බරින් තොර ස්ථාවර ව්‍යවසායක සමාජයක් බිහිවීම.",
+                        "යථාර්ථය අවබෝධ කරගත් පරිහරණය (Rational Consumption) තුළින් ආර්ථික පීඩනය තුරන් වී උසස් ජීවන තත්ත්වයක් උදාවීම."
+                    ],
+                    buddhist: "අංගුත්තර නිකාය (අණන සූත්‍රය): පුද්ගලයෙකුට ලැබිය හැකි ඉහළම ලෞකික සතුට හතරක් පෙන්වා දෙයි: අත්ථි සුඛ (ධනය තිබීමේ සතුට), භෝග සුඛ (ධනය පරිභෝජනය කිරීමේ සතුට), අනණ සුඛ (ණය නැතිකමේ සතුට) සහ අනවජ්ජ සුඛ (නිවැරදි ජීවනෝපාය මඟින් ලබන සතුට). මෙම සතුට උදා වන්නේ මූල්‍ය ස්වයං-කළමනාකරණය තුළිනි.",
+                    table: [
+                        ["පුරවැසි ණය බරිතභාවය", "ඉතා ඉහළ (ණය උගුලක)", "0% (ණය නැතිකමේ සතුට / අනණ සුඛ)"],
+                        ["සම්පත් පරිභෝජනය", "අතාර්කික සහ නාස්තිකාර", "යථාර්ථවාදී සහ තාර්කික පරිහරණය"],
+                        ["කුසලතා මට්ටම", "දේශීය / සාම්ප්‍රදායික", "ගෝලීය මට්ටමට ගැළපෙන (Global Standard)"]
+                    ],
+                    th1: "ප්‍රතිඵල දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
+                },
+                {
+                    letter: "D",
+                    meta: "සැලසුම්කරණය සහ ක්‍රියාමාර්ග",
+                    title: "සැලැස්ම: පාසල් හා විශ්වවිද්‍යාල ප්‍රතිසංස්කරණ සහ ප්‍රාදේශීය උපදේශන යාන්ත්‍රණය",
+                    desc: "'තුන් කල් දැක්ම' මඟින් දිගුකාලීන සැලසුමක් ලෙස සමස්ත පාසල් විෂය මාලාව සහ විශ්වවිද්‍යාල පද්ධතිය ව්‍යූහාත්මක ප්‍රතිසංස්කරණයකට ලක් කරයි. සෑම ප්‍රාදේශීය ලේකම් කාර්යාලයකම මානව-භෞතික සම්පත් තක්සේරුකරණ සහ මූල්‍ය උපදේශන මධ්‍යස්ථාන පිහිටුවනු ලැබේ.",
+                    matrix: [
+                        "පාසල් අධ්‍යාපනයට 6 ශ්‍රේණියේ සිටම 'ප්‍රායෝගික මූල්‍ය විද්‍යාව සහ අයවැයකරණය' (Practical Financial Literacy) අනිවාර්ය විෂයයක් ලෙස ඇතුළත් කිරීම.",
+                        "විශ්වවිද්‍යාල පද්ධතිය මඟින් සෑම දිස්ත්‍රික්කයකම ග්‍රාමීය මානව සහ භෞතික සම්පත් සිතියම්ගත කිරීම (Asset & Talent Mapping) සිදු කිරීම.",
+                        "ග්‍රාමීය මට්ටමින් පවුල් ඒකකවල ආදායම්-වියදම් ස්වයංක්‍රීයව කළමනාකරණය කර දෙන, 'තුන්කල් මූල්‍ය සහායක' ඩිජිටල් පද්ධතියක් (AI Financial Companion) හඳුන්වා දීම.",
+                        "ප්‍රාදේශීය ලේකම් කොට්ඨාස මට්ටමින් මානව කුසලතා සංවර්ධන සහ මූල්‍ය උපදේශන නිලධාරී යාන්ත්‍රණයක් (Capacity & Counseling Unit) ස්ථාපිත කිරීම."
+                    ],
+                    buddhist: "සප්ත අපරිහානීය ධර්ම: අධ්‍යාපනඥයන්, විශ්වවිද්‍යාල පර්යේෂකයන් සහ ප්‍රාදේශීය ප්‍රජාව නිරන්තරයෙන් රැස්වී, දත්ත පදනම් කරගනිමින් මිනිස් ශ්‍රමය සහ සම්පත් කළමනාකරණය කිරීම තුළින් දේශය කිසිදා පිරිහෙන්නේ නැත.",
+                    table: [
+                        ["අධ්‍යාපන ප්‍රතිසංස්කරණ", "න්‍යායාත්මක / සාම්ප්‍රදායික", "දිගුකාලීන පද්ධතිමය පාසල් හා වර්සිටි ප්‍රතිසංස්කරණ"],
+                        ["මූල්‍ය කළමනාකරණ මෙවලම්", "නොමැත (අතින් ලියන / අනුමාන)", "AI-Driven සජීවී අයවැයකරණ මෘදුකාංග"],
+                        ["කුසලතා පරිවර්තනය", "ප්‍රාදේශීය මට්ටමේ සිරවීම", "ගෝලීය මට්ටමේ වෘත්තීය නිපුනතාවය"]
+                    ],
+                    th1: "යාන්ත්‍රණ දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
+                }
+            ],
+            en: [
+                {
+                    letter: "A",
+                    meta: "HUMAN & FINANCIAL PROBLEM ANALYSIS",
+                    title: "The Problem: Lack of Financial Literacy & Absence of Rural Income-Expenditure Tracking",
+                    desc: "Rural populations lack scientific methods to budget or invest income properly. Due to an inability to identify human potential and local assets, they remain trapped in micro-finance debt loops and localized economic stagnation, disconnected from global opportunities.",
+                    matrix: [
+                        "Total absence of a localized micro-budgeting platform for families to systematically control expenditures.",
+                        "No structured metric to identify and leverage latent human skills and regional material resources.",
+                        "Vulnerability to predatory micro-finance networks driven by irrational consumption traps.",
+                        "Lack of an institutional bridge connecting rural capacity directly to the global value ecosystem."
+                    ],
+                    buddhist: "Sigalovada Sutta: The Buddha pioneered the fourfold wealth allocation model (Bhoga Vibhajana): 1 part for consumption, 2 parts for economic investment, and 1 part secured as a buffer for emergency reserves.",
+                    table: [
+                        ["Rural Financial Literacy", "Below 5% (Disorganized)", "100% Practical Empowerment"],
+                        ["Income-Expenditure Control", "Unplanned (Debt-Driven)", "Digital Micro-Budgeting & Autonomy"],
+                        ["Asset/Talent Discovery", "Isolated & Underutilized", "District-Mapped Open Data Ledger"]
+                    ],
+                    th1: "System Metric", th2: "Current Status", th3: "Three-Way Target"
+                },
+                {
+                    letter: "B",
+                    meta: "ROOT CAUSE ANALYSIS",
+                    title: "Root Causes: Outdated Curriculum & Deficient Grassroots Advisory Infrastructure",
+                    desc: "The core failure lies within an educational model that insulates schools and universities from ground-level economics. There is no active administrative framework translating academic research into localized wealth planning and capacity coaching.",
+                    matrix: [
+                        "Primary and secondary curricula completely exclude practical asset management and entrepreneurial science.",
+                        "Absence of state-backed cognitive and financial counseling networks to systematically address human and systemic friction.",
+                        "Academic research institutes operate in silos, failing to interface with immediate rural development needs.",
+                        "Lack of intuitive technological instruments allowing citizens to audit their own financial trajectory."
+                    ],
+                    buddhist: "Vyagghapajja Sutta: Sustainable economic balance requires 'Samajivikata' (balanced living within economic scale) and 'Utthana-Sampada' (energetic application of skill). Neglecting these in modern academic models breaks the socio-economic equilibrium.",
+                    table: [
+                        ["Educational Framework", "Theoretical / Abstract", "Skill & Financial Intelligence Architecture"],
+                        ["State Counseling Access", "Non-existent (Bureaucratic)", "Active Decentralized Planning & Coaching Units"],
+                        ["University Integration", "Isolated Monographs", "Direct Grassroots Economic Intervention"]
+                    ],
+                    th1: "Root Indicator", th2: "Current Status", th3: "Three-Way Target"
+                },
+                {
+                    letter: "C",
+                    meta: "BENEFITS & POTENTIAL ANALYSIS",
+                    title: "Benefits: Global Skill Equalization, Financial Autonomy & Rational Consumption",
+                    desc: "By deploying structured capability mapping and micro-counseling, rural citizens transition from vulnerable laborers to highly organized, globally competitive asset managers, insulated from predatory financial actors.",
+                    matrix: [
+                        "Maximization of regional human capital through structured, early-stage talent profiling.",
+                        "Proactive mitigation of human and physical vulnerabilities via targeted structural engineering.",
+                        "Eradication of household debt cycles, resulting in a credit-stable, highly resilient enterprise network.",
+                        "Realization of rationalized resource utilization, lifting families into lasting psychological and material stability."
+                    ],
+                    buddhist: "Anana Sutta: The Buddha delineates four dimensions of secular happiness: Atthi-Sukha (wealth ownership), Bhoga-Sukha (righteous consumption), Anana-Sukha (absolute freedom from debt), and Anavajja-Sukha (blameless livelihood). This state is only accessible via rigorous self-governance.",
+                    table: [
+                        ["Household Debt Burden", "Critically High (Debt Trap)", "0% (The Supreme Peace of Debtlessness)"],
+                        ["Resource Consumption", "Erratic & Speculative", "Data-Driven / Rational Consumption"],
+                        ["Talent Competitiveness", "Isolated / Traditional", "Global Standard Professional Alignment"]
+                    ],
+                    th1: "Impact Metric", th2: "Current Status", th3: "Three-Way Target"
+                },
+                {
+                    letter: "D",
+                    meta: "STRATEGIC PLAN & INTERVENTIONS",
+                    title: "The Plan: Comprehensive Curricular Reform & Localized Counseling Infrastructure",
+                    desc: "The 'Three-Way Vision' initiates structural educational evolution alongside specialized local infrastructure. Every Divisional Secretariat will embed a Capacity Assessment and Financial Advisory Matrix, backed by automated citizen software.",
+                    matrix: [
+                        "Mandatory integration of 'Practical Financial Intelligence & Resource Budgeting' into secondary education starting from Grade 6.",
+                        "Mobilization of national universities to conduct open-source regional Asset & Talent Mapping across all 25 districts.",
+                        "Launch of the 'Thun Kal Companion' mobile engine—an AI financial auditor localized for family resource optimization.",
+                        "Establishment of dedicated Capacity & Counseling Units within every Divisional Secretariat to monitor and coach micro-enterprises."
+                    ],
+                    buddhist: "Sapta Aparihaniya Dhamma: When educationists, state researchers, and grassroots leaders meet in unified assembly to process data and audit capacity, structural degeneration is permanently averted.",
+                    table: [
+                        ["Educational Interventions", "Static / Outdated Curriculum", "Long-term Structural School & Varsity Reforms"],
+                        ["Analytical Toolkits", "None (Manual / Speculative)", "AI-Driven Real-time Budgeting Companion"],
+                        ["Skill Deployment", "Confined to Local Markets", "Global Digital Value Chain Integration"]
+                    ],
+                    th1: "Mechanism Index", th2: "Current Status", th3: "Three-Way Target"
+                }
+            ]
+        };
+
+        function paintDashboard() {
+            const slideData = datasetMatrix[selectedLang][activeSlideIndex];
+            
+            // Render text tokens
+            document.getElementById('slide-letter').innerText = slideData.letter;
+            document.getElementById('meta-display').innerText = slideData.meta;
+            document.getElementById('slide-main-title').innerText = slideData.title;
+            document.getElementById('slide-main-desc').innerText = slideData.desc;
+            document.getElementById('buddhist-desc').innerText = `"${slideData.buddhist}"`;
+            
+            // Build Matrix List
+            const matrixBox = document.getElementById('slide-matrix-box');
+            matrixBox.innerHTML = '';
+            slideData.matrix.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'matrix-item';
+                li.innerText = item;
+                matrixBox.appendChild(li);
+            });
+
+            // Build Table Dynamic Elements
+            const tableHeaderRow = document.getElementById('table-header-row');
+            tableHeaderRow.innerHTML = `
+                <th>${slideData.th1}</th>
+                <th>${slideData.th2}</th>
+                <th>${slideData.th3}</th>
+            `;
+
+            const tableBody = document.getElementById('table-body-rows');
+            tableBody.innerHTML = '';
+            slideData.table.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${row[0]}</strong></td>
+                    <td style="color: var(--danger-red);">${row[1]}</td>
+                    <td style="color: var(--success-green); font-weight: 600;">${row[2]}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            // Dynamic Updates to Static UI Nodes based on selected language
+            if(selectedLang === 'en') {
+                document.getElementById('window-title').innerText = "Three-Way Vision | Human Capital & Financial Literacy Dashboard";
+                document.getElementById('section-buddhist-title').innerText = "Canonical Buddhist Doctrine on Governance, Wealth & Resource Allocation";
+                document.getElementById('section-data-title').innerText = "Systemic Information & Capacity Transparency Table";
+                document.getElementById('meta-tag').innerText = "Master Matrix Pillar";
+                document.getElementById('footer-note-text').innerText = "THREE-WAY VISION © 2026 | PILLAR 7: FINANCIAL LITERACY MATRIX";
+                document.getElementById('btn-prev').innerText = "← BACK";
+                document.getElementById('btn-next').innerText = "NEXT →";
+            } else {
+                document.getElementById('window-title').innerText = "තුන්කල් දැක්ම | මූල්‍ය සාක්ෂරතාවය සහ මානව-භෞතික හැකියාවන් සංවර්ධන පද්ධතිය";
+                document.getElementById('section-buddhist-title').innerText = "රාජ්‍ය පාලනය සහ වෙළඳාම පිළිබඳ බුද්ධ උපදේශිත හරය";
+                document.getElementById('section-data-title').innerText = "පද්ධතිමය තොරතුරු විනිවිදභාවය වගුව";
+                document.getElementById('meta-tag').innerText = "ප්‍රධාන මාස්ටර් මැට්‍රික්ස් කුළුණ";
+                document.getElementById('footer-note-text').innerText = "තුන්කල් දැක්ම © 2026 | කුළුණ 7: මූල්‍ය සාක්ෂරතා මැට්‍රික්ස්";
+                document.getElementById('btn-prev').innerText = "← ආපසු";
+                document.getElementById('btn-next').innerText = "ඉදිරියට →";
+            }
+
+            // Disable controls on boundaries
+            document.getElementById('btn-prev').disabled = (activeSlideIndex === 0);
+            document.getElementById('btn-next').disabled = (activeSlideIndex === datasetMatrix[selectedLang].length - 1);
+        }
+
+        function changeSlide(direction) {
+            activeSlideIndex += direction;
+            if(activeSlideIndex < 0) activeSlideIndex = 0;
+            if(activeSlideIndex >= datasetMatrix[selectedLang].length) {
+                activeSlideIndex = datasetMatrix[selectedLang].length - 1;
+            }
+            paintDashboard();
+        }
+
+        function switchLanguage(langKey) {
+            selectedLang = langKey;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('lang-' + langKey).classList.add('active');
+            paintDashboard();
+        }
+
+        // Initialize dashboard on window load
+        window.onload = function() {
+            paintDashboard();
+        };
+    </script>
+</body>
+</html>

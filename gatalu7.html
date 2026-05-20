@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="window-title">තුන්කල් දැක්ම | ප්‍රාදේශීය නිපුණතා සහ සහජ දක්ෂතා සවිබලගැන්වීමේ ජාතික පද්ධතිය</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-main: #064e3b; /* Deep Emerald Green */
+            --card-bg: rgba(2, 43, 32, 0.96);
+            --accent-gold: #fbbf24; /* Premium Champagne Gold */
+            --text-light: #f8fafc;
+            --text-muted: #a7f3d0;
+            --border-color: rgba(251, 191, 36, 0.25);
+            --success-green: #34d399;
+            --danger-red: #f87171;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(2, 43, 32, 1) 0%, rgba(6, 78, 59, 0.8) 100%);
+            border-bottom: 2px solid var(--accent-gold);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .brand h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-light);
+        }
+
+        .brand h1 span {
+            color: var(--accent-gold);
+        }
+
+        .brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .lang-group {
+            display: flex;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 3px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent-gold);
+            color: #022c22;
+        }
+
+        .workspace {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            height: calc(100vh - 80px);
+        }
+
+        .dashboard-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #d97706 100%);
+            color: #022c22;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-bottom-left-radius: 12px;
+        }
+
+        .section-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .framework-badge {
+            background: linear-gradient(135deg, #b45309 0%, var(--accent-gold) 100%);
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 900;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .section-title-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .content-body {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            text-align: justify;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .bullet-matrix {
+            margin-top: 15px;
+            list-style: none;
+        }
+
+        .bullet-matrix li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 0.98rem;
+            color: #e2e8f0;
+        }
+
+        .bullet-matrix li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+        }
+
+        .buddhist-wisdom-box {
+            background: rgba(251, 191, 36, 0.06);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+        }
+
+        .buddhist-wisdom-box h4 {
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .buddhist-wisdom-box p {
+            font-style: italic;
+            font-size: 0.92rem;
+            color: #cbd5e1;
+        }
+
+        .right-panel {
+            display: grid;
+            grid-template-rows: 1.1fr 0.9fr;
+            gap: 20px;
+        }
+
+        .data-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-heading {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 4px 10px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            width: 180px;
+            outline: none;
+        }
+
+        .table-container {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            color: var(--accent-gold);
+            padding: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #cbd5e1;
+        }
+
+        .chart-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .card-footer-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(251, 191, 36, 0.15);
+        }
+
+        .slide-indicator {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            color: var(--accent-gold);
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-gold);
+            color: #022c22;
+        }
+
+        footer {
+            background: #021f17;
+            padding: 10px 25px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(251, 191, 36, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <h1>තුන්කල් දැක්ම <span>| Three-Way Vision</span></h1>
+            <p id="header-desc">ප්‍රාදේශීය නිපුණතා ඌන-උපයෝජන අර්බුදය සහ සහජ දක්ෂතා තාක්ෂණික ප්‍රතිසංවිධාන මාස්ටර් සැලැස්ම</p>
+        </div>
+        <div class="control-panel">
+            <div class="lang-group">
+                <button class="lang-btn active" id="lang-si" onclick="switchLanguage('si')">සිංහල</button>
+                <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">English</button>
+                <button class="lang-btn" id="lang-ta" onclick="switchLanguage('ta')">தமிழ்</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <div class="dashboard-card">
+            <div class="card-header-badge" id="meta-tag">ප්‍රධාන මාස්ටර් මැට්‍රික්ස් කුළුණ</div>
+            <div style="flex: 1; display: flex; flex-direction: column; overflow:hidden;">
+                <div class="section-badge-container">
+                    <div class="framework-badge" id="section-letter">A</div>
+                    <div class="section-title-text" id="section-title">Loading...</div>
+                </div>
+                <div class="content-body" id="section-content-pane"></div>
+                <div class="buddhist-wisdom-box">
+                    <h4 id="buddhist-title">බුද්ධ උපදේශිත හරය</h4>
+                    <p id="buddhist-text"></p>
+                </div>
+            </div>
+            <div class="card-footer-controls">
+                <div class="slide-indicator" id="slide-num-display">Step: 1 / 4</div>
+                <div>
+                    <button class="nav-btn" id="btn-prev" onclick="changeSlide(-1)">←</button>
+                    <button class="nav-btn" id="btn-next" onclick="changeSlide(1)">→</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="data-card">
+                <div class="panel-heading">
+                    <span id="section-data-title">දත්ත මැට්‍රික්ස් වගුව</span>
+                    <input type="text" class="search-box" id="tableFilterInput" onkeyup="filterTableRows()" placeholder="Search...">
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead><tr id="table-header-row"></tr></thead>
+                        <tbody id="table-body-rows"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="data-card">
+                <div class="panel-heading" id="chart-title-text">ප්‍රක්ෂේපණ ප්‍රස්තාරය</div>
+                <div class="chart-container"><canvas id="analyticsChartMatrix"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span id="footer-text">තුන්කල් දැක්ම © 2026 | සහජ හැකියාවන්ට සරිලන ජාතික මාර්ග සිතියම.</span>
+    </footer>
+
+    <script>
+        const datasetMatrix = {
+            si: [
+                {
+                    letter: "A",
+                    title: "නිපුණතා සහ සහජ හැකියාවන්ගේ අවතක්සේරුව (Problem Specification)",
+                    content: "ග්‍රාමීය තරුණ ප්‍රජාව සතු සහජ ඩිජිටල්, කාර්මික හෝ නිර්මාණාත්මක දක්ෂතාවලට සරිලන වටිනාකමක් හෝ රැකියා අවස්ථා ගම තුළ නොමැති වීම මහා ජාතික නාස්තියකි. සාම්ප්‍රදායික ක්ෂේත්‍රවලට පමණක් අවස්ථා සීමාවීම නිසා ශ්‍රමිකයින් නගර කරා සංක්‍රමණය වේ.",
+                    bullets: ["ග්‍රාමීය තරුණ දක්ෂතාවලින් 72%කට වඩා නුසුදුසු රැකියාවල නිරත වීම.", "ආදායම් අසමතුලිතතාවය නිසා ඇතිවන මානසික සහ ආර්ථික බංකොලොත්භාවය."],
+                    buddhist_title: "සිඟාලෝවාද සූත්‍රය: කුසලතා සහ සම්මා ආජීවය",
+                    buddhist_text: "පුද්ගලයෙකු සතු සහජ හැකියාවන් සහ නිපුණතාවන් (සිප්පස්ස) හඳුනාගෙන, ඒවාට අනුකූලව සදාචාරාත්මක රැකියාවල (සම්මා ආජීව) නිරත වීමට අවස්ථාව සැලසීම ආර්ථික පරිහානිය වැළැක්වීමේ මූලිකම පදනමයි.",
+                    tableTitle: "ග්‍රාමීය නිපුණතා ඌන-උපයෝජන දර්ශකය",
+                    tableHeaders: ["කලාපීය දර්ශකය", "වත්මන් තත්ත්වය", "තුන්කල් ඉලක්කය"],
+                    tableRows: [
+                        ["නිපුණතා සහ රැකියා අනුසූචිය", "28% (අසමතුලිතයි)", "100% (සමතුලිතයි)"],
+                        ["තරුණ ශ්‍රම සංක්‍රමණය", "65% (ගම පාලු වීම)", "15%ට අඩු (රඳවා ගැනීම)"]
+                    ],
+                    chartLabel: "නිපුණතා භාවිතය (%)", chartData: [28, 95], chartCategories: ["වත්මන් තත්ත්වය", "තුන්කල් ප්‍රතිසංවිධානය"]
+                },
+                {
+                    letter: "B",
+                    title: "මූල හේතු විශ්ලේෂණය (Root Cause Analysis)",
+                    content: "සියලුම තාක්ෂණික, කාර්මික සහ මූල්‍ය අවස්ථා නාගරික කේන්ද්‍රගතව පැවතීමත්, ගම තුළ පවතින නිපුණතා ගෝලීය වෙළඳපොළට සම්බන්ධ කිරීමට සමත් විමධ්‍යගත යාන්ත්‍රණයක් නොමැති වීමත් මෙයට මූලික හේතුවයි.",
+                    bullets: ["ජාතික කුසලතා සිතියම්කරණ පද්ධතියක් (Talent Mapping) නොමැතිකම.", "විභාග කේන්ද්‍රීය අධ්‍යාපනය මඟින් සහජ දක්ෂතා සහතික නොකිරීම."],
+                    buddhist_title: "කූටදන්ත සූත්‍රය: ප්‍රාග්ධනය සහ අවස්ථා විමධ්‍යගත කිරීම",
+                    buddhist_text: "සම්පත් සහ ව්‍යාපාරික අවස්ථා අගනගරයට පමණක් සීමා නොකර, ජනතාව වෙසෙන ප්‍රදේශවලටම ප්‍රාග්ධනය සහ යටිතල පහසුකම් (කසී ගොරක්ඛේ) විමධ්‍යගතව සැපයීමෙන් ආර්ථිකය ස්ථාවර කළ හැක.",
+                    tableTitle: "අවස්ථා කේන්ද්‍රගත වීමේ අනුපාතය",
+                    tableHeaders: ["මූල හේතු සාධකය", "පවතින බාධකය", "තුන්කල් විසඳුම"],
+                    tableRows: [
+                        ["අවස්ථා විමධ්‍යගතකරණය", "05% (සියල්ල නගරයට)", "100% (සෑම ගමකටම ඩිජිටල් නෝඩයක්)"],
+                        ["කුසලතා සහතිකකරණය", "විභාග සහතික මත පමණි", "Blockchain සහජ කුසලතා ලෙජරය"]
+                    ],
+                    chartLabel: "ප්‍රාදේශීය අවස්ථා ව්‍යාප්තිය (%)", chartData: [5, 92], chartCategories: ["වත්මන් ව්‍යුහය", "තුන්කල් විමධ්‍යගතකරණය"]
+                },
+                {
+                    letter: "C",
+                    title: "යහපත සහ ප්‍රතිලාභ විශ්ලේෂණය (Benefits of Resolution)",
+                    content: "මෙම ගැටලුව විසඳීමෙන් ගම තුළම හිඳිමින් තමන්ගේ සහජ හැකියාවන් ඔස්සේ ගෝලීය ආර්ථිකයට දායක වීමට අවස්ථාව ලැබේ. මින් ග්‍රාමීය පවුල්වල ආදායම ඉහළ යන අතර නාගරික තදබදය අඩුවේ.",
+                    bullets: ["ග්‍රාමීය පවුල් ඒකකවල සාමාන්‍ය මාසික ආදායම 250% කින් ඉහළ යාම.", "ගෝලීය විදේශ විනිමය සෘජුවම ගම්මාන කරා ගලා ඒම."],
+                    buddhist_title: "වියග්ඝපජ්ජ සූත්‍රය: සමජීවිකතාව සහ ආර්ථික සතුට",
+                    buddhist_text: "තමන්ගේ දක්ෂතාවලට අනුකූලව ජීවිකාව සමබරව පවත්වා ගැනීමෙන් (සමජීවිකතා) ලබන ආර්ථික ස්ථාවරත්වය, පුද්ගලයාගේ සහ පවුලේ සතුට මෙන්ම සමාජයේ දිගුකාලීන දියුණුව සලසයි.",
+                    tableTitle: "පද්ධතිමය විභව ප්‍රතිලාභ දර්ශකය",
+                    tableHeaders: ["ප්‍රතිලාභ ක්ෂේත්‍රය", "වත්මන් අර්බුදය", "විසඳීමෙන් පසු ප්‍රතිලාභය"],
+                    tableRows: [
+                        ["ග්‍රාමීය මාසික ආදායම", "ණය බරින් මිරිකුණු අවම ආදායම", "ස්ථාවර ඉහළ ආදායම් සහ ඉතිරි කිරීම්"],
+                        ["සමාජයීය තෘප්තිමත්භාවය", "අසහනය සහ තරුණ නොසන්සුන්තාවය", "ආත්ම අභිමානය සහිත වෘත්තිකයන්"]
+                    ],
+                    chartLabel: "ග්‍රාමීය ආර්ථික ස්වයංපෝෂිතභාවය (%)", chartData: [15, 88], chartCategories: ["වත්මන් තත්ත්වය", "තුන්කල් දැක්ම ප්‍රතිඵලය"]
+                },
+                {
+                    letter: "D",
+                    title: "උපායමාර්ගික සැලසුම් සහ ක්‍රියාමාර්ග (Strategic Solutions)",
+                    content: "ගම තුළ ව්‍යුහාත්මක විප්ලවයක් සිදුකරන 'තුන්කල් දැක්ම' පියවර 5ක ප්‍රායෝගික සැලැස්ම මෙසේය:",
+                    bullets: [
+                        "පියවර 1: 'තුන්කල් ජාතික කුසලතා දත්ත ලෙජරය' (Dynamic Competency Mapping) පිහිටුවීම.",
+                        "පියවර 2: සෑම ප්‍රාදේශීය ලේකම් කොට්ඨාසයකම 'තුන්කල් සහජ දක්ෂතා උපයෝජන ඩිජිටල් මධ්‍යස්ථාන' (Smart Hubs) පිහිටුවීම.",
+                        "පියවර 3: 'තුන්කල් දක්ෂතා අරමුදල' හරහා ඇප රහිතව 0% පොලී පදනම මත 'නැවත ඇරඹුම් ප්‍රාග්ධනය' (Seed Capital) මුදා හැරීම. (මාසිකව 5% ක සාධාරණ කාලීන අගය එකතු කිරීමක් - Repayment Multiplier පමණි).",
+                        "පියවර 4: බ්ලොක්චේන් QR වෙළඳපොළ හරහා ශිල්පීන් සෘජුවම ගෝලීය ගැනුම්කරුවන් වෙත සම්බන්ධ කිරීම.",
+                        "පියවර 5: 'ජාතික පුරවැසි පුනරුත්ථාපන සහ කුසලතා බෆරය' (Skill Buffer Reserve) මඟින් තාක්ෂණික වෙනස්වීම්වලදී පුරවැසියා ආරක්ෂා කිරීම."
+                    ],
+                    buddhist_title: "සප්ත අපරිහානීය ධර්ම: සාමූහික පද්ධතිමය ප්‍රගතිය",
+                    buddhist_text: "ප්‍රාදේශීය ව්‍යවසායකයින් සහ කළමනාකරුවන් නිතර රැස්වී (අභිණ්හ සන්නිපාත), විනිවිද පෙනෙන කුසලතා පද්ධති සාකච්ඡා කර සාමූහික තීන්දු ගැනීම තුළින් ආර්ථික පරිහානිය මුළුමනින්ම වැළැක්විය හැක.",
+                    tableTitle: "තුන්කල් උපායමාර්ගික ක්‍රියාන්විත සැසඳීම",
+                    tableHeaders: ["යාන්ත්‍රණ දර්ශකය", "සාම්ප්‍රදායික ක්‍රමවේදය", "තුන්කල් විසඳුම"],
+                    tableRows: [
+                        ["රැකියා උත්පාදන විලාසය", "දේශපාලන සහන පත්වීම්", "සහජ දක්ෂතා පදනම් ඩිජිටල් ව්‍යවසායකත්වය"],
+                        ["මූල්‍යකරණ යාන්ත්‍රණය", "ඇප කොන්දේසි සහිත 30% ණය", "5% කාලීන ප්‍රතිලාභය සහිත 0% සෘජු ප්‍රාග්ධනය"]
+                    ],
+                    chartLabel: "කුසලතා රැකියා උත්පාදන ධාරිතාවය (%)", chartData: [12, 96], chartCategories: ["පැරණි ක්‍රමවේදය", "තුන්කල් උපායමාර්ගික ක්‍රියාවලිය"]
+                }
+            ],
+            en: [
+                {
+                    letter: "A",
+                    title: "Undervaluation of Inherent Talents (Problem Specification)",
+                    content: "The lack of employment matching the innate digital, technical, or creative talents of rural youth is a monumental national waste, forcing migration into overcrowded cities.",
+                    bullets: ["Over 72% of rural youth talents are mismatched or underutilized.", "Severe financial insolvency caused by systemic income-to-skill misalignment."],
+                    buddhist_title: "Sigalovada Sutta: Skills and Right Livelihood",
+                    buddhist_text: "Identifying an individual's innate skills (Sippassa) and providing matching, ethical avenues of economic livelihood (Samma Ajiva) is the foundational pillar to prevent societal economic decline.",
+                    tableTitle: "Rural Skill Underutilization Matrix",
+                    tableHeaders: ["Regional Indicator", "Current Status", "Thun Kal Target"],
+                    tableRows: [
+                        ["Skill-to-Job Alignment Index", "28% (Severe Mismatch)", "100% (Perfect Equilibrium)"],
+                        ["Youth Migration (Village to City)", "65% (Rural Depletion)", "Less than 15% (Retention)"]
+                    ],
+                    chartLabel: "Skill Utilization Efficiency (%)", chartData: [28, 95], chartCategories: ["Current Status", "Thun Kal Restructuring"]
+                },
+                {
+                    letter: "B",
+                    title: "Root Cause Analysis",
+                    content: "The primary driver is a hyper-centralized economy where all financial and modern digital assets are hoarded in urban capitals, isolating the village from modern supply chains.",
+                    bullets: ["Absence of a sovereign digital platform for regional Talent Mapping.", "Archaic exam-centric education that fails to validate intrinsic human capability."],
+                    buddhist_title: "Kutadanta Sutta: Decentralization of Capital and Incentives",
+                    buddhist_text: "True economic equilibrium is achieved only when the sovereign aggressively decentralizes capital and core agricultural/industrial infrastructures (Kasi Gorakkha) to where the citizens reside.",
+                    tableTitle: "Opportunity Centralization Ratios",
+                    tableHeaders: ["Root Cause Matrix", "Existing Impediment", "Thun Kal Solution Grid"],
+                    tableRows: [
+                        ["Opportunity Distribution", "05% (Colombo-Centric)", "100% (Every Village a Tech Node)"],
+                        ["Competency Certification", "Paper-Exam Dependent", "Blockchain Immutable Skill Ledger"]
+                    ],
+                    chartLabel: "Regional Opportunity Distribution (%)", chartData: [5, 92], chartCategories: ["Centralized Structure", "Thun Kal Decentralization"]
+                },
+                {
+                    letter: "C",
+                    title: "Benefits of Resolution",
+                    content: "By creating localized high-tech frameworks, rural creators can access global markets from their ancestral homes, organically resolving urban housing crises and spiking the domestic baseline income.",
+                    bullets: ["Immediate 250% expansion of average rural household disposable income.", "Direct automated pipeline for digital foreign exchange entry into local villages."],
+                    buddhist_title: "Vyagghapajja Sutta: Balanced Livelihood and Asset Preservation",
+                    buddhist_text: "Combining safe asset preservation (Arakkha Sampada) with a well-balanced livelihood mapped precisely to intrinsic capabilities (Samajivikata) yields total socio-economic longevity.",
+                    tableTitle: "Systemic Potential Benefits Matrix",
+                    tableHeaders: ["Benefit Domain", "Current Crisis", "Resolved Systemic State"],
+                    tableRows: [
+                        ["Rural Monthly Income Baseline", "Debt-Ridden Subsistence", "Resilient High-Yield Savings Base"],
+                        ["Socio-Psychological Fulfillment", "Anguish & Instability", "High-Dignity Autonomous Professionals"]
+                    ],
+                    chartLabel: "Rural Economic Self-Sufficiency (%)", chartData: [15, 88], chartCategories: ["Current State", "Thun Kal Vision Outcome"]
+                },
+                {
+                    letter: "D",
+                    title: "Strategic Solutions & Action",
+                    content: "The 'Thun Kal Dækma' introduces a high-velocity 5-step structural execution plan:",
+                    bullets: [
+                        "Step 1: Establishment of the 'Thun Kal Sovereign Digital Skill Ledger' for real-time Talent Mapping.",
+                        "Step 2: Deployment of solar-powered Decentralized Digital Work Nodes (Smart Hubs) within every regional secretariat.",
+                        "Step 3: Disbursing 0% interest seed capital via the 'Thun Kal Talent Fund' without physical collateral, utilizing a 5% stable lifetime repayment multiplier.",
+                        "Step 4: Activating a blockchain QR transaction network to link creators directly with global buyers.",
+                        "Step 5: Instituting a National Skill Buffer Reserve to securely re-skill and insulate citizens during technological shifts."
+                    ],
+                    buddhist_title: "Sapta Aparihaniya Dhamma: Collective Assembly & Governance Harmony",
+                    buddhist_text: "When regional tech creators, physical artisans, and public asset managers frequently assemble (Abhinhu Sannipatha) to debate under open laws, systemic economic collapse becomes impossible.",
+                    tableTitle: "Thun Kal Strategic Matrix Comparison",
+                    tableHeaders: ["Mechanism Indicator", "Legacy Methodologies", "Thun Kal Sovereign Grid"],
+                    tableRows: [
+                        ["Job Creation Dynamic", "Political Subsidies / Bureaucracy", "Innate Skill-Mapped Digital Entrepreneurship"],
+                        ["Capitalization Framework", "Asset-Backed 30% Usurious Loans", "0% Direct Seed Capital with 5% Multiplier"]
+                    ],
+                    chartLabel: "Innate Skill Job Generation Capacity (%)", chartData: [12, 96], chartCategories: ["Legacy Welfare Paradigm", "Thun Kal Strategic Framework"]
+                }
+            ],
+            ta: [
+                {
+                    letter: "A",
+                    title: "உள்ளார்ந்த ஆற்றல்களின் குறைமதிப்பீடு (Problem Specification)",
+                    content: "கிராமப்புற இளைஞர்களின் உள்ளார்ந்த டிஜிட்டல், தொழில்நுட்ப அல்லது ஆக்கப்பூர்வமான திறமைகளுக்கு பொருந்தும் வேலை வாய்ப்புகள் கிராமத்திற்குள் இல்லாதது தேசிய இழப்பாகும்.",
+                    bullets: ["72% க்கும் அதிகமான கிராமப்புற இளைஞர்களின் திறமைகள் தகுதியற்ற வேலைகளில் வீணடிக்கப்படுகின்றன.", "திறமைக்கேற்ற வருமானம் இல்லாததால் ஏற்படும் பொருளாதார திவால்நிலை."],
+                    buddhist_title: "சிங்காலோவாத சூத்திரம்: திறன்கள் மற்றும் சம்மா ஆஜீவா",
+                    buddhist_text: "ஒரு நபரின் உள்ளார்ந்த திறமைகளை சரியாகக் கண்டறிந்து, அதற்குப் பொருத்தமான, நெறிமுறையான வாழ்வாதார வழிகளை (சம்மா ஆஜீவா) வழங்குவதே சமூக வீழ்ச்சியைத் தடுப்பதற்கான அடிப்படைத் தூணாகும்.",
+                    tableTitle: "கிராமப்புற திறமை குறைபாட்டு குறியீடு",
+                    tableHeaders: ["பிராந்திய குறியீடு", "தற்போதைய நிலை", "துன்கல் இலக்கு"],
+                    tableRows: [
+                        ["திறமை-வேலை சீரமைப்பு", "28% (கடுமையான முரண்பாடு)", "100% (முழுமையான சமநிலை)"],
+                        ["இளைஞர்கள் இடப்பெயர்வு", "65% (கிராமங்கள் காலியாதல்)", "15% க்கும் குறைவு (தக்கவைப்பு)"]
+                    ],
+                    chartLabel: "திறன் பயன்பாட்டு திறன் (%)", chartData: [28, 95], chartCategories: ["தற்போதைய நிலை", "துன்கல் மறுசீரமைப்பு"]
+                },
+                {
+                    letter: "B",
+                    title: "மூல காரண பகுப்பாய்வு (Root Cause Analysis)",
+                    content: "அனைத்து தொழில்நுட்ப, தொழில்துறை மற்றும் நிதி வாய்ப்புகளும் தலைநகரங்களில் மட்டுமே குவிக்கப்பட்டு, கிராமங்கள் உலகளாவிய சந்தையிலிருந்து துண்டிக்கப்பட்டுள்ளதே இதற்குக் காரணமாகும்.",
+                    bullets: ["தேசிய அளவில் பிராந்திய திறமைகளை வரைபடமாக்குவதற்கான (Talent Mapping) டிஜிட்டல் பதிவேடு இல்லாமை.", "பரீட்சைகளை மட்டுமே மையமாகக் கொண்ட பழமையான கல்வி முறை."],
+                    buddhist_title: "கூடதந்த சூத்திரம்: மூலதனம் மற்றும் உள்கட்டமைப்பு பரவலாக்கல்",
+                    buddhist_text: "மூலதனத்தையும், உள்கட்டமைப்பையும், வணிக ஊக்கத்தொகைகளையும் (காசி கொரக்கா) தலைநகரில் மட்டும் குவிக்காமல், மக்கள் வசிக்கும் பகுதிகளுக்கு ஆட்சியாளர் பரவலாக்கும்போது மட்டுமே பொருளாதார ஸ்திரத்தன்மை ஏற்படும்.",
+                    tableTitle: "வாய்ப்பு மையப்படுத்தல் விகிதங்கள்",
+                    tableHeaders: ["மூல காரண மேட்ரிக்ஸ்", "தற்போதைய தடை", "துன்கல் தீர்வு"],
+                    tableRows: [
+                        ["வாய்ப்பு பரவலாக்கம்", "05% (நகர ஏகபோகம்)", "100% (ஒவ்வொரு கிராமமும் ஒரு தொழில்நுட்ப மையம்)"],
+                        ["திறன் சான்றளிப்பு", "காகிதத் தேர்வுகளை சார்ந்தது", "பிளாக்செயினில் பாதுகாக்கப்பட்ட திறன் பதிவேடு"]
+                    ],
+                    chartLabel: "பிராந்திய வாய்ப்பு விநியோகம் (%)", chartData: [5, 92], chartCategories: ["மையப்படுத்தப்பட்ட கட்டமைப்பு", "துன்கல் பரவலாக்கம்"]
+                },
+                {
+                    letter: "C",
+                    title: "தீர்வின் நன்மைகள் (Benefits of Resolution)",
+                    content: "கிராமப்புற குடிமக்கள் தங்கள் சொந்த இடங்களை விட்டு வெளியேறாமல் உலகளாவிய பொருளாதாரத்திற்கு பங்களிக்க முடியும். இது குடும்ப வருமானத்தை உடனடியாக அதிகரிக்கும்.",
+                    bullets: ["கிராமப்புற குடும்பங்களின் சராசரி மாதாந்திர வருமானம் உடனடியாக 250% அதிகரிக்கும்.", "டிஜிட்டல் அந்நிய செலாவணி நேரடியாக கிராமப்புற பொருளாதாரத்திற்குள் பாயும்."],
+                    buddhist_title: "வியக்கபஜ்ஜ சூத்திரம்: சமஜீவிகதா மற்றும் சொத்து பாதுகாப்பு",
+                    buddhist_text: "ஈட்டிய சொத்துக்களைப் பாதுகாப்பதையும் (ஆரக்கா சம்பதா) ஒருவருடைய உள்ளார்ந்த திறன்களுக்கு ஏற்ப வாழ்வாதாரத்தை சமநிலைப்படுத்துவதையும் (சமஜீவிகதா) இணைப்பது நீண்டகால பொருளாதார பாதுகாப்பை ஏற்படுத்தும்.",
+                    tableTitle: "கட்டமைப்பு சாத்தியமான நன்மைகள் மேட்ரிக்ஸ்",
+                    tableHeaders: ["நன்மை டொமைன்", "தற்போதைய நெருக்கடி", "தீர்க்கப்பட்ட கட்டமைப்பு நிலை"],
+                    tableRows: [
+                        ["கிராமப்புற மாதாந்திர வருமானம்", "கடன் சுமையால் நசுக்கப்பட்ட வருமானம்", "நெகிழ்ச்சியான அதிக வருமானம் மற்றும் சேமிப்பு"],
+                        ["சமூக-உளவியல் திருப்தி", "இளைஞர்களின் அதிருப்தி", "சுயமரியாதை கொண்ட உலகளாவிய வல்லுநர்கள்"]
+                    ],
+                    chartLabel: "கிராமப்புற பொருளாதார தற்சார்பு (%)", chartData: [15, 88], chartCategories: ["தற்போதைய நிலை", "துன்கல் பார்வை விளைவு"]
+                },
+                {
+                    letter: "D",
+                    title: "உපායමාර්ගික සැලසුම් සහ ක්‍රියාමාර්ග (Strategic Solutions)",
+                    content: "'துன்கல் தெக்ம' 5-படி உத்திகள் கொண்ட செயல் திட்டத்தை அறிமுகப்படுத்துகிறது:",
+                    bullets: [
+                        "படி 1: 'துன்கல் இறையாண்மை டிஜிட்டல் திறன் பதிவேடு' (Dynamic Competency Mapping) உருவாக்குதல்.",
+                        "படி 2: அனைத்து பிராந்திய செயலகங்களிலும் அதிவேக 'துன்கல் ஸ்மார்ட் மையங்களை' (Smart Hubs) அமைத்தல்.",
+                        "படி 3: 'துன்கல் திறன் நிதியம்' மூலம் சொத்து பிணையின்றி 0% வட்டி விதை மூலதனத்தை (Seed Capital) வழங்குதல். (ஆபத்தை நிவர்த்தி செய்ய 5% மாதாந்திர பெருக்கி - Repayment Multiplier மட்டுமே).",
+                        "படி 4: இடைத்தரகர்கள் இல்லாமல் பிளாக்செயினுடன் கூடிய QR வர்த்தக பொறிமுறையை செயல்படுத்துதல்.",
+                        "படி 5: தொழில்நுட்ப மாற்றங்களின் போது மனித வளத்தை மீண்டும் மேம்படுத்த தேசிய திறன் பாதுகாப்பு நிதியத்தை உருவாக்குதல்."
+                    ],
+                    buddhist_title: "சப்த அபரிஹானிய தம்மா: கூட்டு நிர்வாக இணக்கம்",
+                    buddhist_text: "பிராந்திய தொழில்முனைவோர், தொழில்நுட்ப உருவாக்குநர்கள் மற்றும் அரசு அதிகாரிகள் அடிக்கடி கூடி (அபிந்ஹ சன்னிபாதா) வெளிப்படையான திறந்த விவாதங்களை நடத்தும்போது பொருளாதார வீழ்ச்சி முற்றிலும் தடுக்கப்படும்.",
+                    tableTitle: "துன்கல் மூலோபாய மேட்ரிக்ஸ் ஒப்பீடு",
+                    tableHeaders: ["பொறிமுறை குறியீடு", "பாராரம்பரிய முறைகள்", "துன்கல் இறையாண்மை கட்டமைப்பு"],
+                    tableRows: [
+                        ["வேலை உருவாக்க இயக்கவியல்", "அரசியல் மானியங்கள் / எழுத்தர் நியமனங்கள்", "திறன் அடிப்படையிலான டிஜிட்டல் தொழில்முனைவோர்"],
+                        ["மூலதன கட்டமைப்பு", "30% வட்டி கொண்ட பாரம்பரிய கடன்கள்", "5% பெருக்கியுடன் 0% நேரடி விதை மூலதனம்"]
+                    ],
+                    chartLabel: "உள்ளார்ந்த திறன் வேலை உருவாக்க திறன் (%)", chartData: [12, 96], chartCategories: ["பாரம்பரிய மானிய முறை", "துன்கல் மூலோபாய கட்டமைப்பு"]
+                }
+            ]
+        };
+
+        let selectedLang = 'si';
+        let activeSlideIndex = 0;
+        let chartInstance = null;
+
+        function paintDashboard() {
+            const currentDataset = datasetMatrix[selectedLang][activeSlideIndex];
+            
+            document.getElementById('section-letter').innerText = currentDataset.letter;
+            document.getElementById('section-title').innerText = currentDataset.title;
+            
+            let htmlContentBuffer = `<p>${currentDataset.content}</p><ul class="bullet-matrix">`;
+            currentDataset.bullets.forEach(bullet => { htmlContentBuffer += `<li>${bullet}</li>`; });
+            htmlContentBuffer += `</ul>`;
+            document.getElementById('section-content-pane').innerHTML = htmlContentBuffer;
+            
+            document.getElementById('buddhist-title').innerText = currentDataset.buddhist_title;
+            document.getElementById('buddhist-text').innerText = currentDataset.buddhist_text;
+            document.getElementById('section-data-title').innerText = currentDataset.tableTitle;
+            
+            let headerHtml = "";
+            currentDataset.tableHeaders.forEach(header => { headerHtml += `<th>${header}</th>`; });
+            document.getElementById('table-header-row').innerHTML = headerHtml;
+            
+            let rowsHtml = "";
+            currentDataset.tableRows.forEach(row => {
+                rowsHtml += `<tr><td><strong>${row[0]}</strong></td><td>${row[1]}</td><td>${row[2]}</td></tr>`;
+            });
+            document.getElementById('table-body-rows').innerHTML = rowsHtml;
+            
+            localizeUILabels();
+            renderActiveCharts(currentDataset);
+        }
+
+        function localizeUILabels() {
+            if (selectedLang === 'en') {
+                document.getElementById('window-title').innerText = "Thun Kal Dækma | Inherent Talents Ecosystem";
+                document.getElementById('header-desc').innerText = "Regional Skill Underutilization Crisis & Talent Technical Restructuring Master Plan";
+                document.getElementById('meta-tag').innerText = "MASTER MATRIX PILLAR";
+                document.getElementById('chart-title-text').innerText = "Systemic Analytical Projection Chart";
+                document.getElementById('slide-num-display').innerText = `Step: ${activeSlideIndex + 1} / 4`;
+                document.getElementById('footer-text').innerText = "Three-Way Vision © 2026 | Competency-Income Alignment.";
+            } else if (selectedLang === 'ta') {
+                document.getElementById('window-title').innerText = "துன்கல் தெக்ம | பிராந்திய திறன்கள் தேசிய திட்டம்";
+                document.getElementById('header-desc').innerText = "பிராந்திய திறமைகள் மற்றும் வருமான சமநிலை தொழில்நுட்ப மாஸ்டர் திட்டம்";
+                document.getElementById('meta-tag').innerText = "முக்கிய கட்டமைப்பு தூண்";
+                document.getElementById('chart-title-text').innerText = "பகுப்பாய்வு முன்கணிப்பு விளக்கப்படம்";
+                document.getElementById('slide-num-display').innerText = `படி: ${activeSlideIndex + 1} / 4`;
+                document.getElementById('footer-text').innerText = "துன்கல் தெக்ம © 2026 | பிராந்திய திறன்கள் தேசிய வரைபடம்.";
+            } else {
+                document.getElementById('window-title').innerText = "තුන්කල් දැක්ම | ප්‍රාදේශීය නිපුණතා සහ සහජ දක්ෂතා සවිබලගැන්වීමේ ජාතික පද්ධතිය";
+                document.getElementById('header-desc').innerText = "ප්‍රාදේශීය නිපුණතා ඌන-උපයෝජන අර්බුදය සහ සහජ දක්ෂතා තාක්ෂණික ප්‍රතිසංවිධාන මාස්ටර් සැලැස්ම";
+                document.getElementById('meta-tag').innerText = "ප්‍රධාන මාස්ටර් මැට්‍රික්ස් කුළුණ";
+                document.getElementById('chart-title-text').innerText = "තත්කාලීන පද්ධතිමය ප්‍රක්ෂේපණ ප්‍රස්තාරය";
+                document.getElementById('slide-num-display').innerText = `පියවර: ${activeSlideIndex + 1} / 4`;
+                document.getElementById('footer-text').innerText = "තුන්කල් දැක්ම © 2026 | සහජ හැකියාවන්ට සරිලන ඩිජිටල් කුසලතා මිතිය.";
+            }
+        }
+
+        function renderActiveCharts(dataset) {
+            const ctx = document.getElementById('analyticsChartMatrix').getContext('2d');
+            if (chartInstance) { chartInstance.destroy(); }
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataset.chartCategories,
+                    datasets: [{
+                        label: dataset.chartLabel,
+                        data: dataset.chartData,
+                        backgroundColor: ['#f87171', '#34d399'],
+                        borderColor: ['#dc2626', '#059669'],
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        barThickness: 50
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#f8fafc', font: { weight: '600' } } } },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function changeSlide(directionOffset) {
+            activeSlideIndex += directionOffset;
+            if (activeSlideIndex < 0) activeSlideIndex = 0;
+            if (activeSlideIndex >= 4) activeSlideIndex = 3;
+            paintDashboard();
+        }
+
+        function switchLanguage(langKey) {
+            selectedLang = langKey;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('lang-' + langKey).classList.add('active');
+            paintDashboard();
+        }
+
+        function filterTableRows() {
+            let input = document.getElementById("tableFilterInput");
+            let filter = input.value.toUpperCase();
+            let table = document.getElementById("contentDataTable");
+            let tr = document.getElementsByTagName("tr");
+            for (let i = 1; i < tr.length; i++) {
+                let rowText = tr[i].textContent || tr[i].innerText;
+                tr[i].style.display = rowText.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        }
+
+        window.onload = function() { paintDashboard(); };
+    </script>
+</body>
+</html>

@@ -17,30 +17,36 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
   const staticLabels = {
     si: {
       backBtn: '← ප්‍රධාන මෙනුවට',
-      allProjects: 'ජාතික ව්‍යාපෘති 5',
+      allProjects: 'ජාතික ව්‍යාපෘති 7',
       prevBtn: '← පසුපසට',
       nextBtn: 'ඉදිරියට →',
       buddhistTitle: 'බුදු දහමේ ආර්ථික ප්‍රඥාව',
       matrixTitle: 'පද්ධතිමය විශ්ලේෂණ ලක්ෂණ',
-      searchPlaceholder: 'සොයන්න...'
+      chartTitle: 'තත්කාලීන පද්ධතිමය ප්‍රක්ෂේපණ ප්‍රස්තාරය',
+      searchPlaceholder: 'සොයන්න...',
+      noResults: 'ගැලපෙන දත්ත නොමැත.'
     },
     en: {
       backBtn: '← Back to Main',
-      allProjects: '5 National Projects',
+      allProjects: '7 National Projects',
       prevBtn: '← Prev',
       nextBtn: 'Next →',
       buddhistTitle: 'Economic Wisdom in Buddhism',
       matrixTitle: 'Systemic Analysis Matrix',
-      searchPlaceholder: 'Search...'
+      chartTitle: 'Systemic Analytical Projection Chart',
+      searchPlaceholder: 'Search...',
+      noResults: 'No matching records found.'
     },
     ta: {
       backBtn: '← முதன்மைப் பலகை',
-      allProjects: '5 தேசிய திட்டங்கள்',
+      allProjects: '7 தேசிய திட்டங்கள்',
       prevBtn: '← முந்தைய',
       nextBtn: 'அடுத்த →',
       buddhistTitle: 'பௌத்த பொருளாதார ஞானம்',
       matrixTitle: 'அமைப்பு பகுப்பாய்வு மேட்ரிக்ஸ்',
-      searchPlaceholder: 'தேடுங்கள்...'
+      chartTitle: 'பகுப்பாய்வு முன்கணிப்பு விளக்கப்படம்',
+      searchPlaceholder: 'தேடுங்கள்...',
+      noResults: 'பொருந்தும் பதிவுகள் இல்லை.'
     }
   }[lang]
 
@@ -256,7 +262,38 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
         activeCharts.push(chart)
       }
 
-      // 5. Bar Chart: cribImpactChart
+      // 5. Bar Chart: analyticsChartMatrix (gatalu7)
+      const analyticsCanvas = document.getElementById('analyticsChartMatrix')
+      if (analyticsCanvas && slide.chartData) {
+        const ctx = analyticsCanvas.getContext('2d')
+        const chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: slide.chartCategories,
+            datasets: [{
+              label: slide.chartLabel,
+              data: slide.chartData,
+              backgroundColor: ['rgba(248, 113, 113, 0.75)', 'rgba(52, 211, 153, 0.75)'],
+              borderColor: ['#f87171', '#34d399'],
+              borderWidth: 2,
+              borderRadius: 6,
+              barThickness: 50
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { labels: { color: '#ffffff', font: { weight: '600' } } } },
+            scales: {
+              y: { beginAtZero: true, max: 100, ticks: { color: '#cbd5e1' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+              x: { ticks: { color: '#cbd5e1' }, grid: { display: false } }
+            }
+          }
+        })
+        activeCharts.push(chart)
+      }
+
+      // 6. Bar Chart: cribImpactChart
       const cribCanvas = document.getElementById('cribImpactChart')
       if (cribCanvas) {
         const ctx = cribCanvas.getContext('2d')
@@ -311,14 +348,18 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
     setActiveSlideIndex(prev => (prev === currentLangSlides.length - 1 ? 0 : prev + 1))
   }
 
-  // Filter local structured tables (Projects 4 & 5)
+  const getSlideTableData = () => slide.table || slide.tableRows || []
+
   const getFilteredTable = (tableData) => {
     if (!tableData) return []
     if (!tableSearchQuery) return tableData
-    return tableData.filter(row => 
+    return tableData.filter(row =>
       row.some(cell => cell.toLowerCase().includes(tableSearchQuery.toLowerCase()))
     )
   }
+
+  const defaultBg = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80'
+  const slideBg = slide.bgImage || defaultBg
 
   return (
     <div className="min-h-screen flex flex-col text-white" style={{
@@ -511,7 +552,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
         <main className="lg:col-span-8 flex flex-col">
           <div className="flex-1 rounded-[2.5rem] bg-slate-950/80 border border-white/10 overflow-hidden shadow-2xl flex flex-col relative"
             style={{
-              backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.97)), url(${slide.bgImage || ''})`,
+              backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.97)), url(${slideBg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
@@ -535,8 +576,8 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
             {/* Slide Body */}
             <div className="flex-1 p-6 md:p-8 overflow-y-auto">
               
-              {/* Layout Type 1: Plain HTML string (used for gatalu1 - gatalu3) */}
-              {project.layoutType !== 'structured' ? (
+              {/* Layout Type 1: Plain HTML slides (gatalu1 - gatalu3) */}
+              {!project.layoutType || project.layoutType === 'legacy' ? (
                 <div className="animate-fade">
                   <h2 className="text-xl md:text-2xl font-bold mb-6 text-white pb-3 border-b border-white/5 flex items-center" 
                     dangerouslySetInnerHTML={{ __html: slide.title }} 
@@ -545,8 +586,101 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                     dangerouslySetInnerHTML={{ __html: slide.bodyHtml }} 
                   />
                 </div>
+              ) : project.layoutType === 'analytics' ? (
+                /* Layout Type 3: Analytics slides with chart (gatalu6-style matrix + gatalu7) */
+                <div className="animate-fade space-y-6">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center font-black text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                      {slide.letter}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h2 className="text-xl md:text-2xl font-extrabold text-white leading-snug">
+                      {slide.title}
+                    </h2>
+                    <p className="text-gray-400 text-sm md:text-base mt-3 leading-relaxed">
+                      {slide.content}
+                    </p>
+                  </div>
+
+                  {slide.bullets && (
+                    <div className="p-6 rounded-2xl bg-slate-900/60 border border-white/5">
+                      <ul className="styled-list my-0">
+                        {slide.bullets.map((item, idx) => (
+                          <li key={idx} className="text-sm text-gray-300">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {slide.buddhistText && (
+                    <div className="quote-box">
+                      <div className="flex items-center gap-2 mb-2 not-italic">
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <span className="text-[10px] font-extrabold tracking-widest uppercase text-amber-400">
+                          {slide.buddhistTitle || staticLabels.buddhistTitle}
+                        </span>
+                      </div>
+                      "{slide.buddhistText}"
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {slide.tableRows && (
+                      <div className="space-y-4">
+                        <h4 className="text-sm font-bold text-amber-400">{slide.tableTitle}</h4>
+                        <input
+                          type="text"
+                          className="table-filter"
+                          placeholder={project.searchPlaceholder?.[lang] || staticLabels.searchPlaceholder}
+                          value={tableSearchQuery}
+                          onChange={(e) => setTableSearchQuery(e.target.value)}
+                        />
+                        <div className="overflow-x-auto">
+                          <table className="data-table">
+                            <thead>
+                              <tr>
+                                {(slide.tableHeaders || []).map((h, i) => (
+                                  <th key={i}>{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {getFilteredTable(slide.tableRows).map((row, rIdx) => (
+                                <tr key={rIdx}>
+                                  <td><strong>{row[0]}</strong></td>
+                                  <td><span className="text-red-400 font-semibold">{row[1]}</span></td>
+                                  <td><span className="text-emerald-400 font-semibold">{row[2]}</span></td>
+                                </tr>
+                              ))}
+                              {getFilteredTable(slide.tableRows).length === 0 && (
+                                <tr>
+                                  <td colSpan="3" className="text-center text-gray-500 py-6">
+                                    {staticLabels.noResults}
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {slide.chartData && (
+                      <div className="p-4 rounded-2xl bg-slate-900/60 border border-white/5">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">
+                          {staticLabels.chartTitle}
+                        </h4>
+                        <div className="chart-wrapper" style={{ minHeight: 260 }}>
+                          <canvas id="analyticsChartMatrix"></canvas>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ) : (
-                /* Layout Type 2: Structured Slide Layout (used for gatalu4 - gatalu5) */
+                /* Layout Type 2: Structured Slide Layout (gatalu4 - gatalu6) */
                 <div className="animate-fade space-y-6">
                   {/* Top Header Badge Row */}
                   <div className="flex flex-wrap items-center gap-3">
@@ -616,17 +750,17 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
                             </tr>
                           </thead>
                           <tbody>
-                            {getFilteredTable(slide.table).map((row, rIdx) => (
+                            {getFilteredTable(getSlideTableData()).map((row, rIdx) => (
                               <tr key={rIdx}>
                                 <td><strong>{row[0]}</strong></td>
                                 <td><span className="text-red-400 font-semibold">{row[1]}</span></td>
                                 <td><span className="text-emerald-400 font-semibold">{row[2]}</span></td>
                               </tr>
                             ))}
-                            {getFilteredTable(slide.table).length === 0 && (
+                            {getFilteredTable(getSlideTableData()).length === 0 && (
                               <tr>
                                 <td colSpan="3" className="text-center text-gray-500 py-6">
-                                  No matching records found.
+                                  {staticLabels.noResults}
                                 </td>
                               </tr>
                             )}
@@ -649,7 +783,7 @@ function ProjectsHub({ lang, setLang, setCurrentPage }) {
               </button>
 
               <div className="text-xs font-semibold text-gray-400 tracking-wider">
-                {staticLabels.pageLabel} {activeSlideIndex + 1} / {currentLangSlides.length}
+                {project.pageLabel[lang] || project.pageLabel['si']} {activeSlideIndex + 1} / {currentLangSlides.length}
               </div>
 
               <button

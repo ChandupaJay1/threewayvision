@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import BuddhistDetail from './religions/BuddhistDetail'
+import ChristianDetail from './religions/ChristianDetail'
+import IslamicDetail from './religions/IslamicDetail'
+import HinduDetail from './religions/HinduDetail'
 
 const translations = {
   si: {
@@ -290,6 +294,11 @@ function ReligiousVision({ lang, setCurrentPage }) {
               </div>
             </div>
           </div>
+
+          {selectedReligion === 'buddhist' && <BuddhistDetail lang={lang} colorClass={colorClass} />}
+          {selectedReligion === 'christian' && <ChristianDetail lang={lang} colorClass={colorClass} />}
+          {selectedReligion === 'islamic' && <IslamicDetail lang={lang} colorClass={colorClass} />}
+          {selectedReligion === 'hindu' && <HinduDetail lang={lang} colorClass={colorClass} />}
         </div>
       </main>
     )

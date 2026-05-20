@@ -672,14 +672,14 @@ export const projectsList = [
   {
     id: 'gatalu5',
     name: {
-      si: 'අතරමැදි සූරාකෑම වැළැක්වීමේ පද්ධතිමය සැලසුම',
-      en: 'Anti-Exploitation Systemic Plan',
-      ta: 'இடைத்தரகர் சுரண்டல் எதிர்ப்பு முறையியல் திட்டம்'
+      si: 'සැපයුම් දාම සමානතා මාස්ටර් මැට්‍රික්ස්',
+      en: 'Supply Chain Equalization Matrix',
+      ta: 'விநியோகச் சங்கிலி சமநிலை மேட்ரிக்ஸ்'
     },
     headerText: {
-      si: 'තුන්කල් දැක්ම | අතරමැදි සූරාකෑම වැළැක්වීමේ පද්ධතිමය සැලසුම',
-      en: 'Thun Kal Dekma | Anti-Exploitation Systemic Plan',
-      ta: 'துன்கல் தெக்ம | இடைத்தரகர் சுரண்டல் தடுப்பு முறையியல் திட்டம்'
+      si: 'තුන්කල් දැක්ම | සැපයුම් දාම සමානතා මාස්ටර් මැට්‍රික්ස්',
+      en: 'Thun Kal Dekma | Supply Chain Equalization Matrix',
+      ta: 'துன்கல் தெக்ம | விநியோகச் சங்கிலி சமநிலை மேட்ரிக்ஸ்'
     },
     searchPlaceholder: {
       si: 'පද්ධති සංරචක හෝ ක්‍රියාවලි සොයන්න...',
@@ -710,11 +710,11 @@ export const projectsList = [
             "නිෂ්පාදකයා සහ අවසාන පාරිභෝගිකයා අතර සෘජු සන්නිවේදනයක් හෝ විනිවිද පෙනෙන වෙළඳපොළක් නොමැතිකම.",
             "කෘතිම මිල උච්චාවචනයන් පාලනය කිරීමට පවතින නීතිමය රාමු අසාර්ථක වීම."
           ],
-          buddhist: "දසරාජ ධර්මය: රාජ්‍ය පාලකයන් වෙළඳපොළ අක්‍රමිකතා සහ අතරමැදි සූරාකෑම් පාලනය කරමින් සාධාරණ මිලක් තහවුරු කිරීමට කටයුතු නොකළහොත් ජනතාව දැඩි ආර්ථික දුෂ්කරතාවලට ලක් වේ.",
+          buddhist: "මහා වණිජ ජාතකය: වෙළඳාමේදී කූට ලෙස මිල ඉහළ දැමීම සහ අතරමැදි සූරාකෑම හරහා සමාජයේ සාමාන්‍ය ජනයා පීඩාවට පත් කිරීම සමස්ත රටක ආර්ථික සදාචාරය බිඳවැටීමට මඟ පාදයි.",
           table: [
-            ["පාරිභෝගික මිල අනුපාතය", "නිෂ්පාදන පිරිවැය මෙන් 3 ගුණයක්", "නිෂ්පාදන පිරිවැයට සාපේක්ෂව 1.3 ගුණයක්"],
-            ["මිල ස්ථාවරත්වය", "දෛනිකව විශාල ලෙස වෙනස් වේ", "විනිවිද පෙනෙන ස්ථාවර මිල පදනම"],
-            ["ගුණාත්මක භාවය", "අවම (කල් තබා ගන්නා රසායනික සහිත)", "නැවුම් සහ ගුණාත්මක දේශීය නිෂ්පාදන"]
+            ["පාරිභෝගික මිල පිරිවැය", "300% - 400% (අධිකයි)", "නිෂ්පාදන මිල + සාධාරණ සේවා ගාස්තු 15%"],
+            ["සැපයුම් දාමයේ ස්ථර", "4 - 6 (අතරමැදි ස්ථර)", "0 - 1 (සෘජු ඩිජිටල් ජාලය)"],
+            ["මිල විනිවිදභාවය", "0% (රහසිගත මිල තීරණ)", "100% (බ්ලොක්චේන්/ඩිජිටල් පද්ධතිය හරහා)"]
           ],
           th1: "පද්ධති දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
         },
@@ -722,37 +722,37 @@ export const projectsList = [
           letter: "B",
           meta: "මූල හේතු විශ්ලේෂණය",
           title: "මූල හේතු: ඒකාධිකාරී තොග වෙළඳපොළ සහ විමධ්‍යගත ජාල නොමැතිකම",
-          desc: "පාරිභෝගිකයාට අධික මිලක් ගෙවීමට සිදුව ඇත්තේ නිෂ්පාදනයේ හිඟකමක් නිසා නොව, අතරමැදියන් විසින් මිල පාලනය කරන ඒකාධිකාරී භෞතික වෙළඳපොළ ජාලය නිසාය.",
+          desc: "භාණ්ඩ මිල ඉහළ යන්නේ සැපයුමේ හිඟකමක් නිසා නොවේ. භාණ්ඩ එකතු කිරීමේ, ප්‍රවාහනය කිරීමේ සහ බෙදාහැරීමේ පාලනය සීමිත අතරමැදියන් පිරිසක් අතේ කේන්ද්‍රගත වී තිබීම මෙයට ප්‍රධානතම හේතුවයි.",
           matrix: [
-            "නිෂ්පාදන තොග එක් රැස් කොට මිල තීරණය කිරීමේ බලය සීමිත අතරමැදියන් පිරිසක් සතු වීම.",
-            "නිෂ්පාදකයාට සිය අස්වැන්න සෘජුවම පාරිභෝගිකයා වෙත අලෙවි කිරීමට අවශ්‍ය විමධ්‍යගත ප්‍රවාහන හා ගබඩා පහසුකම් නොමැතිකම.",
-            "රජයේ මිල පාලන ආයතන සක්‍රීයව වෙළඳපොළට මැදිහත් නොවීම.",
-            "නිෂ්පාදන සැපයුම් දාමයේ පවතින දත්ත විනිවිදභාවය නොමැතිකම."
+            "ගොවියාට හෝ නිෂ්පාදකයාට තම නිෂ්පාදන සෘජුවම වෙළඳපොළට හඳුන්වා දීමට ඇති ප්‍රවාහන හා මූල්‍ය දුෂ්කරතා.",
+            "ප්‍රධාන ආර්ථික මධ්‍යස්ථාන ඒකාධිකාරී තොග වෙළෙන්දන්ගේ ග්‍රහණයට නතු වී තිබීම.",
+            "පාරිභෝගිකයාට භාණ්ඩයේ සැබෑ නිෂ්පාදන පිරිවැය දැනගැනීමට ඇති තොරතුරු පරතරය (Information Asymmetry).",
+            "රාජ්‍ය අංශයේ මැදිහත්වීම් නිලධාරීවාදී මන්දගාමීත්වයකින් යුක්ත වීම."
           ],
-          buddhist: "කූටදන්ත සූත්‍රය: වෙළඳාම සහ කෘෂිකර්මාන්තය සඳහා රාජ්‍ය මැදිහත් වීමෙන් නිසි පහසුකම් හා මිල පාලනයන් සලසා නොදීම ආර්ථිකයේ බිඳවැටීමට සෘජුවම බලපායි.",
+          buddhist: "කුටදන්ත සූත්‍රය: නිෂ්පාදකයා සහ පාරිභෝගිකයා අතර පවතින හුවමාරු ක්‍රියාවලිය විනිවිදභාවයෙන් තොර වූ විට සහ රාජ්‍යය විසින් සැපයුම් ජාල විධිමත් නොකරන විට රටේ දුප්පත්කම රජ කරයි.",
           table: [
-            ["මිල තීරණය කිරීමේ බලය", "ඒකාධිකාරී තොග වෙළෙන්දන්", "සෘජු ඉල්ලුම සහ සැපයුම් දත්ත මත"],
-            ["ප්‍රවාහන සැපයුම් ජාලය", "මධ්‍යගත භෞතික වෙළඳපොළ මත", "විමධ්‍යගත සෘජු ප්‍රවාහන පද්ධතිය"],
-            ["දත්ත පාරදෘශ්‍යභාවය", "සම්පූර්ණයෙන්ම රහසිගතයි", "විවෘත ඩිජිටල් මිල පද්ධතියක්"]
+            ["වෙළඳපොළ පාලනය", "සීමිත අතරමැදි කල්ලියක් සතුව ඇත", "විමධ්‍යගත නිෂ්පාදක සමූහාණ්ඩු සතුව ඇත"],
+            ["තොරතුරු ගලායාම", "රහසිගත මිල ගණන්", "විවෘත ඩිජිටල් මිල දර්ශකය"],
+            ["ප්‍රවාහන කාර්යක්ෂමතාව", "අකාර්යක්ෂම / නාස්තිය අධිකයි", "සංකාණ්ඩිත ප්‍රවාහන ජාලකරණය"]
           ],
-          th1: "මූලික දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
+          th1: "ප්‍රභව දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
         },
         {
           letter: "C",
           meta: "යහපත විශ්ලේෂණය",
           title: "යහපත: ජීවන පිරිවැය පහළ යෑම සහ නිෂ්පාදක-පාරිභෝගික සවිබල ගැන්වීම",
-          desc: "අතරමැදි ඒකාධිකාරය බිඳ දැමීම තුළින් පාරිභෝගික ජීවන වියදම පහත වැටෙන අතර, නිෂ්පාදකයාගේ මූල්‍ය ස්ථාවරත්වය සහ ආර්ථිකයේ සාධාරණත්වය තහවුරු වේ.",
+          desc: "අතරමැදි ස්ථර ඉවත් කිරීමෙන් පාරිභෝගිකයාට සාධාරණ මිලකට භාණ්ඩ ලැබෙන අතරම, නිෂ්පාදකයාට ඉහළ ආදායමක් හිමි වේ. එමඟින් සමස්ත දේශීය ආර්ථිකයේ මුදල් සංසරණය වඩාත් සක්‍රීය වේ.",
           matrix: [
-            "පාරිභෝගික ජීවන වියදම සැලකිය යුතු මට්ටමකින් පහළ යාම.",
-            "නිෂ්පාදකයාට සිය නිෂ්පාදන සඳහා ඉහළ සහ සාධාරණ මිලක් සෘජුවම ලැබීම.",
-            "වෙළඳපොළ තුළ කෘතිම හිඟයන් හා මිල උච්චාවචනයන් මුළුමනින්ම තුරන් වීම.",
-            "විනිවිද පෙනෙන වෙළඳ සංස්කෘතියක් තුළින් රටේ මූල්‍ය සංසරණය විධිමත් වීම."
+            "පාරිභෝගිකයාගේ මාසික ජීවන පිරිවැය අවම වශයෙන් 40% කින් පහළ යෑම.",
+            "නිෂ්පාදකයාට ක්ෂණික සහ සාධාරණ මුදල් ලැබීම නිසා නිෂ්පාදනය ඉහළ නැංවීමට පෙළඹීම.",
+            "කෘතිම මිල උච්චාවචනයන් සහ කළු කඩ මාෆියාව මුළුමනින්ම තුරන් වීම.",
+            "ප්‍රාදේශීය මට්ටමින් නව රැකියා අවස්ථා සහ කාර්යක්ෂම ප්‍රවාහන ව්‍යවසායකයින් බිහිවීම."
           ],
-          buddhist: "අන්‍යෝන්‍ය සහයෝගීතාවය: නිෂ්පාදකයා සහ පාරිභෝගිකයා අතර පවතින සෘජු හා සාධාරණ ගනුදෙනු තුළින් සමාජයේ සදාචාරාත්මක අගයන් සහ පොදු යහපත ස්ථාවර වේ.",
+          buddhist: "වියග්ඝපජ්ජ සූත්‍රය: භෝග සහ ධනය ආරක්ෂා කරගනිමින්, අනවශ්‍ය ලෙස අතරමැදියන්ට නාස්ති වීමට නොදී පාරිභෝගිකයා අර්ථවත් ලෙස ජීවත් වීම සැබෑ ආර්ථික සමෘද්ධියයි.",
           table: [
-            ["පාරිභෝගික තෘප්තිය", "ඉතා අවම (මිල පීඩනය නිසා)", "උපරිම (සාධාරණ මිල සහ නැවුම් බව)"],
-            ["නිෂ්පාදක ආදායම", "අස්ථාවර / අවම", "ස්ථාවර / ඉහළ මට්ටමක"],
-            ["වෙළඳ සාධාරණත්වය", "නැත (සූරාකෑම අධිකයි)", "සම්පූර්ණ විනිවිදභාවය සහ සාධාරණත්වය"]
+            ["ජීවන පිරිවැය පීඩනය", "ඉතා ඉහළ (ණය වීමට සිදු වේ)", "සමබර සහ ඉතිරි කිරීම් සහිතයි"],
+            ["නිෂ්පාදක ආදායම", "අවම මට්ටමක (ණය උගුලක)", "ලාභදායී සහ ස්ථාවරයි"],
+            ["වෙළඳපොළ සදාචාරය", "සූරාකෑම මත පදනම් වූවක්", "සාධාරණ සහ සදාචාරාත්මක හුවමාරුවක්"]
           ],
           th1: "ප්‍රතිඵල දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
         },
@@ -760,19 +760,20 @@ export const projectsList = [
           letter: "D",
           meta: "උපායමාර්ගික සැලසුම් සහ ක්‍රියාමාර්ග",
           title: "සැලැස්ම: 'තුන්කල්' සෘජු සැපයුම් පද්ධතිය සහ විමධ්‍යගත ඩිජිටල් වෙළඳපොළ",
-          desc: "අතරමැදියාගේ අසාධාරණ මැදිහත් වීම ව්‍යුහාත්මකව ඉවත් කර, නිෂ්පාදකයා සහ පාරිභෝගිකයා සෘජුවම සම්බන්ධ කරන 'තුන්කල්' විමධ්‍යගත සැපයුම් ජාලය මෙසේ ක්‍රියාත්මක වේ:",
+          desc: "අතරමැදියාගේ සූරාකෑම නැවැත්වීම සඳහා 'තුන්කල් දැක්ම' මඟින් හඳුන්වා දෙන තාක්ෂණික සහ ව්‍යුහාත්මක යාන්ත්‍රණය මෙසේය:",
           matrix: [
-            "පියවර 1 (ඩිජිටල් ලියාපදිංචිය): සෑම ප්‍රදේශයකම නිෂ්පාදකයන් සහ පාරිභෝගික සමිති 'තුන්කල්' ඩිජිටල් සැපයුම් ජාලය තුළ ලියාපදිංචි කිරීම.",
-            "පියවර 2 (සෘජු මිල නියම කිරීම): අතරමැදි තැරැව්කාර ලාභ නොමැතිව, නිෂ්පාදන පිරිවැය සහ ප්‍රවාහන වියදම් පමණක් එකතු කර අවසාන පාරිභෝගික මිල සෘජුවම පද්ධතිය තුළ තීරණය කිරීම.",
-            "පියවර 3 (විමධ්‍යගත ප්‍රවාහනය): දිස්ත්‍රික් මට්ටමින් ක්‍රියාත්මක වන රාජ්‍ය හා පෞද්ගලික ඒකාබද්ධ ප්‍රවාහන සේවා (Logistics Loops) හරහා භාණ්ඩ ගමෙන් කෙලින්ම පාරිභෝගික මධ්‍යස්ථාන වෙත ප්‍රවාහනය කිරීම.",
-            "පියවර 4 (සෘජු බෙදාහැරීම): ග්‍රාම සේවා වසම් මට්ටමින් පාරිභෝගික සමිති සහ ඩිජිටල් බෙදාහැරීමේ මධ්‍යස්ථාන (Consumer Hubs) හරහා පාරිභෝගිකයා අතට භාණ්ඩ පත් කිරීම.",
-            "පියවර 5 (මූල්‍ය විනය හා Layer-B වැට): සැපයුම් ජාලය තුළ මිල සූරාකෑම් හෝ නීති විරෝධී මිල කෘතිමව වෙනස් කිරීම් සිදුවීම Layer-B ස්වයංක්‍රීය විනය වැට මඟින් එසැණින් වළක්වාලීම."
+            "පියවර 1 (සෘජු ඩිජිටල් ජාලය): සෑම ප්‍රාදේශීය ලේකම් කොට්ඨාසයකම සිටින නිෂ්පාදකයින් සහ ඔවුන්ගේ නිෂ්පාදන ධාරිතාව 'තුන්කල් ඩිජිටල් ජාලය' (Dynamic Digital Registry) වෙත සෘජුවම සම්බන්ධ කිරීම.",
+            "පියවර 2 (ස්මාර්ට් ප්‍රවාහන පද්ධතිය): පවතින පෞද්ගලික සහ රාජ්‍ය ප්‍රවාහන පද්ධති ඒකාබද්ධ කරමින්, නිෂ්පාදකයාගේ සිට පාරිභෝගිකයාගේ නගරයට හෝ නිවසටම භාණ්ඩ ප්‍රවාහනය සඳහා ස්ථාවර සේවා ගාස්තුවක් සහිත 'තුන්කල් ප්‍රවාහන බලකායක්' පිහිටුවීම.",
+            "පියවර 3 (මිල විනිවිදභාවය - QR ක්‍රමය): පාරිභෝගිකයා මිලදී ගන්නා සෑම භාණ්ඩයකටම QR කේතයක් අමුණන අතර, එමඟින් නිෂ්පාදකයාගේ මිල, ප්‍රවාහන පිරිවැය සහ රජයේ බදු වෙන වෙනම පාරිභෝගිකයාට සෘජුවම බලාගත හැකි වීම.",
+            "පියවර 4 (විමධ්‍යගත ගබඩා සංකීර්ණ): නාගරික මට්ටමින් 'පාරිභෝගික සමූහාණ්ඩු' (Consumer Hubs) මඟින් පාලනය වන විමධ්‍යගත සිසිලන සහ ගබඩා සංකීර්ණ පිහිටුවා භාණ්ඩ සෘජුවම තොග වශයෙන් ගෙන්වා බෙදාහැරීම.",
+            "පියවර 5 (මූල්‍ය පහසුකම්): අතරමැදියාගේ අත්තිකාරම් මුදල් උගුලෙන් නිෂ්පාදකයා මුදවා ගැනීමට, 'තුන්කල් අරමුදල' හරහා ඇප රහිත, කෙටි කාලීන බීජ ණය සහ කඩිනම් පියවීම් ක්‍රමවේද ඩිජිටල් බැංකුකරණය හරහා ක්‍රියාත්මක කිරීම."
           ],
-          buddhist: "සප්ත අපරිහානීය ධර්ම: සැපයුම් දාමයේ සියලුම පාර්ශවකරුවන් නිතර රැස්වී ගැටලු සාකච්ඡා කරමින් විනිවිද පෙනෙන වෙළඳ ප්‍රතිපත්තියක් ක්‍රියාත්මක කිරීමෙන් ආර්ථික සුරක්ෂිතභාවය ඇති වේ.",
+          buddhist: "සප්ත අපරිහානීය ධර්ම: නිෂ්පාදකයින්, පාරිභෝගිකයින් සහ ප්‍රවාහන ව්‍යවසායකයින් නිතර රැස්වී, විනිවිද පෙනෙන මිල පද්ධති සාකච්ඡා කර තීන්දු ගැනීමෙන් වෙළඳ විපත වළක්වා ගත හැකිය.",
           table: [
-            ["සැපයුම් දාම ව්‍යුහය", "බහු ස්ථර අතරමැදියන් සහිතයි", "සෘජු නිෂ්පාදක-පාරිභෝගික සබැඳියාව"],
-            ["ප්‍රවාහන කළමනාකරණය", "අතරමැදියාගේ අභිමතය පරිදි", "විමධ්‍යගත රාජ්‍ය-පෞද්ගලික ලොජිස්ටික්ස් ලූප්"],
-            ["මූල්‍ය ගනුදෙනු", "මුදල් මත සහ සූරාකෑමට ලක්වේ", "Layer-B තාක්ෂණය යටතේ විනිවිද පෙනෙන ඩිජිටල් මූල්‍ය"]
+            ["මිල නියම කිරීමේ ක්‍රමය", "අතරමැදියාගේ අභිමතය පරිදි", "නිෂ්පාදන පිරිවැය පදනම් කරගත් සූත්‍රයක්"],
+            ["භාණ්ඩ බෙදාහැරීම", "බහුස්තර ප්‍රවාහන ප්‍රවේශය", "සෘජු සැපයුම් දාම ක්‍රියාවලිය"],
+            ["පාරිභෝගික ආරක්ෂාව", "නොමැත (සූරාකෑමට ලක් වේ)", "QR විනිවිදභාවය හරහා උපරිම ආරක්ෂාව"],
+            ["මූල්‍ය ස්වාධීනත්වය", "අතරමැදියාගේ ණය මත යැපීම", "ඩිජිටල් 'තුන්කල්' ක්ෂණික ගෙවීම්"]
           ],
           th1: "යාන්ත්‍රණ දර්ශකය", th2: "වත්මන් තත්ත්වය", th3: "තුන්කල් ඉලක්කය"
         }
@@ -780,78 +781,79 @@ export const projectsList = [
       en: [
         {
           letter: "A",
-          meta: "CONSUMER PROBLEM ANALYSIS",
-          title: "The Problem: High Prices for Consumers due to Intermediary Costs",
-          desc: "In the traditional supply chain, multi-tier middlemen artificially inflate retail prices by engineering artificial shortages and taking huge markups without adding value.",
+          meta: "Consumer Problem Analysis",
+          title: "The Problem: High Consumer Prices Driven by Multi-tier Middlemen Inflation",
+          desc: "The traditional supply chain is heavily exploited by multiple layers of middlemen who artificially inflate prices and create synthetic scarcity without adding any real value.",
           matrix: [
-            "Producers fail to get fair prices, while consumers are forced to pay upwards of 300% of production costs.",
-            "Middlemen transfer transportation, storage, and monopolistic profit margins directly to consumers.",
-            "Absence of direct communication channels or a transparent market between producers and end consumers.",
-            "Failure of existing legal and regulatory frameworks to control artificial price fluctuations."
+            "Producers are underpaid while consumers pay over 300% of the actual production cost.",
+            "Middlemen shift logistics, storage inefficiencies, and monopoly margins entirely onto consumers.",
+            "Absolute lack of direct communication channels or structural transparency between producer and consumer.",
+            "Existing legal and regulatory frameworks completely fail to control artificial market manipulations."
           ],
-          buddhist: "Dasa Raja Dhamma: Rulers must stabilize prices and eliminate exploitation to protect citizens from severe economic hardship.",
+          buddhist: "Maha-Vanija Jataka: Exploitative hoarding and unfair middleman markup structures erode the socio-economic moral fabric of a sovereign market.",
           table: [
-            ["Consumer Price Ratio", "3x Production Cost", "1.3x Production Cost"],
-            ["Price Stability", "Fluctuates wildly daily", "Transparent stable pricing base"],
-            ["Product Quality", "Poor (Contains chemical preservatives)", "Fresh, direct local products"]
+            ["Consumer Price Load", "300% - 400% (Exploitative)", "Production Cost + 15% Fair Service Margin"],
+            ["Supply Chain Tiers", "4 - 6 Middlemen Interventions", "0 - 1 (Direct Digital Infrastructure)"],
+            ["Price Transparency", "0% (Asymmetric Hidden Matrix)", "100% (Blockchain/Open Source Ledger)"]
           ],
           th1: "System Index", th2: "Current State", th3: "Three-Way Goal"
         },
         {
           letter: "B",
-          meta: "ROOT CAUSE ANALYSIS",
-          title: "Root Causes: Monopolistic Wholesale Markets & Lack of Decentralized Networks",
-          desc: "Exorbitant prices are not caused by product scarcity, but by the monopolistic physical market infrastructure controlled by middlemen.",
+          meta: "Root Cause Analysis",
+          title: "Root Causes: Monopolistic Wholesale Distribution & Absence of Decentralized Networks",
+          desc: "High prices do not stem from a deficit in production, but from centralized control over collection, transit, and distribution by legacy broker cartels.",
           matrix: [
-            "Wholesale stocks and price determination are centralized in a few intermediary hands.",
-            "Lack of decentralized transport and storage facilities prevents producers from selling directly to consumers.",
-            "Complete lack of active, strategic market intervention by state price control institutions.",
-            "Total deficit in data transparency across the supply chain."
+            "Logistical and financial barriers preventing regional farmers from directly reaching urban retail spaces.",
+            "Major economic hubs heavily gatekept by a consolidated group of wholesale brokers.",
+            "Severe information asymmetry keeping the final consumer blind to actual baseline production costs.",
+            "Bureaucratic inertia preventing state distribution setups from executing agile market interventions."
           ],
-          buddhist: "Kutadanta Sutta: Failing to establish proper market infrastructure and state price controls directly triggers macroeconomic decay.",
+          buddhist: "Kutadanta Sutta: Asymmetric exchange corridors and failure to decentralize logistics networks trigger absolute structural poverty.",
           table: [
-            ["Price Control Power", "Monopolistic Wholesalers", "Direct Demand & Supply Data Sync"],
-            ["Transport Logistics", "Centralized Physical Markets", "Decentralized Direct Logistics Loops"],
-            ["Data Transparency", "Strictly Monopolized & Hidden", "Open Digital Pricing Portal"]
+            ["Market Sovereignty", "Held by Centralized Broker Cartels", "Owned by Decentralized Producer Communes"],
+            ["Information Velocity", "Proprietary / Opaque", "Real-time Public Digital Index"],
+            ["Logistics Efficiency", "Fragmented / High Post-Harvest Waste", "Optimized Intermodal Sync Network"]
           ],
           th1: "Source Index", th2: "Current State", th3: "Three-Way Goal"
         },
         {
           letter: "C",
-          meta: "BENEFITS OF RESOLUTION",
-          title: "The Benefits: Lower Cost of Living & Producer-Consumer Empowerment",
-          desc: "Dismantling intermediary monopolies significantly lowers the cost of living, while boosting producer income and ensuring systemic market fairness.",
+          meta: "Benefits of Resolution",
+          title: "The Benefits: Drastic Cost of Living Reduction & Empowered Consumer-Producer Alliances",
+          desc: "Flattening the supply chain secures an immediate cost reduction for the consumer while expanding the profit margin for the base producer, boosting velocity of capital.",
           matrix: [
-            "Substantial decrease in the consumer cost of living.",
-            "Producers receive stable and fair prices directly for their harvest.",
-            "Complete elimination of artificial shortages and speculative price spikes.",
-            "Circulation of wealth within the real economy through transparent trade practices."
+            "Immediate drop of at least 40% in monthly household consumer expenditure.",
+            "Guaranteed fair payouts for producers, triggering high volume local manufacturing.",
+            "Complete eradication of artificial price gouging and black-market manipulation tactics.",
+            "Generation of high-efficiency regional transit setups and micro-logistics entrepreneurship."
           ],
-          buddhist: "Mutual Co-existence: Establishing direct, fair trade between producers and consumers secures ethical societal values and common wealth.",
+          buddhist: "Vyagghapajja Sutta: Safeguarding wealth from middleman friction guarantees structural asset preservation and authentic material prosperity.",
           table: [
-            ["Consumer Satisfaction", "Very Low (Under Price Pressure)", "High (Fair Prices & Fresh Quality)"],
-            ["Producer Income", "Volatile & Insufficient", "Stable & Higher Profitability"],
-            ["Trade Equity", "None (High Exploitation)", "Absolute Transparency & Fairness"]
+            ["Cost of Living Stress", "Critical (Forced Debt Dependency)", "Equilibrated with High Savings Capacity"],
+            ["Producer Revenue Flow", "Marginal (Systemic Debt Trap)", "Highly Lucrative & Predictable"],
+            ["Market Integrity", "Extractive and Asymmetric", "Equitable and Symmetric Exchange"]
           ],
           th1: "Impact Index", th2: "Current State", th3: "Three-Way Goal"
         },
         {
           letter: "D",
-          meta: "STRATEGIC SOLUTIONS & ACTION",
-          title: "The Plan: 'Thunkal' Direct Supply System & Decentralized Digital Market",
-          desc: "Structurally bypassing intermediary networks and linking producers directly to consumers via the 'Thunkal' decentralized logistics network:",
+          meta: "Strategic Action Plan",
+          title: "The Solution: 'Thun Kal' Direct Logistics & Decentralized Digital Hubs",
+          desc: "The programmatic model engineered by Three-Way Vision to permanently bypass exploitative middleman interventions:",
           matrix: [
-            "Step 1 (Digital Sync): Registering producers and consumer cooperatives into the 'Thunkal' supply database.",
-            "Step 2 (Direct Pricing): Determining end retail prices strictly based on production cost + transportation, bypassing broker commissions.",
-            "Step 3 (Decentralized Logistics): Direct transport of produce from farm to consumer hubs via collaborative public-private District Logistics Loops.",
-            "Step 4 (Direct Distribution): Distributing goods to consumers via community consumer hubs and digital outlets at the Grama Niladhari division level.",
-            "Step 5 (Financial Discipline): Leveraging Layer-B code boundaries to block any attempted price manipulation or illicit brokerage fees automatically in real-time."
+            "Step 1 (Direct Digital Registry): Mapping all regional manufacturers and their dynamic output capacities directly onto the encrypted 'Thun Kal Digital Network'.",
+            "Step 2 (Integrated Logistics Corp): Syncing public and private transit nodes into an agile fleet operating under fixed, regulated service tariffs from farm to urban hub.",
+            "Step 3 (QR-Indexed Cost Architecture): Attaching end-to-end trace QR codes on items, breaking down baseline producer cost, freight tracking fee, and state levy.",
+            "Step 4 (Decentralized Consumer Hubs): Erecting community-governed cold storage facilities in urban sectors to receive direct mass-volume dispatches.",
+            "Step 5 (Sovereign Micro-Finance Anchor): Deploying unsecured short-term bridge financing via the 'Thun Kal Fund' to break producer reliance on predatory broker advances."
           ],
-          buddhist: "Sapta Aparihaniya Dhamma: Regular consensus assemblies among logistics providers, farmers, and consumers ensure transparent trade policies and lasting economic security.",
+          buddhist: "Sapta Aparihaniya Dhamma: Direct, frequent assembly of producers, logistics operators, and consumer collectives effectively neutralizes market regression.",
           table: [
-            ["Supply Chain Protocol", "Multi-tiered Brokerage Networks", "Direct Producer-to-Consumer Setup"],
-            ["Logistics Management", "Controlled by Middlemen Cartels", "Decentralized Public-Private Loops"],
-            ["Financial System", "Predatory Cash Transactions", "Layer-B Guarded Digital Payments"]
+            ["Pricing Formula", "Broker Discretion / Speculation", "Cost-Plus Scientific Margin Formula"],
+            ["Distribution Velocity", "Convoluted Intermediary Stops", "Direct End-to-End Fulfilment Nodes"],
+            ["Consumer Protection", "None (Highly Vulnerable)", "Absolute via Transparent QR Provenance"],
+            ["Capital Velocity", "Delayed / Dependent on Intermediary", "Instant Digital Settlement Protocols"]
           ],
           th1: "Mechanism Index", th2: "Current State", th3: "Three-Way Goal"
         }
@@ -860,79 +862,623 @@ export const projectsList = [
         {
           letter: "A",
           meta: "நுகர்வோர் சிக்கல் பகுப்பாய்வு",
-          title: "பிரச்சினை: இடைத்தரகர்களின் செலவுகளால் நுகர்வோருக்கு அதிக விலை",
-          desc: "பாரம்பரிய விநியோகச் சங்கிலியில், பல அடுக்கு இடைத்தரகர்கள் எவ்வித மதிப்பையும் கூட்டாமல், செயற்கையான பற்றாக்குறைகளை உருவாக்கி சில்லறை விலையை செயற்கையாக உயர்த்துகின்றனர்.",
+          title: "பிரச்சனை: இடைத்தரகர் செலவுகளால் நுகர்வோர் அதிக விலைக்கு பொருட்களை வாங்குதல்",
+          desc: "பாரம்பரிய விநியோகச் சங்கிலியில் உள்ள பல அடுக்கு இடைத்தரகர்கள் எந்தவொரு மதிப்புக் கூட்டலையும் செய்யாமல், செயற்கை பற்றாக்குறையை உருவாக்கி, நுகர்வோருக்குப் பொருட்களை அதிக விலைக்கு விற்கிறார்கள்.",
           matrix: [
-            "உற்பத்தியாளர்கள் நியாயமான விலையைப் பெறுவதில்லை, நுகர்வோர் உற்பத்தி செலவை விட 300% க்கும் அதிகமாக செலுத்த வேண்டிய கட்டாயத்தில் உள்ளனர்.",
-            "போக்குவரத்து, சேமிப்பு மற்றும் ஏகபோக லாப வரம்புகளை இடைத்தரகர்கள் நேரடியாக நுகர்வோருக்கு மாற்றுகின்றனர்.",
-            "உற்பத்தியாளர்களுக்கும் இறுதி நுகர்வோருக்கும் இடையே நேரடி தொடர்பு அல்லது வெளிப்படையான சந்தை இல்லாதது.",
-            "செயற்கை விலை ஏற்ற இறக்கங்களைக் கட்டுப்படுத்த தற்போதைய சட்ட கட்டமைப்புகள் தவறிவிட்டன."
+            "உற்பத்தியாளருக்கு நியாயமான விலை கிடைப்பதில்லை, நுகர்வோர் உற்பத்தி செலவை விட 300% க்கும் அதிகமான விலையை செலுத்துகிறார்கள்.",
+            "போக்குவரத்து, சேமிப்பு மற்றும் ஏகபோக லாபங்களை இடைத்தரகர்கள் நுகர்வோர் மீது சுமத்துகின்றனர்.",
+            "உற்பத்தியாளருக்கும் இறுதி நுகர்வோருக்கும் இடையே நேரடித் தொடர்பு அல்லது வெளிப்படையான சந்தை இல்லை.",
+            "செயற்கை விலை ஏற்ற இறக்கங்களைக் கட்டுப்படுத்த தற்போதைய சட்டக் கட்டமைப்புகள் தவறிவிட்டன."
           ],
-          buddhist: "தச ராஜ தர்மம்: கடுமையான பொருளாதார நெருக்கடியிலிருந்து குடிமக்களைப் பாதுகாக்க ஆட்சியாளர்கள் விலைகளை நிலைப்படுத்தி சுரண்டலை ஒழிக்க வேண்டும்.",
+          buddhist: "மகா வணிஜ ஜாதகம்: வர்த்தகத்தில் மோசடியாக விலையை உயர்த்துவதும் இடைத்தரகர் சுரண்டலும் சமூகத்தின் சாதாரண மக்களை பாதித்து நாட்டின் பொருளாதார ஒழுக்கத்தை சீர்குலைக்கும்.",
           table: [
-            ["விலை விகிதம்", "உற்பத்தி செலவை விட 3 மடங்கு", "உற்பத்தி செலவை விட 1.3 மடங்கு"],
-            ["விலை ஸ்திரத்தன்மை", "தினமும் கடுமையாக மாறுகிறது", "வெளிப்படையான நிலையான விலை அடிப்படை"],
-            ["தயாரிப்பு தரம்", "மோசம் (இரசாயனப் பாதுகாப்பு கொண்டது)", "புதிய, நேரடி உள்ளூர் தயாரிப்புகள்"]
+            ["நுகர்வோர் விலை", "300% - 400% (அதிகம்)", "உற்பத்தி விலை + 15% நியாயமான கட்டணம்"],
+            ["விநியோக அடுக்குகள்", "4 - 6 அடுக்குகள்", "0 - 1 (நேரடி டிஜிட்டல் நெட்வொர்க்)"],
+            ["விலை வெளிப்படைத்தன்மை", "0% (ரகசிய விலை)", "100% (டிஜிட்டல் முறை மூலம்)"]
           ],
           th1: "முறைமை காட்டி", th2: "தற்போதைய நிலை", th3: "துன்கல் இலக்கு"
         },
         {
           letter: "B",
           meta: "மூலக் காரண பகுப்பாய்வு",
-          title: "மூலக் காரணங்கள்: ஏகபோக மொத்த விற்பனை சந்தைகள் மற்றும் பரவலாக்கப்பட்ட நெட்வொர்க்குகள் இல்லாமை",
-          desc: "அதிகப்படியான விலைகள் தயாரிப்பு பற்றாக்குறையால் ஏற்படுவதில்லை, மாறாக இடைத்தரகர்களால் கட்டுப்படுத்தப்படும் ஏகபோக பெளதீக சந்தை கட்டமைப்பால் ஏற்படுகிறது.",
+          title: "மூலக் காரணங்கள்: ஏகபோக மொத்த சந்தை மற்றும் பரவலாக்கப்பட்ட நெட்வொர்க் இல்லாமை",
+          desc: "பொருட்களின் விலை உயர்வதற்கு விநியோகப் பற்றாக்குறை காரணமல்ல. பொருட்களை சேகரித்தல், கொண்டு சேர்த்தல் ஆகியவற்றின் கட்டுப்பாடு சில இடைத்தரகர்களிடம் மட்டுமே குவிந்திருப்பதுதான் காரණம்.",
           matrix: [
-            "மொத்த பங்குகள் மற்றும் விலை நிர்ணயம் ஒரு சில இடைத்தரகர்களின் கைகளில் குவிந்துள்ளது.",
-            "பரவலாக்கப்பட்ட போக்குவரத்து மற்றும் சேமிப்பு வசதிகள் இல்லாததால் உற்பத்தியாளர்கள் நுகர்வோருக்கு நேரடியாக விற்க முடிவதில்லை.",
-            "அரசு விலை கட்டுப்பாட்டு நிறுவனங்களால் சந்தையில் நேரடி தலையீடுகள் எதுவும் இல்லை.",
-            "விநியோகச் சங்கிலியில் தரவு வெளிப்படைத்தன்மை முற்றிலும் இல்லை."
+            "விவசாயிகள் அல்லது உற்பத்தியாளர்கள் தங்கள் பொருட்களை நேரடியாக சந்தைக்கு கொண்டு செல்வதில் உள்ள போக்குவரத்து மற்றும் நிதி சிக்கல்கள்.",
+            "முக்கிய பொருளாதார மையங்கள் ஏகபோக மொத்த வியாபாரிகளின் பிடியில் இருப்பது.",
+            "நுகர்வோருக்கு பொருளின் உண்மையான உற்பத்தி செலவு தெரியாமல் இருக்கும் தகவல் இடைவெளி.",
+            "அரசு துறையின் தலையீடுகள் அதிகாரத்துவ மந்தநிலையுடன் இருப்பது."
           ],
-          buddhist: "கூடதந்த சூத்திரம்: முறையான சந்தை உள்கட்டமைப்பு மற்றும் அரசாங்க விலை கட்டுப்பாடுகளை நிறுவத் தவறுவது மேக்ரோ பொருளாதார சரிவை நேரடியாகத் தூண்டுகிறது.",
+          buddhist: "கூடதந்த சூத்திரம்: உற்பத்தியாளருக்கும் நுகர்வோருக்கும் இடையிலான பரிமாற்றம் வெளிப்படைத்தன்மை இல்லாமல் இருக்கும்போது நாட்டின் வறுமை அதிகரிக்கும்.",
           table: [
-            ["விலை கட்டுப்பாட்டு அதிகாரம்", "ஏகபோக மொத்த விற்பனையாளர்கள்", "நேரடி தேவை மற்றும் விநியோக தரவு ஒத்திசைவு"],
-            ["போக்குவரத்து தளவாடங்கள்", "மத்திய பெளதீக சந்தைகள்", "பரவலாக்கப்பட்ட நேரடி தளவாட சுழல்கள்"],
-            ["தரவு வெளிப்படைத்தன்மை", "ரகசியமாக ஏகபோகப்படுத்தப்பட்டுள்ளது", "திறந்த டிஜிட்டல் விலை போர்டல்"]
+            ["சந்தை கட்டுப்பாடு", "குறிப்பிட்ட இடைத்தரகர்களிடம்", "பரவலாக்கப்பட்ட உற்பத்தியாளர்களிடம்"],
+            ["தகவல் ஓட்டம்", "ரகசிய விலை விவரங்கள்", "திறந்த டிஜிட்டல் விலை குறியீடு"],
+            ["போக்குவரத்து திறன்", "திறனற்றது / வீணாதல் அதிகம்", "ஒருங்கிணைந்த போக்குவரத்து நெட்வொர்க்"]
           ],
           th1: "மூலக் காட்டி", th2: "தற்போதைய நிலை", th3: "துன்கல் இலக்கு"
         },
         {
           letter: "C",
-          meta: "நன்மைகள் பகுப்பாய்வு",
-          title: "நன்மைகள்: குறைந்த வாழ்க்கைச் செலவு மற்றும் உற்பத்தியாளர்-நுகர்வோர் அதிகாரம்",
-          desc: "இடைத்தரகர் ஏகபோகங்களை ஒழிப்பது வாழ்க்கைச் செலவை கணிசமாகக் குறைக்கிறது, உற்பத்தியாளர் வருவாயை அதிகரிக்கிறது மற்றும் சந்தை நியாயத்தை உறுதி செய்கிறது.",
+          meta: "தீர்வின் நன்மைகள்",
+          title: "நன்மைகள்: வாழ்க்கைச் செலவு குறைதல் மற்றும் உற்பத்தியாளர்-நுகர்வோர் வலுப்பெறுதல்",
+          desc: "இடைத்தரகர் அடுக்குகளை அகற்றுவதன் மூலம் நுகர்வோருக்கு நியாயமான விலையில் பொருட்கள் கிடைப்பதுடன் உற்பத்தியாளருக்கும் அதிக வருமானம் கிடைக்கும்.",
           matrix: [
-            "நுகர்வோரின் வாழ்க்கைச் செலவில் கணிசமான குறைவு.",
-            "உற்பத்தியாளர்கள் தங்கள் அறுவடைக்கு நிலையான மற்றும் நியாயமான விலையை நேரடியாகப் பெறுகிறார்கள்.",
-            "செயற்கை பற்றாக்குறைகள் மற்றும் விலை உயர்வுகள் முற்றிலும் ஒழிக்கப்படுகின்றன.",
-            "வெளிப்படையான வர்த்தக நடைமுறைகள் மூலம் செல்வத்தின் வேகம் அதிகரிக்கிறது."
+            "நுகர்வோரின் மாதாந்திர வாழ்க்கைச் செலவு குறைந்தது 40% வரை குறையும்.",
+            "உற்பத்தியாளருக்கு உடனடி வருமானம் கிடைப்பதால் உற்பத்தியை அதிகரிக்க தூண்டப்படுவார்கள்.",
+            "செயற்கை விலை ஏற்ற இறக்கங்கள் மற்றும் கருப்பு சந்தை மாஃபியா முற்றிலும் ஒழிக்கப்படும்.",
+            "பிராந்திய மட்டத்தில் புதிய வேலை வாய்ப்புகளும் திறமையான போக்குவரத்து நிறுவனங்களும் உருவாகும்."
           ],
-          buddhist: "பரஸ்பர சகவாழ்வு: உற்பத்தியாளர்களுக்கும் நுகர்வோருக்கும் இடையே நேரடி, நியாயமான வர்த்தகத்தை நிறுவுவது நெறிமுறை சார்ந்த சமூக விழுமியங்களை பாதுகாக்கிறது.",
+          buddhist: "வியக்கபஜ்ஜ சூத்திரம்: பயிர்களையும் செல்வத்தையும் பாதுகாத்து, இடைத்தரகர்களால் வீணாகாமல் தடுத்து நுகர்வோர் வாழ்வதே உண்மையான பொருளாதார செழிப்பு.",
           table: [
-            ["நுகர்வோர் திருப்தி", "மிகவும் குறைவு (விலை அழுத்தம் காரணமாக)", "அதிகம் (நியாயமான விலை & புதிய தரம்)"],
-            ["உற்பத்தியாளர் வருமானம்", "நிலையற்றது & போதுமானதாக இல்லை", "நிலையான & அதிக லாபம்"],
-            ["வர்த்தக சமநிலை", "இல்லை (அதிக சுரண்டல்)", "முழுமையான வெளிப்படைத்தன்மை மற்றும் நியாயத்தன்மை"]
+            ["வாழ்க்கைச் செலவு அழுத்தம்", "மிக அதிகம் (கடன் சுமை)", "சமநிலையானது மற்றும் சேமிப்புடையது"],
+            ["உற்பத்தியாளர் வருமானம்", "மிகக் குறைவு (கடன் பொறியில்)", "லாபகரமானது மற்றும் நிலையானது"],
+            ["சந்தை நெறிமுறை", "சுரண்டல் சார்ந்தது", "நியாயமான மற்றும் நெறிமுறை சார்ந்தது"]
           ],
           th1: "தாக்கக் காட்டி", th2: "தற்போதைய நிலை", th3: "துன்கல் இலக்கு"
         },
         {
           letter: "D",
-          meta: "உපායමාර්ගික සැලසුම් සහ ක්‍රියාවන්",
+          meta: "மூலோபாய திட்டங்கள்",
           title: "திட்டம்: 'துன்கல்' நேரடி விநியோக முறை மற்றும் பரவலாக்கப்பட்ட டிஜிட்டல் சந்தை",
-          desc: "இடைத்தரகர் நெட்வொர்க்குகளைத் தவிர்த்து, உற்பத்தியாளர்களை நுகர்வோருடன் நேரடியாக இணைக்கும் 'துன்கல்' பரவலாக்கப்பட்ட தளவாட நெட்வொர்க்:",
+          desc: "இடைத்தரகர் சுரண்டலைத் தடுக்க 'துன்கல் தெக்ம' அறிமுகப்படுத்தும் தொழில்நுட்ப மற்றும் கட்டமைப்பு வழிமுறை பின்வருமாறு:",
           matrix: [
-            "படி 1 (டிஜிட்டல் ஒத்திசைவு): உற்பத்தியாளர்கள் மற்றும் நுகர்வோர் கூட்டுறவுகளை 'துன்கல்' விநியோக தரவுத்தளத்தில் பதிவு செய்தல்.",
-            "படி 2 (நேரடி விலை நிர்ணயம்): தரகர் கமிஷன்களைத் தவிர்த்து, உற்பத்திச் செலவு + போக்குவரத்து அடிப்படையில் சில்லறை விலையை நிர்ணயித்தல்.",
-            "படி 3 (பரவலாக்கப்பட்ட தளவாடங்கள்): கூட்டு பொது-தனியார் மாவட்ட தளவாட சுழல்கள் மூலம் பண்ணையிலிருந்து நுகர்வோர் மையங்களுக்கு நேரடியாக கொண்டு செல்லல்.",
-            "படி 4 (நேரடி விநியோகம்): கிராம சேவை உத்தியோகத்தர் மட்டத்தில் உள்ள நுகர்வோர் மையங்கள் மூலம் நுகர்வோருக்கு விநியோகித்தல்.",
-            "படி 5 (நிதி ஒழுக்கம்): எந்தவொரு விலை கையாளுதலையும் தானாகவே தடுத்து நிறுத்த Layer-B குறியீடு எல்லைகளைப் பயன்படுத்துதல்."
+            "படி 1 (நேரடி டிஜிட்டல் நெட்வொர்க்): ஒவ்வொரு பிரதேச செயலகப் பிரிவிலும் உள்ள உற்பத்தியாளர்களை 'துன்கல் டிஜிட்டல் நெட்வொர்க்' உடன் நேரடியாக இணைத்தல்.",
+            "படி 2 (ஸ்மார்ட் போக்குவரத்து முறை): உற்பத்தியாளரிடமிருந்து நுகர்வோரின் நகரத்திற்கு பொருட்களைக் கொண்டு சேர்க்க நிலையான கட்டணத்துடன் கூடிய 'துன்கல் போக்குவரத்து படை' அமைத்தல்.",
+            "படி 3 (விலை வெளிப்படைத்தன்மை - QR முறை): நுகர்வோர் வாங்கும் ஒவ்வொரு பொருளிலும் QR குறியீடு இருக்கும், அதன் மூலம் உற்பத்தி விலை மற்றும் போக்குவரத்து செலவை நேரடியாகப் பார்க்கலாம்.",
+            "படி 4 (பரவலாக்கப்பட்ட கிடங்குகள்): நுகர்வோர் மையங்களால் நிர்வகிக்கப்படும் குளிரூட்டப்பட்ட கிடங்குகளை அமைத்து பொருட்களை நேரடியாக விநியோகித்தல்.",
+            "படி 5 (நிதி வசதிகள்): இடைத்தரகர்களின் கடன் பொறியில் இருந்து உற்பத்தியாளர்களை மீட்க, 'துன்கல் நிதியம்' மூலம் பிணையற்ற குறுகிய கால கடன்களை வழங்குதல்."
           ],
-          buddhist: "சப்த அபரிஹானிய தர்மம்: தளவாட வழங்குநர்கள், விவசாயிகள் மற்றும் நுகர்வோர் இடையே வழக்கமான கூட்டங்கள் வெளிப்படையான வர்த்தகக் கொள்கைகளை உறுதி செய்கின்றன.",
+          buddhist: "சப்த அபரிஹானிய தர்மம்: உற்பத்தியாளர்கள், நுகர்வோர்கள் மற்றும் போக்குவரத்து அமைப்புகள் அடிக்கடி கூடி விவாதிப்பதன் மூலம் வர்த்தக வீழ்ச்சியைத் தடுக்கலாம்.",
           table: [
-            ["விநியோகச் சங்கிலி முறை", "பல அடுக்கு இடைத்தரகர் நெட்வொர்க்குகள்", "நேரடி உற்பத்தியாளர்-நுகர்வோர் அமைப்பு"],
-            ["தளவாட மேலாண்மை", "இடைத்தரகர் குழுக்களால் கட்டுப்படுத்தப்படுகிறது", "பரவலாக்கப்பட்ட பொது-தனியார் தளவாட சுழல்கள்"],
-            ["நிதி அமைப்பு", "சுரண்டல் ரொக்கப் பரிவர்த்தனைகள்", "Layer-B பாதுகாக்கப்பட்ட டிஜிட்டல் கொடுப்பனவுகள்"]
+            ["விலை நிர்ணய முறை", "இடைத்தரகரின் விருப்பப்படி", "உற்பத்தி செலவு அடிப்படையிலான சூத்திரம்"],
+            ["பொருட்கள் விநியோகம்", "பல அடுக்கு போக்குவரத்து", "நேரடி விநியோகச் சங்கிலி முறை"],
+            ["நுகர்வோர் பாதுகாப்பு", "இல்லை (சுரண்டப்படுகிறார்கள்)", "QR வெளிப்படைத்தன்மை மூலம் அதிகபட்ச பாதுகாப்பு"],
+            ["நிதி சுதந்திரம்", "இடைத்தரகரின் கடனில் யேபல்", "டிஜிட்டல் உடனடி கொடுப்பனவுகள்"]
           ],
-          th1: "முறைமை காட்டி", th2: "தற்போதைய நிலை", th3: "துன்கல் இலக்கு"
+          th1: "செயல்முறை காட்டி", th2: "தற்போதைய நிலை", th3: "துன்கல் இலக்கு"
+        }
+      ]
+    }
+  },
+  {
+    id: 'gatalu6',
+    name: {
+      si: 'මූල්‍ය සාක්ෂරතාවය සහ මානව-භෞතික හැකියාවන් සංවර්ධන පද්ධතිය',
+      en: 'Financial Literacy & Human Capital Development System',
+      ta: 'நிதி கல்வியறிவு மற்றும் மனித-பௌதீக திறன் மேம்பாட்டு அமைப்பு'
+    },
+    headerText: {
+      si: 'තුන්කල් දැක්ම | මූල්‍ය සාක්ෂරතාවය සහ මානව-භෞතික හැකියාවන් සංවර්ධන පද්ධතිය',
+      en: 'Thun Kal Dekma | Human Capital & Financial Literacy Embedded System',
+      ta: 'துன்கல் தெக்ம | நிதி கல்வியறிவு மற்றும் மனித திறன் மேம்பாட்டு அமைப்பு'
+    },
+    searchPlaceholder: {
+      si: 'පද්ධති සංරචක හෝ ක්‍රියාවලි සොයන්න...',
+      en: 'Search components or processes...',
+      ta: 'கூறுகள் அல்லது செயல்முறைகளைத் தேடுங்கள்...'
+    },
+    tableHeaders: {
+      si: ['පද්ධති දර්ශකය', 'වත්මන් තත්ත්වය', 'තුන්කල් ඉලක්කය'],
+      en: ['System Index', 'Current State', 'Three-Way Goal'],
+      ta: ['முறைமை காட்டி', 'தற்போதைய நிலை', 'துன்கல் இலக்கு']
+    },
+    pageLabel: {
+      si: 'පිටුව',
+      en: 'Page',
+      ta: 'பக்கம்'
+    },
+    layoutType: 'structured',
+    slides: {
+      si: [
+        {
+          letter: 'A',
+          meta: 'මූල්‍ය හා මානව ගැටලු විශ්ලේෂණය',
+          title: 'ගැටලුව: ග්‍රාමීය මට්ටමින් මූල්‍ය සාක්ෂරතාවය සහ ආදායම්-වියදම් කළමනාකරණ ක්‍රමවේදයක් නොමැති වීම',
+          desc: 'ග්‍රාමීය ජනතාව උපයන ආදායම නිවැරදිව අයවැයගත කිරීමට හෝ ආයෝජනය කිරීමට විද්‍යාත්මක ක්‍රමවේදයක් නොමැත. මූල්‍ය සාක්ෂරතාවය සහ තමන් සතු මානව හා භෞතික හැකියාවන් හඳුනා නොගැනීම නිසා ඔවුන් ක්ෂුද්‍ර මූල්‍ය ණය උගුල්වල සහ ආර්ථික ව්‍යාකූලතාවල සිරවී සිටිති.',
+          matrix: [
+            'පවුල් මට්ටමින් තමන්ගේ ආදායම් සහ වියදම් පද්ධතිගතව කළමනාකරණය කරගැනීමට ග්‍රාමීය මට්ටමින් කිසිදු ක්‍රමවේදයක් නොමැති වීම.',
+            'තමන් සතු සැබෑ මානව හැකියාවන් (Human Skills) සහ ප්‍රාදේශීය භෞතික සම්පත් (Physical Assets) හඳුනාගෙන සංවර්ධනය කිරීමට පද්ධතියක් නොමැති වීම.',
+            'අතාර්කික වියදම් රටාවන් සහ ක්ෂුද්‍ර මූල්‍ය සමාගම්වල අධික පොලී ණය උගුල්වලට ග්‍රාමීය ප්‍රජාව ගොදුරු වීම.',
+            'ප්‍රාදේශීය මට්ටමේ දක්ෂතා සහ සම්පත්, ගෝලීය වෙළඳපොළ (Global Market) සමඟ බද්ධ කිරීමට පාලමක් නොමැතිකම.'
+          ],
+          buddhist: 'සිඟාලෝවාද සූත්‍රය: බුදු දහම පෙන්වා දෙන්නේ තමන් උපයන ධනය කොටස් හතරකට (භෝග විභජන ක්‍රමය) බෙදා, ඉන් එක් කොටසක් පරිභෝජනයටත්, කොටස් දෙකක් ව්‍යාපාර හා නිෂ්පාදන කටයුතුවලටත්, හතරවන කොටස හදිසි ආපදාවකදී ප්‍රයෝජනයට ගැනීමට ඉතිරි කළ යුතු බවයි.',
+          table: [
+            ['ග්‍රාමීය මූල්‍ය සාක්ෂරතාවය', '5% ට වඩා අඩු (අසංවිධානාත්මක)', '100% ප්‍රායෝගික සාක්ෂරතාවය'],
+            ['ආදායම්-වියදම් පාලනය', 'සැලසුමකින් තොරව (ණය බරිත)', 'ඩිජිටල් අයවැයකරණය සහ ස්වයං-පාලනය'],
+            ['හැකියාවන් හඳුනාගැනීම', 'හුදෙකලා වූ සහ භාවිතයට නොගත්', 'දිස්ත්‍රික් මට්ටමින් සිතියම්ගත කළ දත්ත පද්ධතියක්']
+          ],
+          th1: 'පද්ධති දර්ශකය',
+          th2: 'වත්මන් තත්ත්වය',
+          th3: 'තුන්කල් ඉලක්කය'
+        },
+        {
+          letter: 'B',
+          meta: 'මූල හේතු විශ්ලේෂණය',
+          title: 'මූල හේතු: සාම්ප්‍රදායික අධ්‍යාපන ක්‍රමයේ දුර්වලතාවය සහ උපදේශන යාන්ත්‍රණයක් නොමැතිකම',
+          desc: 'වත්මන් ආර්ථික පරිහානියට මූලික හේතුව වන්නේ පාසල් සහ විශ්වවිද්‍යාල පද්ධතිය තුළින් ප්‍රායෝගික මූල්‍ය කළමනාකරණය හෝ මානව කුසලතා ඔප්නැංවීමක් සිදු නොකිරීමයි.',
+          matrix: [
+            'පාසල් සහ විශ්වවිද්‍යාල අධ්‍යාපනය තුළ ප්‍රායෝගික මූල්‍ය පාලනය හෝ ව්‍යවසායකත්ව ඥානය උගන්වනු නොලැබීම.',
+            'මානව සහ භෞතික දුර්වලතා හඳුනාගෙන ඒවා මඟහරවා ගැනීමට ග්‍රාමීය මට්ටමින් ක්‍රියාත්මක වන රාජ්‍ය උපදේශන (Counseling) ජාලයක් නොමැති වීම.',
+            'විශ්වවිද්‍යාල පර්යේෂණ සහ අධ්‍යයන කටයුතු ප්‍රායෝගික බිම් මට්ටමේ ආර්ථික ගැටලු විසඳීම සඳහා බද්ධ නොකිරීම.',
+            'ග්‍රාමීය ප්‍රජාවට තමන්ගේ මූල්‍ය ප්‍රගතිය සහ හැකියාවන් ස්වයං-ඇගයීමකට ලක් කිරීමට තාක්ෂණික මෙවලම් නොමැතිකම.'
+          ],
+          buddhist: 'ව්‍යග්ඝපජ්ජ සූත්‍රය: ආර්ථික ස්ථාවරත්වය සඳහා සමජීවිකතා සහ උට්ඨාන සම්පදා තිබිය යුතුය. අධ්‍යාපනය තුළින් මෙම ගුණාංග මිනිසා තුළ වර්ධනය නොකිරීම පද්ධතියේ බිඳවැටීමට මූලික හේතුවයි.',
+          table: [
+            ['අධ්‍යාපනික ප්‍රවේශය', 'න්‍යායාත්මක (ප්‍රායෝගික නොවන)', 'කුසලතා හා මූල්‍ය විද්‍යාව මත පදනම් වූ'],
+            ['රාජ්‍ය උපදේශන සේවා', 'නොමැත (නිලධාරීවාදී)', 'සක්‍රීය ප්‍රාදේශීය උපදේශන සහ සැලසුම්කරණය'],
+            ['විශ්වවිද්‍යාල දායකත්වය', 'හුදෙකලා පර්යේෂණ පමණි', 'ග්‍රාමීය ආර්ථික පරිවර්තන උපදේශකත්වය']
+          ],
+          th1: 'ප්‍රභව දර්ශකය',
+          th2: 'වත්මන් තත්ත්වය',
+          th3: 'තුන්කල් ඉලක්කය'
+        },
+        {
+          letter: 'C',
+          meta: 'යහපත හා විභවතා විශ්ලේෂණය',
+          title: 'යහපත: ගෝලීය මට්ටමේ කුසලතා සංවර්ධනය, ස්වයං-කළමනාකරණය සහ යථාර්ථය අවබෝධය',
+          desc: 'ග්‍රාමීය මට්ටමින් මානව හා භෞතික විභවතාවයන් නිවැරදිව හඳුනාගෙන උපදේශනය සහ සැලසුම්කරණය සිදුකිරීමෙන්, ග්‍රාමීය පුරවැසියාට ගෝලීය මට්ටමට ආර්ථික සන්නද්ධතාවයක් සහ මූල්‍ය ස්වාධීනත්වයක් ළඟා කරගත හැකිය.',
+          matrix: [
+            'ග්‍රාමීය මට්ටමේ සිටම මානව හැකියාවන් සහ දක්ෂතා හඳුනාගෙන ඒවා උපරිම කාර්යක්ෂමතාවයෙන් වර්ධනය කිරීම.',
+            'මානව හා භෞතික දුර්වලතා කල්තියා හඳුනාගෙන, විද්‍යාත්මක සැලසුම්කරණය තුළින් එම දුර්වලතා මඟහැරවීම.',
+            'පවුල් ඒකක සතු ආදායම් සහ වියදම් රටාවන් නිවැරදිව පාලනය වීම නිසා ණය බරින් තොර ස්ථාවර ව්‍යවසායක සමාජයක් බිහිවීම.',
+            'යථාර්ථය අවබෝධ කරගත් පරිහරණය තුළින් ආර්ථික පීඩනය තුරන් වී උසස් ජීවන තත්ත්වයක් උදාවීම.'
+          ],
+          buddhist: 'අංගුත්තර නිකාය (අණන සූත්‍රය): අත්ථි සුඛ, භෝග සුඛ, අනණ සුඛ සහ අනවජ්ජ සුඛ — මෙම සතුට උදා වන්නේ මූල්‍ය ස්වයං-කළමනාකරණය තුළිනි.',
+          table: [
+            ['පුරවැසි ණය බරිතභාවය', 'ඉතා ඉහළ (ණය උගුලක)', '0% (ණය නැතිකමේ සතුට)'],
+            ['සම්පත් පරිභෝජනය', 'අතාර්කික සහ නාස්තිකාර', 'යථාර්ථවාදී සහ තාර්කික පරිහරණය'],
+            ['කුසලතා මට්ටම', 'දේශීය / සාම්ප්‍රදායික', 'ගෝලීය මට්ටමට ගැළපෙන (Global Standard)']
+          ],
+          th1: 'ප්‍රතිඵල දර්ශකය',
+          th2: 'වත්මන් තත්ත්වය',
+          th3: 'තුන්කල් ඉලක්කය'
+        },
+        {
+          letter: 'D',
+          meta: 'සැලසුම්කරණය සහ ක්‍රියාමාර්ග',
+          title: 'සැලැස්ම: පාසල් හා විශ්වවිද්‍යාල ප්‍රතිසංස්කරණ සහ ප්‍රාදේශීය උපදේශන යාන්ත්‍රණය',
+          desc: "'තුන් කල් දැක්ම' මඟින් සමස්ත පාසල් විෂය මාලාව සහ විශ්වවිද්‍යාල පද්ධතිය ව්‍යූහාත්මක ප්‍රතිසංස්කරණයකට ලක් කරයි. සෑම ප්‍රාදේශීය ලේකම් කාර්යාලයකම මානව-භෞතික සම්පත් තක්සේරුකරණ සහ මූල්‍ය උපදේශන මධ්‍යස්ථාන පිහිටුවනු ලැබේ.",
+          matrix: [
+            "පාසල් අධ්‍යාපනයට 6 ශ්‍රේණියේ සිටම 'ප්‍රායෝගික මූල්‍ය විද්‍යාව සහ අයවැයකරණය' අනිවාර්ය විෂයයක් ලෙස ඇතුළත් කිරීම.",
+            'විශ්වවිද්‍යාල පද්ධතිය මඟින් සෑම දිස්ත්‍රික්කයකම ග්‍රාමීය මානව සහ භෞතික සම්පත් සිතියම්ගත කිරීම (Asset & Talent Mapping) සිදු කිරීම.',
+            "ග්‍රාමීය මට්ටමින් 'තුන්කල් මූල්‍ය සහායක' ඩිජිටල් පද්ධතියක් (AI Financial Companion) හඳුන්වා දීම.",
+            'ප්‍රාදේශීය ලේකම් කොට්ඨාස මට්ටමින් මානව කුසලතා සංවර්ධන සහ මූල්‍ය උපදේශන නිලධාරී යාන්ත්‍රණයක් ස්ථාපිත කිරීම.'
+          ],
+          buddhist: 'සප්ත අපරිහානීය ධර්ම: අධ්‍යාපනඥයන්, විශ්වවිද්‍යාල පර්යේෂකයන් සහ ප්‍රාදේශීය ප්‍රජාව නිරන්තරයෙන් රැස්වී දත්ත පදනම් කරගනිමින් මිනස් ශ්‍රමය සහ සම්පත් කළමනාකරණය කිරීම තුළින් දේශය කිසිදා පිරිහෙන්නේ නැත.',
+          table: [
+            ['අධ්‍යාපන ප්‍රතිසංස්කරණ', 'න්‍යායාත්මක / සාම්ප්‍රදායික', 'දිගුකාලීන පද්ධතිමය පාසල් හා වර්සිටි ප්‍රතිසංස්කරණ'],
+            ['මූල්‍ය කළමනාකරණ මෙවලම්', 'නොමැත (අතින් ලියන / අනුමාන)', 'AI-Driven සජීවී අයවැයකරණ මෘදුකාංග'],
+            ['කුසලතා පරිවර්තනය', 'ප්‍රාදේශීය මට්ටමේ සිරවීම', 'ගෝලීය මට්ටමේ වෘත්තීය නිපුණතාවය']
+          ],
+          th1: 'යාන්ත්‍රණ දර්ශකය',
+          th2: 'වත්මන් තත්ත්වය',
+          th3: 'තුන්කල් ඉලක්කය'
+        }
+      ],
+      en: [
+        {
+          letter: 'A',
+          meta: 'HUMAN & FINANCIAL PROBLEM ANALYSIS',
+          title: 'The Problem: Lack of Financial Literacy & Absence of Rural Income-Expenditure Tracking',
+          desc: 'Rural populations lack scientific methods to budget or invest income properly. Due to an inability to identify human potential and local assets, they remain trapped in micro-finance debt loops and localized economic stagnation.',
+          matrix: [
+            'Total absence of a localized micro-budgeting platform for families to systematically control expenditures.',
+            'No structured metric to identify and leverage latent human skills and regional material resources.',
+            'Vulnerability to predatory micro-finance networks driven by irrational consumption traps.',
+            'Lack of an institutional bridge connecting rural capacity directly to the global value ecosystem.'
+          ],
+          buddhist: 'Sigalovada Sutta: The Buddha pioneered the fourfold wealth allocation model (Bhoga Vibhajana): 1 part for consumption, 2 parts for economic investment, and 1 part secured as a buffer for emergency reserves.',
+          table: [
+            ['Rural Financial Literacy', 'Below 5% (Disorganized)', '100% Practical Empowerment'],
+            ['Income-Expenditure Control', 'Unplanned (Debt-Driven)', 'Digital Micro-Budgeting & Autonomy'],
+            ['Asset/Talent Discovery', 'Isolated & Underutilized', 'District-Mapped Open Data Ledger']
+          ],
+          th1: 'System Metric',
+          th2: 'Current Status',
+          th3: 'Three-Way Target'
+        },
+        {
+          letter: 'B',
+          meta: 'ROOT CAUSE ANALYSIS',
+          title: 'Root Causes: Outdated Curriculum & Deficient Grassroots Advisory Infrastructure',
+          desc: 'The core failure lies within an educational model that insulates schools and universities from ground-level economics. There is no active administrative framework translating academic research into localized wealth planning.',
+          matrix: [
+            'Primary and secondary curricula completely exclude practical asset management and entrepreneurial science.',
+            'Absence of state-backed cognitive and financial counseling networks to systematically address human and systemic friction.',
+            'Academic research institutes operate in silos, failing to interface with immediate rural development needs.',
+            'Lack of intuitive technological instruments allowing citizens to audit their own financial trajectory.'
+          ],
+          buddhist: "Vyagghapajja Sutta: Sustainable economic balance requires 'Samajivikata' and 'Utthana-Sampada'. Neglecting these in modern academic models breaks the socio-economic equilibrium.",
+          table: [
+            ['Educational Framework', 'Theoretical / Abstract', 'Skill & Financial Intelligence Architecture'],
+            ['State Counseling Access', 'Non-existent (Bureaucratic)', 'Active Decentralized Planning & Coaching Units'],
+            ['University Integration', 'Isolated Monographs', 'Direct Grassroots Economic Intervention']
+          ],
+          th1: 'Root Indicator',
+          th2: 'Current Status',
+          th3: 'Three-Way Target'
+        },
+        {
+          letter: 'C',
+          meta: 'BENEFITS & POTENTIAL ANALYSIS',
+          title: 'Benefits: Global Skill Equalization, Financial Autonomy & Rational Consumption',
+          desc: 'By deploying structured capability mapping and micro-counseling, rural citizens transition from vulnerable laborers to highly organized, globally competitive asset managers.',
+          matrix: [
+            'Maximization of regional human capital through structured, early-stage talent profiling.',
+            'Proactive mitigation of human and physical vulnerabilities via targeted structural engineering.',
+            'Eradication of household debt cycles, resulting in a credit-stable, highly resilient enterprise network.',
+            'Realization of rationalized resource utilization, lifting families into lasting psychological and material stability.'
+          ],
+          buddhist: 'Anana Sutta: Atthi-Sukha, Bhoga-Sukha, Anana-Sukha, and Anavajja-Sukha — accessible only via rigorous self-governance.',
+          table: [
+            ['Household Debt Burden', 'Critically High (Debt Trap)', '0% (The Supreme Peace of Debtlessness)'],
+            ['Resource Consumption', 'Erratic & Speculative', 'Data-Driven / Rational Consumption'],
+            ['Talent Competitiveness', 'Isolated / Traditional', 'Global Standard Professional Alignment']
+          ],
+          th1: 'Impact Metric',
+          th2: 'Current Status',
+          th3: 'Three-Way Target'
+        },
+        {
+          letter: 'D',
+          meta: 'STRATEGIC PLAN & INTERVENTIONS',
+          title: 'The Plan: Comprehensive Curricular Reform & Localized Counseling Infrastructure',
+          desc: "The 'Three-Way Vision' initiates structural educational evolution alongside specialized local infrastructure in every Divisional Secretariat.",
+          matrix: [
+            "Mandatory integration of 'Practical Financial Intelligence & Resource Budgeting' into secondary education starting from Grade 6.",
+            'Mobilization of national universities to conduct open-source regional Asset & Talent Mapping across all 25 districts.',
+            "Launch of the 'Thun Kal Companion' mobile engine—an AI financial auditor localized for family resource optimization.",
+            'Establishment of dedicated Capacity & Counseling Units within every Divisional Secretariat.'
+          ],
+          buddhist: 'Sapta Aparihaniya Dhamma: When educationists, state researchers, and grassroots leaders meet in unified assembly to process data and audit capacity, structural degeneration is permanently averted.',
+          table: [
+            ['Educational Interventions', 'Static / Outdated Curriculum', 'Long-term Structural School & Varsity Reforms'],
+            ['Analytical Toolkits', 'None (Manual / Speculative)', 'AI-Driven Real-time Budgeting Companion'],
+            ['Skill Deployment', 'Confined to Local Markets', 'Global Digital Value Chain Integration']
+          ],
+          th1: 'Mechanism Index',
+          th2: 'Current Status',
+          th3: 'Three-Way Goal'
+        }
+      ],
+      ta: [
+        {
+          letter: 'A',
+          meta: 'மனித மற்றும் நிதி சிக்கல் பகுப்பாய்வு',
+          title: 'பிரச்சினை: நிதி கல்வியறிவு இல்லாமை மற்றும் கிராமப்புற வருமான-செலவு கண்காணிப்பு இல்லாமை',
+          desc: 'கிராமப்புற மக்களுக்கு வருமானத்தை திட்டமிடவோ முதலீடு செய்யவோ அறிவியல் முறைகள் இல்லை. மனித திறன்களையும் உள்ளூர் வளங்களையும் அடையாளம் காண முடியாததால் நுண்நிதி கடன் பொறிகளில் சிக்கியுள்ளனர்.',
+          matrix: [
+            'குடும்பங்கள் செலவுகளை முறையாக கட்டுப்படுத்த கிராமப்புற மைக்ரோ-பட்ஜெட்டிங் தளம் இல்லை.',
+            'மறைமுக மனித திறன்கள் மற்றும் பிராந்திய வளங்களை கண்டறிய அமைப்பு இல்லை.',
+            'அறிவற்ற நுகர்வு பொறிகளால் சுரண்டல் நுண்நிதி நெட்வொர்க்குகளுக்கு ஆளாகுதல்.',
+            'கிராமப்புற திறனை உலகளாவிய மதிப்பு சுழலுடன் இணைக்க நிறுவன பாலம் இல்லை.'
+          ],
+          buddhist: 'சிங்காலோவாத சூத்திரம்: நான்கு பகுதி செல்வ பிரிப்பு மாதிரி (போக விபஜன) — நுகர்வு, முதலீடு, அவசரகால இருப்பு.',
+          table: [
+            ['கிராமப்புற நிதி கல்வியறிவு', '5% க்கும் குறைவு', '100% நடைமுறை அதிகாரம்'],
+            ['வருமான-செலவு கட்டுப்பாடு', 'திட்டமிடாத (கடன் சார்ந்த)', 'டிஜிட்டல் மைக்ரோ-பட்ஜெட்டிங்'],
+            ['வள/திறன் கண்டறிதல்', 'தனிமைப்படுத்தப்பட்டது', 'மாவட்ட வரைபட தரவு பதிவேடு']
+          ],
+          th1: 'முறைமை காட்டி',
+          th2: 'தற்போதைய நிலை',
+          th3: 'துன்கல் இலக்கு'
+        },
+        {
+          letter: 'B',
+          meta: 'மூலக் காரண பகுப்பாய்வு',
+          title: 'மூலக் காரணங்கள்: பழமையான பாடத்திட்டம் மற்றும் பிராந்திய ஆலோசனை குறைபாடு',
+          desc: 'பாடசாலைகளும் பல்கலைக்கழகங்களும் நிலப்பரப்பு பொருளாதாரத்திலிருந்து தனிமைப்படுத்தப்பட்ட கல்வி மாதிரியே முக்கிய தோல்வியாகும்.',
+          matrix: [
+            'பாடத்திட்டத்தில் நடைமுறை சொத்து மேலாண்மை அல்லது தொழில்முனைவோர் அறிவியல் இல்லை.',
+            'மனித மற்றும் பொருளாதார உராய்சல்களை சரிசெய்ய அரசு ஆலோசனை நெட்வொர்க் இல்லை.',
+            'பல்கலைக்கழக ஆராய்ச்சி கிராமப்புற தேவைகளுடன் இணைக்கப்படவில்லை.',
+            'பொருளாதார பாதையை தணிக்கை செய்ய தொழில்நுட்ப கருவிகள் இல்லை.'
+          ],
+          buddhist: 'வியக்கபஜ்ஜ சூத்திரம்: சமஜீவிகதா மற்றும் உத்தான-சம்பதா — நவீன கல்வியில் இவை புறக்கணிக்கப்படுவது சமநிலையை உடைக்கிறது.',
+          table: [
+            ['கல்வி கட்டமைப்பு', 'கோட்பாட்டு / சுருக்கமான', 'திறன் மற்றும் நிதி நுண்ணறிவு'],
+            ['அரசு ஆலோசனை', 'இல்லை (அதிகாரத்துவ)', 'பரவலாக்கப்பட்ட திட்டமிடல்'],
+            ['பல்கலைக்கழக ஒருங்கிணைப்பு', 'தனிமைப்படுத்தப்பட்ட ஆய்வு', 'நேரடி கிராமப்புற தலையீடு']
+          ],
+          th1: 'மூலக் காட்டி',
+          th2: 'தற்போதைய நிலை',
+          th3: 'துன்கல் இலக்கு'
+        },
+        {
+          letter: 'C',
+          meta: 'நன்மைகள் பகுப்பாய்வு',
+          title: 'நன்மைகள்: உலகளாவிய திறன் சமநிலை, நிதி சுதந்திரம்',
+          desc: 'திறன் வரைபடமும் நுண்-ஆலோசனையும் மூலம் கிராமப்புற குடிமக்கள் உலகளாவிய போட்டியிடும் சொத்து மேலாளர்களாக மாறுகிறார்கள்.',
+          matrix: [
+            'ஆரம்பக்கட்ட திறமை வரைபடமிடல் மூலம் மனித மூலதனத்தை அதிகரித்தல்.',
+            'மனித மற்றும் பௌதீக பலவீனங்களை முன்கூட்டியே குறைத்தல்.',
+            'குடும்ப கடன் சுழற்சிகளை ஒழித்தல்.',
+            'வளங்களின் தர்க்கரீதியான பயன்பாடு மூலம் நிலையான வாழ்க்கை.'
+          ],
+          buddhist: 'அனன சூத்திரம்: அத்தி-சுகம், போக-சுகம், அனன-சுகம், அனவஜ்ஜ-சுகம் — கடுமையான சுய-ஆளுமை மூலம் மட்டுமே.',
+          table: [
+            ['குடும்ப கடன் சுமை', 'மிக உயர்', '0% (கடனற்ற அமைதி)'],
+            ['வள நுகர்வு', 'அச்சுறுத்தல் / ஊகம்', 'தரவு-சார்ந்த நுகர்வு'],
+            ['திறன் போட்டித்தன்மை', 'பாரம்பரிய / தனிமை', 'உலக தரநிலை']
+          ],
+          th1: 'தாக்கக் காட்டி',
+          th2: 'தற்போதைய நிலை',
+          th3: 'துன்கல் இலக்கு'
+        },
+        {
+          letter: 'D',
+          meta: 'மூலோபாயத் திட்டம்',
+          title: 'திட்டம்: பாடத்திட்ட சீர்திருத்தம் மற்றும் பிராந்திய ஆலோசனை',
+          desc: "'துன்கல் தெக்ம' ஒவ்வொரு பிரதேச செயலகத்திலும் திறன் மற்றும் நிதி ஆலோசனை மையங்களை நிறுவுகிறது.",
+          matrix: [
+            '6 ஆம் வகுப்பு முதல் நடைமுறை நிதி நுண்ணறிவு கட்டாய பாடம்.',
+            '25 மாவட்டங்களிலும் Asset & Talent Mapping.',
+            "'துன்கல் Companion' AI நிதி தணிக்கை பயன்பாடு.",
+            'திறன் & ஆலோசனை பிரிவுகள் நிறுவல்.'
+          ],
+          buddhist: 'சப்த அபரிஹானிய தம்மா: கல்வியாளர்கள், ஆராய்ச்சியாளர்கள், பிராந்திய தலைவர்கள் ஒன்றிணைந்து தரவு செயலாக்கினால் வீழ்ச்சி தடுக்கப்படும்.',
+          table: [
+            ['கல்வி தலையீடுகள்', 'நிலையான பாடத்திட்டம்', 'நீண்டகால சீர்திருத்தம்'],
+            ['பகுப்பாய்வு கருவிகள்', 'கையேடு / ஊகம்', 'AI நேரடி பட்ஜெட்டிங்'],
+            ['திறன் பயன்பாடு', 'உள்ளூர் சந்தை மட்டும்', 'உலக டிஜிட்டல் சங்கிலி']
+          ],
+          th1: 'முறைமை காட்டி',
+          th2: 'தற்போதைய நிலை',
+          th3: 'துன்கல் இலக்கு'
+        }
+      ]
+    }
+  },
+  {
+    id: 'gatalu7',
+    name: {
+      si: 'ප්‍රාදේශීය නිපුණතා සහ සහජ දක්ෂතා සවිබලගැන්වීමේ ජාතික පද්ධතිය',
+      en: 'Regional Talents & Inherent Skills Empowerment System',
+      ta: 'பிராந்திய திறமைகள் மற்றும் உள்ளார்ந்த திறன்கள் அதிகாரமளிப்பு அமைப்பு'
+    },
+    headerText: {
+      si: 'තුන්කල් දැක්ම | ප්‍රාදේශීය නිපුණතා ඌන-උපයෝජන අර්බුදය සහ සහජ දක්ෂතා තාක්ෂණික ප්‍රතිසංවිධානය',
+      en: 'Thun Kal Dekma | Regional Skill Underutilization & Talent Technical Restructuring',
+      ta: 'துன்கல் தெக்ம | பிராந்திய திறமை குறைபாடு மற்றும் திறன் தொழில்நுட்ப மறுசீரமைப்பு'
+    },
+    searchPlaceholder: {
+      si: 'දත්ත මැට්‍රික්ස් සොයන්න...',
+      en: 'Search matrix data...',
+      ta: 'மேட்ரிக்ஸ் தரவைத் தேடுங்கள்...'
+    },
+    pageLabel: {
+      si: 'පිටුව',
+      en: 'Page',
+      ta: 'பக்கம்'
+    },
+    layoutType: 'analytics',
+    slides: {
+      si: [
+        {
+          letter: 'A',
+          title: 'නිපුණතා සහ සහජ හැකියාවන්ගේ අවතක්සේරුව (Problem Specification)',
+          content: 'ග්‍රාමීය තරුණ ප්‍රජාව සතු සහජ ඩිජිටල්, කාර්මික හෝ නිර්මාණාත්මක දක්ෂතාවලට සරිලන වටිනාකමක් හෝ රැකියා අවස්ථා ගම තුළ නොමැති වීම මහා ජාතික නාස්තියකි.',
+          bullets: ['ග්‍රාමීය තරුණ දක්ෂතාවලින් 72%කට වඩා නුසුදුසු රැකියාවල නිරත වීම.', 'ආදායම් අසමතුලිතතාවය නිසා ඇතිවන මානසික සහ ආර්ථික බංකොලොත්භාවය.'],
+          buddhistTitle: 'සිඟාලෝවාද සූත්‍රය: කුසලතා සහ සම්මා ආජීවය',
+          buddhistText: 'පුද්ගලයෙකු සතු සහජ හැකියාවන් සහ නිපුණතාවන් (සිප්පස්ස) හඳුනාගෙන, ඒවාට අනුකූලව සදාචාරාත්මක රැකියාවල (සම්මා ආජීව) නිරත වීමට අවස්ථාව සැලසීම ආර්ථික පරිහානිය වැළැක්වීමේ මූලිකම පදනමයි.',
+          tableTitle: 'ග්‍රාමීය නිපුණතා ඌන-උපයෝජන දර්ශකය',
+          tableHeaders: ['කලාපීය දර්ශකය', 'වත්මන් තත්ත්වය', 'තුන්කල් ඉලක්කය'],
+          tableRows: [
+            ['නිපුණතා සහ රැකියා අනුසූචිය', '28% (අසමතුලිතයි)', '100% (සමතුලිතයි)'],
+            ['තරුණ ශ්‍රම සංක්‍රමණය', '65% (ගම පාලු වීම)', '15%ට අඩු (රඳවා ගැනීම)']
+          ],
+          chartLabel: 'නිපුණතා භාවිතය (%)',
+          chartData: [28, 95],
+          chartCategories: ['වත්මන් තත්ත්වය', 'තුන්කල් ප්‍රතිසංවිධානය']
+        },
+        {
+          letter: 'B',
+          title: 'මූල හේතු විශ්ලේෂණය (Root Cause Analysis)',
+          content: 'සියලුම තාක්ෂණික, කාර්මික සහ මූල්‍ය අවස්ථා නාගරික කේන්ද්‍රගතව පැවතීමත්, ගම තුළ පවතින නිපුණතා ගෝලීය වෙළඳපොළට සම්බන්ධ කිරීමට සමත් විමධ්‍යගත යාන්ත්‍රණයක් නොමැති වීමත් මෙයට මූලික හේතුවයි.',
+          bullets: ['ජාතික කුසලතා සිතියම්කරණ පද්ධතියක් (Talent Mapping) නොමැතිකම.', 'විභාග කේන්ද්‍රීය අධ්‍යාපනය මඟින් සහජ දක්ෂතා සහතික නොකිරීම.'],
+          buddhistTitle: 'කූටදන්ත සූත්‍රය: ප්‍රාග්ධනය සහ අවස්ථා විමධ්‍යගත කිරීම',
+          buddhistText: 'සම්පත් සහ ව්‍යාපාරික අවස්ථා අගනගරයට පමණක් සීමා නොකර, ජනතාව වෙසෙන ප්‍රදේශවලටම ප්‍රාග්ධනය සහ යටිතල පහසුකම් විමධ්‍යගතව සැපයීමෙන් ආර්ථිකය ස්ථාවර කළ හැක.',
+          tableTitle: 'අවස්ථා කේන්ද්‍රගත වීමේ අනුපාතය',
+          tableHeaders: ['මූල හේතු සාධකය', 'පවතින බාධකය', 'තුන්කල් විසඳුම'],
+          tableRows: [
+            ['අවස්ථා විමධ්‍යගතකරණය', '05% (සියල්ල නගරයට)', '100% (සෑම ගමකටම ඩිජිටල් නෝඩයක්)'],
+            ['කුසලතා සහතිකකරණය', 'විභාග සහතික මත පමණි', 'Blockchain සහජ කුසලතා ලෙජරය']
+          ],
+          chartLabel: 'ප්‍රාදේශීය අවස්ථා ව්‍යාප්තිය (%)',
+          chartData: [5, 92],
+          chartCategories: ['වත්මන් ව්‍යුහය', 'තුන්කල් විමධ්‍යගතකරණය']
+        },
+        {
+          letter: 'C',
+          title: 'යහපත සහ ප්‍රතිලාභ විශ්ලේෂණය (Benefits of Resolution)',
+          content: 'මෙම ගැටලුව විසඳීමෙන් ගම තුළම හිඳිමින් තමන්ගේ සහජ හැකියාවන් ඔස්සේ ගෝලීය ආර්ථිකයට දායක වීමට අවස්ථාව ලැබේ.',
+          bullets: ['ග්‍රාමීය පවුල් ඒකකවල සාමාන්‍ය මාසික ආදායම 250% කින් ඉහළ යාම.', 'ගෝලීය විදේශ විනිමය සෘජුවම ගම්මාන කරා ගලා ඒම.'],
+          buddhistTitle: 'වියග්ඝපජ්ජ සූත්‍රය: සමජීවිකතාව සහ ආර්ථික සතුට',
+          buddhistText: 'තමන්ගේ දක්ෂතාවලට අනුකූලව ජීවිකාව සමබරව පවත්වා ගැනීමෙන් (සමජීවිකතා) ලබන ආර්ථික ස්ථාවරත්වය, පුද්ගලයාගේ සහ පවුලේ සතුට මෙන්ම සමාජයේ දිගුකාලීන දියුණුව සලසයි.',
+          tableTitle: 'පද්ධතිමය විභව ප්‍රතිලාභ දර්ශකය',
+          tableHeaders: ['ප්‍රතිලාභ ක්ෂේත්‍රය', 'වත්මන් අර්බුදය', 'විසඳීමෙන් පසු ප්‍රතිලාභය'],
+          tableRows: [
+            ['ග්‍රාමීය මාසික ආදායම', 'ණය බරින් මිරිකුණු අවම ආදායම', 'ස්ථාවර ඉහළ ආදායම් සහ ඉතිරි කිරීම්'],
+            ['සමාජයීය තෘප්තිමත්භාවය', 'අසහනය සහ තරුණ නොසන්සුන්තාවය', 'ආත්ම අභිමානය සහිත වෘත්තිකයන්']
+          ],
+          chartLabel: 'ග්‍රාමීය ආර්ථික ස්වයංපෝෂිතභාවය (%)',
+          chartData: [15, 88],
+          chartCategories: ['වත්මන් තත්ත්වය', 'තුන්කල් දැක්ම ප්‍රතිඵලය']
+        },
+        {
+          letter: 'D',
+          title: 'උපායමාර්ගික සැලසුම් සහ ක්‍රියාමාර්ග (Strategic Solutions)',
+          content: "ගම තුළ ව්‍යුහාත්මක විප්ලවයක් සිදුකරන 'තුන්කල් දැක්ම' පියවර 5ක ප්‍රායෝගික සැලැස්ම මෙසේය:",
+          bullets: [
+            "පියවර 1: 'තුන්කල් ජාතික කුසලතා දත්ත ලෙජරය' (Dynamic Competency Mapping) පිහිටුවීම.",
+            "පියවර 2: සෑම ප්‍රාදේශීය ලේකම් කොට්ඨාසයකම 'තුන්කල් සහජ දක්ෂතා උපයෝජන ඩිජිටල් මධ්‍යස්ථාන' (Smart Hubs) පිහිටුවීම.",
+            "පියවර 3: 'තුන්කල් දක්ෂතා අරමුදල' හරහා 0% පොලී පදනම මත 'නැවත ඇරඹුම් ප්‍රාග්ධනය' මුදා හැරීම.",
+            'පියවර 4: බ්ලොක්චේන් QR වෙළඳපොළ හරහා ශිල්පීන් සෘජුවම ගෝලීය ගැනුම්කරුවන් වෙත සම්බන්ධ කිරීම.',
+            "පියවර 5: 'ජාතික පුරවැසි පුනරුත්ථාපන සහ කුසලතා බෆරය' මඟින් තාක්ෂණික වෙනස්වීම්වලදී පුරවැසියා ආරක්ෂා කිරීම."
+          ],
+          buddhistTitle: 'සප්ත අපරිහානීය ධර්ම: සාමූහික පද්ධතිමය ප්‍රගතිය',
+          buddhistText: 'ප්‍රාදේශීය ව්‍යවසායකයින් සහ කළමනාකරුවන් නිතර රැස්වී, විනිවිද පෙනෙන කුසලතා පද්ධති සාකච්ඡා කර සාමූහික තීන්දු ගැනීම තුළින් ආර්ථික පරිහානිය මුළුමනින්ම වැළැක්විය හැක.',
+          tableTitle: 'තුන්කල් උපායමාර්ගික ක්‍රියාන්විත සැසඳීම',
+          tableHeaders: ['යාන්ත්‍රණ දර්ශකය', 'සාම්ප්‍රදායික ක්‍රමවේදය', 'තුන්කල් විසඳුම'],
+          tableRows: [
+            ['රැකියා උත්පාදන විලාසය', 'දේශපාලන සහන පත්වීම්', 'සහජ දක්ෂතා පදනම් ඩිජිටල් ව්‍යවසායකත්වය'],
+            ['මූල්‍යකරණ යාන්ත්‍රණය', 'ඇප කොන්දේසි සහිත 30% ණය', '5% කාලීන ප්‍රතිලාභය සහිත 0% සෘජු ප්‍රාග්ධනය']
+          ],
+          chartLabel: 'කුසලතා රැකියා උත්පාදන ධාරිතාවය (%)',
+          chartData: [12, 96],
+          chartCategories: ['පැරණි ක්‍රමවේදය', 'තුන්කල් උපායමාර්ගික ක්‍රියාවලිය']
+        }
+      ],
+      en: [
+        {
+          letter: 'A',
+          title: 'Undervaluation of Inherent Talents (Problem Specification)',
+          content: 'The lack of employment matching the innate digital, technical, or creative talents of rural youth is a monumental national waste, forcing migration into overcrowded cities.',
+          bullets: ['Over 72% of rural youth talents are mismatched or underutilized.', 'Severe financial insolvency caused by systemic income-to-skill misalignment.'],
+          buddhistTitle: 'Sigalovada Sutta: Skills and Right Livelihood',
+          buddhistText: "Identifying an individual's innate skills (Sippassa) and providing matching, ethical avenues of economic livelihood (Samma Ajiva) is the foundational pillar to prevent societal economic decline.",
+          tableTitle: 'Rural Skill Underutilization Matrix',
+          tableHeaders: ['Regional Indicator', 'Current Status', 'Thun Kal Target'],
+          tableRows: [
+            ['Skill-to-Job Alignment Index', '28% (Severe Mismatch)', '100% (Perfect Equilibrium)'],
+            ['Youth Migration (Village to City)', '65% (Rural Depletion)', 'Less than 15% (Retention)']
+          ],
+          chartLabel: 'Skill Utilization Efficiency (%)',
+          chartData: [28, 95],
+          chartCategories: ['Current Status', 'Thun Kal Restructuring']
+        },
+        {
+          letter: 'B',
+          title: 'Root Cause Analysis',
+          content: 'The primary driver is a hyper-centralized economy where all financial and modern digital assets are hoarded in urban capitals, isolating the village from modern supply chains.',
+          bullets: ['Absence of a sovereign digital platform for regional Talent Mapping.', 'Archaic exam-centric education that fails to validate intrinsic human capability.'],
+          buddhistTitle: 'Kutadanta Sutta: Decentralization of Capital and Incentives',
+          buddhistText: 'True economic equilibrium is achieved only when the sovereign aggressively decentralizes capital and core infrastructures (Kasi Gorakkha) to where the citizens reside.',
+          tableTitle: 'Opportunity Centralization Ratios',
+          tableHeaders: ['Root Cause Matrix', 'Existing Impediment', 'Thun Kal Solution Grid'],
+          tableRows: [
+            ['Opportunity Distribution', '05% (Colombo-Centric)', '100% (Every Village a Tech Node)'],
+            ['Competency Certification', 'Paper-Exam Dependent', 'Blockchain Immutable Skill Ledger']
+          ],
+          chartLabel: 'Regional Opportunity Distribution (%)',
+          chartData: [5, 92],
+          chartCategories: ['Centralized Structure', 'Thun Kal Decentralization']
+        },
+        {
+          letter: 'C',
+          title: 'Benefits of Resolution',
+          content: 'By creating localized high-tech frameworks, rural creators can access global markets from their ancestral homes, organically resolving urban housing crises.',
+          bullets: ['Immediate 250% expansion of average rural household disposable income.', 'Direct automated pipeline for digital foreign exchange entry into local villages.'],
+          buddhistTitle: 'Vyagghapajja Sutta: Balanced Livelihood and Asset Preservation',
+          buddhistText: 'Combining safe asset preservation (Arakkha Sampada) with a well-balanced livelihood mapped precisely to intrinsic capabilities (Samajivikata) yields total socio-economic longevity.',
+          tableTitle: 'Systemic Potential Benefits Matrix',
+          tableHeaders: ['Benefit Domain', 'Current Crisis', 'Resolved Systemic State'],
+          tableRows: [
+            ['Rural Monthly Income Baseline', 'Debt-Ridden Subsistence', 'Resilient High-Yield Savings Base'],
+            ['Socio-Psychological Fulfillment', 'Anguish & Instability', 'High-Dignity Autonomous Professionals']
+          ],
+          chartLabel: 'Rural Economic Self-Sufficiency (%)',
+          chartData: [15, 88],
+          chartCategories: ['Current State', 'Thun Kal Vision Outcome']
+        },
+        {
+          letter: 'D',
+          title: 'Strategic Solutions & Action',
+          content: "The 'Thun Kal Dækma' introduces a high-velocity 5-step structural execution plan:",
+          bullets: [
+            "Step 1: Establishment of the 'Thun Kal Sovereign Digital Skill Ledger' for real-time Talent Mapping.",
+            'Step 2: Deployment of solar-powered Decentralized Digital Work Nodes (Smart Hubs) within every regional secretariat.',
+            "Step 3: Disbursing 0% interest seed capital via the 'Thun Kal Talent Fund' without physical collateral, utilizing a 5% stable lifetime repayment multiplier.",
+            'Step 4: Activating a blockchain QR transaction network to link creators directly with global buyers.',
+            'Step 5: Instituting a National Skill Buffer Reserve to securely re-skill citizens during technological shifts.'
+          ],
+          buddhistTitle: 'Sapta Aparihaniya Dhamma: Collective Assembly & Governance Harmony',
+          buddhistText: 'When regional tech creators, physical artisans, and public asset managers frequently assemble (Abhinhu Sannipatha) to debate under open laws, systemic economic collapse becomes impossible.',
+          tableTitle: 'Thun Kal Strategic Matrix Comparison',
+          tableHeaders: ['Mechanism Indicator', 'Legacy Methodologies', 'Thun Kal Sovereign Grid'],
+          tableRows: [
+            ['Job Creation Dynamic', 'Political Subsidies / Bureaucracy', 'Innate Skill-Mapped Digital Entrepreneurship'],
+            ['Capitalization Framework', 'Asset-Backed 30% Usurious Loans', '0% Direct Seed Capital with 5% Multiplier']
+          ],
+          chartLabel: 'Innate Skill Job Generation Capacity (%)',
+          chartData: [12, 96],
+          chartCategories: ['Legacy Welfare Paradigm', 'Thun Kal Strategic Framework']
+        }
+      ],
+      ta: [
+        {
+          letter: 'A',
+          title: 'உள்ளார்ந்த ஆற்றல்களின் குறைமதிப்பீடு (Problem Specification)',
+          content: 'கிராமப்புற இளைஞர்களின் உள்ளார்ந்த டிஜிட்டல், தொழில்நுட்ப அல்லது ஆக்கப்பூர்வமான திறமைகளுக்கு பொருந்தும் வேலை வாய்ப்புகள் கிடைக்காதது தேசிய இழப்பாகும்.',
+          bullets: ['72% க்கும் அதிகமான கிராமப்புற இளைஞர்களின் திறமைகள் தகுதியற்ற வேலைகளில் வீணடிக்கப்படுகின்றன.', 'திறமைக்கேற்ற வருமானம் இல்லாததால் ஏற்படும் பொருளாதார திவால்நிலை.'],
+          buddhistTitle: 'சிங்காலோவாத சூத்திரம்: திறன்கள் மற்றும் சம்மா ஆஜீவா',
+          buddhistText: 'ஒரு நபரின் உள்ளார்ந்த திறமைகளை சரியாகக் கண்டறிந்து, அதற்குப் பொருத்தமான நெறிமுறையான வாழ்வாதார வழிகளை வழங்குவதே சமூக வீழ்ச்சியைத் தடுப்பதற்கான அடிப்படைத் தூணாகும்.',
+          tableTitle: 'கிராமப்புற திறமை குறைபாட்டு குறியீடு',
+          tableHeaders: ['பிராந்திய குறியீடு', 'தற்போதைய நிலை', 'துன்கல் இலக்கு'],
+          tableRows: [
+            ['திறமை-வேலை சீரமைப்பு', '28% (கடுமையான முரண்பாடு)', '100% (முழுமையான சமநிலை)'],
+            ['இளைஞர்கள் இடப்பெயர்வு', '65% (கிராமங்கள் காலியாதல்)', '15% க்கும் குறைவு (தக்கவைப்பு)']
+          ],
+          chartLabel: 'திறன் பயன்பாட்டு திறன் (%)',
+          chartData: [28, 95],
+          chartCategories: ['தற்போதைய நிலை', 'துன்கல் மறுசீரமைப்பு']
+        },
+        {
+          letter: 'B',
+          title: 'மூல காரண பகுப்பாய்வு (Root Cause Analysis)',
+          content: 'அனைத்து தொழில்நுட்ப, தொழில்துறை மற்றும் நிதி வாய்ப்புகளும் தலைநகரங்களில் மட்டுமே குவிக்கப்பட்டுள்ளதே இதற்குக் காரணமாகும்.',
+          bullets: ['தேசிய அளவில் பிராந்திய திறமைகளை வரைபடமாக்குவதற்கான டிஜிட்டல் பதிவேடு இல்லாமை.', 'பரீட்சைகளை மட்டுமே மையமாகக் கொண்ட பழமையான கல்வி முறை.'],
+          buddhistTitle: 'கூடதந்த சூத்திரம்: மூலதனம் மற்றும் உள்கட்டமைப்பு பரவலாக்கல்',
+          buddhistText: 'மூலதனத்தையும், உள்கட்டமைப்பையும் மக்கள் வசிக்கும் பகுதிகளுக்கு ஆட்சியாளர் பரவலாக்கும்போது மட்டுமே பொருளாதார ஸ்திரத்தன்மை ஏற்படும்.',
+          tableTitle: 'வாய்ப்பு மையப்படுத்தல் விகிதங்கள்',
+          tableHeaders: ['மூல காரண மேட்ரிக்ஸ்', 'தற்போதைய தடை', 'துன்கல் தீர்வு'],
+          tableRows: [
+            ['வாய்ப்பு பரவலாக்கம்', '05% (நகர ஏகபோகம்)', '100% (ஒவ்வொரு கிராமமும் ஒரு தொழில்நுட்ப மையம்)'],
+            ['திறன் சான்றளிப்பு', 'காகிதத் தேர்வுகளை சார்ந்தது', 'பிளாக்செயினில் பாதுகாக்கப்பட்ட திறன் பதிவேடு']
+          ],
+          chartLabel: 'பிராந்திய வாய்ப்பு விநியோகம் (%)',
+          chartData: [5, 92],
+          chartCategories: ['மையப்படுத்தப்பட்ட கட்டமைப்பு', 'துன்கல் பரவலாக்கம்']
+        },
+        {
+          letter: 'C',
+          title: 'தீர்வின் நன்மைகள் (Benefits of Resolution)',
+          content: 'கிராமப்புற குடிமக்கள் தங்கள் சொந்த இடங்களை விட்டு வெளியேறாமல் உலகளாவிய பொருளாதாரத்திற்கு பங்களிக்க முடியும்.',
+          bullets: ['கிராமப்புற குடும்பங்களின் சராசரி மாதாந்திர வருமானம் உடனடியாக 250% அதிகரிக்கும்.', 'டிஜிட்டல் அந்நிய செலாவணி நேரடியாக கிராமப்புற பொருளாதாரத்திற்குள் பாயும்.'],
+          buddhistTitle: 'வியக்கபஜ்ஜ சூத்திரம்: சமஜீவிகதா மற்றும் சொத்து பாதுகாப்பு',
+          buddhistText: 'ஈட்டிய சொத்துக்களைப் பாதுகாப்பதையும் (ஆரக்கா சம்பதா) ஒருவருடைய உள்ளார்ந்த திறன்களுக்கு ஏற்ப வாழ்வாதாரத்தை சமநிலைப்படுத்துவதையும் (சமஜீவிகதா) இணைப்பது நீண்டகால பொருளாதார பாதுகாப்பை ஏற்படுத்தும்.',
+          tableTitle: 'கட்டமைப்பு சாத்தியமான நன்மைகள் மேட்ரிக்ஸ்',
+          tableHeaders: ['நன்மை டொமைன்', 'தற்போதைய நெருக்கடி', 'தீர்க்கப்பட்ட கட்டமைப்பு நிலை'],
+          tableRows: [
+            ['கிராமப்புற மாதாந்திர வருமானம்', 'கடன் சுமையால் நசுக்கப்பட்ட வருமானம்', 'நெகிழ்ச்சியான அதிக வருமானம் மற்றும் சேமிப்பு'],
+            ['சமூக-உளவியல் திருப்தி', 'இளைஞர்களின் அதிருப்தி', 'சுயமரியாதை கொண்ட உலகளாவிய வல்லுநர்கள்']
+          ],
+          chartLabel: 'கிராமப்புற பொருளாதார தற்சார்பு (%)',
+          chartData: [15, 88],
+          chartCategories: ['தற்போதைய நிலை', 'துன்கல் பார்வை விளைவு']
+        },
+        {
+          letter: 'D',
+          title: 'உපායமாර්ගික திட்டங்கள் (Strategic Solutions)',
+          content: "'துன்கல் தெக்ம' 5-படி உத்திகள் கொண்ட செயல் திட்டத்தை அறிமுகப்படுத்துகிறது:",
+          bullets: [
+            "படி 1: 'துன்கல் இறையாண்மை டிஜிட்டல் திறன் பதிவேடு' உருவாக்குதல்.",
+            "படி 2: அனைத்து பிராந்திய செயலகங்களிலும் 'துன்கல் ஸ்மார்ட் மையங்களை' அமைத்தல்.",
+            "படி 3: 'துன்கல் திறன் நிதியம்' மூலம் 0% வட்டி விதை மூலதனம் வழங்குதல்.",
+            'படி 4: பிளாக்செயினுடன் கூடிய QR வர்த்தக பொறிமுறை.',
+            'படி 5: தேசிய திறன் பாதுகாப்பு நிதி.'
+          ],
+          buddhistTitle: 'சப்த அபரிஹானிய தம்மா: கூட்டு நிர்வாக இணக்கம்',
+          buddhistText: 'பிராந்திய தொழில்முனைவோர், தொழில்நுட்ப உருவாக்குநர்கள் மற்றும் அரசு அதிகாரிகள் அடிக்கடி கூடி வெளிப்படையான விவாதங்களை நடத்தும்போது பொருளாதார வீழ்ச்சி முற்றிலும் தடுக்கப்படும்.',
+          tableTitle: 'துன்கல் மூலோபாய மேட்ரிக்ஸ் ஒப்பீடு',
+          tableHeaders: ['பொறிமுறை குறியீடு', 'பாரம்பரிய முறைகள்', 'துன்கல் இறையாண்மை கட்டமைப்பு'],
+          tableRows: [
+            ['வேலை உருவாக்க இயக்கவியல்', 'அரசியல் மானியங்கள்', 'திறன் அடிப்படையிலான டிஜிட்டல் தொழில்முனைவோர்'],
+            ['மூலதன கட்டமைப்பு', '30% வட்டி கொண்ட கடன்கள்', '5% பெருக்கியுடன் 0% நேரடி விதை மூலதனம்']
+          ],
+          chartLabel: 'உள்ளார்ந்த திறன் வேலை உருவாக்க திறன் (%)',
+          chartData: [12, 96],
+          chartCategories: ['பாரம்பரிய மானிய முறை', 'துன்கல் மூலோபாய கட்டமைப்பு']
         }
       ]
     }
