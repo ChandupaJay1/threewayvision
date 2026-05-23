@@ -135,7 +135,7 @@ const religionConfigs = {
     title: 'අවිහිංසාවාදී බෞද්ධ දර්ශනයේ හරය',
     subtitle: 'The Core of Buddhist Non-Violence',
     icon: 'dhamma-wheel',
-    backgroundImage: 'https://images.unsplash.com/photo-1610452631580-0498a4d46765?q=80&w=800'
+    backgroundImage: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=100&w=3840&fit=crop'
   },
   christian: {
     primaryColor: 'purple',
@@ -144,7 +144,7 @@ const religionConfigs = {
     title: 'ක්‍රිස්තු ධර්මයේ මූලික හරය',
     subtitle: 'The Foundations of Christian Faith',
     icon: 'cross',
-    backgroundImage: 'https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=800'
+    backgroundImage: 'https://images.unsplash.com/photo-1438032005730-c779502df39b?q=100&w=3840&fit=crop'
   },
   islamic: {
     primaryColor: 'green',
@@ -153,7 +153,7 @@ const religionConfigs = {
     title: 'ඉස්ලාම් දහමේ මූලික හරය',
     subtitle: 'The Core and Structure of Islam',
     icon: 'crescent',
-    backgroundImage: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=800'
+    backgroundImage: 'https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=100&w=3840&fit=crop'
   },
   hindu: {
     primaryColor: 'orange',
@@ -162,7 +162,7 @@ const religionConfigs = {
     title: 'සනාතන හින්දු දර්ශනයේ හරය',
     subtitle: 'The Eternal Way - Sanatana Dharma',
     icon: 'om',
-    backgroundImage: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800'
+    backgroundImage: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?q=100&w=3840&fit=crop'
   }
 }
 
@@ -353,28 +353,28 @@ function ReligiousVision({ lang, setCurrentPage }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           
-          <div onClick={() => setSelectedReligion('buddhist')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1610452631580-0498a4d46765?q=80&w=800)' }}>
+          <div onClick={() => setSelectedReligion('buddhist')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=100&w=3840&fit=crop)' }}>
             <div className="relative z-10 h-full flex flex-col justify-end">
               <h4 className="text-white text-xl font-black group-hover:text-yellow-400 transition-colors">{t.buddhist}</h4>
               <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest mt-1">{t.buddhistDesc}</p>
             </div>
           </div>
 
-          <div onClick={() => setSelectedReligion('christian')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=800)' }}>
+          <div onClick={() => setSelectedReligion('christian')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1438032005730-c779502df39b?q=100&w=3840&fit=crop)' }}>
             <div className="relative z-10 h-full flex flex-col justify-end">
               <h4 className="text-white text-xl font-black group-hover:text-purple-400 transition-colors">{t.christian}</h4>
               <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest mt-1">{t.christianDesc}</p>
             </div>
           </div>
 
-          <div onClick={() => setSelectedReligion('islamic')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1564769625905-50e93615e769?q=80&w=800)' }}>
+          <div onClick={() => setSelectedReligion('islamic')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?q=100&w=3840&fit=crop)' }}>
             <div className="relative z-10 h-full flex flex-col justify-end">
               <h4 className="text-white text-xl font-black group-hover:text-green-400 transition-colors">{t.islamic}</h4>
               <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest mt-1">{t.islamicDesc}</p>
             </div>
           </div>
 
-          <div onClick={() => setSelectedReligion('hindu')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800)' }}>
+          <div onClick={() => setSelectedReligion('hindu')} className="sub-card group cursor-pointer" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1587474260584-136574528ed5?q=100&w=3840&fit=crop)' }}>
             <div className="relative z-10 h-full flex flex-col justify-end">
               <h4 className="text-white text-xl font-black group-hover:text-orange-400 transition-colors">{t.hindu}</h4>
               <p className="text-[10px] text-blue-400 font-bold uppercase tracking-widest mt-1">{t.hinduDesc}</p>
